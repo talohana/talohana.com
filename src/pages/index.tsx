@@ -5,6 +5,7 @@ import { Hero } from '../components/landing/Hero/Hero';
 import { graphql } from 'gatsby';
 import { Post } from '../models/Post.model';
 import { Element } from 'react-scroll';
+import { Header } from '../components/common/Header/Header';
 interface GetLandingPage {
   posts: {
     nodes: Post[];
@@ -18,7 +19,10 @@ interface Props {
 const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
-      <Hero />
+      <Header />
+      <Element name="hero">
+        <Hero />
+      </Element>
       <Element name="posts">
         <Posts posts={data.posts.nodes} />
       </Element>

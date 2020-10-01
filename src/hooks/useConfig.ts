@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { ConfigContext } from '../config/config';
+import { Config, ConfigContext } from '../config/config';
 
-export function useConfig() {
+export function useConfig(): Config {
   const config = useContext(ConfigContext);
 
   return config;
