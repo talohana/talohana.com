@@ -7,7 +7,7 @@ import { GlobalStyles, Wrapper } from './styles';
 export const Layout: React.FC = ({ children }) => {
   return (
     <Wrapper>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         {children}
         <Footer />

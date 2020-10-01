@@ -4,8 +4,8 @@ export const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.text};
-  color: ${props => props.theme.body};
+  background-color: ${props => props.theme.primary};
+  color: ${props => props.theme.white};
   height: 10vh;
 `;
 
