@@ -1,12 +1,14 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from '../../utils/theme';
+import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 
 export const Layout: React.FC = ({ children }) => {
   return (
     <Wrapper>
       <ThemeProvider theme={darkTheme}>
+        <SEO />
         <GlobalStyles />
         {children}
         <Footer />
