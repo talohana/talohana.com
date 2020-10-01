@@ -1,9 +1,8 @@
 import React from 'react';
-import { Navbar } from './Navbar/Navbar';
-import { Wrapper } from './styles';
+import { Navbar } from './Navbar';
 
 export const Header: React.FC = () => (
-  <Wrapper>
+  <header>
     <Navbar />
-  </Wrapper>
+  </header>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout } from '../components/common/Layout/Layout';
+import { Layout } from '../components/common/Layout';
 import { Posts } from '../components/landing/Posts/Posts';
-import { Hero } from '../components/landing/Hero/Hero';
+import { Hero } from '../components/landing/Hero';
 import { graphql } from 'gatsby';
 import { Post } from '../models/Post.model';
 import { Element } from 'react-scroll';
