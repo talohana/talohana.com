@@ -9,6 +9,7 @@ export const Wrapper = styled(Container)`
 
   ${media.lessThan('large')`
     flex-direction: column;
+    padding-top: 1rem;
   `}
 `;
 

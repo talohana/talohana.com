@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const PostTitle = styled.h4`
+export const PostTitle = styled.h3`
   color: ${props => props.theme.primary};
 `;
 
