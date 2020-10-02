@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { config } from '../../config';
 
 export const Navbar: React.FC = () => {
@@ -20,7 +21,6 @@ export const Navbar: React.FC = () => {
 const Wrapper = styled.nav`
   display: flex;
   align-items: center;
-  color: ${props => props.theme.white};
 
   a {
     transition: all 0.3s;
@@ -30,4 +30,12 @@ const Wrapper = styled.nav`
       border-bottom: 2px solid currentColor;
     }
   }
+
+  ${media.lessThan('large')`
+    a {
+      &, &:hover {
+        border-bottom: 0;
+      }
+    }
+  `}
 `;
