@@ -21,6 +21,7 @@ export const Navbar: React.FC = () => {
 const Wrapper = styled.nav`
   display: flex;
   align-items: center;
+  color: ${props => props.theme.white};
 
   a {
     transition: all 0.3s;
