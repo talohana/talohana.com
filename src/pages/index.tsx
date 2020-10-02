@@ -5,7 +5,7 @@ import { Hero } from '../components/landing/Hero';
 import { graphql } from 'gatsby';
 import { Post } from '../models/Post.model';
 import { Element } from 'react-scroll';
-import { Header } from '../components/common/Header/Header';
+import { Header } from '../components/common/Header';
 interface GetLandingPage {
   posts: {
     nodes: Post[];

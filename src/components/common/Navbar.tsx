@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
-import { config } from '../../../config';
+import { config } from '../../config';
 
-export const NavbarLinks = () => {
+export const Navbar: React.FC = () => {
   return (
-    <div>
+    <Wrapper>
       <Link
         to="posts"
         smooth={config.scroll.smooth}
@@ -13,17 +13,12 @@ export const NavbarLinks = () => {
       >
         Posts
       </Link>
-    </div>
+    </Wrapper>
   );
 };
 
-const ScrollLink = styled(Link)`
+const Wrapper = styled.nav`
+  display: flex;
+  align-items: center;
   color: ${props => props.theme.white};
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s;
-
-  &:hover {
-    color: ${props => props.theme.white};
-    border-bottom: 1px solid currentColor;
-  }
 `;

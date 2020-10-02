@@ -1,13 +1,15 @@
+import { withPrefix } from 'gatsby';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { darkTheme, lightTheme } from '../../utils/theme';
+import { theme } from '../../utils/theme';
 import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 
 export const Layout: React.FC = ({ children }) => {
   return (
     <Wrapper>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <SEO />
         <GlobalStyles />
         {children}
@@ -26,9 +28,17 @@ const Wrapper = styled.div`
 
 const GlobalStyles = createGlobalStyle`
     body {
-        background-color: ${props => props.theme.body};
-        color: ${props => props.theme.text};
-        transition: all 0.5s linear;
+      transition: all 0.3s;
+
+      &.dark-mode {
+        background-color: #1f1f1f;
+        color: #dfe6e9;
+      }
+
+      &.light-mode {
+        background-color: #ecf0f1;
+        color: #1f1f1f;
+      }
     }
 
     a {

@@ -32,7 +32,7 @@ const Wrapper = styled.div`
       content: '';
       display: block;
       height: 1px;
-      background-color: ${props => props.theme.text};
+      background-color: currentColor;
       border-radius: 10px;
     }
   }

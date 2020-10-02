@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <Wrapper>
       <Copy>
-        &copy; All rights reserved {new Date().getFullYear()} | Tal Ohana{' '}
+        &copy; All rights reserved {new Date().getFullYear()} | Tal Ohana
       </Copy>
     </Wrapper>
   );

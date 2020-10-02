@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
-import media from 'styled-media-query';
-import rocketLaunch from '../../../assets/illustrations/rocket_launch.svg';
-import { config } from '../../../config';
-import { useScrollPosition } from '../../../hooks/useScrollPosition';
-import { NavbarLinks } from './NavbarLinks';
+import useDarkMode from 'use-dark-mode';
+import rocketLaunch from '../../assets/illustrations/rocket_launch.svg';
+import { config } from '../../config';
+import { useScrollPosition } from '../../hooks/useScrollPosition';
+import { DarkModeToggle } from './DarkModeToggle';
+import { Navbar } from './Navbar';
 
-export const Navbar: React.FC = () => {
+export const Header: React.FC = () => {
+  const { value: dark, toggle } = useDarkMode();
   const [visible, setVisible] = useState(true);
 
   useScrollPosition(({ currentPosition, previousPosition }) => {
@@ -28,35 +30,35 @@ export const Navbar: React.FC = () => {
       >
         <img src={rocketLaunch} alt="Rocket Launch Logo"></img>
       </Brand>
-      <NavbarLinks />
+      <Navbar />
+      <DarkModeToggle dark={dark} toggle={toggle} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.nav<{ visible: boolean }>`
+const Wrapper = styled.header<{ visible: boolean }>`
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 3rem;
-  padding: 0 2rem;
+  background-color: ${props => props.theme.primary};
+  padding: 0 1rem;
   position: fixed;
   top: ${props => (props.visible ? 0 : '-3.5rem')};
   left: 0;
-  background-color: ${props => props.theme.primary};
-  color: ${props => props.theme.white};
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
   transition: top 0.3s;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 
-  ${media.lessThan('large')`
-    padding: 0 0.5rem;
-  `}
+  nav {
+    margin-right: auto;
+  }
 `;
 
 const Brand = styled(Link)`
-  margin-right: 1rem;
-  width: 2rem;
+  width: 2.5rem;
   display: flex;
   align-items: center;
+  margin-right: 1rem;
 
   img {
     margin-bottom: 0;
