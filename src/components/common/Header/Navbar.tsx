@@ -3,12 +3,11 @@ import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import rocketLaunch from '../../../assets/illustrations/rocket_launch.svg';
-import { useConfig } from '../../../hooks/useConfig';
+import { config } from '../../../config';
 import { useScrollPosition } from '../../../hooks/useScrollPosition';
 import { NavbarLinks } from './NavbarLinks';
 
 export const Navbar: React.FC = () => {
-  const config = useConfig();
   const [visible, setVisible] = useState(true);
 
   useScrollPosition(({ currentPosition, previousPosition }) => {
@@ -22,7 +21,11 @@ export const Navbar: React.FC = () => {
 
   return (
     <Wrapper visible={visible}>
-      <Brand to="hero" smooth={true} duration={config.scroll.duration}>
+      <Brand
+        to="hero"
+        smooth={config.scroll.smooth}
+        duration={config.scroll.duration}
+      >
         <img src={rocketLaunch} alt="Rocket Launch Logo"></img>
       </Brand>
       <NavbarLinks />

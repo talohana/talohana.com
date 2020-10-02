@@ -1,15 +1,13 @@
 import React from 'react';
 import codeThinking from '../../assets/illustrations/code_thinking.svg';
 import { Link } from 'react-scroll';
-import { useConfig } from '../../hooks/useConfig';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { Button } from '../common/Button';
 import { Container } from '../common/Container';
+import { config } from '../../config';
 
 export const Hero = () => {
-  const config = useConfig();
-
   return (
     <Wrapper>
       <Intro>
@@ -21,7 +19,11 @@ export const Hero = () => {
           <img src={codeThinking} alt="Web Developer Logo" />
         </Thumbnail>
       </Intro>
-      <Link to="posts" smooth={true} duration={config.scroll.duration}>
+      <Link
+        to="posts"
+        smooth={config.scroll.smooth}
+        duration={config.scroll.duration}
+      >
         <Button>let's go!</Button>
       </Link>
     </Wrapper>

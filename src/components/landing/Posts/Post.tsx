@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useConfig } from '../../../hooks/useConfig';
+import { config } from '../../../config';
 import { Post as PostModel } from '../../../models/Post.model';
 
 interface Props {
@@ -9,12 +9,11 @@ interface Props {
 
 export const Post: React.FC<Props> = ({ post }) => {
   const { title, createdAt, virtuals, author, uniqueSlug } = post;
-  const { medium } = useConfig();
 
   return (
     <Wrapper>
       <a
-        href={`${medium.url}/${author.username}/${uniqueSlug}`}
+        href={`${config.medium.url}/${author.username}/${uniqueSlug}`}
         target="_blank"
       >
         <PostTitle>{title}</PostTitle>
