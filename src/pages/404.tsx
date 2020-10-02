@@ -1,5 +1,40 @@
-import React from "react"
+import React from 'react';
+import styled from 'styled-components';
+import { Container } from '../components/common/Container';
+import notFound from '../assets/illustrations/404.svg';
+import { Link } from 'gatsby';
+import { Layout } from '../components/common/Layout';
 
-const NotFoundPage = () => <div>404</div>
+const NotFoundPage = () => (
+  <Layout>
+    <Wrapper>
+      <Container>
+        <img src={notFound} alt="404 Illustration" />
+        <h1>Oh S#!t!</h1>
+        <p>
+          The page you are looking for was moved, removed or might never
+          existed!
+        </p>
+        <div>
+          Let's go back <HomeLink to="/">home</HomeLink>
+        </div>
+      </Container>
+    </Wrapper>
+  </Layout>
+);
 
-export default NotFoundPage
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 0;
+  height: 90vh;
+`;
+
+const HomeLink = styled(Link)`
+  text-decoration: underline;
+`;
+
+export default NotFoundPage;
