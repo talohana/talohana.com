@@ -1,16 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `Tal Ohana`,
-    description: `Tal Ohana, a Software Developer.`,
-    author: `@talohana`,
-    keywords: [
-      'talohana',
-      'software',
-      'developer',
-      'programmer',
-      'programming',
-    ],
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,

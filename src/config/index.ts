@@ -1,3 +1,5 @@
+import thumbnail from '../assets/thumbnail/thumbnail.png';
+
 export const config: Config = {
   medium: {
     url: 'https://medium.com',
@@ -9,12 +11,25 @@ export const config: Config = {
     duration: 700,
     smooth: true,
   },
+  seo: {
+    defaultTitle: 'Tal Ohana',
+    defaultDescription: 'Tal Ohana, a Software Developer from Israel.',
+    author: '@talohana',
+    thumbnail: thumbnail,
+    url: 'https://talohana.com',
+  },
+  social: {
+    twitter: 'https://twitter.com/talohanax',
+    twitterUsername: '@talohanax',
+  },
 };
 
 export interface Config {
   medium: MediumConfig;
   header: HeaderConfig;
   scroll: ScrollConfig;
+  seo: SEOConfig;
+  social: SocialConfig;
 }
 
 export interface ScrollConfig {
@@ -28,4 +43,17 @@ export interface HeaderConfig {
 
 export interface MediumConfig {
   url: string;
+}
+
+export interface SEOConfig {
+  defaultTitle: string;
+  defaultDescription: string;
+  author: string;
+  thumbnail: string;
+  url: string;
+}
+
+export interface SocialConfig {
+  twitter: string;
+  twitterUsername: string;
 }
