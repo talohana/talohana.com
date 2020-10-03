@@ -42,13 +42,13 @@ export function useScrollPosition(
 ) {
   const position = useRef(getScrollPosition({ useWindow }));
 
-  let throttleTimeout: number | undefined;
+  let throttleTimeout: ReturnType<typeof setTimeout> | null;
 
   const callback = () => {
     const currentPosition = getScrollPosition({ element, useWindow });
     effect({ previousPosition: position.current, currentPosition });
     position.current = currentPosition;
-    throttleTimeout = undefined;
+    throttleTimeout = null;
   };
 
   useLayoutEffect(() => {
@@ -66,7 +66,10 @@ export function useScrollPosition(
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(throttleTimeout);
+
+      if (throttleTimeout) {
+        clearTimeout(throttleTimeout);
+      }
     };
   }, deps);
 }
