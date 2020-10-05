@@ -2,7 +2,6 @@ import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
 
 interface Props {
   dark: boolean;
@@ -42,7 +41,6 @@ const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
   cursor: pointer;
   width: 100%;
   height: 100%;
-  text-transform: uppercase;
   overflow: hidden;
 
   svg {
