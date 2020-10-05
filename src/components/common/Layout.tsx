@@ -26,7 +26,10 @@ const Wrapper = styled.div`
 
 const GlobalStyles = createGlobalStyle`
     body {
-      &.dark-mode {
+      background-color: #1f1f1f;
+      color: #dfe6e9;
+      
+      /* &.dark-mode {
         background-color: #1f1f1f;
         color: #dfe6e9;
       }
@@ -34,7 +37,7 @@ const GlobalStyles = createGlobalStyle`
       &.light-mode {
         background-color: #ecf0f1;
         color: #1f1f1f;
-      }
+      } */
     }
 
     a {

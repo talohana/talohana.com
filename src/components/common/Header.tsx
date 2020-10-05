@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
-import useDarkMode from 'use-dark-mode';
 import rocketLaunch from '../../assets/illustrations/rocket_launch.svg';
 import { config } from '../../config';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { DarkModeToggle } from './DarkModeToggle';
 import { Navbar } from './Navbar';
 
 export const Header: React.FC = () => {
-  const { value: dark, toggle } = useDarkMode();
   const [visible, setVisible] = useState(true);
 
   useScrollPosition(({ currentPosition, previousPosition }) => {
@@ -31,7 +28,7 @@ export const Header: React.FC = () => {
         <img src={rocketLaunch} alt="Rocket Launch Logo"></img>
       </Brand>
       <Navbar />
-      <DarkModeToggle dark={dark} toggle={toggle} />
+      {/* <DarkModeToggle dark={dark} toggle={toggle} /> */}
     </Wrapper>
   );
 };
