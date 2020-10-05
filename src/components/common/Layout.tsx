@@ -1,14 +1,10 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from '../../utils/theme';
 import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 
 export const Layout: React.FC = ({ children }) => {
-  useLayoutEffect(() => {
-    document.body.classList.add('loaded');
-  }, []);
-
   return (
     <Wrapper>
       <ThemeProvider theme={theme}>
@@ -30,11 +26,6 @@ const Wrapper = styled.div`
 
 const GlobalStyles = createGlobalStyle`
     body {
-      &.dark-mode
-      &.light-mode {
-        transition: all 0.5s linear;
-      }
-
       &.dark-mode {
         background-color: #1f1f1f;
         color: #dfe6e9;
