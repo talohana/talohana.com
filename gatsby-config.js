@@ -28,12 +28,18 @@ module.exports = {
         icon: `src/images/favicon-512x512.png`,
       },
     },
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-medium`,
       options: {
         username: '@tal.ohana.x',
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-179723340-1',
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };
