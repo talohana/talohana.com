@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const GlobalStyles = createGlobalStyle<{ initialized: boolean }>`
+const GlobalStyles = createGlobalStyle`
     body {
       background-color: var(--color-background);
       color: var(--color-text);
