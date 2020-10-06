@@ -1,10 +1,10 @@
 import React from 'react';
-import { Post as PostModel } from '../../../models/Post.model';
-import { Post } from './Post';
-import bookLover from '../../../assets/illustrations/book_lover.svg';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import bookLover from '../../../assets/illustrations/book_lover.svg';
+import { Post as PostModel } from '../../../models/Post';
 import { Container } from '../../common/Container';
+import { Post } from './Post';
 
 interface Props {
   posts: PostModel[];

@@ -2,19 +2,30 @@ import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
+import { ColorMode } from '../../models/ColorMode';
 
 interface Props {
-  dark: boolean;
-  toggle: () => void;
+  colorMode: ColorMode;
+  setColorMode: (colorMode: ColorMode) => void;
 }
 
-export const DarkModeToggle: React.FC<Props> = ({ dark, toggle }) => {
+export const DarkModeToggle: React.FC<Props> = ({
+  colorMode,
+  setColorMode,
+}) => {
+  const darkMode = colorMode === 'dark';
+
   return (
     <Wrapper>
-      <HiddenCheckbox defaultChecked={dark} onChange={toggle} />
-      <Toggle dark={dark}>
-        <RiMoonClearFill style={{ top: dark ? '50%' : '-150%' }} />
-        <BsSun style={{ top: dark ? '150%' : '50%' }} />
+      <HiddenCheckbox
+        defaultChecked={darkMode}
+        onChange={() => {
+          setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+        }}
+      />
+      <Toggle darkMode={darkMode}>
+        <RiMoonClearFill style={{ top: darkMode ? '50%' : '-150%' }} />
+        <BsSun style={{ top: darkMode ? '150%' : '50%' }} />
       </Toggle>
     </Wrapper>
   );
@@ -34,7 +45,7 @@ const HiddenCheckbox = styled.input.attrs({
 `;
 
 const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
-  dark: boolean;
+  darkMode: boolean;
 }>`
   display: inline-block;
   position: relative;
@@ -50,6 +61,6 @@ const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s;
-    color: ${({ dark, theme }) => (dark ? theme.white : '#ffdd59')};
+    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#ffdd59')};
   }
 `;

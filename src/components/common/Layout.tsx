@@ -1,19 +1,22 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ColorModeProvider } from '../../providers/ColorModeProvider';
 import { theme } from '../../utils/theme';
 import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <Wrapper>
-      <ThemeProvider theme={theme}>
-        <SEO />
-        <GlobalStyles />
-        {children}
-        <Footer />
-      </ThemeProvider>
-    </Wrapper>
+    <ColorModeProvider>
+      <Wrapper>
+        <ThemeProvider theme={theme}>
+          <SEO />
+          <GlobalStyles />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      </Wrapper>
+    </ColorModeProvider>
   );
 };
 
@@ -24,20 +27,10 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle<{ initialized: boolean }>`
     body {
-      background-color: #1f1f1f;
-      color: #dfe6e9;
-      
-      /* &.dark-mode {
-        background-color: #1f1f1f;
-        color: #dfe6e9;
-      }
-
-      &.light-mode {
-        background-color: #ecf0f1;
-        color: #1f1f1f;
-      } */
+      background-color: var(--color-background);
+      color: var(--color-text);
     }
 
     a {

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Layout } from '../components/common/Layout';
-import { Posts } from '../components/landing/Posts/Posts';
-import { Hero } from '../components/landing/Hero';
 import { graphql } from 'gatsby';
-import { Post } from '../models/Post.model';
+import React from 'react';
 import { Element } from 'react-scroll';
 import { Header } from '../components/common/Header';
+import { Layout } from '../components/common/Layout';
+import { Hero } from '../components/landing/Hero';
+import { Posts } from '../components/landing/Posts/Posts';
+import { Post } from '../models/Post';
 interface GetLandingPage {
   posts: {
     nodes: Post[];

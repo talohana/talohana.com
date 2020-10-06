@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { config } from '../../../config';
-import { Post as PostModel } from '../../../models/Post.model';
+import { Post as PostModel } from '../../../models/Post';
 
 interface Props {
   post: PostModel;
