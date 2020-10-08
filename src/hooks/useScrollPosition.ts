@@ -35,11 +35,11 @@ function getScrollPosition({
 
 export function useScrollPosition(
   effect: ScrollPositionHandler,
-  waitMilliseconds: number = 0,
-  useWindow: boolean = true,
+  waitMilliseconds = 0,
+  useWindow = true,
   element?: React.MutableRefObject<Element>,
   deps: React.DependencyList | undefined = []
-) {
+): void {
   const position = useRef(getScrollPosition({ useWindow }));
 
   let throttleTimeout: ReturnType<typeof setTimeout> | null;

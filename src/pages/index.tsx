@@ -2,7 +2,6 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { Element } from 'react-scroll';
 import { Header } from '../components/common/Header';
-import { Layout } from '../components/common/Layout';
 import { Hero } from '../components/landing/Hero';
 import { Posts } from '../components/landing/Posts/Posts';
 import { Post } from '../models/Post';
@@ -18,7 +17,7 @@ interface Props {
 
 const IndexPage: React.FC<Props> = ({ data }) => {
   return (
-    <Layout>
+    <>
       <Header />
       <Element name="hero">
         <Hero />
@@ -26,7 +25,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
       <Element name="posts">
         <Posts posts={data.posts.nodes} />
       </Element>
-    </Layout>
+    </>
   );
 };
 
