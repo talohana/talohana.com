@@ -1,5 +1,3 @@
-import thumbnail from '../assets/thumbnail/thumbnail.png';
-
 export const config: Config = {
   medium: {
     url: 'https://medium.com',
@@ -15,7 +13,7 @@ export const config: Config = {
     defaultTitle: 'Tal Ohana',
     defaultDescription: 'Tal Ohana, a Software Developer from Israel.',
     author: '@talohana',
-    thumbnail: thumbnail,
+    thumbnail: '/images/thumbnail.png',
     url: 'https://talohana.com',
   },
   social: {
