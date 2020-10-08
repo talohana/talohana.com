@@ -1,26 +1,22 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../components/common/Container';
 import notFound from '../assets/illustrations/404.svg';
-import { Link } from 'gatsby';
-import { Layout } from '../components/common/Layout';
+import { Container } from '../components/common/Container';
 
-const NotFoundPage = () => (
-  <Layout>
-    <Wrapper>
-      <Container>
-        <img src={notFound} alt="404 Illustration" />
-        <h1>Oh S#!t!</h1>
-        <p>
-          The page you are looking for was moved, removed or might never
-          existed!
-        </p>
-        <div>
-          Let's go back <HomeLink to="/">home</HomeLink>
-        </div>
-      </Container>
-    </Wrapper>
-  </Layout>
+const NotFoundPage: React.FC = () => (
+  <Wrapper>
+    <Container>
+      <img src={notFound} alt="404 Illustration" />
+      <h1>Oh S#!t!</h1>
+      <p>
+        The page you are looking for was moved, removed or might never existed!
+      </p>
+      <div>
+        Let's go back <HomeLink to="/">home</HomeLink>
+      </div>
+    </Container>
+  </Wrapper>
 );
 
 const Wrapper = styled.div`

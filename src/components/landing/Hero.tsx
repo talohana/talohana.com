@@ -1,13 +1,13 @@
 import React from 'react';
-import codeThinking from '../../assets/illustrations/code_thinking.svg';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import codeThinking from '../../assets/illustrations/code_thinking.svg';
+import { config } from '../../config';
 import { Button } from '../common/Button';
 import { Container } from '../common/Container';
-import { config } from '../../config';
 
-export const Hero = () => {
+export const Hero: React.FC = () => {
   return (
     <Wrapper>
       <Intro>

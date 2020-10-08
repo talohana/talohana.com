@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <Wrapper>
       <Copy>

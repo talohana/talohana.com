@@ -1,4 +1,7 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const React = require('react');
+const { Layout } = require('./src/components/common/Layout');
 
 const COLORS = {
   light: {
@@ -54,6 +57,10 @@ const ColorModeScriptTag = () => {
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
 };
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
-  setPreBodyComponents(<ColorModeScriptTag />);
+exports.onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents(<ColorModeScriptTag key="color-mode-script" />);
+};
+
+exports.wrapPageElement = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>;
 };

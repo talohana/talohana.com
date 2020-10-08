@@ -9,6 +9,7 @@ type ColorModeContext = {
 
 const defaultContext: ColorModeContext = {
   colorMode: 'light',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setColorMode: () => {},
 };
 
