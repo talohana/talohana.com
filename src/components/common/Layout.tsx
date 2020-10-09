@@ -76,7 +76,7 @@ const PrismLanguageChips = createGlobalStyle`
       left: 1.5rem;
       padding: 0.1rem 0.2rem;
       border-radius: 0 0 4px 4px;
-      color: ${props => props.theme.white};
+      color: #dfe6e9;
       text-transform: uppercase;
       font-size: 0.8rem;
     }
