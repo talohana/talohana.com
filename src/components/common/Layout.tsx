@@ -1,14 +1,11 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import media from 'styled-media-query';
-import { ColorModeContext } from '../../providers/ColorModeProvider';
 import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout: React.FC = ({ children }) => {
-  const { colorMode } = React.useContext(ColorModeContext);
-
   return (
     <>
       <SEO />
@@ -64,7 +61,7 @@ const PrismLanguageChips = createGlobalStyle`
   /* Code blocks */
   pre[class*='language-'] {
     padding: 2em 1em;
-    margin: 0.5em 0;
+    margin: 1.38rem 0;
     overflow: auto;
   }
 
