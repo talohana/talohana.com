@@ -5,7 +5,7 @@ title: 'TypeScript Internals - Excess Property Checks'
 description: 'some description'
 categories: ['javascript']
 keywords: ['book']
-banner: ./images/banner.png
+banner: ./images/banner.jpg
 ---
 
 import { Link } from 'gatsby';
@@ -41,9 +41,10 @@ const point: Point = { x: 1, y: 2, meaningOfLife: 42 }; // ERROR
 
 And we get the following (and a little surprising) error:
 
-```text
+```
 Type ‘{ x: number; y: number; meaningOfLife: number; }’
-is not assignable to type ‘Point’.
+is not assignable to type ‘Point’
+
 Object literal may only specify known properties,
 and ‘meaningOfLife’ does not exist in type ‘Point’.
 ```

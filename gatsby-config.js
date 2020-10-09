@@ -66,10 +66,9 @@ const BLOG_PLUGINS = [
       extensions: ['.mdx', '.md'],
       gatsbyRemarkPlugins: [
         {
-          resolve: 'gatsby-remark-images',
+          resolve: `gatsby-remark-images`,
           options: {
-            maxWidth: 1035,
-            sizeByPixelDensity: true,
+            maxWidth: 800,
           },
         },
         {
@@ -81,6 +80,7 @@ const BLOG_PLUGINS = [
           },
         },
       ],
+      plugins: [`gatsby-remark-images`],
     },
   },
 ];
