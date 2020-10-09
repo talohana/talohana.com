@@ -9,6 +9,10 @@ theme.googleFonts = [
     name: 'Exo',
     styles: ['200', '700'],
   },
+  {
+    name: 'Open Sans',
+    styles: ['200', '400', '700'],
+  },
 ];
 
 const typography = new Typography(theme);

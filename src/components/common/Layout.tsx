@@ -76,15 +76,16 @@ const PrismLanguageChips = createGlobalStyle`
       left: 1.5rem;
       padding: 0.1rem 0.2rem;
       border-radius: 0 0 4px 4px;
-      color: #dfe6e9;
+      color: ${props => props.theme.white};
       text-transform: uppercase;
       font-size: 0.8rem;
     }
   }
 
     /* Language chips */
-    .gatsby-highlight {
+  .gatsby-highlight {
     position: relative;
+    font-size: 0.8rem;
   }
   
   pre.language {
