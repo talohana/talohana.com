@@ -48,6 +48,7 @@ const Wrapper = styled.header<{ visible: boolean }>`
   left: 0;
   transition: top 0.3s;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 
   nav {
     margin-right: auto;

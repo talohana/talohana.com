@@ -1,19 +1,12 @@
+import { Link } from 'gatsby';
 import React from 'react';
-import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { config } from '../../config';
 
 export const Navbar: React.FC = () => {
   return (
     <Wrapper>
-      <Link
-        to="posts"
-        smooth={config.scroll.smooth}
-        duration={config.scroll.duration}
-      >
-        Posts
-      </Link>
+      <Link to="/blog/typescript-excess-property-checks">Blog</Link>
     </Wrapper>
   );
 };
