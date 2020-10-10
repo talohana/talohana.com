@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorMode } from '../models/ColorMode';
+import { ColorMode } from '../index.ts/ColorMode';
 import { COLORS } from '../styles/colors';
 
 type ColorModeContext = {

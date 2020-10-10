@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import rocketLaunch from '../../assets/illustrations/rocket_launch.svg';
-import { config } from '../../config';
+import { config } from '../../config/config';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { ColorModeContext } from '../../providers/ColorModeProvider';
 import { DarkModeToggle } from './DarkModeToggle';
-import { Navbar } from './Navbar';
+import { NavLinks } from './NavLinks';
 
 export const Header: React.FC = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
       >
         <img src={rocketLaunch} alt="Rocket Launch Logo"></img>
       </Brand>
-      <Navbar />
+      <NavLinks />
       <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
     </Wrapper>
   );
@@ -49,17 +49,13 @@ const Wrapper = styled.header<{ visible: boolean }>`
   transition: top 0.3s;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-
-  nav {
-    margin-right: auto;
-  }
 `;
 
 const Brand = styled(Link)`
   width: 2.5rem;
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: auto;
 
   img {
     margin-bottom: 0;

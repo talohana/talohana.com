@@ -12,6 +12,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
 
+  cursor: pointer;
+
   &:focus {
     outline: none;
   }

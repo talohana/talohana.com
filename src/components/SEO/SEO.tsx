@@ -1,34 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Site, SiteSiteMetadata } from '../../types';
 import { Facebook } from './Facebook';
 import { Twitter } from './Twitter';
 
-interface SiteMetadata {
-  siteUrl: string;
-  defaultTitle: string;
-  defaultDescription: string;
-  defaultBanner: string;
-  headline: string;
-  siteLanguage: string;
-  ogLanguage: string;
-  author: string;
-  twitter: string;
-  twitterUsername: string;
-}
-
-interface Site {
-  site: {
-    siteMetadata: SiteMetadata;
-  };
-}
-
 interface Props {
-  title: string | null;
-  description: string | null;
-  banner: string | null;
-  pathname: string | null;
-  article: boolean;
+  title?: string | null;
+  description?: string | null;
+  banner?: string | null;
+  pathname?: string | null;
+  article?: boolean;
 }
 
 export const SEO: React.FC<Props> = ({
@@ -38,7 +20,7 @@ export const SEO: React.FC<Props> = ({
   pathname,
   article,
 }) => {
-  const { site } = useStaticQuery<Site>(query);
+  const { site } = useStaticQuery<{ site: Site }>(query);
 
   const {
     siteUrl,
@@ -50,13 +32,17 @@ export const SEO: React.FC<Props> = ({
     ogLanguage,
     author,
     twitter,
-  } = site.siteMetadata;
+  } = site.siteMetadata as SiteSiteMetadata;
+
+  if (article) {
+    // TODO:
+  }
 
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${siteUrl}${banner || defaultBanner}`,
-    url: `${siteUrl}${pathname || ''}`,
+    title: title ?? defaultTitle,
+    description: description ?? defaultDescription,
+    image: `${siteUrl}${banner ?? defaultBanner}`,
+    url: `${siteUrl}${pathname ?? ''}`,
   };
 
   return (

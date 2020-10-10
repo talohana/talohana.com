@@ -3,12 +3,18 @@ import styled, { createGlobalStyle } from 'styled-components';
 import media from 'styled-media-query';
 import { prism } from '../../styles/prism';
 import { reset } from '../../styles/reset';
+import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export const Layout: React.FC = ({ children }) => {
+interface Props {
+  customSEO?: boolean;
+}
+
+export const Layout: React.FC<Props> = ({ children, customSEO }) => {
   return (
     <>
+      {!customSEO && <SEO />}
       <GlobalStyles />
       <Wrapper>
         <Header />
@@ -17,6 +23,10 @@ export const Layout: React.FC = ({ children }) => {
       </Wrapper>
     </>
   );
+};
+
+Layout.defaultProps = {
+  customSEO: false,
 };
 
 const Wrapper = styled.div`

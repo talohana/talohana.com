@@ -6,43 +6,30 @@ import styled from 'styled-components';
 import { Banner } from '../components/blog/Banner';
 import { Container } from '../components/blog/Container';
 import { Layout } from '../components/common/Layout';
-
-type PostFrontmatter = {
-  slug: string;
-  date: string;
-  title: string;
-  description: string;
-  categories: string[];
-  keywords: string[];
-  banner: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
-};
+import { SEO } from '../components/SEO/SEO';
+import { Mdx } from '../types';
 
 type PageData = {
-  mdx: {
-    body: string;
-    frontmatter: PostFrontmatter;
-  };
+  mdx: Mdx;
 };
 
 type Props = PageProps<PageData>;
 
-const PostTemplate: React.FC<Props> = ({ data }) => {
+const PostTemplate: React.FC<Props> = ({ data, location }) => {
   const { body, frontmatter } = data.mdx;
   const { title, date, banner } = frontmatter;
+  const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
 
   return (
-    <Layout>
+    <Layout customSEO>
+      <SEO pathname={location.pathname} title={title} article />
       <Container>
         <PostInfo>
           <h1>{title}</h1>
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
-        <Banner fluid={banner.childImageSharp.fluid}></Banner>
-        <MDXRenderer children={body}></MDXRenderer>
+        {bannerImage && <Banner fluid={bannerImage} />}
+        <MDXRenderer children={body} />
       </Container>
     </Layout>
   );

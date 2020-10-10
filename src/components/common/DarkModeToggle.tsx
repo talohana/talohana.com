@@ -2,7 +2,7 @@ import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
-import { ColorMode } from '../../models/ColorMode';
+import { ColorMode } from '../../index.ts/ColorMode';
 
 interface Props {
   colorMode: ColorMode;

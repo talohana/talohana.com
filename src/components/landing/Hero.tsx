@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import codeThinking from '../../assets/illustrations/code_thinking.svg';
-import { config } from '../../config';
+import { config } from '../../config/config';
 import { Button } from '../common/Button';
 import { Container } from '../common/Container';
 import { ScrollLink } from '../common/ScrollLink';
