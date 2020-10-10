@@ -1,14 +1,12 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import media from 'styled-media-query';
-import { SEO } from '../SEO/SEO';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <SEO />
       <GlobalStyles />
       <PrismLanguageChips />
       <PrismTheme />

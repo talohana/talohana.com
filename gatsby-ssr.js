@@ -64,10 +64,6 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents(<ColorModeScriptTag key="color-mode-script" />);
 };
 
-exports.wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
-};
-
 exports.wrapRootElement = ({ element }) => {
   return (
     <ThemeProvider theme={theme}>

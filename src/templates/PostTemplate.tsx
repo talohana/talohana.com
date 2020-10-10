@@ -5,6 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../components/blog/Banner';
 import { Container } from '../components/blog/Container';
+import { Layout } from '../components/common/Layout';
 
 type PostFrontmatter = {
   slug: 'string';
@@ -34,7 +35,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
   const { title, date, banner } = frontmatter;
 
   return (
-    <>
+    <Layout>
       <Container>
         <PostInfo>
           <h1>{title}</h1>
@@ -43,7 +44,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
         <Banner fluid={banner.childImageSharp.fluid}></Banner>
         <MDXRenderer children={body}></MDXRenderer>
       </Container>
-    </>
+    </Layout>
   );
 };
 

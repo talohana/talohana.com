@@ -5,10 +5,6 @@ const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
 const { ThemeProvider } = require('styled-components');
 const { theme } = require('./src/utils/theme');
 
-exports.wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
-};
-
 exports.wrapRootElement = ({ element }) => {
   return (
     <ThemeProvider theme={theme}>
