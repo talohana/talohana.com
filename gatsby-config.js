@@ -3,7 +3,7 @@ const STYLE_PLUGINS = [
   {
     resolve: `gatsby-plugin-typography`,
     options: {
-      pathToConfigModule: `src/utils/typography`,
+      pathToConfigModule: `src/styles/typography`,
     },
   },
 ];

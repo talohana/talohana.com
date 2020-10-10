@@ -8,7 +8,7 @@ import { Container } from '../components/blog/Container';
 import { Layout } from '../components/common/Layout';
 
 type PostFrontmatter = {
-  slug: 'string';
+  slug: string;
   date: string;
   title: string;
   description: string;
@@ -39,7 +39,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <Container>
         <PostInfo>
           <h1>{title}</h1>
-          <PostDate>{date} - by Tal Ohana</PostDate>
+          <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
         <Banner fluid={banner.childImageSharp.fluid}></Banner>
         <MDXRenderer children={body}></MDXRenderer>
@@ -52,8 +52,9 @@ const PostInfo = styled.div`
   text-align: center;
 `;
 
-const PostDate = styled.h4`
-  font-weight: 200;
+const PublishInfo = styled.h4`
+  text-transform: uppercase;
+  font-weight: 300;
 `;
 
 export const query = graphql`

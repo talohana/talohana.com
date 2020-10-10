@@ -1,5 +1,3 @@
-// duplicated in gatsby-ssr.js since it's a js file
-
 export const COLORS = {
   light: {
     background: '#ecf0f1',

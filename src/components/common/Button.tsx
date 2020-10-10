@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { darken } from 'polished';
+import styled from 'styled-components';
 export const Button = styled.button`
   text-transform: uppercase;
   background-color: ${props => props.theme.primary};
@@ -7,7 +7,6 @@ export const Button = styled.button`
   padding: 0.5rem 1rem;
   border: 0;
   border-radius: 10px;
-  cursor: pointer;
   transition: all 0.2s;
 
   display: flex;

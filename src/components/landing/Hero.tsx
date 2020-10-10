@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import codeThinking from '../../assets/illustrations/code_thinking.svg';
 import { config } from '../../config';
 import { Button } from '../common/Button';
 import { Container } from '../common/Container';
+import { ScrollLink } from '../common/ScrollLink';
 
 export const Hero: React.FC = () => {
   return (
@@ -19,13 +19,13 @@ export const Hero: React.FC = () => {
           <img src={codeThinking} alt="Web Developer Logo" />
         </Thumbnail>
       </Intro>
-      <Link
+      <ScrollLink
         to="posts"
         smooth={config.scroll.smooth}
         duration={config.scroll.duration}
       >
         <Button>let's go!</Button>
-      </Link>
+      </ScrollLink>
     </Wrapper>
   );
 };
