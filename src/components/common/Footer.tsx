@@ -15,7 +15,7 @@ const Wrapper = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.black};
   color: ${props => props.theme.white};
   height: 10vh;
 `;

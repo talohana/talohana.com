@@ -25,7 +25,7 @@ const PostTemplate: React.FC<Props> = ({ data, location }) => {
       <SEO pathname={location.pathname} title={title} article />
       <Container>
         <PostInfo>
-          <h1>{title}</h1>
+          <PostTitle>{title}</PostTitle>
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
         {bannerImage && <Banner fluid={bannerImage} />}
@@ -34,6 +34,10 @@ const PostTemplate: React.FC<Props> = ({ data, location }) => {
     </Layout>
   );
 };
+
+const PostTitle = styled.h1`
+  font-weight: 300;
+`;
 
 const PostInfo = styled.div`
   text-align: center;

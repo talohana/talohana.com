@@ -31,7 +31,7 @@ export const Blog: React.FC<Props> = ({ data }) => {
 export const query = graphql`
   query {
     allMdx {
-      group(field: frontmatter___categories, limit: 2) {
+      group(field: frontmatter___categories, limit: 3) {
         fieldValue
         edges {
           node {

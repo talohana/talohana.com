@@ -41,11 +41,13 @@ module.exports = {
         name: 'blog',
       },
     },
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -61,7 +63,6 @@ module.exports = {
             },
           },
         ],
-        plugins: [`gatsby-remark-images`],
       },
     },
     `gatsby-plugin-react-helmet`,

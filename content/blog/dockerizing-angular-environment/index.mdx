@@ -1,0 +1,101 @@
+---
+title: Dockerizing Angular Development Environment
+slug: dockerizing-angular-environment
+description: |
+  How and why you should keep your Angular development environment dockerized
+categories: [angular]
+keywords: [angular, docker, tutorial]
+date: 2019-03-30
+banner: ./images/banner.jpg
+---
+
+## Prerequisites
+
+I assume you already know [Angular](https://angular.io/) and [Docker](https://www.docker.com/) are.
+If not, I would recommend reading about Angular and Docker first.
+
+## Motivation
+
+Creating or cloning an Angular development environment can get quite messy.
+After you installed your favorite IDE you will need to get npm, install some global and local packages and sometimes configure environment variables.
+Luckily this process can be automated with our lovely friend Docker!
+
+---
+
+## Creating an Angular Project
+
+Without further ado let’s quickly clone the files we need from [this repository](https://github.com/talohana/angular-docker-dev-environment)
+and remove the README.md and LICENCE files.
+Now we can create our Angular project as we already know with the
+angular-cli by running :
+
+`docker-compose -f docker-compose.seed.yml run seed`
+
+With this, we tell docker-compose to use the file docker-compose.seed.yml and run a service named seed, the service will prompt you with project creation.
+
+**Note**: For git-bash users, prefix interactive commands with winpty
+
+---
+
+## Running Angular Development Server
+
+Before running our development server, let’s break down the
+Dockerfile and docker-compose.yml files
+
+This is pretty straight forward, so let’s recap this quickly
+
+- Set the base image to be the latest node:alpine for minimum image size
+- Install @angular/cli globally, any other global tools goes into this layer
+- Copy and install localy npm packages
+- Copy the remaining source code, this is the layer that changes the most.
+- It’s important to note that there is a .dockerignore file that prevents certain file and file formats from being copied.
+
+### Port Mapping
+
+Angular’s development server default port is 4200, so we map the host’s port to the container’s one.
+
+### Volumes
+
+As a thumb rule, we should try avoiding large volumes, this is the reason we don’t map the entire directory or node_modules directory.
+You probably noticed the :cached at the end of the first volumes, with this we tell docker whether the host or the container is authoritative.
+In general, we have two options, :cached the host to be authoritative, or :delegated where we want the container to be authoritative.
+Put simply, authoritative means which view has higher preference of being updated.
+These are the minimum files that I decided to volume, feel free to add other files and volumes.
+
+### Entrypoint
+
+This is where we override the image’s `ENTRYPOINT` if it had one.
+We use the regular ng serve with 2 flags:
+
+- `--host 0.0.0.0` which tells angular-cli to not use localhost, we need to specify this in order to access the development server from our browser.
+- `--poll 1 tells` angular-cli to poll changes every 1 millisecond  
+  [Read more about docker-compose.yml](https://docs.docker.com/compose/compose-file/)
+
+### Running
+
+We fire up the development server by running
+`docker-compose up -d --build`
+The flags set docker-compose to run in detached mode and recreate our image if it’s already built.
+Now we can inspect the logs with `docker-compose logs -f dev`
+After the server successfully started run docker-machine ip, browse to the returned ip at port 4200, trigger some changes and voila, the page reloads!
+Now you can attach to the container with `docker-compose exec dev sh` and run some angular-cli commands
+
+## Where is node_modules?
+
+You might have noticed the IDE yelling at you for not having the
+node_modules directory, let’s quickly fix this by running:
+
+```shell
+docker cp dev:/usr/src/app/package-lock.json . && \
+docker cp dev:/usr/src/app/node_modules - > node_modules.tar && \
+ tar -xf node_modules.tar && \
+ rm -f temp_node_modules.tar
+```
+
+With this batch of command we copying 2 things from the container to the host machine:
+
+1. packge-lock.json which is created at image build-time when the localy npm install happens
+2. node_modules directory, but to avoid symlink errors we first save them
+   to a .tar file and then extracting at the host machine.
+
+You will need to run these commands every time you npm install something, persist them with a script to run quickly.

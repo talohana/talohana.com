@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import codeThinking from '../../assets/illustrations/code_thinking.svg';
 import { config } from '../../config/config';
 import { Button } from '../common/Button';
 import { Container } from '../common/Container';
@@ -15,9 +14,7 @@ export const Hero: React.FC = () => {
           <h1>Hi There!</h1>
           <h3>I'm Tal Ohana and I'm a Software Developer!</h3>
         </Details>
-        <Thumbnail>
-          <img src={codeThinking} alt="Web Developer Logo" />
-        </Thumbnail>
+        <HeroImage></HeroImage>
       </Intro>
       <ScrollLink
         to="posts"
@@ -60,6 +57,6 @@ const Details = styled.div`
   `}
 `;
 
-const Thumbnail = styled.div`
+const HeroImage = styled.div`
   flex: 1;
 `;

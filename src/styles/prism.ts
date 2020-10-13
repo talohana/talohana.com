@@ -202,7 +202,7 @@ export const prism = css`
 
   /* Code blocks */
   pre[class*='language-'] {
-    padding: 2em 1em;
+    padding: 2em 1em 1em 1em;
     overflow: auto;
   }
 
@@ -229,12 +229,45 @@ export const prism = css`
   pre.language {
     &-ts::before {
       content: 'ts';
-      background-color: #3178c6;
+      background-color: #2b7489;
+    }
+
+    &-js::before {
+      content: 'js';
+      color: #000;
+      background-color: #f1e05a;
+    }
+
+    &-json::before {
+      content: 'json';
+      color: #000;
+      background-color: #f1e05a;
     }
 
     &-text::before {
       content: 'text';
       background-color: #535c68;
+    }
+
+    &-shell::before {
+      content: 'shell';
+      color: #89e051;
+      background-color: #000;
+    }
+
+    &-scss::before {
+      content: 'scss';
+      background-color: #c6538c;
+    }
+
+    &-html::before {
+      content: 'html';
+      background-color: #e34c26;
+    }
+
+    &-css::before {
+      content: 'css';
+      background-color: #563d7c;
     }
   }
 `;

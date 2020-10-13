@@ -36,6 +36,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
+  padding-top: 3rem;
   flex: 1;
 `;
 
@@ -55,7 +56,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
   }
 
   ::selection {
@@ -94,4 +95,10 @@ const GlobalStyles = createGlobalStyle`
       font-size: 0.563rem !important;
     }
  `}
+
+ .autolink-header svg {
+   width: 1.2rem;
+   height: 1.2rem;
+   fill: ${({ theme }) => theme.primary}
+ }
 `;

@@ -1,0 +1,115 @@
+---
+title: TypeScript — Excess Property Checks
+slug: typescript-excess-property-checks
+description: |
+  Learn about one of TypeScript’s core principals — excess property checking.
+categories: [typescript]
+keywords: [typescript, tutorial]
+date: 2020-09-26
+banner: ./images/banner.png
+---
+
+One of the core principals of TypeScript is that it is a Structural Type System.
+Simply put, TypeScript is fine with having extra properties as long as you provide a type with its’ required properties, let’s look at an example:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const meaningfulPoint = {
+  x: 1,
+  y: 2,
+  meaningOfLife: 42,
+}; // Type is { x: number, y: number, meaningOfLife: number }
+
+const point: Point = meaningfulPoint; // OK - Structural Typing Works
+```
+
+But when we try to assign the object literal directly:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const point: Point = { x: 1, y: 2, meaningOfLife: 42 }; // ERROR
+```
+
+And we get the following (and a little surprising) error:
+
+```text
+Type ‘{ x: number; y: number; meaningOfLife: number; }’ is not assignable to type ‘Point’.
+Object literal may only specify known properties, and ‘meaningOfLife’ does not exist
+in type ‘Point’.
+```
+
+When TypeScript encounters object literal in assignments or when passed as an argument to functions it triggers an action called **excess property checking.**
+
+In contrary to structural typing,
+it check whether the object has the exact properties.
+As mentioned, the same is with object literals passed as an argument to functions:
+
+```ts
+interface Person {
+  name: string;
+}
+
+function sayMyName(person: Person): void {
+  console.log('My name is ', person.name);
+}
+
+const personWithAge = { name: 'Tal', age: 23 };
+
+sayMyName(personWithAge); // OK - Structural Typing Works
+sayMyName({ name: 'Tal', age: 23 });
+// ERROR:
+// argument of type { name: string, age: number }
+// is not assignable to parameter of type 'Person'.
+```
+
+One interesting behavior is with **“Weak Types”** — types which all their fields are marked as Optional.
+In this case the excess property checking action takes place even when assigning intermediate variable:
+
+```ts
+interface WeakPoint {
+  x?: number;
+  y?: number;
+}
+
+const meaningfulWeakPoint = { meaningOfLife: 42 };
+
+const point: WeakPoint = meaningfulWeakPoint;
+// ERROR:
+// Type { meaningOfLife: number } has no
+// properties in common with Type 'WeakPoint'.
+```
+
+## Workarounds
+
+We can, **although not recommended**, workaround the excess property checking.
+The first way to do so is to use intermediate variable, this works since you first assign the object literal to an un-typed variable,
+and then the second assignment does not undergoes the excess property checking:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const intermediate = { x: 1, y: 2, meaningOfLife: 42 };
+const point: Point = intermediate; // OK - Structural Typing Works
+```
+
+The second way is to use type assertions:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const point: Point = { x: 1, y: 2, meaningOfLife: 42 } as Point; // OK - Type Assertion
+```

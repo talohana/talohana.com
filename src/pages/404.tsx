@@ -29,7 +29,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem 0;
   height: 90vh;
 `;
 
