@@ -1,37 +1,119 @@
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
-      posts: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      blog: allMdx {
         edges {
           node {
             id
-            frontmatter {
+            fields {
               slug
             }
           }
         }
-        categories: distinct(field: frontmatter___categories)
       }
     }
   `);
 
-  createPosts({ actions, nodes: data.posts.edges });
+  createPosts({ actions, edges: data.blog.edges });
+};
+
+const createPosts = ({ actions, edges }) => {
+  const { createPage } = actions;
+
+  edges.forEach(({ node }, i) => {
+    const prev = i === 0 ? null : edges[i - 1].node;
+    const next = i === edges.length - 1 ? null : edges[i + 1].node;
+    const path = node.fields.slug;
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/post.tsx'),
+      context: {
+        id: node.id,
+        prev,
+        next,
+      },
+    });
+  });
+};
+
+exports.onCreateNode = (...args) => {
+  if (args[0].node.internal.type === 'Mdx') {
+    onCreateMdxNode(...args);
+  }
+};
+
+const onCreateMdxNode = ({ actions, node }) => {
+  const { createNodeField } = actions;
+
+  const slug = `/blog/${node.frontmatter.slug}`;
+
+  createNodeField({
+    name: 'id',
+    node,
+    value: node.id,
+  });
+
+  createNodeField({
+    name: 'title',
+    node,
+    value: node.frontmatter.title,
+  });
+
+  createNodeField({
+    name: 'description',
+    node,
+    value: node.frontmatter.description,
+  });
+
+  createNodeField({
+    name: 'slug',
+    node,
+    value: slug,
+  });
+
+  createNodeField({
+    name: 'date',
+    node,
+    value: node.frontmatter.date,
+  });
+
+  createNodeField({
+    name: 'banner',
+    node,
+    value: node.frontmatter.banner,
+  });
+
+  createNodeField({
+    name: 'categories',
+    node,
+    value: node.frontmatter.categories || [],
+  });
+
+  createNodeField({
+    name: 'keywords',
+    node,
+    value: node.frontmatter.keywords || [],
+  });
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
-    type MdxFrontmatter {
+    type MdxFields {
+      id: String!
       title: String!
-      slug: String!
       description: String!
+      slug: String!
+      date: Date!
+      banner: File!
       categories: [String!]!
       keywords: [String!]!
     }
 
     type Mdx {
-      frontmatter: MdxFrontmatter!
+      fields: MdxFields!
     }
 
     type SiteSiteMetadata {
@@ -51,16 +133,4 @@ exports.createSchemaCustomization = ({ actions }) => {
   `;
 
   createTypes(typeDefs);
-};
-
-const createPosts = ({ actions, nodes }) => {
-  nodes.forEach(({ node }) => {
-    actions.createPage({
-      component: require.resolve('./src/templates/post.tsx'),
-      path: `/blog/${node.frontmatter.slug}`,
-      context: {
-        id: node.id,
-      },
-    });
-  });
 };

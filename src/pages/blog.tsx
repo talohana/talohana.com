@@ -31,13 +31,13 @@ export const Blog: React.FC<Props> = ({ data }) => {
 export const query = graphql`
   query {
     allMdx {
-      group(field: frontmatter___categories, limit: 3) {
+      group(field: frontmatter___categories) {
         fieldValue
         edges {
           node {
             id
             slug
-            frontmatter {
+            fields {
               title
               description
               date(formatString: "DD MMM, YYYY")

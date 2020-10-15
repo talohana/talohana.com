@@ -3,55 +3,63 @@ import Image, { FluidObject, GatsbyImageProps } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { MdxFrontmatter } from '../../types';
+import { MdxFields } from '../../types';
 import { UppercaseHeading } from '../common/UppercaseHeading';
 
 type Props = {
-  frontmatter: MdxFrontmatter;
+  fields: MdxFields;
 };
 
-export const PostPreview: React.FC<Props> = ({ frontmatter }) => {
-  const { title, description, date, slug, banner } = frontmatter;
+export const PostPreview: React.FC<Props> = ({ fields }) => {
+  const { title, description, date, slug, banner } = fields;
 
   return (
-    <Wrapper to={`/blog/${slug}`}>
+    <Wrapper to={slug}>
       <PreviewImage fluid={banner?.childImageSharp?.fluid as FluidObject} />
-      <div>
-        <UppercaseHeading as="h4">{title}</UppercaseHeading>
-        <p>{description}</p>
+      <PreviewInfo>
+        <PreviewHeading as="h4">{title}</PreviewHeading>
         <span>{date}</span>
-      </div>
+        <p>{description}</p>
+      </PreviewInfo>
     </Wrapper>
   );
 };
 
 const Wrapper = styled(Link)`
   display: flex;
-  padding: 1.2rem;
   color: var(--color-text);
-  transition: box-shadow 0.3s;
-  border-bottom: 1px solid ${({ theme }) => theme.primary};
-
-  ${media.lessThan('medium')`
-      flex-direction: column;
-      padding: 0.5rem;
-  `}
+  transition: all 0.3s;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  font-weight: 400;
+  height: 12rem;
 
   &:hover,
   &:focus {
     text-decoration: none;
     box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.3);
   }
+
+  ${media.lessThan('large')`
+    flex-direction: column;
+    height: 24rem;
+  `}
 `;
 
 const PreviewImage = styled(Image)<GatsbyImageProps>`
-  width: 40%;
-  height: auto;
-  margin-right: 1rem;
+  flex: 3;
 
-  ${media.lessThan('medium')`
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 1rem;
+  ${media.lessThan('large')`
+    flex: 4;
   `}
+`;
+
+const PreviewHeading = styled(UppercaseHeading)`
+  color: ${props => props.theme.primary};
+  margin-bottom: 1rem;
+`;
+
+const PreviewInfo = styled.div`
+  flex: 4;
+  padding: 1rem;
 `;

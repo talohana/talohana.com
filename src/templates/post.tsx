@@ -16,8 +16,8 @@ type PageData = {
 type Props = PageProps<PageData>;
 
 const PostTemplate: React.FC<Props> = ({ data, location }) => {
-  const { body, frontmatter } = data.mdx;
-  const { title, date, banner } = frontmatter;
+  const { body, fields } = data.mdx;
+  const { title, date, banner } = fields;
   const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
 
   return (
@@ -51,7 +51,7 @@ const PublishInfo = styled.h4`
 export const query = graphql`
   query GetPost($id: String!) {
     mdx(id: { eq: $id }) {
-      frontmatter {
+      fields {
         slug
         date(formatString: "DD MMM, YYYY")
         title

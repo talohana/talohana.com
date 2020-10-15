@@ -12,7 +12,7 @@ type Props = {
 export const Category: React.FC<Props> = ({ category }) => {
   const { fieldValue, edges } = category;
   const posts = edges.map(({ node }) => (
-    <PostPreview key={node.id} frontmatter={node.frontmatter} />
+    <PostPreview key={node.id} fields={node.fields} />
   ));
 
   return (
@@ -20,11 +20,19 @@ export const Category: React.FC<Props> = ({ category }) => {
       <UppercaseHeading as="h3">
         Read more about <Link to="/">{fieldValue}</Link>
       </UppercaseHeading>
-      <div>{posts}</div>
+      <Posts>{posts}</Posts>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   margin-bottom: 3rem;
+`;
+
+const Posts = styled.div`
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
 `;

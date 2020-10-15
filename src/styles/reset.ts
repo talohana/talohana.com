@@ -55,7 +55,6 @@ export const reset = css`
 
   table {
     border-collapse: collapse;
-    background-color: #fff;
   }
 
   caption {

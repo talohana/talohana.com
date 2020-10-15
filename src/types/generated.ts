@@ -727,6 +727,49 @@ export enum FileFieldsEnum {
   childMdx___wordCount___paragraphs = 'childMdx___wordCount___paragraphs',
   childMdx___wordCount___sentences = 'childMdx___wordCount___sentences',
   childMdx___wordCount___words = 'childMdx___wordCount___words',
+  childMdx___fields___id = 'childMdx___fields___id',
+  childMdx___fields___title = 'childMdx___fields___title',
+  childMdx___fields___description = 'childMdx___fields___description',
+  childMdx___fields___slug = 'childMdx___fields___slug',
+  childMdx___fields___date = 'childMdx___fields___date',
+  childMdx___fields___banner___sourceInstanceName = 'childMdx___fields___banner___sourceInstanceName',
+  childMdx___fields___banner___absolutePath = 'childMdx___fields___banner___absolutePath',
+  childMdx___fields___banner___relativePath = 'childMdx___fields___banner___relativePath',
+  childMdx___fields___banner___extension = 'childMdx___fields___banner___extension',
+  childMdx___fields___banner___size = 'childMdx___fields___banner___size',
+  childMdx___fields___banner___prettySize = 'childMdx___fields___banner___prettySize',
+  childMdx___fields___banner___modifiedTime = 'childMdx___fields___banner___modifiedTime',
+  childMdx___fields___banner___accessTime = 'childMdx___fields___banner___accessTime',
+  childMdx___fields___banner___changeTime = 'childMdx___fields___banner___changeTime',
+  childMdx___fields___banner___birthTime = 'childMdx___fields___banner___birthTime',
+  childMdx___fields___banner___root = 'childMdx___fields___banner___root',
+  childMdx___fields___banner___dir = 'childMdx___fields___banner___dir',
+  childMdx___fields___banner___base = 'childMdx___fields___banner___base',
+  childMdx___fields___banner___ext = 'childMdx___fields___banner___ext',
+  childMdx___fields___banner___name = 'childMdx___fields___banner___name',
+  childMdx___fields___banner___relativeDirectory = 'childMdx___fields___banner___relativeDirectory',
+  childMdx___fields___banner___dev = 'childMdx___fields___banner___dev',
+  childMdx___fields___banner___mode = 'childMdx___fields___banner___mode',
+  childMdx___fields___banner___nlink = 'childMdx___fields___banner___nlink',
+  childMdx___fields___banner___uid = 'childMdx___fields___banner___uid',
+  childMdx___fields___banner___gid = 'childMdx___fields___banner___gid',
+  childMdx___fields___banner___rdev = 'childMdx___fields___banner___rdev',
+  childMdx___fields___banner___ino = 'childMdx___fields___banner___ino',
+  childMdx___fields___banner___atimeMs = 'childMdx___fields___banner___atimeMs',
+  childMdx___fields___banner___mtimeMs = 'childMdx___fields___banner___mtimeMs',
+  childMdx___fields___banner___ctimeMs = 'childMdx___fields___banner___ctimeMs',
+  childMdx___fields___banner___atime = 'childMdx___fields___banner___atime',
+  childMdx___fields___banner___mtime = 'childMdx___fields___banner___mtime',
+  childMdx___fields___banner___ctime = 'childMdx___fields___banner___ctime',
+  childMdx___fields___banner___birthtime = 'childMdx___fields___banner___birthtime',
+  childMdx___fields___banner___birthtimeMs = 'childMdx___fields___banner___birthtimeMs',
+  childMdx___fields___banner___blksize = 'childMdx___fields___banner___blksize',
+  childMdx___fields___banner___blocks = 'childMdx___fields___banner___blocks',
+  childMdx___fields___banner___publicURL = 'childMdx___fields___banner___publicURL',
+  childMdx___fields___banner___id = 'childMdx___fields___banner___id',
+  childMdx___fields___banner___children = 'childMdx___fields___banner___children',
+  childMdx___fields___categories = 'childMdx___fields___categories',
+  childMdx___fields___keywords = 'childMdx___fields___keywords',
   childMdx___id = 'childMdx___id',
   childMdx___parent___id = 'childMdx___parent___id',
   childMdx___parent___parent___id = 'childMdx___parent___parent___id',
@@ -1396,7 +1439,7 @@ export type Mdx = Node & {
   readonly __typename?: 'Mdx';
   readonly rawBody: Scalars['String'];
   readonly fileAbsolutePath: Scalars['String'];
-  readonly frontmatter: MdxFrontmatter;
+  readonly frontmatter?: Maybe<MdxFrontmatter>;
   readonly slug?: Maybe<Scalars['String']>;
   readonly body: Scalars['String'];
   readonly excerpt: Scalars['String'];
@@ -1406,6 +1449,7 @@ export type Mdx = Node & {
   readonly tableOfContents?: Maybe<Scalars['JSON']>;
   readonly timeToRead?: Maybe<Scalars['Int']>;
   readonly wordCount?: Maybe<MdxWordCount>;
+  readonly fields: MdxFields;
   readonly id: Scalars['ID'];
   readonly parent?: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -1450,6 +1494,25 @@ export type MdxEdge = {
   readonly next?: Maybe<Mdx>;
   readonly node: Mdx;
   readonly previous?: Maybe<Mdx>;
+};
+
+export type MdxFields = {
+  readonly __typename?: 'MdxFields';
+  readonly id: Scalars['String'];
+  readonly title: Scalars['String'];
+  readonly description: Scalars['String'];
+  readonly slug: Scalars['String'];
+  readonly date: Scalars['Date'];
+  readonly banner: File;
+  readonly categories: ReadonlyArray<Scalars['String']>;
+  readonly keywords: ReadonlyArray<Scalars['String']>;
+};
+
+export type MdxFieldsDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export enum MdxFieldsEnum {
@@ -1536,6 +1599,75 @@ export enum MdxFieldsEnum {
   wordCount___paragraphs = 'wordCount___paragraphs',
   wordCount___sentences = 'wordCount___sentences',
   wordCount___words = 'wordCount___words',
+  fields___id = 'fields___id',
+  fields___title = 'fields___title',
+  fields___description = 'fields___description',
+  fields___slug = 'fields___slug',
+  fields___date = 'fields___date',
+  fields___banner___sourceInstanceName = 'fields___banner___sourceInstanceName',
+  fields___banner___absolutePath = 'fields___banner___absolutePath',
+  fields___banner___relativePath = 'fields___banner___relativePath',
+  fields___banner___extension = 'fields___banner___extension',
+  fields___banner___size = 'fields___banner___size',
+  fields___banner___prettySize = 'fields___banner___prettySize',
+  fields___banner___modifiedTime = 'fields___banner___modifiedTime',
+  fields___banner___accessTime = 'fields___banner___accessTime',
+  fields___banner___changeTime = 'fields___banner___changeTime',
+  fields___banner___birthTime = 'fields___banner___birthTime',
+  fields___banner___root = 'fields___banner___root',
+  fields___banner___dir = 'fields___banner___dir',
+  fields___banner___base = 'fields___banner___base',
+  fields___banner___ext = 'fields___banner___ext',
+  fields___banner___name = 'fields___banner___name',
+  fields___banner___relativeDirectory = 'fields___banner___relativeDirectory',
+  fields___banner___dev = 'fields___banner___dev',
+  fields___banner___mode = 'fields___banner___mode',
+  fields___banner___nlink = 'fields___banner___nlink',
+  fields___banner___uid = 'fields___banner___uid',
+  fields___banner___gid = 'fields___banner___gid',
+  fields___banner___rdev = 'fields___banner___rdev',
+  fields___banner___ino = 'fields___banner___ino',
+  fields___banner___atimeMs = 'fields___banner___atimeMs',
+  fields___banner___mtimeMs = 'fields___banner___mtimeMs',
+  fields___banner___ctimeMs = 'fields___banner___ctimeMs',
+  fields___banner___atime = 'fields___banner___atime',
+  fields___banner___mtime = 'fields___banner___mtime',
+  fields___banner___ctime = 'fields___banner___ctime',
+  fields___banner___birthtime = 'fields___banner___birthtime',
+  fields___banner___birthtimeMs = 'fields___banner___birthtimeMs',
+  fields___banner___blksize = 'fields___banner___blksize',
+  fields___banner___blocks = 'fields___banner___blocks',
+  fields___banner___publicURL = 'fields___banner___publicURL',
+  fields___banner___childImageSharp___id = 'fields___banner___childImageSharp___id',
+  fields___banner___childImageSharp___children = 'fields___banner___childImageSharp___children',
+  fields___banner___id = 'fields___banner___id',
+  fields___banner___parent___id = 'fields___banner___parent___id',
+  fields___banner___parent___children = 'fields___banner___parent___children',
+  fields___banner___children = 'fields___banner___children',
+  fields___banner___children___id = 'fields___banner___children___id',
+  fields___banner___children___children = 'fields___banner___children___children',
+  fields___banner___internal___content = 'fields___banner___internal___content',
+  fields___banner___internal___contentDigest = 'fields___banner___internal___contentDigest',
+  fields___banner___internal___description = 'fields___banner___internal___description',
+  fields___banner___internal___fieldOwners = 'fields___banner___internal___fieldOwners',
+  fields___banner___internal___ignoreType = 'fields___banner___internal___ignoreType',
+  fields___banner___internal___mediaType = 'fields___banner___internal___mediaType',
+  fields___banner___internal___owner = 'fields___banner___internal___owner',
+  fields___banner___internal___type = 'fields___banner___internal___type',
+  fields___banner___childMdx___rawBody = 'fields___banner___childMdx___rawBody',
+  fields___banner___childMdx___fileAbsolutePath = 'fields___banner___childMdx___fileAbsolutePath',
+  fields___banner___childMdx___slug = 'fields___banner___childMdx___slug',
+  fields___banner___childMdx___body = 'fields___banner___childMdx___body',
+  fields___banner___childMdx___excerpt = 'fields___banner___childMdx___excerpt',
+  fields___banner___childMdx___headings = 'fields___banner___childMdx___headings',
+  fields___banner___childMdx___html = 'fields___banner___childMdx___html',
+  fields___banner___childMdx___mdxAST = 'fields___banner___childMdx___mdxAST',
+  fields___banner___childMdx___tableOfContents = 'fields___banner___childMdx___tableOfContents',
+  fields___banner___childMdx___timeToRead = 'fields___banner___childMdx___timeToRead',
+  fields___banner___childMdx___id = 'fields___banner___childMdx___id',
+  fields___banner___childMdx___children = 'fields___banner___childMdx___children',
+  fields___categories = 'fields___categories',
+  fields___keywords = 'fields___keywords',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -1624,6 +1756,17 @@ export enum MdxFieldsEnum {
   internal___type = 'internal___type',
 }
 
+export type MdxFieldsFilterInput = {
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly title?: Maybe<StringQueryOperatorInput>;
+  readonly description?: Maybe<StringQueryOperatorInput>;
+  readonly slug?: Maybe<StringQueryOperatorInput>;
+  readonly date?: Maybe<DateQueryOperatorInput>;
+  readonly banner?: Maybe<FileFilterInput>;
+  readonly categories?: Maybe<StringQueryOperatorInput>;
+  readonly keywords?: Maybe<StringQueryOperatorInput>;
+};
+
 export type MdxFilterInput = {
   readonly rawBody?: Maybe<StringQueryOperatorInput>;
   readonly fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
@@ -1637,6 +1780,7 @@ export type MdxFilterInput = {
   readonly tableOfContents?: Maybe<JsonQueryOperatorInput>;
   readonly timeToRead?: Maybe<IntQueryOperatorInput>;
   readonly wordCount?: Maybe<MdxWordCountFilterInput>;
+  readonly fields?: Maybe<MdxFieldsFilterInput>;
   readonly id?: Maybe<StringQueryOperatorInput>;
   readonly parent?: Maybe<NodeFilterInput>;
   readonly children?: Maybe<NodeFilterListInput>;
@@ -1646,10 +1790,10 @@ export type MdxFilterInput = {
 export type MdxFrontmatter = {
   readonly __typename?: 'MdxFrontmatter';
   readonly title: Scalars['String'];
-  readonly slug: Scalars['String'];
-  readonly description: Scalars['String'];
-  readonly categories: ReadonlyArray<Scalars['String']>;
-  readonly keywords: ReadonlyArray<Scalars['String']>;
+  readonly slug?: Maybe<Scalars['String']>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly categories?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly date?: Maybe<Scalars['Date']>;
   readonly banner?: Maybe<File>;
 };
@@ -1959,6 +2103,7 @@ export type QueryMdxArgs = {
   tableOfContents?: Maybe<JsonQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   wordCount?: Maybe<MdxWordCountFilterInput>;
+  fields?: Maybe<MdxFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2384,10 +2529,54 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   readonly __typename?: 'SitePageContext';
   readonly id?: Maybe<Scalars['String']>;
+  readonly prev?: Maybe<SitePageContextPrev>;
+  readonly next?: Maybe<SitePageContextNext>;
 };
 
 export type SitePageContextFilterInput = {
   readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly prev?: Maybe<SitePageContextPrevFilterInput>;
+  readonly next?: Maybe<SitePageContextNextFilterInput>;
+};
+
+export type SitePageContextNext = {
+  readonly __typename?: 'SitePageContextNext';
+  readonly id?: Maybe<Scalars['String']>;
+  readonly fields?: Maybe<SitePageContextNextFields>;
+};
+
+export type SitePageContextNextFields = {
+  readonly __typename?: 'SitePageContextNextFields';
+  readonly slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextFieldsFilterInput = {
+  readonly slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextNextFilterInput = {
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly fields?: Maybe<SitePageContextNextFieldsFilterInput>;
+};
+
+export type SitePageContextPrev = {
+  readonly __typename?: 'SitePageContextPrev';
+  readonly id?: Maybe<Scalars['String']>;
+  readonly fields?: Maybe<SitePageContextPrevFields>;
+};
+
+export type SitePageContextPrevFields = {
+  readonly __typename?: 'SitePageContextPrevFields';
+  readonly slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPrevFieldsFilterInput = {
+  readonly slug?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPrevFilterInput = {
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly fields?: Maybe<SitePageContextPrevFieldsFilterInput>;
 };
 
 export type SitePageEdge = {
@@ -2491,6 +2680,10 @@ export enum SitePageFieldsEnum {
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
+  context___prev___id = 'context___prev___id',
+  context___prev___fields___slug = 'context___prev___fields___slug',
+  context___next___id = 'context___next___id',
+  context___next___fields___slug = 'context___next___fields___slug',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2532,20 +2725,11 @@ export enum SitePageFieldsEnum {
   pluginCreator___resolve = 'pluginCreator___resolve',
   pluginCreator___name = 'pluginCreator___name',
   pluginCreator___version = 'pluginCreator___version',
-  pluginCreator___pluginOptions___plugins = 'pluginCreator___pluginOptions___plugins',
-  pluginCreator___pluginOptions___plugins___resolve = 'pluginCreator___pluginOptions___plugins___resolve',
-  pluginCreator___pluginOptions___plugins___id = 'pluginCreator___pluginOptions___plugins___id',
-  pluginCreator___pluginOptions___plugins___name = 'pluginCreator___pluginOptions___plugins___name',
-  pluginCreator___pluginOptions___plugins___version = 'pluginCreator___pluginOptions___plugins___version',
-  pluginCreator___pluginOptions___plugins___browserAPIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
-  pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___pluginOptions___pathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
-  pluginCreator___pluginOptions___gatsbyRemarkPlugins = 'pluginCreator___pluginOptions___gatsbyRemarkPlugins',
-  pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve = 'pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve',
   pluginCreator___pluginOptions___trackingId = 'pluginCreator___pluginOptions___trackingId',
   pluginCreator___pluginOptions___head = 'pluginCreator___pluginOptions___head',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
@@ -2748,22 +2932,11 @@ export enum SitePluginFieldsEnum {
   resolve = 'resolve',
   name = 'name',
   version = 'version',
-  pluginOptions___plugins = 'pluginOptions___plugins',
-  pluginOptions___plugins___resolve = 'pluginOptions___plugins___resolve',
-  pluginOptions___plugins___id = 'pluginOptions___plugins___id',
-  pluginOptions___plugins___name = 'pluginOptions___plugins___name',
-  pluginOptions___plugins___version = 'pluginOptions___plugins___version',
-  pluginOptions___plugins___browserAPIs = 'pluginOptions___plugins___browserAPIs',
-  pluginOptions___plugins___pluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   pluginOptions___displayName = 'pluginOptions___displayName',
   pluginOptions___pathToConfigModule = 'pluginOptions___pathToConfigModule',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___extensions = 'pluginOptions___extensions',
-  pluginOptions___gatsbyRemarkPlugins = 'pluginOptions___gatsbyRemarkPlugins',
-  pluginOptions___gatsbyRemarkPlugins___resolve = 'pluginOptions___gatsbyRemarkPlugins___resolve',
-  pluginOptions___gatsbyRemarkPlugins___options___maxWidth = 'pluginOptions___gatsbyRemarkPlugins___options___maxWidth',
-  pluginOptions___gatsbyRemarkPlugins___options___classPrefix = 'pluginOptions___gatsbyRemarkPlugins___options___classPrefix',
   pluginOptions___trackingId = 'pluginOptions___trackingId',
   pluginOptions___head = 'pluginOptions___head',
   pluginOptions___short_name = 'pluginOptions___short_name',
@@ -2910,17 +3083,11 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   readonly __typename?: 'SitePluginPluginOptions';
-  readonly plugins?: Maybe<
-    ReadonlyArray<Maybe<SitePluginPluginOptionsPlugins>>
-  >;
   readonly displayName?: Maybe<Scalars['Boolean']>;
   readonly pathToConfigModule?: Maybe<Scalars['String']>;
   readonly name?: Maybe<Scalars['String']>;
   readonly path?: Maybe<Scalars['String']>;
   readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly gatsbyRemarkPlugins?: Maybe<
-    ReadonlyArray<Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>>
-  >;
   readonly trackingId?: Maybe<Scalars['String']>;
   readonly head?: Maybe<Scalars['Boolean']>;
   readonly short_name?: Maybe<Scalars['String']>;
@@ -2936,15 +3103,11 @@ export type SitePluginPluginOptions = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  readonly plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   readonly displayName?: Maybe<BooleanQueryOperatorInput>;
   readonly pathToConfigModule?: Maybe<StringQueryOperatorInput>;
   readonly name?: Maybe<StringQueryOperatorInput>;
   readonly path?: Maybe<StringQueryOperatorInput>;
   readonly extensions?: Maybe<StringQueryOperatorInput>;
-  readonly gatsbyRemarkPlugins?: Maybe<
-    SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput
-  >;
   readonly trackingId?: Maybe<StringQueryOperatorInput>;
   readonly head?: Maybe<BooleanQueryOperatorInput>;
   readonly short_name?: Maybe<StringQueryOperatorInput>;
@@ -2957,59 +3120,6 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly legacy?: Maybe<BooleanQueryOperatorInput>;
   readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
   readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPlugins = {
-  readonly __typename?: 'SitePluginPluginOptionsGatsbyRemarkPlugins';
-  readonly resolve?: Maybe<Scalars['String']>;
-  readonly options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptions>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput = {
-  readonly resolve?: Maybe<StringQueryOperatorInput>;
-  readonly options?: Maybe<
-    SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput
-  >;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
-  readonly elemMatch?: Maybe<
-    SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput
-  >;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
-  readonly __typename?: 'SitePluginPluginOptionsGatsbyRemarkPluginsOptions';
-  readonly maxWidth?: Maybe<Scalars['Int']>;
-  readonly classPrefix?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
-  readonly maxWidth?: Maybe<IntQueryOperatorInput>;
-  readonly classPrefix?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPlugins = {
-  readonly __typename?: 'SitePluginPluginOptionsPlugins';
-  readonly resolve?: Maybe<Scalars['String']>;
-  readonly id?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-  readonly browserAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly pluginFilepath?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterInput = {
-  readonly resolve?: Maybe<StringQueryOperatorInput>;
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly name?: Maybe<StringQueryOperatorInput>;
-  readonly version?: Maybe<StringQueryOperatorInput>;
-  readonly browserAPIs?: Maybe<StringQueryOperatorInput>;
-  readonly pluginFilepath?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterListInput = {
-  readonly elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
 };
 
 export type SitePluginSortInput = {

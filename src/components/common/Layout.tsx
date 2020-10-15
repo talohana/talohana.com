@@ -1,3 +1,4 @@
+import { lighten } from 'polished';
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import media from 'styled-media-query';
@@ -60,7 +61,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background-color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => lighten(0.3, theme.primary)};
   }
   
   a {
