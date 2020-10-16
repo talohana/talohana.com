@@ -15,14 +15,21 @@ type PageData = {
 
 type Props = PageProps<PageData>;
 
-const PostTemplate: React.FC<Props> = ({ data, location }) => {
+const PostTemplate: React.FC<Props> = ({ data }) => {
   const { body, fields } = data.mdx;
-  const { title, date, banner, bannerCredit, bannerCreditUrl } = fields;
+  const {
+    title,
+    date,
+    banner,
+    bannerCredit,
+    bannerCreditUrl,
+    description,
+  } = fields;
   const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
 
   return (
     <Layout customSEO>
-      <SEO pathname={location.pathname} title={title} article />
+      <SEO title={title} description={description} image={bannerImage.src} />
       <Container>
         <PostInfo>
           <PostTitle>{title}</PostTitle>

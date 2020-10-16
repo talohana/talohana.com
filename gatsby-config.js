@@ -1,16 +1,12 @@
-// TODO: get siteMetadata from config.ts
+/* eslint-disable @typescript-eslint/no-var-requires */
+require('ts-node').register(); // enable require of ts files
+const { config } = require('./src/config/config');
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://talohana.com/',
-    defaultTitle: 'Tal Ohana',
-    defaultDescription: 'Tal Ohana, a Software Developer from Israel.',
-    defaultBanner: '/images/banner.png',
-    headline: 'TODO:',
-    siteLanguage: 'TODO:',
-    ogLanguage: 'TODO:',
-    author: '@talohana',
-    twitter: 'https://twitter.com/talohanax',
-    twitterUsername: '@talohanax',
+    defaultTitle: config.website.defaultTitle,
+    titleTemplate: config.website.titleTemplate,
+    description: config.description,
+    image: config.image,
   },
   plugins: [
     {

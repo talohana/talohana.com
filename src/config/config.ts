@@ -10,16 +10,11 @@ export const config: Config = {
     smooth: true,
   },
   website: {
-    siteUrl: 'https://talohana.com/',
     defaultTitle: 'Tal Ohana',
-    defaultDescription: 'Tal Ohana, a Software Developer from Israel.',
-    defaultBanner: '/images/banner.png',
-    headline: 'TODO:',
-    siteLanguage: 'TODO:',
-    ogLanguage: 'TODO:',
-    author: '@talohana',
-    twitter: 'https://twitter.com/talohanax',
-    twitterUsername: '@talohanax',
+    titleTemplate: '%s | Tal Ohana',
+    description: 'Tal Ohana, a Software Developer from Israel.',
+    image: '/images/banner.png',
+    lang: 'en',
   },
 };
 
@@ -44,14 +39,9 @@ export interface MediumConfig {
 }
 
 export interface WebsiteConfig {
-  siteUrl: string;
   defaultTitle: string;
-  defaultDescription: string;
-  defaultBanner: string;
-  headline: string;
-  siteLanguage: string;
-  ogLanguage: string;
-  author: string;
-  twitter: string;
-  twitterUsername: string;
+  titleTemplate: string;
+  description: string;
+  image: string;
+  lang: string;
 }

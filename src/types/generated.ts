@@ -770,10 +770,10 @@ export enum FileFieldsEnum {
   childMdx___fields___banner___publicURL = 'childMdx___fields___banner___publicURL',
   childMdx___fields___banner___id = 'childMdx___fields___banner___id',
   childMdx___fields___banner___children = 'childMdx___fields___banner___children',
-  childMdx___fields___categories = 'childMdx___fields___categories',
-  childMdx___fields___keywords = 'childMdx___fields___keywords',
   childMdx___fields___bannerCredit = 'childMdx___fields___bannerCredit',
   childMdx___fields___bannerCreditUrl = 'childMdx___fields___bannerCreditUrl',
+  childMdx___fields___categories = 'childMdx___fields___categories',
+  childMdx___fields___keywords = 'childMdx___fields___keywords',
   childMdx___id = 'childMdx___id',
   childMdx___parent___id = 'childMdx___parent___id',
   childMdx___parent___parent___id = 'childMdx___parent___parent___id',
@@ -1508,10 +1508,10 @@ export type MdxFields = {
   readonly slug: Scalars['String'];
   readonly date: Scalars['Date'];
   readonly banner: File;
+  readonly bannerCredit: Scalars['String'];
+  readonly bannerCreditUrl: Scalars['String'];
   readonly categories: ReadonlyArray<Scalars['String']>;
   readonly keywords: ReadonlyArray<Scalars['String']>;
-  readonly bannerCredit?: Maybe<Scalars['String']>;
-  readonly bannerCreditUrl?: Maybe<Scalars['String']>;
 };
 
 export type MdxFieldsDateArgs = {
@@ -1674,10 +1674,10 @@ export enum MdxFieldsEnum {
   fields___banner___childMdx___timeToRead = 'fields___banner___childMdx___timeToRead',
   fields___banner___childMdx___id = 'fields___banner___childMdx___id',
   fields___banner___childMdx___children = 'fields___banner___childMdx___children',
-  fields___categories = 'fields___categories',
-  fields___keywords = 'fields___keywords',
   fields___bannerCredit = 'fields___bannerCredit',
   fields___bannerCreditUrl = 'fields___bannerCreditUrl',
+  fields___categories = 'fields___categories',
+  fields___keywords = 'fields___keywords',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -1773,10 +1773,10 @@ export type MdxFieldsFilterInput = {
   readonly slug?: Maybe<StringQueryOperatorInput>;
   readonly date?: Maybe<DateQueryOperatorInput>;
   readonly banner?: Maybe<FileFilterInput>;
-  readonly categories?: Maybe<StringQueryOperatorInput>;
-  readonly keywords?: Maybe<StringQueryOperatorInput>;
   readonly bannerCredit?: Maybe<StringQueryOperatorInput>;
   readonly bannerCreditUrl?: Maybe<StringQueryOperatorInput>;
+  readonly categories?: Maybe<StringQueryOperatorInput>;
+  readonly keywords?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxFilterInput = {
@@ -2174,7 +2174,7 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   readonly __typename?: 'Site';
   readonly buildTime?: Maybe<Scalars['Date']>;
-  readonly siteMetadata?: Maybe<SiteSiteMetadata>;
+  readonly siteMetadata: SiteSiteMetadata;
   readonly port?: Maybe<Scalars['Int']>;
   readonly host?: Maybe<Scalars['String']>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
@@ -2379,16 +2379,10 @@ export enum SiteFieldsEnum {
   buildTime = 'buildTime',
   siteMetadata___title = 'siteMetadata___title',
   siteMetadata___description = 'siteMetadata___description',
-  siteMetadata___siteUrl = 'siteMetadata___siteUrl',
   siteMetadata___defaultTitle = 'siteMetadata___defaultTitle',
-  siteMetadata___defaultDescription = 'siteMetadata___defaultDescription',
-  siteMetadata___defaultBanner = 'siteMetadata___defaultBanner',
-  siteMetadata___headline = 'siteMetadata___headline',
-  siteMetadata___siteLanguage = 'siteMetadata___siteLanguage',
-  siteMetadata___ogLanguage = 'siteMetadata___ogLanguage',
-  siteMetadata___author = 'siteMetadata___author',
-  siteMetadata___twitter = 'siteMetadata___twitter',
-  siteMetadata___twitterUsername = 'siteMetadata___twitterUsername',
+  siteMetadata___titleTemplate = 'siteMetadata___titleTemplate',
+  siteMetadata___image = 'siteMetadata___image',
+  siteMetadata___lang = 'siteMetadata___lang',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -3145,33 +3139,21 @@ export type SitePluginSortInput = {
 
 export type SiteSiteMetadata = {
   readonly __typename?: 'SiteSiteMetadata';
-  readonly title: Scalars['String'];
+  readonly title?: Maybe<Scalars['String']>;
   readonly description: Scalars['String'];
-  readonly siteUrl: Scalars['String'];
   readonly defaultTitle: Scalars['String'];
-  readonly defaultDescription: Scalars['String'];
-  readonly defaultBanner: Scalars['String'];
-  readonly headline: Scalars['String'];
-  readonly siteLanguage: Scalars['String'];
-  readonly ogLanguage: Scalars['String'];
-  readonly author: Scalars['String'];
-  readonly twitter: Scalars['String'];
-  readonly twitterUsername: Scalars['String'];
+  readonly titleTemplate: Scalars['String'];
+  readonly image: Scalars['String'];
+  readonly lang: Scalars['String'];
 };
 
 export type SiteSiteMetadataFilterInput = {
   readonly title?: Maybe<StringQueryOperatorInput>;
   readonly description?: Maybe<StringQueryOperatorInput>;
-  readonly siteUrl?: Maybe<StringQueryOperatorInput>;
   readonly defaultTitle?: Maybe<StringQueryOperatorInput>;
-  readonly defaultDescription?: Maybe<StringQueryOperatorInput>;
-  readonly defaultBanner?: Maybe<StringQueryOperatorInput>;
-  readonly headline?: Maybe<StringQueryOperatorInput>;
-  readonly siteLanguage?: Maybe<StringQueryOperatorInput>;
-  readonly ogLanguage?: Maybe<StringQueryOperatorInput>;
-  readonly author?: Maybe<StringQueryOperatorInput>;
-  readonly twitter?: Maybe<StringQueryOperatorInput>;
-  readonly twitterUsername?: Maybe<StringQueryOperatorInput>;
+  readonly titleTemplate?: Maybe<StringQueryOperatorInput>;
+  readonly image?: Maybe<StringQueryOperatorInput>;
+  readonly lang?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {

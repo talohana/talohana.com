@@ -120,6 +120,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String!
       date: Date!
       banner: File!
+      bannerCredit: String!
+      bannerCreditUrl: String!
       categories: [String!]!
       keywords: [String!]!
     }
@@ -128,19 +130,16 @@ exports.createSchemaCustomization = ({ actions }) => {
       fields: MdxFields!
     }
 
+    type Site {
+      siteMetadata: SiteSiteMetadata!
+    }
+
     type SiteSiteMetadata {
-      title: String!
-      description: String!
-      siteUrl: String!
       defaultTitle: String!
-      defaultDescription: String!
-      defaultBanner: String!
-      headline: String!
-      siteLanguage: String!
-      ogLanguage: String!
-      author: String!
-      twitter: String!
-      twitterUsername: String!
+      titleTemplate: String!
+      description: String!
+      image: String!
+      lang: String!
     }
   `;
 
