@@ -29,7 +29,12 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout customSEO>
-      <SEO title={title} description={description} image={bannerImage.src} />
+      <SEO
+        title={title}
+        description={description}
+        image={bannerImage.src}
+        article
+      />
       <Container>
         <PostInfo>
           <PostTitle>{title}</PostTitle>
