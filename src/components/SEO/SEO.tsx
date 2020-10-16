@@ -26,6 +26,7 @@ export const SEO: React.FC<Props> = ({
     description: defaultDescription,
     siteUrl,
     twitter,
+    lang,
   } = site.siteMetadata;
 
   const metaImage = `${siteUrl}${image || defaultImage}`;
@@ -38,6 +39,7 @@ export const SEO: React.FC<Props> = ({
         titleTemplate={titleTemplate || ''}
       >
         {title && <title>{title}</title>}
+        {lang && <html lang={lang} />}
         {metaImage && <meta name="image" content={metaImage} />}
         {metaDescription && (
           <meta name="description" content={metaDescription} />
