@@ -21,7 +21,7 @@ export const SEO: React.FC<Props> = ({ title, description, image }) => {
     siteUrl,
   } = site.siteMetadata;
 
-  const metaImage = `${siteUrl}/${image ?? defaultImage}`;
+  const metaImage = `${siteUrl}${image ?? defaultImage}`;
   const metaDescription = description ?? defaultDescription;
 
   return (
