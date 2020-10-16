@@ -2,6 +2,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Site } from '../../types';
+import { OpenGraph } from './OpenGraph';
+import { Twitter } from './Twitter';
 
 type Props = {
   title?: string;
@@ -10,7 +12,12 @@ type Props = {
   article?: boolean;
 };
 
-export const SEO: React.FC<Props> = ({ title, description, image }) => {
+export const SEO: React.FC<Props> = ({
+  title,
+  description,
+  image,
+  article,
+}) => {
   const { site } = useStaticQuery<{ site: Site }>(query);
   const {
     defaultTitle,
@@ -18,20 +25,38 @@ export const SEO: React.FC<Props> = ({ title, description, image }) => {
     image: defaultImage,
     description: defaultDescription,
     siteUrl,
+    twitter,
   } = site.siteMetadata;
 
   const metaImage = `${siteUrl}${image || defaultImage}`;
   const metaDescription = description || defaultDescription;
 
   return (
-    <Helmet
-      defaultTitle={defaultTitle || ''}
-      titleTemplate={titleTemplate || ''}
-    >
-      {title && <title>{title}</title>}
-      {metaImage && <meta name="image" content={metaImage} />}
-      {metaDescription && <meta name="description" content={metaDescription} />}
-    </Helmet>
+    <>
+      <Helmet
+        defaultTitle={defaultTitle || ''}
+        titleTemplate={titleTemplate || ''}
+      >
+        {title && <title>{title}</title>}
+        {metaImage && <meta name="image" content={metaImage} />}
+        {metaDescription && (
+          <meta name="description" content={metaDescription} />
+        )}
+      </Helmet>
+      <OpenGraph
+        url={siteUrl}
+        title={title}
+        description={metaDescription}
+        image={metaImage}
+        article={article}
+      />
+      <Twitter
+        twitter={twitter}
+        title={title}
+        description={metaDescription}
+        image={metaImage}
+      />
+    </>
   );
 };
 
@@ -45,6 +70,7 @@ const query = graphql`
         image
         lang
         siteUrl
+        twitter
       }
     }
   }

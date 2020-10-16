@@ -2384,6 +2384,7 @@ export enum SiteFieldsEnum {
   siteMetadata___image = 'siteMetadata___image',
   siteMetadata___lang = 'siteMetadata___lang',
   siteMetadata___siteUrl = 'siteMetadata___siteUrl',
+  siteMetadata___twitter = 'siteMetadata___twitter',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -3147,6 +3148,7 @@ export type SiteSiteMetadata = {
   readonly image?: Maybe<Scalars['String']>;
   readonly lang?: Maybe<Scalars['String']>;
   readonly siteUrl?: Maybe<Scalars['String']>;
+  readonly twitter?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -3157,6 +3159,7 @@ export type SiteSiteMetadataFilterInput = {
   readonly image?: Maybe<StringQueryOperatorInput>;
   readonly lang?: Maybe<StringQueryOperatorInput>;
   readonly siteUrl?: Maybe<StringQueryOperatorInput>;
+  readonly twitter?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {

@@ -1,6 +1,6 @@
 export const config: Config = {
-  medium: {
-    url: 'https://medium.com',
+  social: {
+    twitter: 'https://twitter.com/talohanax',
   },
   header: {
     hideThresholdPx: 100,
@@ -20,10 +20,14 @@ export const config: Config = {
 };
 
 export interface Config {
-  medium: MediumConfig;
+  social: SocialConfig;
   header: HeaderConfig;
   scroll: ScrollConfig;
   website: WebsiteConfig;
+}
+
+export interface SocialConfig {
+  twitter: string;
 }
 
 export interface ScrollConfig {
@@ -33,10 +37,6 @@ export interface ScrollConfig {
 
 export interface HeaderConfig {
   hideThresholdPx: number;
-}
-
-export interface MediumConfig {
-  url: string;
 }
 
 export interface WebsiteConfig {

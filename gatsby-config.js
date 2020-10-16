@@ -20,6 +20,7 @@ module.exports = {
     image: config.website.image,
     lang: config.website.lang,
     siteUrl,
+    twitter: config.social.twitter,
   },
   plugins: [
     {
