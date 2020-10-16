@@ -15,6 +15,7 @@ export const config: Config = {
     description: 'Tal Ohana, a Software Developer from Israel.',
     image: '/images/banner.png',
     lang: 'en',
+    siteUrl: 'https://talohana.com',
   },
 };
 
@@ -44,4 +45,5 @@ export interface WebsiteConfig {
   description: string;
   image: string;
   lang: string;
+  siteUrl: string;
 }

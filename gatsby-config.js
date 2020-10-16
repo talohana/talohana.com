@@ -1,12 +1,25 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require('ts-node').register(); // enable require of ts files
 const { config } = require('./src/config/config');
+
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = config.website.siteUrl,
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+} = process.env;
+
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 module.exports = {
   siteMetadata: {
     defaultTitle: config.website.defaultTitle,
     titleTemplate: config.website.titleTemplate,
-    description: config.description,
-    image: config.image,
+    description: config.website.description,
+    image: config.website.image,
+    lang: config.website.lang,
+    siteUrl,
   },
   plugins: [
     {

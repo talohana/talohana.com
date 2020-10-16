@@ -133,14 +133,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Site {
       siteMetadata: SiteSiteMetadata!
     }
-
-    type SiteSiteMetadata {
-      defaultTitle: String!
-      titleTemplate: String!
-      description: String!
-      image: String!
-      lang: String!
-    }
   `;
 
   createTypes(typeDefs);

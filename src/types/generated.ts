@@ -2383,6 +2383,7 @@ export enum SiteFieldsEnum {
   siteMetadata___titleTemplate = 'siteMetadata___titleTemplate',
   siteMetadata___image = 'siteMetadata___image',
   siteMetadata___lang = 'siteMetadata___lang',
+  siteMetadata___siteUrl = 'siteMetadata___siteUrl',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -3140,11 +3141,12 @@ export type SitePluginSortInput = {
 export type SiteSiteMetadata = {
   readonly __typename?: 'SiteSiteMetadata';
   readonly title?: Maybe<Scalars['String']>;
-  readonly description: Scalars['String'];
-  readonly defaultTitle: Scalars['String'];
-  readonly titleTemplate: Scalars['String'];
-  readonly image: Scalars['String'];
-  readonly lang: Scalars['String'];
+  readonly description?: Maybe<Scalars['String']>;
+  readonly defaultTitle?: Maybe<Scalars['String']>;
+  readonly titleTemplate?: Maybe<Scalars['String']>;
+  readonly image?: Maybe<Scalars['String']>;
+  readonly lang?: Maybe<Scalars['String']>;
+  readonly siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -3154,6 +3156,7 @@ export type SiteSiteMetadataFilterInput = {
   readonly titleTemplate?: Maybe<StringQueryOperatorInput>;
   readonly image?: Maybe<StringQueryOperatorInput>;
   readonly lang?: Maybe<StringQueryOperatorInput>;
+  readonly siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {

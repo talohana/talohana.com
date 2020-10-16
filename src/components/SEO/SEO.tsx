@@ -18,18 +18,22 @@ export const SEO: React.FC<Props> = ({ title, description, image }) => {
     image: defaultImage,
     description: defaultDescription,
     lang,
+    siteUrl,
   } = site.siteMetadata;
 
-  const metaImage = image ?? defaultImage;
+  const metaImage = `${siteUrl}/${image ?? defaultImage}`;
   const metaDescription = description ?? defaultDescription;
 
   return (
-    <Helmet defaultTitle={defaultTitle} titleTemplate={titleTemplate}>
+    <Helmet
+      defaultTitle={defaultTitle ?? ''}
+      titleTemplate={titleTemplate ?? ''}
+    >
       {title && <title>{title}</title>}
 
-      <html lang={lang} />
-      <meta name="description" content={metaDescription} />
-      <meta name="image" content={metaImage} />
+      {lang && <html lang={lang} />}
+      {metaDescription && <meta name="description" content={metaDescription} />}
+      {metaImage && <meta name="image" content={metaImage} />}
     </Helmet>
   );
 };
