@@ -44,6 +44,10 @@ const query = graphql`
       siteMetadata {
         defaultTitle
         titleTemplate
+        description
+        image
+        lang
+        siteUrl
       }
     }
   }
