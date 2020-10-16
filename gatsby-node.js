@@ -85,6 +85,18 @@ const onCreateMdxNode = ({ actions, node }) => {
   });
 
   createNodeField({
+    name: 'bannerCredit',
+    node,
+    value: node.frontmatter.bannerCredit,
+  });
+
+  createNodeField({
+    name: 'bannerCreditUrl',
+    node,
+    value: node.frontmatter.bannerCreditUrl,
+  });
+
+  createNodeField({
     name: 'categories',
     node,
     value: node.frontmatter.categories || [],

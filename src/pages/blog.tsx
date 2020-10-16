@@ -1,28 +1,29 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Category } from '../components/blog/Category';
 import { Container } from '../components/blog/Container';
+import { Search } from '../components/blog/Search';
 import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
-import { MdxGroupConnection } from '../types';
+import { MdxEdge } from '../types';
 
 type PageData = {
-  allMdx: {
-    group: MdxGroupConnection[];
+  posts: {
+    edges: MdxEdge[];
+  };
+  categories: {
+    distinct: string[];
   };
 };
 type Props = PageProps<PageData>;
 
 export const Blog: React.FC<Props> = ({ data }) => {
-  const categories = data.allMdx.group.map(category => {
-    return <Category key={category.fieldValue} category={category} />;
-  });
+  const { posts, categories } = data;
 
   return (
     <Layout customSEO>
       <Container>
         <SEO title="Blog" />
-        {categories}
+        <Search posts={posts.edges} categories={categories.distinct} />
       </Container>
     </Layout>
   );
@@ -30,29 +31,30 @@ export const Blog: React.FC<Props> = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMdx {
-      group(field: frontmatter___categories) {
-        fieldValue
-        edges {
-          node {
-            id
+    posts: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          slug
+          fields {
+            title
+            description
+            date(formatString: "DD MMM, YYYY")
             slug
-            fields {
-              title
-              description
-              date(formatString: "DD MMM, YYYY")
-              slug
-              banner {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid
-                  }
+            categories
+            banner {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
           }
         }
       }
+    }
+    categories: allMdx {
+      distinct(field: frontmatter___categories)
     }
   }
 `;

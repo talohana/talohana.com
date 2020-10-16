@@ -17,7 +17,7 @@ type Props = PageProps<PageData>;
 
 const PostTemplate: React.FC<Props> = ({ data, location }) => {
   const { body, fields } = data.mdx;
-  const { title, date, banner } = fields;
+  const { title, date, banner, bannerCredit, bannerCreditUrl } = fields;
   const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
 
   return (
@@ -28,7 +28,13 @@ const PostTemplate: React.FC<Props> = ({ data, location }) => {
           <PostTitle>{title}</PostTitle>
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
-        {bannerImage && <Banner fluid={bannerImage} />}
+        {bannerImage && (
+          <Banner
+            fluid={bannerImage}
+            credit={bannerCredit}
+            creditUrl={bannerCreditUrl}
+          />
+        )}
         <MDXRenderer children={body} />
       </Container>
     </Layout>
@@ -65,6 +71,8 @@ export const query = graphql`
             }
           }
         }
+        bannerCredit
+        bannerCreditUrl
       }
       body
     }
