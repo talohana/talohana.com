@@ -12,7 +12,7 @@ export const config: Config = {
   website: {
     defaultTitle: 'Tal Ohana',
     titleTemplate: '%s | Tal Ohana',
-    description: 'Tal Ohana, a Software Developer from Israel.',
+    description: 'Tal Ohana, a software engineer from Israel.',
     image: '/images/banner.png',
     lang: 'en',
     siteUrl: 'https://talohana.com',
