@@ -7,7 +7,7 @@ import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 
 const NotFoundPage: React.FC = () => (
-  <Layout>
+  <Layout customSEO>
     <SEO title="404" />
     <Wrapper>
       <Container>

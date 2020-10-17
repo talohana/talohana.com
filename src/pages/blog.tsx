@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Container } from '../components/blog/Container';
 import { Search } from '../components/blog/Search';
+import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 import { MdxEdge } from '../types';
@@ -30,26 +30,29 @@ export const Blog: React.FC<Props> = ({ data }) => {
 };
 
 export const query = graphql`
+  fragment PostPreview on Mdx {
+    id
+    slug
+    fields {
+      title
+      description
+      date(formatString: "DD MMM, YYYY")
+      slug
+      categories
+      banner {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
   query {
     posts: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
-          id
-          slug
-          fields {
-            title
-            description
-            date(formatString: "DD MMM, YYYY")
-            slug
-            categories
-            banner {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
+          ...PostPreview
         }
       }
     }

@@ -56,6 +56,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
+        defaultLayouts: {
+          default: require.resolve('./src/templates/markdown-page.tsx'),
+        },
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-embedder`,
@@ -74,6 +77,7 @@ module.exports = {
             },
           },
         ],
+        remarkPlugins: [require('remark-emoji')],
       },
     },
     `gatsby-plugin-react-helmet`,

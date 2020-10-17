@@ -4,7 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../components/blog/Banner';
-import { Container } from '../components/blog/Container';
+import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 import { Mdx } from '../types';

@@ -5,7 +5,8 @@ import styled from 'styled-components';
 export const NavLinks: React.FC = () => {
   return (
     <Wrapper>
-      <NavLink to="/blog">Blog</NavLink>
+      <NavLink to="/blog">blog</NavLink>
+      <NavLink to="/about">about</NavLink>
     </Wrapper>
   );
 };
@@ -19,4 +20,5 @@ const NavLink = styled(Link)`
   font-weight: 400;
   letter-spacing: 2px;
   color: ${props => props.theme.white};
+  padding: 0.5rem;
 `;
