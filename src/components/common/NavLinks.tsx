@@ -17,8 +17,7 @@ const Wrapper = styled.nav`
 
 const NavLink = styled(Link)`
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 2px;
-  color: ${props => props.theme.white};
   padding: 0.5rem;
 `;

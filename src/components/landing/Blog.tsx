@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { MdxEdge } from '../../types';
 import { PostPreview } from '../blog/PostPreview';
+import { Container } from '../common/Container';
 
 type Props = {
   posts: MdxEdge[];
@@ -15,20 +16,15 @@ export const Blog: React.FC<Props> = ({ posts }) => {
   ));
 
   return (
-    <Wrapper>
-      <h2>Blog</h2>
+    <Container as="section">
+      <h2>Latest Posts</h2>
       <Posts>{previews}</Posts>
       <AllPosts>
-        <Link to="/blog">all posts</Link>
+        <Link to="/blog">view all posts</Link>
       </AllPosts>
-    </Wrapper>
+    </Container>
   );
 };
-
-const Wrapper = styled.div`
-  min-height: 100vh;
-  padding: 3rem 0;
-`;
 
 const Posts = styled.div`
   margin-bottom: 2rem;
@@ -43,7 +39,7 @@ const Posts = styled.div`
 `;
 
 const AllPosts = styled.div`
-  text-align: center;
   text-transform: uppercase;
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 `;

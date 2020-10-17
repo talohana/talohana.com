@@ -19,7 +19,7 @@ export const Layout: React.FC<Props> = ({ children, customSEO }) => {
       <GlobalStyles />
       <Wrapper>
         <Header />
-        <Content>{children}</Content>
+        {children}
         <Footer />
       </Wrapper>
     </>
@@ -34,11 +34,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`;
-
-const Content = styled.div`
-  padding-top: 3rem;
-  flex: 1;
+  justify-content: space-between;
 `;
 
 const GlobalStyles = createGlobalStyle`

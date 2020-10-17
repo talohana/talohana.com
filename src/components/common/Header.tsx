@@ -38,7 +38,8 @@ const Wrapper = styled.header<{ visible: boolean; colorMode: ColorMode }>`
   align-items: center;
   width: 100%;
   height: 3rem;
-  background-color: ${props => props.theme.black};
+  background-color: ${props =>
+    props.colorMode === 'light' ? props.theme.white : props.theme.black};
   padding: 0 1rem;
   position: fixed;
   top: ${props => (props.visible ? 0 : '-3.5rem')};

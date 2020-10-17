@@ -61,6 +61,6 @@ const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s;
-    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#ffdd59')};
+    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#f1c40f')};
   }
 `;

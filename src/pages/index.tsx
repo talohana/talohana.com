@@ -1,7 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Element } from 'react-scroll';
-import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
 import { Blog } from '../components/landing/Blog';
 import { Hero } from '../components/landing/Hero';
@@ -19,14 +17,8 @@ type Props = PageProps<PageData>;
 const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
-      <Container>
-        <Element name="hero">
-          <Hero />
-        </Element>
-        <Element name="blog">
-          <Blog posts={data.recentPosts.edges} />
-        </Element>
-      </Container>
+      <Hero />
+      <Blog posts={data.recentPosts.edges} />
     </Layout>
   );
 };
