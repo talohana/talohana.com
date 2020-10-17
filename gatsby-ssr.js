@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const React = require('react');
-const { Layout } = require('./src/components/common/Layout');
-
-const COLORS = {
-  light: {
-    background: '#ecf0f1',
-    text: '#1f1f1f',
-  },
-  dark: {
-    background: '#1f1f1f',
-    text: '#dfe6e9',
-  },
-};
+const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
+const { ThemeProvider } = require('styled-components');
+const { theme } = require('./src/styles/theme');
+const { COLORS } = require('./src/styles/colors');
 
 const ColorModeScriptTag = () => {
   let codeToRunOnClient = `
@@ -61,6 +53,10 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents(<ColorModeScriptTag key="color-mode-script" />);
 };
 
-exports.wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
+exports.wrapRootElement = ({ element }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <ColorModeProvider>{element}</ColorModeProvider>
+    </ThemeProvider>
+  );
 };

@@ -1,44 +1,83 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { config } from '../../config';
+import { Site } from '../../types';
+import { OpenGraph } from './OpenGraph';
+import { Twitter } from './Twitter';
 
-interface Props {
-  description?: string;
+type Props = {
   title?: string;
-}
+  image?: string;
+  description?: string;
+  article?: boolean;
+};
 
 export const SEO: React.FC<Props> = ({
-  title = config.seo.defaultTitle,
-  description = config.seo.defaultDescription,
+  title,
+  description,
+  image,
+  article,
 }) => {
+  const { site } = useStaticQuery<{ site: Site }>(query);
+  const {
+    defaultTitle,
+    titleTemplate,
+    image: defaultImage,
+    description: defaultDescription,
+    siteUrl,
+    twitter,
+    lang,
+  } = site.siteMetadata;
+
+  const metaImage = `${siteUrl}${image || defaultImage}`;
+  const metaDescription = description || defaultDescription;
+
   return (
-    <Helmet title={title}>
-      <meta name="description" content={description} />
-      <meta
-        name="image"
-        content={`${config.seo.url}/${config.seo.thumbnail}`}
+    <>
+      <Helmet
+        defaultTitle={defaultTitle || ''}
+        titleTemplate={titleTemplate || ''}
+      >
+        {title && <title>{title}</title>}
+        {lang && <html lang={lang} />}
+        {metaImage && <meta name="image" content={metaImage} />}
+        {metaDescription && (
+          <meta name="description" content={metaDescription} />
+        )}
+      </Helmet>
+      <OpenGraph
+        url={siteUrl}
+        title={title}
+        description={metaDescription}
+        image={metaImage}
+        article={article}
       />
-
-      <meta property="og:url" content={config.seo.url} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta
-        property="og:image"
-        content={`${config.seo.url}/${config.seo.thumbnail}`}
+      <Twitter
+        twitter={twitter}
+        title={title}
+        description={metaDescription}
+        image={metaImage}
       />
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={config.social.twitter} />
-      <meta name="twitter:site" content={config.social.twitterUsername} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta
-        name="twitter:image:src"
-        content={`${config.seo.url}/${config.seo.thumbnail}`}
-      />
-
-      <html lang="en" dir="ltr" />
-    </Helmet>
+    </>
   );
+};
+
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        defaultTitle
+        titleTemplate
+        description
+        image
+        lang
+        siteUrl
+        twitter
+      }
+    }
+  }
+`;
+
+SEO.defaultProps = {
+  article: false,
 };

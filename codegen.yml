@@ -1,0 +1,15 @@
+schema: http://localhost:8000/___graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+  - ./node_modules/gatsby-*/**/*.js
+generates:
+  ./src/types/generated.ts:
+    config:
+      immutableTypes: true
+      scalars:
+        Date: string
+        JSON: '{ [key: string]: any }'
+      namingConvention:
+        enumValues: 'keep'
+    plugins:
+      - typescript

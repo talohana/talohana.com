@@ -1,0 +1,211 @@
+---
+title: Boost Your TypeScript Project with ESLint, Prettier and lint-staged
+slug: boost-your-typescript-project
+description: |
+  Learn how to add ESLint, Prettier and lint-staged 
+  to your TypeScript project in order to maximize your productivity
+categories: [typescript]
+keywords: [typescript, esLint, prettier, lint-staged, tutorial]
+date: 2020-02-14
+banner: ./images/banner.jpg
+bannerCredit: SpaceX
+bannerCreditUrl: https://unsplash.com/@spacex
+---
+
+> The source code of this article can be found in [this github repository](https://github.com/talohana/typescript-linting-example)
+
+---
+
+## Introduction
+
+There are many tools today that makes you really productive, they take away fixing small errors and formatting your code.
+
+In this tutorial we are going to build a TypeScript project from scratch, add it linting and formatting capabilities
+and at the end making it automatic with every `git commit` you run.
+
+<br />
+
+## Creating a TypeScript Project
+
+We are going to create the simplest TypeScript project. In Order to do so, run the following commands
+
+```shell
+mkdir typescript-example
+cd $_
+npm init -y
+npm i -D typescript
+npx tsc --init
+```
+
+---
+
+## Adding ESLint
+
+First, let's understand what ESLint is all about, from [eslint getting-started](https://eslint.org/docs/user-guide/getting-started)
+
+> ESLint is a tool for identifying and reporting on patterns found in
+> ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
+
+Pretty straight forward, it's something you really want in your project.
+To add ESLint we'll need to add the following packages
+
+```shell
+npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+and add two files to our project folder:
+A file named `.eslintrc.js` which contains all our ESLint configurations
+
+```js
+// .eslintrc.js
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+};
+```
+
+You can explore the recommended rules for
+[eslint:recommended](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
+and for
+[@typescript-eslint/recommended](https://eslint.org/docs/rules/).
+
+A File named .eslintignore so we won't compile node_modules
+
+```js
+// .eslintignore
+node_modules;
+```
+
+PS, add your compiled code folder here or any other folder you wish to ignore
+
+Final thing, let's add two npm scripts that lint and fix the code for us
+
+```json
+"scripts": {
+  "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+  "lint:fix": "npm run lint -- --fix"
+}
+```
+
+In order to test the scripts, add a dummy `index.ts` file with the following content
+
+```ts
+const x: number = 123;
+
+console.log(x);
+```
+
+We can see that the type annotation is redundant and can be omitted, after running  
+`npm run tslint:fix` the file is linted and fixed for us
+
+```ts
+const x = 123;
+
+console.log(x);
+```
+
+---
+
+## Adding Prettier
+
+So what is Prettier? from [Prettier Docs](https://prettier.io/docs/en/index.html)
+
+> Prettier is an opinionated code formatter
+> It removes all original styling and ensures that all outputted code conforms to a consistent style.
+
+Long story short, you won't have to argue about tabs vs spaces (or any other code-style) ever again!
+
+To add Prettier and integrate it with ESLint add the following packages:
+
+```shell
+npm i -D prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+Next, we'll update `.eslintrc.js` to ignore all formatting rules that are not from Prettier, and then use Prettier as an ESLint rule
+
+```js
+// .eslintrc.js
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+};
+```
+
+In order to test this, let's create a simple `.prettierrc` file that contains our [Prettier options](https://prettier.io/docs/en/options.html)
+
+```js
+// .prettierrc
+{
+  "singleQuote": true
+}
+```
+
+Back to our `index.ts` let's add some unformatted code
+
+```ts
+const x: string = 'Unformatted String';
+
+console.log(x);
+```
+
+after running `npm run tslint:fix` we can see the fixed and formatted file
+
+```ts
+const x = 'Unformatted String';
+
+console.log(x);
+```
+
+---
+
+## Adding lint-staged and husky
+
+It's pretty easy to forget linting and formatting our code before comitting and pushing it, [lint-staged](https://github.com/okonet/lint-staged) and [husky](https://github.com/typicode/husky) to the rescue!
+
+Husky is a package that helps us integrate with [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) and lint-staged is helping us to lint our staged files.
+
+First, let's initialize git by running `git init` and creating `.gitingore` file
+
+```js
+// .gitignore
+node_modules;
+```
+
+Let's add them by running
+
+```shell
+npm i -D husky lint-staged
+```
+
+and add their configuration to our `package.json`
+
+```json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
+  }
+}
+```
+
+That's all! now when we `git commit` our files we'll get linting and formatting automatically.

@@ -2,7 +2,7 @@ import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
-import { ColorMode } from '../../models/ColorMode';
+import { ColorMode } from '../../index.ts/ColorMode';
 
 interface Props {
   colorMode: ColorMode;
@@ -61,6 +61,6 @@ const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s;
-    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#ffdd59')};
+    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#f39c12')};
   }
 `;

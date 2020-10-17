@@ -1,12 +1,13 @@
+import { Link } from 'gatsby';
 import React from 'react';
-import { Link } from 'react-scroll';
 import styled from 'styled-components';
-import rocketLaunch from '../../assets/illustrations/rocket_launch.svg';
-import { config } from '../../config';
+import brand from '../../assets/illustrations/brand.svg';
+import { config } from '../../config/config';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { ColorModeContext } from '../../providers/ColorModeProvider';
+import { ColorMode } from '../../types';
 import { DarkModeToggle } from './DarkModeToggle';
-import { Navbar } from './Navbar';
+import { NavLinks } from './NavLinks';
 
 export const Header: React.FC = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
@@ -22,45 +23,35 @@ export const Header: React.FC = () => {
   });
 
   return (
-    <Wrapper visible={visible}>
-      <Brand
-        to="hero"
-        smooth={config.scroll.smooth}
-        duration={config.scroll.duration}
-      >
-        <img src={rocketLaunch} alt="Rocket Launch Logo"></img>
+    <Wrapper visible={visible} colorMode={colorMode}>
+      <Brand to="/">
+        <img src={brand} alt="Brand Logo"></img>
       </Brand>
-      <Navbar />
+      <NavLinks />
       <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.header<{ visible: boolean }>`
+const Wrapper = styled.header<{ visible: boolean; colorMode: ColorMode }>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 3rem;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props =>
+    props.colorMode === 'light' ? props.theme.white : props.theme.black};
   padding: 0 1rem;
   position: fixed;
   top: ${props => (props.visible ? 0 : '-3.5rem')};
   left: 0;
   transition: top 0.3s;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-
-  nav {
-    margin-right: auto;
-  }
+  z-index: 1000;
 `;
 
 const Brand = styled(Link)`
-  width: 2.5rem;
+  width: 4rem;
   display: flex;
   align-items: center;
-  margin-right: 1rem;
-
-  img {
-    margin-bottom: 0;
-  }
+  margin-right: auto;
+  cursor: pointer;
 `;

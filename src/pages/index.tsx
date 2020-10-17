@@ -1,46 +1,37 @@
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Element } from 'react-scroll';
-import { Header } from '../components/common/Header';
+import { Layout } from '../components/common/Layout';
+import { Blog } from '../components/landing/Blog';
 import { Hero } from '../components/landing/Hero';
-import { Posts } from '../components/landing/Posts/Posts';
-import { Post } from '../models/Post';
-interface GetLandingPage {
-  posts: {
-    nodes: Post[];
-  };
-}
+import { File, MdxEdge } from '../types';
 
-interface Props {
-  data: GetLandingPage;
-}
+type PageData = {
+  recentPosts: {
+    edges: MdxEdge[];
+  };
+  profileImage: File;
+};
+
+type Props = PageProps<PageData>;
 
 const IndexPage: React.FC<Props> = ({ data }) => {
   return (
-    <>
-      <Header />
-      <Element name="hero">
-        <Hero />
-      </Element>
-      <Element name="posts">
-        <Posts posts={data.posts.nodes} />
-      </Element>
-    </>
+    <Layout>
+      <Hero />
+      <Blog posts={data.recentPosts.edges} />
+    </Layout>
   );
 };
 
-export const query = graphql`
-  query GetLandingPage {
-    posts: allMediumPost(limit: 3, sort: { fields: [createdAt], order: DESC }) {
-      nodes {
-        title
-        createdAt(formatString: "DD MMMM YYYY")
-        uniqueSlug
-        virtuals {
-          subtitle
-        }
-        author {
-          username
+export const pageQuery = graphql`
+  query {
+    recentPosts: allMdx(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 3
+    ) {
+      edges {
+        node {
+          ...PostPreview
         }
       }
     }

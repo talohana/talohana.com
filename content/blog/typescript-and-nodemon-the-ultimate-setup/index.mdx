@@ -1,0 +1,124 @@
+---
+title: TypeScript & Nodemon - The Ultimate Setup!
+slug: typescript-and-nodemon-the-ultimate-setup
+description: |
+  Learn to how setup TypeScript and Nodemon to boost your productivity and develop with ease!
+categories: [typescript]
+keywords: [typescript, nodemon, tutorial]
+date: 2020-09-29
+banner: ./images/banner.jpg
+bannerCredit: Lala Azizli
+bannerCreditUrl: https://unsplash.com/@lazizli
+---
+
+Setting up TypeScript and Nodemon can sometimes get tricky, in this article I am going to show you how to setup TypeScript and Nodemon with ease!
+
+Find the full source code of this article in [this github repository](https://github.com/talohana/typescript-nodemon-ultimate-setup)
+
+## Create a Sample Project
+
+Let’s start by creating a sample project, we’ll do this by running:
+
+```shell
+mkdir typescript-nodemon-ultimate-setup
+```
+
+Next, create minimal npm packge by running:
+
+```shell
+npm init -y or yarn init -y
+```
+
+> Note: to reduce verbosity, for the rest of the article i’m going to use npm and omit yarn commands
+
+Add the required dependencies:
+
+```shell
+npm i -D typescript ts-node nodemon @types/node
+```
+
+Initialize TypeScript by running `npx tsc --init`
+
+Lastly, we need some source code to work with, so let’s create src/index.ts file containing the following TypeScript:
+
+```ts
+function greet(name: string): void {
+  console.log('Hello', name);
+}
+
+const readerName = 'Medium Reader';
+
+greet(readerName);
+```
+
+## Adding Nodemon
+
+Nodemon can be configured in [various ways](https://github.com/remy/nodemon#config-files),
+I am going to configure it with a json file by adding `nodemon.json` in our project root folder:
+
+```json
+{
+  "restartable": "rs",
+  "ignore": [".git", "node_modules/", "dist/", "coverage/"],
+  "watch": ["src/"],
+  "execMap": {
+    "ts": "node -r ts-node/register"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,json,ts"
+}
+```
+
+Let’s go over the configuration:
+
+- restartable — a command we can use to restart the program manually
+- ignore — list of files we don’t want to trigger a program restart when changing
+- watch — list of paths we do want to trigger a program restart when changing
+- execMap — a mapping between a file type/extension to a runtime
+- env — environment variables to include
+- ext — the file extensions Nodemon monitores
+
+In order to run and debug our setup, add two scripts in `package.json` file:
+
+```json
+{
+  "scripts": {
+    "dev": "nodemon --config nodemon.json src/index.ts",
+    "dev:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts"
+  }
+}
+```
+
+Note the `dev:debug` script adds `--inspect-brk` flag, this tells node to halt the program execution until the debugger is attached, this can be replaced with
+`--inspect` flag to debug without halting.
+
+Now we can run our program with npm run dev, try to change something the see the program re runs with the updated code!
+
+## Debugging with VSCode
+
+The last piece in this puzzle is adding VSCode debugging configuration.
+
+Create `.vscode/launch.json` file containing the following configuration:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "restart": true,
+      "processId": "${command:PickProcess}"
+    }
+  ]
+}
+```
+
+Now when we launch nodemon by `npm run dev:debug` and the program halts until we attached to it:
+
+![VSCode attachment](./images/attach.png)
+
+After attaching the VSCode will stop on the first line of code and you can easily debug your program!
