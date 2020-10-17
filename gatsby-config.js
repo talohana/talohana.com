@@ -7,6 +7,7 @@ const {
   URL: NETLIFY_SITE_URL = config.website.siteUrl,
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
+  GA_TRACKING_ID,
 } = process.env;
 
 const isNetlifyProduction = NETLIFY_ENV === 'production';
@@ -84,7 +85,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-179723340-1',
+        trackingId: GA_TRACKING_ID,
         head: true,
       },
     },
