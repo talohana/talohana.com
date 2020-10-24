@@ -37,6 +37,12 @@ export const reset = css`
     vertical-align: middle;
   }
 
+  img,
+  svg,
+  label {
+    user-select: none;
+  }
+
   [role='button'] {
     cursor: pointer;
   }

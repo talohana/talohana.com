@@ -7,7 +7,7 @@ import { reset } from '../../styles/reset';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export const Layout: React.FC<Props> = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
     <>
       <GlobalStyles />
@@ -43,11 +43,11 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    /* padding-top: 3rem; */
   }
 
   ::selection {
-    background-color: ${({ theme }) => lighten(0.3, theme.primary)};
+    background-color: ${props => lighten(0.15, props.theme.primary)};
+    color: ${props => props.theme.white};
   }
   
   a {
