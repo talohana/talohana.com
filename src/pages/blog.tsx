@@ -2,7 +2,6 @@ import { graphql, PageProps } from 'gatsby';
 import React from 'react';
 import { Search } from '../components/blog/Search';
 import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 import { MdxEdge } from '../types';
 
@@ -20,12 +19,12 @@ export const Blog: React.FC<Props> = ({ data }) => {
   const { posts, categories } = data;
 
   return (
-    <Layout customSEO>
+    <>
+      <SEO title="Blog" />
       <Container>
-        <SEO title="Blog" />
         <Search posts={posts.edges} categories={categories.distinct} />
       </Container>
-    </Layout>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import { animated, useSpring } from 'react-spring';
 import styled from 'styled-components';
 import brand from '../../assets/illustrations/brand.svg';
 import { config } from '../../config/config';
@@ -12,6 +13,11 @@ import { NavLinks } from './NavLinks';
 export const Header: React.FC = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
   const [visible, setVisible] = React.useState(true);
+  const props = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 300,
+  });
 
   useScrollPosition(({ currentPosition, previousPosition }) => {
     setVisible(() => {
@@ -28,7 +34,9 @@ export const Header: React.FC = () => {
         <img src={brand} alt="Brand Logo"></img>
       </Brand>
       <NavLinks />
-      <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
+      <AnimatedWrapper style={props}>
+        <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
+      </AnimatedWrapper>
     </Wrapper>
   );
 };
@@ -54,4 +62,10 @@ const Brand = styled(Link)`
   align-items: center;
   margin-right: auto;
   cursor: pointer;
+`;
+
+const AnimatedWrapper = styled(animated.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

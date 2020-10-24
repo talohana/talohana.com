@@ -5,6 +5,7 @@ const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
 const { ThemeProvider } = require('styled-components');
 const { theme } = require('./src/styles/theme');
 const { COLORS } = require('./src/styles/colors');
+const { Layout } = require('./src/components/common/Layout');
 
 const ColorModeScriptTag = () => {
   let codeToRunOnClient = `
@@ -60,3 +61,7 @@ exports.wrapRootElement = ({ element }) => {
     </ThemeProvider>
   );
 };
+
+exports.wrapPageElement = ({ element, props }) => (
+  <Layout {...props}>{element}</Layout>
+);

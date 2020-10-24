@@ -1,8 +1,8 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Layout } from '../components/common/Layout';
 import { Blog } from '../components/landing/Blog';
 import { Hero } from '../components/landing/Hero';
+import { SEO } from '../components/SEO/SEO';
 import { File, MdxEdge } from '../types';
 
 type PageData = {
@@ -16,10 +16,11 @@ type Props = PageProps<PageData>;
 
 const IndexPage: React.FC<Props> = ({ data }) => {
   return (
-    <Layout>
+    <>
+      <SEO />
       <Hero />
       <Blog posts={data.recentPosts.edges} />
-    </Layout>
+    </>
   );
 };
 

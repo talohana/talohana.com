@@ -12,7 +12,7 @@ export const NavLinks: React.FC = () => {
 };
 
 const Wrapper = styled.nav`
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 `;
 
 const NavLink = styled(Link)`

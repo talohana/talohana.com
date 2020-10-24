@@ -5,7 +5,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../components/blog/Banner';
 import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 import { Mdx } from '../types';
 
@@ -25,10 +24,10 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     bannerCreditUrl,
     description,
   } = fields;
-  const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
+  const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs 12149
 
   return (
-    <Layout customSEO>
+    <>
       <SEO
         title={title}
         description={description}
@@ -49,7 +48,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
         )}
         <MDXRenderer children={body} />
       </Container>
-    </Layout>
+    </>
   );
 };
 

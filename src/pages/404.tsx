@@ -3,11 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import notFound from '../assets/illustrations/404.svg';
 import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
 
 const NotFoundPage: React.FC = () => (
-  <Layout customSEO>
+  <>
     <SEO title="404" />
     <Wrapper>
       <Container>
@@ -22,7 +21,7 @@ const NotFoundPage: React.FC = () => (
         </div>
       </Container>
     </Wrapper>
-  </Layout>
+  </>
 );
 
 const Wrapper = styled.div`
