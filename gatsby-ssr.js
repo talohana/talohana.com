@@ -5,6 +5,8 @@ const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
 const { ThemeProvider } = require('styled-components');
 const { theme } = require('./src/styles/theme');
 const { COLORS } = require('./src/styles/colors');
+const { MDXProvider } = require('@mdx-js/react');
+const { components } = require('./src/components/blog/components');
 
 const ColorModeScriptTag = () => {
   let codeToRunOnClient = `
@@ -55,8 +57,10 @@ exports.onRenderBody = ({ setPreBodyComponents }) => {
 
 exports.wrapRootElement = ({ element }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <ColorModeProvider>{element}</ColorModeProvider>
-    </ThemeProvider>
+    <MDXProvider components={components}>
+      <ThemeProvider theme={theme}>
+        <ColorModeProvider>{element}</ColorModeProvider>
+      </ThemeProvider>
+    </MDXProvider>
   );
 };

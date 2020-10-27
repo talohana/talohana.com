@@ -3,11 +3,15 @@ const React = require('react');
 const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
 const { ThemeProvider } = require('styled-components');
 const { theme } = require('./src/styles/theme');
+const { MDXProvider } = require('@mdx-js/react');
+const { components } = require('./src/components/blog/components');
 
 exports.wrapRootElement = ({ element }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <ColorModeProvider>{element}</ColorModeProvider>
-    </ThemeProvider>
+    <MDXProvider components={components}>
+      <ThemeProvider theme={theme}>
+        <ColorModeProvider>{element}</ColorModeProvider>
+      </ThemeProvider>
+    </MDXProvider>
   );
 };
