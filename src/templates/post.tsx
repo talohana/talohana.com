@@ -1,11 +1,9 @@
-import { MDXProvider } from '@mdx-js/react';
 import { graphql, PageProps } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../components/blog/Banner';
-import { components } from '../components/blog/components';
 import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
 import { SEO } from '../components/SEO/SEO';
@@ -49,9 +47,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
             creditUrl={bannerCreditUrl}
           />
         )}
-        <MDXProvider components={components}>
-          <MDXRenderer children={body} />
-        </MDXProvider>
+        <MDXRenderer children={body} />
       </Container>
     </Layout>
   );
