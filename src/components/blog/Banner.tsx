@@ -27,5 +27,7 @@ export const Banner: React.FC<Props> = ({ fluid, credit, creditUrl }) => {
 const Credit = styled.span`
   display: block;
   text-align: center;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
+  font-size: 0.8rem;
 `;
