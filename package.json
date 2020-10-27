@@ -62,7 +62,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@graphql-codegen/cli": "1.17.10",
+    "@graphql-codegen/cli": "1.19.0",
     "@graphql-codegen/typescript": "1.17.11",
     "@types/mdx-js__react": "^1.5.3",
     "@types/react-helmet": "^6.1.0",
