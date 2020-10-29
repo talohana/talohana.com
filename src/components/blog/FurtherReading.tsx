@@ -15,7 +15,9 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost && (
         <div>
-          <StyledUppercaseHeading as="h3">Next Post</StyledUppercaseHeading>
+          <StyledUppercaseHeading as="h3" next>
+            Next Post
+          </StyledUppercaseHeading>
           <PostPreview fields={nextPost.fields} />
         </div>
       )}
@@ -45,6 +47,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const StyledUppercaseHeading = styled(UppercaseHeading)`
+const StyledUppercaseHeading = styled(UppercaseHeading)<{ next?: boolean }>`
   font-weight: 200;
+  text-align: ${props => (props.next ? 'right' : 'left')};
+  color: ${props => props.theme.primary};
 `;

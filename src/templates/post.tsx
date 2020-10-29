@@ -73,6 +73,21 @@ const PublishInfo = styled.h4`
 `;
 
 export const query = graphql`
+  fragment FurtherReadingPreview on Mdx {
+    fields {
+      title
+      description
+      slug
+      banner {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+
   query GetPost($id: String!, $nextId: String, $prevId: String) {
     mdx(id: { eq: $id }) {
       fields {
@@ -95,10 +110,10 @@ export const query = graphql`
       body
     }
     nextPost: mdx(id: { eq: $nextId }) {
-      ...PostPreview
+      ...FurtherReadingPreview
     }
     prevPost: mdx(id: { eq: $prevId }) {
-      ...PostPreview
+      ...FurtherReadingPreview
     }
   }
 `;
