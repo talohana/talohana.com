@@ -15,13 +15,13 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost && (
         <div>
-          <UppercaseHeading as="h3">Next Post</UppercaseHeading>
+          <StyledUppercaseHeading as="h3">Next Post</StyledUppercaseHeading>
           <PostPreview fields={nextPost.fields} />
         </div>
       )}
       {prevPost && (
         <div>
-          <UppercaseHeading as="h3">Previous Post</UppercaseHeading>
+          <StyledUppercaseHeading as="h3">Previous Post</StyledUppercaseHeading>
           <PostPreview fields={prevPost.fields} />
         </div>
       )}
@@ -30,15 +30,21 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
 };
 
 const Wrapper = styled.div`
-  h3 {
-    font-weight: 200;
-  }
+  margin-bottom: 1rem;
+
+  ${media.lessThan('large')`
+      margin-bottom: 0;
+  `}
 
   & > *:not(:last-child) {
     margin-bottom: 2rem;
 
     ${media.lessThan('large')`
       margin-bottom: 0;
-    `}
+  `}
   }
+`;
+
+const StyledUppercaseHeading = styled(UppercaseHeading)`
+  font-weight: 200;
 `;

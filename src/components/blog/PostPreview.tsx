@@ -17,9 +17,9 @@ export const PostPreview: React.FC<Props> = ({ fields }) => {
     <Wrapper to={slug}>
       <PreviewImage fluid={banner?.childImageSharp?.fluid as FluidObject} />
       <PreviewInfo>
-        <PreviewHeading as="h4">{title}</PreviewHeading>
-        <span>{date}</span>
-        <p>{description}</p>
+        {title && <PreviewHeading as="h4">{title}</PreviewHeading>}
+        {date && <span>{date}</span>}
+        {description && <p>{description}</p>}
       </PreviewInfo>
     </Wrapper>
   );
