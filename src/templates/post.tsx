@@ -1,14 +1,12 @@
-import { graphql, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
-import media from 'styled-media-query';
 import { Banner } from '../components/blog/Banner';
-import { PostPreview } from '../components/blog/PostPreview';
+import { FurtherReading } from '../components/blog/FurtherReading';
 import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
-import { UppercaseHeading } from '../components/common/UppercaseHeading';
 import { SEO } from '../components/SEO/SEO';
 import { Mdx } from '../types';
 
@@ -54,20 +52,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           />
         )}
         <MDXRenderer children={body} />
-        <FurtherReading>
-          {nextPost && (
-            <div>
-              <UppercaseHeading as="h3">Continue Reading</UppercaseHeading>
-              <PostPreview fields={nextPost.fields} />
-            </div>
-          )}
-          {prevPost && (
-            <div>
-              <UppercaseHeading as="h3">In Case You Missed It</UppercaseHeading>
-              <PostPreview fields={prevPost.fields} />
-            </div>
-          )}
-        </FurtherReading>
+        <hr />
+        <FurtherReading prevPost={prevPost} nextPost={nextPost} />
       </Container>
     </Layout>
   );
@@ -84,22 +70,6 @@ const PostInfo = styled.div`
 const PublishInfo = styled.h4`
   text-transform: uppercase;
   font-weight: 300;
-`;
-
-const FurtherReading = styled.div`
-  margin-top: 2rem;
-
-  h3 {
-    font-weight: 200;
-  }
-
-  & > *:not(:last-child) {
-    margin-bottom: 2rem;
-
-    ${media.lessThan('large')`
-      margin-bottom: 0;
-    `}
-  }
 `;
 
 export const query = graphql`

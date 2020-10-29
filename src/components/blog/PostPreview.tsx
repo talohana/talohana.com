@@ -32,7 +32,6 @@ const Wrapper = styled(Link)`
   border-radius: 0.2rem;
   overflow: hidden;
   font-weight: 400;
-  height: 12rem;
 
   &:hover,
   &:focus {
@@ -42,7 +41,6 @@ const Wrapper = styled(Link)`
 
   ${media.lessThan('large')`
     flex-direction: column;
-    height: 24rem;
   `}
 `;
 
