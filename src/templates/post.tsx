@@ -3,19 +3,25 @@ import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Banner } from '../components/blog/Banner';
+import { PostPreview } from '../components/blog/PostPreview';
 import { Container } from '../components/common/Container';
 import { Layout } from '../components/common/Layout';
+import { UppercaseHeading } from '../components/common/UppercaseHeading';
 import { SEO } from '../components/SEO/SEO';
 import { Mdx } from '../types';
 
 type PageData = {
   mdx: Mdx;
+  nextPost: Mdx | null;
+  prevPost: Mdx | null;
 };
 
 type Props = PageProps<PageData>;
 
 const PostTemplate: React.FC<Props> = ({ data }) => {
+  const { nextPost, prevPost } = data;
   const { body, fields } = data.mdx;
   const {
     title,
@@ -48,6 +54,20 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           />
         )}
         <MDXRenderer children={body} />
+        <FurtherReading>
+          {nextPost && (
+            <div>
+              <UppercaseHeading as="h3">Continue Reading</UppercaseHeading>
+              <PostPreview fields={nextPost.fields} />
+            </div>
+          )}
+          {prevPost && (
+            <div>
+              <UppercaseHeading as="h3">In Case You Missed It</UppercaseHeading>
+              <PostPreview fields={prevPost.fields} />
+            </div>
+          )}
+        </FurtherReading>
       </Container>
     </Layout>
   );
@@ -66,8 +86,24 @@ const PublishInfo = styled.h4`
   font-weight: 300;
 `;
 
+const FurtherReading = styled.div`
+  margin-top: 2rem;
+
+  h3 {
+    font-weight: 200;
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+
+    ${media.lessThan('large')`
+      margin-bottom: 0;
+    `}
+  }
+`;
+
 export const query = graphql`
-  query GetPost($id: String!) {
+  query GetPost($id: String!, $nextId: String, $prevId: String) {
     mdx(id: { eq: $id }) {
       fields {
         slug
@@ -87,6 +123,12 @@ export const query = graphql`
         bannerCreditUrl
       }
       body
+    }
+    nextPost: mdx(id: { eq: $nextId }) {
+      ...PostPreview
+    }
+    prevPost: mdx(id: { eq: $prevId }) {
+      ...PostPreview
     }
   }
 `;

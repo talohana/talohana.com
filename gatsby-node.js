@@ -30,8 +30,8 @@ const createPosts = ({ actions, edges }) => {
       component: require.resolve('./src/templates/post.tsx'),
       context: {
         id: node.id,
-        prev,
-        next,
+        prevId: prev?.id ?? null,
+        nextId: next?.id ?? null,
       },
     });
   });
