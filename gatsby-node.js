@@ -1,7 +1,7 @@
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
-      blog: allMdx {
+      blog: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
             id
@@ -30,8 +30,8 @@ const createPosts = ({ actions, edges }) => {
       component: require.resolve('./src/templates/post.tsx'),
       context: {
         id: node.id,
-        prev,
-        next,
+        prevId: prev?.id ?? null,
+        nextId: next?.id ?? null,
       },
     });
   });

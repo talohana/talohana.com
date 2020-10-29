@@ -32,7 +32,6 @@ export const Blog: React.FC<Props> = ({ data }) => {
 export const query = graphql`
   fragment PostPreview on Mdx {
     id
-    slug
     fields {
       title
       description

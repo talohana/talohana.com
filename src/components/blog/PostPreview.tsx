@@ -17,9 +17,9 @@ export const PostPreview: React.FC<Props> = ({ fields }) => {
     <Wrapper to={slug}>
       <PreviewImage fluid={banner?.childImageSharp?.fluid as FluidObject} />
       <PreviewInfo>
-        <PreviewHeading as="h4">{title}</PreviewHeading>
-        <span>{date}</span>
-        <p>{description}</p>
+        {title && <PreviewHeading as="h4">{title}</PreviewHeading>}
+        {date && <span>{date}</span>}
+        {description && <p>{description}</p>}
       </PreviewInfo>
     </Wrapper>
   );
@@ -32,7 +32,6 @@ const Wrapper = styled(Link)`
   border-radius: 0.2rem;
   overflow: hidden;
   font-weight: 400;
-  height: 12rem;
 
   &:hover,
   &:focus {
@@ -42,7 +41,6 @@ const Wrapper = styled(Link)`
 
   ${media.lessThan('large')`
     flex-direction: column;
-    height: 24rem;
   `}
 `;
 

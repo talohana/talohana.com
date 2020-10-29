@@ -1,8 +1,11 @@
 {
-  "name": "tal-ohana-portfolio",
+  "name": "talohana.com",
   "private": true,
   "version": "1.0.0",
   "author": "Tal Ohana <tal.ohana.x@gmail.com>",
+  "engines": {
+    "node": ">= 14.15.0"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -51,6 +54,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^3.11.0",
     "react-typography": "^0.16.19",
     "remark-emoji": "^2.1.0",
     "styled-components": "^5.2.0",
