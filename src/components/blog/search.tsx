@@ -1,10 +1,10 @@
 import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { useQueryParamState } from '../../hooks/useQueryParamState';
+import { useQueryParamState } from '../../hooks/use-query-param-state';
 import { MdxEdge } from '../../types';
-import { Chip } from '../common/Chip';
-import { PostPreview } from './PostPreview';
+import { Chip } from '../common/chip';
+import { PostPreview } from './post-preview';
 
 interface Props {
   posts: MdxEdge[];

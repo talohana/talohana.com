@@ -3,11 +3,11 @@ import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
-import { Banner } from '../components/blog/Banner';
-import { FurtherReading } from '../components/blog/FurtherReading';
-import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
-import { SEO } from '../components/SEO/SEO';
+import { Banner } from '../components/blog/banner';
+import { FurtherReading } from '../components/blog/further-reading';
+import { Container } from '../components/common/container';
+import { Layout } from '../components/common/layout';
+import { SEO } from '../components/SEO/seo';
 import { Mdx } from '../types';
 
 type PageData = {

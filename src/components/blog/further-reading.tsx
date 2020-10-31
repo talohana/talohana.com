@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { Mdx } from '../../types';
-import { UppercaseHeading } from '../common/UppercaseHeading';
-import { PostPreview } from './PostPreview';
+import { UppercaseHeading } from '../common/uppercase-heading';
+import { PostPreview } from './post-preview';
 
 type Props = {
   nextPost: Mdx | null;

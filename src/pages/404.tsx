@@ -2,9 +2,9 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import notFound from '../assets/illustrations/404.svg';
-import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
-import { SEO } from '../components/SEO/SEO';
+import { Container } from '../components/common/container';
+import { Layout } from '../components/common/layout';
+import { SEO } from '../components/SEO/seo';
 
 const NotFoundPage: React.FC = () => (
   <Layout customSEO>

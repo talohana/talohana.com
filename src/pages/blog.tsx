@@ -1,9 +1,9 @@
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
-import { Search } from '../components/blog/Search';
-import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
-import { SEO } from '../components/SEO/SEO';
+import { Search } from '../components/blog/search';
+import { Container } from '../components/common/container';
+import { Layout } from '../components/common/layout';
+import { SEO } from '../components/SEO/seo';
 import { MdxEdge } from '../types';
 
 type PageData = {

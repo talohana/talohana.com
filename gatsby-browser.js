@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const React = require('react');
-const { ColorModeProvider } = require('./src/providers/ColorModeProvider');
+const { ColorModeProvider } = require('./src/providers/color-mode-provider');
 const { ThemeProvider } = require('styled-components');
 const { theme } = require('./src/styles/theme');
 const { MDXProvider } = require('@mdx-js/react');

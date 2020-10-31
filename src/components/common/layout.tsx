@@ -4,9 +4,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 import media from 'styled-media-query';
 import { prism } from '../../styles/prism';
 import { reset } from '../../styles/reset';
-import { SEO } from '../SEO/SEO';
-import { Footer } from './Footer';
-import { Header } from './Header';
+import { SEO } from '../SEO/seo';
+import { Footer } from './footer';
+import { Header } from './header';
 
 interface Props {
   customSEO?: boolean;

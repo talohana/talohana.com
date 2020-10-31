@@ -1,2 +1,2 @@
-export * from './ColorMode';
+export * from './color-mode';
 export * from './generated';

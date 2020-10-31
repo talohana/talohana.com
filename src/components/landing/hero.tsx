@@ -3,8 +3,8 @@ import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import { File } from '../../types';
-import { BackgroundSection } from '../common/BackgroundSection';
-import { Container } from '../common/Container';
+import { BackgroundSection } from '../common/background-section';
+import { Container } from '../common/container';
 
 export const Hero: React.FC = () => {
   const { heroImage } = useStaticQuery<{ heroImage: File }>(query);

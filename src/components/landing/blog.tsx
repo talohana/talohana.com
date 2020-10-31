@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { MdxEdge } from '../../types';
-import { PostPreview } from '../blog/PostPreview';
-import { Container } from '../common/Container';
+import { PostPreview } from '../blog/post-preview';
+import { Container } from '../common/container';
 
 type Props = {
   posts: MdxEdge[];

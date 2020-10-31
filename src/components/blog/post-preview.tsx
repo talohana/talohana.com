@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { MdxFields } from '../../types';
-import { UppercaseHeading } from '../common/UppercaseHeading';
+import { UppercaseHeading } from '../common/uppercase-heading';
 
 type Props = {
   fields: MdxFields;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ColorModeContext } from '../../providers/ColorModeProvider';
+import { ColorModeContext } from '../../providers/color-mode-provider';
 import { ColorMode } from '../../types';
 
 export const Footer: React.FC = () => {
