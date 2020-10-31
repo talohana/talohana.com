@@ -1,7 +1,7 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
-import { Container } from '../components/common/Container';
-import { Layout } from '../components/common/Layout';
+import { Container } from '../components/common/container';
+import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
 import { MdxFrontmatter } from '../types';
 
