@@ -3,11 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import brand from '../../assets/illustrations/brand.svg';
 import { config } from '../../config/config';
-import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { ColorModeContext } from '../../providers/ColorModeProvider';
+import { useScrollPosition } from '../../hooks/use-scroll-position';
+import { ColorModeContext } from '../../providers/color-mode-provider';
 import { ColorMode } from '../../types';
-import { DarkModeToggle } from './DarkModeToggle';
-import { NavLinks } from './NavLinks';
+import { DarkModeToggle } from './dark-mode-toggle';
+import { NavLinks } from './nav-links';
 
 export const Header: React.FC = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
