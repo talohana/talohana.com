@@ -38,7 +38,7 @@ const StyledContainer = styled(Container)`
 
 const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "hero.jpg" }) {
+    heroImage: file(relativePath: { eq: "hero.webp" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1920) {
           ...GatsbyImageSharpFluid

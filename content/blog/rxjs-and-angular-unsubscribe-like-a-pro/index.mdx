@@ -6,7 +6,7 @@ description: |
 categories: [angular]
 keywords: [angular, rxjs, tutorial]
 date: 2020-08-04
-banner: ./images/banner.jpg
+banner: ./images/banner.webp
 bannerCredit: Kazuky Akayashi
 bannerCreditUrl: https://unsplash.com/@kazukyakayashi
 ---
@@ -82,7 +82,7 @@ export class RegularComponent implements OnInit, OnDestroy {
 
 To see everything’s working we’ll remove the component from the DOM after 3 seconds to see that it is unsubscribes
 
-![Method 1](./images/method-1.png)
+![Method 1](./images/method-1.webp)
 
 As the name suggests, this is the most basic way of unsubscribing,
 it is good when you have a single Subscription, but when you have multiple subscriptions,
@@ -133,7 +133,7 @@ export class AddComponent implements OnInit, OnDestroy {
 
 Opening our console we should see two subscriptions:
 
-![Method 2](./images/method-2.png)
+![Method 2](./images/method-2.webp)
 
 With this, we can easily use the built-in power of RxJS and subscribe / unsubscribe to multiple Observables without introducing extra class properties.
 
@@ -159,7 +159,7 @@ export class AsyncComponent implements OnInit {
 }
 ```
 
-![Method 3](./images/method-3.png)
+![Method 3](./images/method-3.webp)
 
 ## #4 takeUntil Operator
 
@@ -194,7 +194,7 @@ export class UntilComponent implements OnInit, OnDestroy {
 }
 ```
 
-![Method 4](./images/method-4.png)
+![Method 4](./images/method-4.webp)
 
 ## #5 SubSink Library
 
@@ -250,7 +250,7 @@ export class SinkComponent implements OnInit, OnDestroy {
 }
 ```
 
-![Method 5](./images/method-5.png)
+![Method 5](./images/method-5.webp)
 
 ## #6 until-destroy Library
 
@@ -282,7 +282,7 @@ export class DestroyedComponent implements OnInit {
 }
 ```
 
-![Method 6](./images/method-6.png)
+![Method 6](./images/method-6.webp)
 
 To conclude, until-destroy is very powerful library that allows you to automatically subscribe / unsubscribe from Observables.
 In addition, until-destroy **has many features that are not described in this article**, so don’t be shy and head to their [github repo](https://github.com/ngneat/until-destroy)!
@@ -294,4 +294,4 @@ each has it’s own pros and cons and brings a different coding style to the tab
 
 The most important thing is, whichever pattern you choose be consistent.
 
-![Summary Meme](./images/summary-meme.png)
+![Summary Meme](./images/summary-meme.webp)
