@@ -17,13 +17,15 @@ type PageData = {
 type Props = PageProps<PageData>;
 
 export const Blog: React.FC<Props> = ({ data }) => {
-  const { posts, categories } = data;
+  const { posts: postEdges, categories } = data;
+
+  const posts = postEdges.edges.map(edge => edge.node.fields);
 
   return (
     <Layout customSEO>
       <Container>
         <SEO title="Blog" />
-        <Search posts={posts.edges} categories={categories.distinct} />
+        <Search posts={posts} categories={categories.distinct} />
       </Container>
     </Layout>
   );

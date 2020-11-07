@@ -6,9 +6,9 @@ import { OpenGraph } from './open-graph';
 import { Twitter } from './twitter';
 
 type Props = {
-  title?: string;
-  image?: string;
-  description?: string;
+  title?: string | null;
+  image?: string | null;
+  description?: string | null;
   article?: boolean;
 };
 

@@ -5,7 +5,8 @@
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "exclude": ["./node_modules", "./.cache", "./public"],
   "include": ["./src/**/*"]

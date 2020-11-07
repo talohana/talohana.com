@@ -18,13 +18,13 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
           <StyledUppercaseHeading as="h3" next>
             Next Post
           </StyledUppercaseHeading>
-          <PostPreview fields={nextPost.fields} />
+          <PostPreview post={nextPost.fields} />
         </div>
       )}
       {prevPost && (
         <div>
           <StyledUppercaseHeading as="h3">Previous Post</StyledUppercaseHeading>
-          <PostPreview fields={prevPost.fields} />
+          <PostPreview post={prevPost.fields} />
         </div>
       )}
     </Wrapper>

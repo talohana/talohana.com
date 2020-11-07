@@ -29,6 +29,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     bannerCreditUrl,
     description,
   } = fields;
+
   const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
 
   return (
@@ -44,13 +45,12 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           <PostTitle>{title}</PostTitle>
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
-        {bannerImage && (
-          <Banner
-            fluid={bannerImage}
-            credit={bannerCredit}
-            creditUrl={bannerCreditUrl}
-          />
-        )}
+        <Banner
+          image={bannerImage}
+          imageAlt={title}
+          credit={bannerCredit}
+          creditUrl={bannerCreditUrl}
+        />
         <MDXRenderer children={body} />
         <hr />
         <FurtherReading prevPost={prevPost} nextPost={nextPost} />

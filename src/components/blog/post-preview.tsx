@@ -7,15 +7,21 @@ import { MdxFields } from '../../types';
 import { UppercaseHeading } from '../common/uppercase-heading';
 
 type Props = {
-  fields: MdxFields;
+  post: MdxFields;
 };
 
-export const PostPreview: React.FC<Props> = ({ fields }) => {
-  const { title, description, date, slug, banner } = fields;
+export const PostPreview: React.FC<Props> = ({ post }) => {
+  const { title, description, date, slug, banner } = post;
+
+  if (!slug) {
+    return null;
+  }
 
   return (
     <Wrapper to={slug}>
-      <PreviewImage fluid={banner?.childImageSharp?.fluid as FluidObject} />
+      {banner?.childImageSharp && (
+        <PreviewImage fluid={banner.childImageSharp.fluid as FluidObject} />
+      )}
       <PreviewInfo>
         {title && <PreviewHeading as="h4">{title}</PreviewHeading>}
         {date && <span>{date}</span>}

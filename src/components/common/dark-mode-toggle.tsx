@@ -44,7 +44,10 @@ const HiddenCheckbox = styled.input.attrs({
   display: none;
 `;
 
-const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
+const Toggle = styled.label.attrs({
+  htmlFor: 'dark-toggle',
+  'aria-label': 'Toggle Dark Mode',
+})<{
   darkMode: boolean;
 }>`
   display: inline-block;

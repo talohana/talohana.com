@@ -1502,16 +1502,16 @@ export type MdxEdge = {
 
 export type MdxFields = {
   readonly __typename?: 'MdxFields';
-  readonly id: Scalars['String'];
-  readonly title: Scalars['String'];
-  readonly description: Scalars['String'];
-  readonly slug: Scalars['String'];
-  readonly date: Scalars['Date'];
-  readonly banner: File;
-  readonly bannerCredit: Scalars['String'];
-  readonly bannerCreditUrl: Scalars['String'];
-  readonly categories: ReadonlyArray<Scalars['String']>;
-  readonly keywords: ReadonlyArray<Scalars['String']>;
+  readonly id?: Maybe<Scalars['String']>;
+  readonly title?: Maybe<Scalars['String']>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly slug?: Maybe<Scalars['String']>;
+  readonly date?: Maybe<Scalars['Date']>;
+  readonly banner?: Maybe<File>;
+  readonly bannerCredit?: Maybe<Scalars['String']>;
+  readonly bannerCreditUrl?: Maybe<Scalars['String']>;
+  readonly categories?: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly keywords?: Maybe<ReadonlyArray<Scalars['String']>>;
 };
 
 export type MdxFieldsDateArgs = {
@@ -2541,54 +2541,25 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   readonly __typename?: 'SitePageContext';
   readonly id?: Maybe<Scalars['String']>;
-  readonly prev?: Maybe<SitePageContextPrev>;
-  readonly next?: Maybe<SitePageContextNext>;
+  readonly prevId?: Maybe<Scalars['String']>;
+  readonly nextId?: Maybe<Scalars['String']>;
+  readonly frontmatter?: Maybe<SitePageContextFrontmatter>;
 };
 
 export type SitePageContextFilterInput = {
   readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly prev?: Maybe<SitePageContextPrevFilterInput>;
-  readonly next?: Maybe<SitePageContextNextFilterInput>;
+  readonly prevId?: Maybe<StringQueryOperatorInput>;
+  readonly nextId?: Maybe<StringQueryOperatorInput>;
+  readonly frontmatter?: Maybe<SitePageContextFrontmatterFilterInput>;
 };
 
-export type SitePageContextNext = {
-  readonly __typename?: 'SitePageContextNext';
-  readonly id?: Maybe<Scalars['String']>;
-  readonly fields?: Maybe<SitePageContextNextFields>;
+export type SitePageContextFrontmatter = {
+  readonly __typename?: 'SitePageContextFrontmatter';
+  readonly title?: Maybe<Scalars['String']>;
 };
 
-export type SitePageContextNextFields = {
-  readonly __typename?: 'SitePageContextNextFields';
-  readonly slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextFieldsFilterInput = {
-  readonly slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextFilterInput = {
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly fields?: Maybe<SitePageContextNextFieldsFilterInput>;
-};
-
-export type SitePageContextPrev = {
-  readonly __typename?: 'SitePageContextPrev';
-  readonly id?: Maybe<Scalars['String']>;
-  readonly fields?: Maybe<SitePageContextPrevFields>;
-};
-
-export type SitePageContextPrevFields = {
-  readonly __typename?: 'SitePageContextPrevFields';
-  readonly slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPrevFieldsFilterInput = {
-  readonly slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPrevFilterInput = {
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly fields?: Maybe<SitePageContextPrevFieldsFilterInput>;
+export type SitePageContextFrontmatterFilterInput = {
+  readonly title?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2692,10 +2663,9 @@ export enum SitePageFieldsEnum {
   internal___type = 'internal___type',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
-  context___prev___id = 'context___prev___id',
-  context___prev___fields___slug = 'context___prev___fields___slug',
-  context___next___id = 'context___next___id',
-  context___next___fields___slug = 'context___next___fields___slug',
+  context___prevId = 'context___prevId',
+  context___nextId = 'context___nextId',
+  context___frontmatter___title = 'context___frontmatter___title',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -2742,7 +2712,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
-  pluginCreator___pluginOptions___trackingId = 'pluginCreator___pluginOptions___trackingId',
+  pluginCreator___pluginOptions___defaultLayouts___default = 'pluginCreator___pluginOptions___defaultLayouts___default',
   pluginCreator___pluginOptions___head = 'pluginCreator___pluginOptions___head',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
   pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
@@ -2754,6 +2724,9 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
   pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
+  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
+  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
   pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
@@ -2949,7 +2922,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___extensions = 'pluginOptions___extensions',
-  pluginOptions___trackingId = 'pluginOptions___trackingId',
+  pluginOptions___defaultLayouts___default = 'pluginOptions___defaultLayouts___default',
   pluginOptions___head = 'pluginOptions___head',
   pluginOptions___short_name = 'pluginOptions___short_name',
   pluginOptions___start_url = 'pluginOptions___start_url',
@@ -2961,6 +2934,9 @@ export enum SitePluginFieldsEnum {
   pluginOptions___legacy = 'pluginOptions___legacy',
   pluginOptions___cacheDigest = 'pluginOptions___cacheDigest',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
+  pluginOptions___allExtensions = 'pluginOptions___allExtensions',
+  pluginOptions___isTSX = 'pluginOptions___isTSX',
+  pluginOptions___jsxPragma = 'pluginOptions___jsxPragma',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
   ssrAPIs = 'ssrAPIs',
@@ -3100,7 +3076,7 @@ export type SitePluginPluginOptions = {
   readonly name?: Maybe<Scalars['String']>;
   readonly path?: Maybe<Scalars['String']>;
   readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly trackingId?: Maybe<Scalars['String']>;
+  readonly defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
   readonly head?: Maybe<Scalars['Boolean']>;
   readonly short_name?: Maybe<Scalars['String']>;
   readonly start_url?: Maybe<Scalars['String']>;
@@ -3112,6 +3088,18 @@ export type SitePluginPluginOptions = {
   readonly legacy?: Maybe<Scalars['Boolean']>;
   readonly cacheDigest?: Maybe<Scalars['String']>;
   readonly pathCheck?: Maybe<Scalars['Boolean']>;
+  readonly allExtensions?: Maybe<Scalars['Boolean']>;
+  readonly isTSX?: Maybe<Scalars['Boolean']>;
+  readonly jsxPragma?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsDefaultLayouts = {
+  readonly __typename?: 'SitePluginPluginOptionsDefaultLayouts';
+  readonly default?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
+  readonly default?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -3120,7 +3108,9 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly name?: Maybe<StringQueryOperatorInput>;
   readonly path?: Maybe<StringQueryOperatorInput>;
   readonly extensions?: Maybe<StringQueryOperatorInput>;
-  readonly trackingId?: Maybe<StringQueryOperatorInput>;
+  readonly defaultLayouts?: Maybe<
+    SitePluginPluginOptionsDefaultLayoutsFilterInput
+  >;
   readonly head?: Maybe<BooleanQueryOperatorInput>;
   readonly short_name?: Maybe<StringQueryOperatorInput>;
   readonly start_url?: Maybe<StringQueryOperatorInput>;
@@ -3132,6 +3122,9 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly legacy?: Maybe<BooleanQueryOperatorInput>;
   readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
   readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
+  readonly jsxPragma?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {

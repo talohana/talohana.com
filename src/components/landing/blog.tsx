@@ -12,7 +12,7 @@ type Props = {
 
 export const Blog: React.FC<Props> = ({ posts }) => {
   const previews = posts.map(({ node }) => (
-    <PostPreview key={node.id} fields={node.fields} />
+    <PostPreview key={node.id} post={node.fields} />
   ));
 
   return (

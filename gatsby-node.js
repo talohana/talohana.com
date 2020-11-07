@@ -114,16 +114,16 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   const typeDefs = `
     type MdxFields {
-      id: String!
-      title: String!
-      description: String!
-      slug: String!
-      date: Date!
-      banner: File!
-      bannerCredit: String!
-      bannerCreditUrl: String!
-      categories: [String!]!
-      keywords: [String!]!
+      id: String
+      title: String
+      description: String
+      slug: String
+      date: Date
+      banner: File
+      bannerCredit: String
+      bannerCreditUrl: String
+      categories: [String!]
+      keywords: [String!]
     }
 
     type Mdx {

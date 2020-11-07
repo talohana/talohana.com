@@ -1,5 +1,6 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
+
 export const Button = styled.button`
   text-transform: uppercase;
   background-color: ${props => props.theme.primary};

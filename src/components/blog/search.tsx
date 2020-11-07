@@ -2,12 +2,14 @@ import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
 import { useQueryParamState } from '../../hooks/use-query-param-state';
-import { MdxEdge } from '../../types';
+import { MdxFields } from '../../types';
 import { Chip } from '../common/chip';
 import { PostPreview } from './post-preview';
 
+type Post = MdxFields;
+
 interface Props {
-  posts: MdxEdge[];
+  posts: Post[];
   categories: string[];
 }
 
@@ -35,11 +37,11 @@ export const Search: React.FC<Props> = ({ posts, categories }) => {
 
   const previews = posts
     .filter(
-      ({ node }) =>
+      ({ categories }) =>
         isEmpty(search) ||
-        node.fields.categories.some(category => search.includes(category))
+        categories?.some(category => search.includes(category))
     )
-    .map(({ node }) => <PostPreview key={node.id} fields={node.fields} />);
+    .map(post => <PostPreview key={post.id} post={post} />);
 
   return (
     <div>

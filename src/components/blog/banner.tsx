@@ -3,15 +3,25 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  fluid: FluidObject;
-  credit?: string;
-  creditUrl?: string;
+  image: FluidObject | null;
+  imageAlt?: string | null;
+  credit?: string | null;
+  creditUrl?: string | null;
 };
 
-export const Banner: React.FC<Props> = ({ fluid, credit, creditUrl }) => {
+export const Banner: React.FC<Props> = ({
+  image,
+  imageAlt,
+  credit,
+  creditUrl,
+}) => {
+  if (!image) {
+    return null;
+  }
+
   return (
     <div>
-      <Image fluid={fluid} />
+      <Image fluid={image} alt={imageAlt ?? ''} />
       {credit && creditUrl && (
         <Credit>
           Photo by{' '}
