@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MdxFields } from '@types';
 import faker from 'faker';
 import { flatMap, uniq } from 'lodash';
 import React from 'react';
-import { MdxFields } from '../../../types';
 import { Search } from '../search';
 
 // Strong as the opposite of a weak type
@@ -17,7 +17,7 @@ const posts = [
   createMockPost({ categories: ['javascript'] }),
 ];
 
-const categories = uniq(flatMap(posts, post => post.categories));
+const categories = uniq(flatMap(posts, post => post.categories)) as string[];
 
 describe('Search', () => {
   it('should initially render all posts', () => {

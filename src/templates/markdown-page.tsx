@@ -1,9 +1,9 @@
+import { MdxFrontmatter } from '@types';
 import { PageProps } from 'gatsby';
 import React from 'react';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
-import { MdxFrontmatter } from '../types';
 
 type Props = PageProps<unknown, { frontmatter: MdxFrontmatter }>;
 

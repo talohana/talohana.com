@@ -1,6 +1,6 @@
+import { ColorMode } from '@types';
 import React from 'react';
 import { COLORS } from '../styles/colors';
-import { ColorMode } from '../types';
 
 export type ColorModeContextValue = {
   colorMode: ColorMode;

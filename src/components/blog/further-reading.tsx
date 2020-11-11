@@ -1,7 +1,7 @@
+import { Maybe, Mdx } from '@types';
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { Maybe, Mdx } from '../../types';
 import { UppercaseHeading } from '../common/uppercase-heading';
 import { PostPreview } from './post-preview';
 
@@ -13,7 +13,7 @@ type Props = {
 export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
   return (
     <Wrapper>
-      {nextPost && (
+      {nextPost?.fields && (
         <div>
           <StyledUppercaseHeading as="h3" next>
             Next Post
@@ -21,7 +21,7 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
           <PostPreview post={nextPost.fields} />
         </div>
       )}
-      {prevPost && (
+      {prevPost?.fields && (
         <div>
           <StyledUppercaseHeading as="h3">Previous Post</StyledUppercaseHeading>
           <PostPreview post={prevPost.fields} />

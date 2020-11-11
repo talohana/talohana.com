@@ -1,8 +1,8 @@
+import { ColorMode } from '@types';
 import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
-import { ColorMode } from '../../types';
 
 type Props = {
   colorMode: ColorMode;

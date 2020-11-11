@@ -1,7 +1,7 @@
+import { Site } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Site } from '../../types';
 import { OpenGraph } from './open-graph';
 import { Twitter } from './twitter';
 

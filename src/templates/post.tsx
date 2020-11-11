@@ -1,3 +1,4 @@
+import { Maybe, Mdx } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
@@ -7,7 +8,6 @@ import { FurtherReading } from '../components/blog/further-reading';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
-import { Maybe, Mdx } from '../types';
 
 type PageData = {
   mdx: Mdx;

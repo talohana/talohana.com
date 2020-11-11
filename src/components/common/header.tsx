@@ -1,11 +1,11 @@
+import { config } from '@config';
+import { useScrollPosition } from '@hooks/use-scroll-position';
+import { ColorModeContext } from '@providers/color-mode-provider';
+import { ColorMode } from '@types';
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import brand from '../../assets/illustrations/brand.svg';
-import { config } from '../../config/config';
-import { useScrollPosition } from '../../hooks/use-scroll-position';
-import { ColorModeContext } from '../../providers/color-mode-provider';
-import { ColorMode } from '../../types';
 import { DarkModeToggle } from './dark-mode-toggle';
 import { NavLinks } from './nav-links';
 

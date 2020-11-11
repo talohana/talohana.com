@@ -1,10 +1,10 @@
+import { Maybe, MdxFields } from '@types';
 import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import { MdxFields } from '../../types';
 
 type Props = Pick<MdxFields, 'banner' | 'bannerCredit' | 'bannerCreditUrl'> & {
-  bannerAlt?: string;
+  bannerAlt?: Maybe<string>;
 };
 
 export const Banner: React.FC<Props> = ({
@@ -21,7 +21,7 @@ export const Banner: React.FC<Props> = ({
     <div>
       <Image
         fluid={banner.childImageSharp.fluid as FluidObject}
-        alt={bannerAlt}
+        alt={bannerAlt ?? ''}
       />
       {bannerCredit && (
         <Credit>

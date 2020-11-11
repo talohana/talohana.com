@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { File } from '@types';
 import React from 'react';
-import { File } from '../../../types';
 import { Banner } from '../banner';
 
 describe('Banner', () => {

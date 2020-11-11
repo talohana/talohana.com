@@ -1,8 +1,8 @@
+import { File } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import { File } from '../../types';
 import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 

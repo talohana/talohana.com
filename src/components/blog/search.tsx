@@ -1,8 +1,8 @@
+import { useQueryParamState } from '@hooks/use-query-param-state';
+import { MdxFields } from '@types';
 import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { useQueryParamState } from '../../hooks/use-query-param-state';
-import { MdxFields } from '../../types';
 import { Chip } from '../common/chip';
 import { PostPreview } from './post-preview';
 
@@ -39,7 +39,7 @@ export const Search: React.FC<Props> = ({ posts, categories }) => {
     .filter(
       ({ categories }) =>
         isEmpty(search) ||
-        categories?.some(category => search.includes(category))
+        categories?.some(category => category && search.includes(category))
     )
     .map(post => <PostPreview key={post.id} post={post} />);
 

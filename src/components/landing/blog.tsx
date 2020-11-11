@@ -1,8 +1,8 @@
+import { MdxEdge, MdxFields } from '@types';
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { MdxEdge } from '../../types';
 import { PostPreview } from '../blog/post-preview';
 import { Container } from '../common/container';
 
@@ -12,7 +12,7 @@ type Props = {
 
 export const Blog: React.FC<Props> = ({ posts }) => {
   const previews = posts.map(({ node }) => (
-    <PostPreview key={node.id} post={node.fields} />
+    <PostPreview key={node.id} post={node.fields as MdxFields} />
   ));
 
   return (

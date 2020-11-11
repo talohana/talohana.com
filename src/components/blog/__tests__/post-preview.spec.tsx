@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { MdxFields } from '@types';
 import React from 'react';
-import { MdxFields } from '../../../types';
 import { PostPreview } from '../post-preview';
 
 describe('Post Preview', () => {
