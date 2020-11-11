@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { Mdx } from '../../types';
+import { Maybe, Mdx } from '../../types';
 import { UppercaseHeading } from '../common/uppercase-heading';
 import { PostPreview } from './post-preview';
 
 type Props = {
-  nextPost: Mdx | null;
-  prevPost: Mdx | null;
+  nextPost: Maybe<Mdx>;
+  prevPost: Maybe<Mdx>;
 };
 
 export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {

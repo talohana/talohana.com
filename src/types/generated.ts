@@ -676,7 +676,6 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___slug = 'childMdx___frontmatter___slug',
   childMdx___frontmatter___description = 'childMdx___frontmatter___description',
   childMdx___frontmatter___categories = 'childMdx___frontmatter___categories',
-  childMdx___frontmatter___keywords = 'childMdx___frontmatter___keywords',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___banner___sourceInstanceName = 'childMdx___frontmatter___banner___sourceInstanceName',
   childMdx___frontmatter___banner___absolutePath = 'childMdx___frontmatter___banner___absolutePath',
@@ -773,7 +772,6 @@ export enum FileFieldsEnum {
   childMdx___fields___bannerCredit = 'childMdx___fields___bannerCredit',
   childMdx___fields___bannerCreditUrl = 'childMdx___fields___bannerCreditUrl',
   childMdx___fields___categories = 'childMdx___fields___categories',
-  childMdx___fields___keywords = 'childMdx___fields___keywords',
   childMdx___id = 'childMdx___id',
   childMdx___parent___id = 'childMdx___parent___id',
   childMdx___parent___parent___id = 'childMdx___parent___parent___id',
@@ -1453,7 +1451,7 @@ export type Mdx = Node & {
   readonly tableOfContents?: Maybe<Scalars['JSON']>;
   readonly timeToRead?: Maybe<Scalars['Int']>;
   readonly wordCount?: Maybe<MdxWordCount>;
-  readonly fields: MdxFields;
+  readonly fields?: Maybe<MdxFields>;
   readonly id: Scalars['ID'];
   readonly parent?: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -1510,8 +1508,7 @@ export type MdxFields = {
   readonly banner?: Maybe<File>;
   readonly bannerCredit?: Maybe<Scalars['String']>;
   readonly bannerCreditUrl?: Maybe<Scalars['String']>;
-  readonly categories?: Maybe<ReadonlyArray<Scalars['String']>>;
-  readonly keywords?: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly categories?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 export type MdxFieldsDateArgs = {
@@ -1528,7 +1525,6 @@ export enum MdxFieldsEnum {
   frontmatter___slug = 'frontmatter___slug',
   frontmatter___description = 'frontmatter___description',
   frontmatter___categories = 'frontmatter___categories',
-  frontmatter___keywords = 'frontmatter___keywords',
   frontmatter___date = 'frontmatter___date',
   frontmatter___banner___sourceInstanceName = 'frontmatter___banner___sourceInstanceName',
   frontmatter___banner___absolutePath = 'frontmatter___banner___absolutePath',
@@ -1677,7 +1673,6 @@ export enum MdxFieldsEnum {
   fields___bannerCredit = 'fields___bannerCredit',
   fields___bannerCreditUrl = 'fields___bannerCreditUrl',
   fields___categories = 'fields___categories',
-  fields___keywords = 'fields___keywords',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -1776,7 +1771,6 @@ export type MdxFieldsFilterInput = {
   readonly bannerCredit?: Maybe<StringQueryOperatorInput>;
   readonly bannerCreditUrl?: Maybe<StringQueryOperatorInput>;
   readonly categories?: Maybe<StringQueryOperatorInput>;
-  readonly keywords?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxFilterInput = {
@@ -1805,7 +1799,6 @@ export type MdxFrontmatter = {
   readonly slug?: Maybe<Scalars['String']>;
   readonly description?: Maybe<Scalars['String']>;
   readonly categories?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly date?: Maybe<Scalars['Date']>;
   readonly banner?: Maybe<File>;
   readonly bannerCredit?: Maybe<Scalars['String']>;
@@ -1824,7 +1817,6 @@ export type MdxFrontmatterFilterInput = {
   readonly slug?: Maybe<StringQueryOperatorInput>;
   readonly description?: Maybe<StringQueryOperatorInput>;
   readonly categories?: Maybe<StringQueryOperatorInput>;
-  readonly keywords?: Maybe<StringQueryOperatorInput>;
   readonly date?: Maybe<DateQueryOperatorInput>;
   readonly banner?: Maybe<FileFilterInput>;
   readonly bannerCredit?: Maybe<StringQueryOperatorInput>;

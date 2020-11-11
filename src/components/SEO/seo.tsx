@@ -12,13 +12,15 @@ type Props = {
   article?: boolean;
 };
 
-export const SEO: React.FC<Props> = ({
+type PureProps = Props & { site: Site };
+
+export const PureSEO: React.FC<PureProps> = ({
   title,
   description,
   image,
   article,
+  site,
 }) => {
-  const { site } = useStaticQuery<{ site: Site }>(query);
   const {
     defaultTitle,
     titleTemplate,
@@ -62,21 +64,27 @@ export const SEO: React.FC<Props> = ({
   );
 };
 
-const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        defaultTitle
-        titleTemplate
-        description
-        image
-        lang
-        siteUrl
-        twitter
+export const SEO: React.FC<Props> = props => {
+  const query = graphql`
+    query {
+      site {
+        siteMetadata {
+          defaultTitle
+          titleTemplate
+          description
+          image
+          lang
+          siteUrl
+          twitter
+        }
       }
     }
-  }
-`;
+  `;
+
+  const data = useStaticQuery<{ site: Site }>(query);
+
+  return <PureSEO {...data} {...props} />;
+};
 
 SEO.defaultProps = {
   article: false,

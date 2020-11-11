@@ -1,5 +1,4 @@
 import { graphql, PageProps } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
@@ -8,12 +7,12 @@ import { FurtherReading } from '../components/blog/further-reading';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
-import { Mdx } from '../types';
+import { Maybe, Mdx } from '../types';
 
 type PageData = {
   mdx: Mdx;
-  nextPost: Mdx | null;
-  prevPost: Mdx | null;
+  nextPost: Maybe<Mdx>;
+  prevPost: Maybe<Mdx>;
 };
 
 type Props = PageProps<PageData>;
@@ -21,6 +20,11 @@ type Props = PageProps<PageData>;
 const PostTemplate: React.FC<Props> = ({ data }) => {
   const { nextPost, prevPost } = data;
   const { body, fields } = data.mdx;
+
+  if (!fields) {
+    return null;
+  }
+
   const {
     title,
     date,
@@ -30,14 +34,12 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     description,
   } = fields;
 
-  const bannerImage = banner?.childImageSharp?.fluid as FluidObject; // gatsbyjs#12149
-
   return (
     <Layout customSEO>
       <SEO
         title={title}
         description={description}
-        image={bannerImage.src}
+        image={banner?.childImageSharp?.fluid?.src}
         article
       />
       <Container>
@@ -46,10 +48,10 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
         <Banner
-          image={bannerImage}
-          imageAlt={title}
-          credit={bannerCredit}
-          creditUrl={bannerCreditUrl}
+          banner={banner}
+          bannerAlt={title}
+          bannerCredit={bannerCredit}
+          bannerCreditUrl={bannerCreditUrl}
         />
         <MDXRenderer children={body} />
         <hr />
@@ -96,7 +98,6 @@ export const query = graphql`
         title
         description
         categories
-        keywords
         banner {
           childImageSharp {
             fluid {

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import faker from 'faker';
+import { flatMap, uniq } from 'lodash';
 import React from 'react';
 import { MdxFields } from '../../../types';
 import { Search } from '../search';
@@ -16,11 +17,11 @@ const posts = [
   createMockPost({ categories: ['javascript'] }),
 ];
 
+const categories = uniq(flatMap(posts, post => post.categories));
+
 describe('Search', () => {
   it('should initially render all posts', () => {
-    render(
-      <Search posts={posts} categories={['reactjs', 'html', 'javascript']} />
-    );
+    render(<Search posts={posts} categories={categories} />);
 
     posts.forEach(({ title }) => {
       expect(screen.getByText(title)).toBeVisible();
@@ -28,9 +29,7 @@ describe('Search', () => {
   });
 
   it('should filter posts by category', () => {
-    render(
-      <Search posts={posts} categories={['reactjs', 'html', 'javascript']} />
-    );
+    render(<Search posts={posts} categories={categories} />);
 
     const filterElement = screen.getByText('reactjs');
 
@@ -59,7 +58,6 @@ function createMockPost(overrides?: Partial<MdxFields>): StrongMdxFields {
     bannerCredit: faker.internet.userName(),
     bannerCreditUrl: faker.internet.url(),
     categories: [''],
-    keywords: [''],
     ...overrides,
   } as StrongMdxFields;
 }

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { FluidObject } from 'gatsby-image';
 import React from 'react';
+import { File } from '../../../types';
 import { Banner } from '../banner';
 
 describe('Banner', () => {
   it('should not render when image is null', () => {
-    const { container } = render(<Banner image={null} />);
+    const { container } = render(<Banner banner={null} />);
 
     expect(container).toBeEmptyDOMElement();
   });
@@ -15,7 +15,11 @@ describe('Banner', () => {
     const creditUrl = 'https://credit.com';
 
     render(
-      <Banner image={getFluidObject()} credit={credit} creditUrl={creditUrl} />
+      <Banner
+        banner={getBannerFile()}
+        bannerCredit={credit}
+        bannerCreditUrl={creditUrl}
+      />
     );
 
     const creditElement = screen.getByText(credit);
@@ -28,17 +32,21 @@ describe('Banner', () => {
   it('should display image alt', () => {
     const imageAlt = 'Banner Image';
 
-    render(<Banner image={getFluidObject()} imageAlt={imageAlt} />);
+    render(<Banner banner={getBannerFile()} bannerAlt={imageAlt} />);
 
     expect(screen.getByAltText(imageAlt)).toBeInTheDocument();
   });
 });
 
-const getFluidObject = (): FluidObject => {
+const getBannerFile = (): File => {
   return {
-    src: 'my-awesome-picture.png',
-    aspectRatio: 1,
-    sizes: '1920x1080',
-    srcSet: '',
-  };
+    childImageSharp: {
+      fluid: {
+        src: 'my-awesome-picture.png',
+        aspectRatio: 1,
+        sizes: '1920x1080',
+        srcSet: '',
+      },
+    },
+  } as File;
 };

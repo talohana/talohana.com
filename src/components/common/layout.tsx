@@ -8,9 +8,9 @@ import { SEO } from '../SEO/seo';
 import { Footer } from './footer';
 import { Header } from './header';
 
-interface Props {
+type Props = {
   customSEO?: boolean;
-}
+};
 
 export const Layout: React.FC<Props> = ({ children, customSEO }) => {
   return (

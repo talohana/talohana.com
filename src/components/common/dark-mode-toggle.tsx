@@ -4,10 +4,10 @@ import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
 import { ColorMode } from '../../types';
 
-interface Props {
+type Props = {
   colorMode: ColorMode;
   setColorMode: (colorMode: ColorMode) => void;
-}
+};
 
 export const DarkModeToggle: React.FC<Props> = ({
   colorMode,

@@ -101,35 +101,12 @@ const onCreateMdxNode = ({ actions, node }) => {
     node,
     value: node.frontmatter.categories || [],
   });
-
-  createNodeField({
-    name: 'keywords',
-    node,
-    value: node.frontmatter.keywords || [],
-  });
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
-    type MdxFields {
-      id: String
-      title: String
-      description: String
-      slug: String
-      date: Date
-      banner: File
-      bannerCredit: String
-      bannerCreditUrl: String
-      categories: [String!]
-      keywords: [String!]
-    }
-
-    type Mdx {
-      fields: MdxFields!
-    }
-
     type Site {
       siteMetadata: SiteSiteMetadata!
     }

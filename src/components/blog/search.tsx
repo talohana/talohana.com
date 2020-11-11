@@ -8,10 +8,10 @@ import { PostPreview } from './post-preview';
 
 type Post = MdxFields;
 
-interface Props {
+type Props = {
   posts: Post[];
   categories: string[];
-}
+};
 
 export const Search: React.FC<Props> = ({ posts, categories }) => {
   const [search, setSearch] = useQueryParamState('category');
