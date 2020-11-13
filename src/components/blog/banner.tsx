@@ -1,22 +1,33 @@
+import { Maybe, MdxFields } from '@types';
 import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = {
-  fluid: FluidObject;
-  credit?: string;
-  creditUrl?: string;
+type Props = Pick<MdxFields, 'banner' | 'bannerCredit' | 'bannerCreditUrl'> & {
+  bannerAlt?: Maybe<string>;
 };
 
-export const Banner: React.FC<Props> = ({ fluid, credit, creditUrl }) => {
+export const Banner: React.FC<Props> = ({
+  banner,
+  bannerAlt,
+  bannerCredit,
+  bannerCreditUrl,
+}) => {
+  if (!banner?.childImageSharp?.fluid) {
+    return null;
+  }
+
   return (
     <div>
-      <Image fluid={fluid} />
-      {credit && creditUrl && (
+      <Image
+        fluid={banner.childImageSharp.fluid as FluidObject}
+        alt={bannerAlt ?? ''}
+      />
+      {bannerCredit && (
         <Credit>
           Photo by{' '}
-          <a href={creditUrl} target="_blank">
-            {credit}
+          <a href={bannerCreditUrl ?? '/'} target="_blank">
+            {bannerCredit}
           </a>
         </Credit>
       )}

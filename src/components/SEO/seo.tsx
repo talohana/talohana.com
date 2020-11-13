@@ -1,24 +1,26 @@
+import { Site } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Site } from '../../types';
 import { OpenGraph } from './open-graph';
 import { Twitter } from './twitter';
 
 type Props = {
-  title?: string;
-  image?: string;
-  description?: string;
+  title?: string | null;
+  image?: string | null;
+  description?: string | null;
   article?: boolean;
 };
 
-export const SEO: React.FC<Props> = ({
+type PureProps = Props & { site: Site };
+
+export const PureSEO: React.FC<PureProps> = ({
   title,
   description,
   image,
   article,
+  site,
 }) => {
-  const { site } = useStaticQuery<{ site: Site }>(query);
   const {
     defaultTitle,
     titleTemplate,
@@ -62,21 +64,27 @@ export const SEO: React.FC<Props> = ({
   );
 };
 
-const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        defaultTitle
-        titleTemplate
-        description
-        image
-        lang
-        siteUrl
-        twitter
+export const SEO: React.FC<Props> = props => {
+  const query = graphql`
+    query {
+      site {
+        siteMetadata {
+          defaultTitle
+          titleTemplate
+          description
+          image
+          lang
+          siteUrl
+          twitter
+        }
       }
     }
-  }
-`;
+  `;
+
+  const data = useStaticQuery<{ site: Site }>(query);
+
+  return <PureSEO {...data} {...props} />;
+};
 
 SEO.defaultProps = {
   article: false,

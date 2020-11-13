@@ -19,31 +19,31 @@ export const config: Config = {
   },
 };
 
-export interface Config {
+export type Config = {
   social: SocialConfig;
   header: HeaderConfig;
   scroll: ScrollConfig;
   website: WebsiteConfig;
-}
+};
 
-export interface SocialConfig {
+export type SocialConfig = {
   twitter: string;
-}
+};
 
-export interface ScrollConfig {
+export type ScrollConfig = {
   duration: number;
   smooth: boolean;
-}
+};
 
-export interface HeaderConfig {
+export type HeaderConfig = {
   hideThresholdPx: number;
-}
+};
 
-export interface WebsiteConfig {
+export type WebsiteConfig = {
   defaultTitle: string;
   titleTemplate: string;
   description: string;
   image: string;
   lang: string;
   siteUrl: string;
-}
+};

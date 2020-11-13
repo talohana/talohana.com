@@ -2,15 +2,15 @@ import { useLayoutEffect, useRef } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
-interface ScrollPositionInput {
+type ScrollPositionInput = {
   element?: React.MutableRefObject<Element>;
   useWindow: boolean;
-}
+};
 
-interface ScrollPosition {
+type ScrollPosition = {
   x: number;
   y: number;
-}
+};
 
 type ScrollPositionHandlerInput = {
   currentPosition: ScrollPosition;

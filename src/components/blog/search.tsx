@@ -1,15 +1,17 @@
+import { useQueryParamState } from '@hooks/use-query-param-state';
+import { MdxFields } from '@types';
 import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { useQueryParamState } from '../../hooks/use-query-param-state';
-import { MdxEdge } from '../../types';
 import { Chip } from '../common/chip';
 import { PostPreview } from './post-preview';
 
-interface Props {
-  posts: MdxEdge[];
+type Post = MdxFields;
+
+type Props = {
+  posts: Post[];
   categories: string[];
-}
+};
 
 export const Search: React.FC<Props> = ({ posts, categories }) => {
   const [search, setSearch] = useQueryParamState('category');
@@ -35,11 +37,11 @@ export const Search: React.FC<Props> = ({ posts, categories }) => {
 
   const previews = posts
     .filter(
-      ({ node }) =>
+      ({ categories }) =>
         isEmpty(search) ||
-        node.fields.categories.some(category => search.includes(category))
+        categories?.some(category => category && search.includes(category))
     )
-    .map(({ node }) => <PostPreview key={node.id} fields={node.fields} />);
+    .map(post => <PostPreview key={post.id} post={post} />);
 
   return (
     <div>

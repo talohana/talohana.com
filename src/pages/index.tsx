@@ -1,9 +1,9 @@
+import { File, MdxEdge } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
 import { Layout } from '../components/common/layout';
 import { Blog } from '../components/landing/blog';
 import { Hero } from '../components/landing/hero';
-import { File, MdxEdge } from '../types';
 
 type PageData = {
   recentPosts: {

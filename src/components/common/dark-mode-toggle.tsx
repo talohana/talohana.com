@@ -1,13 +1,13 @@
+import { ColorMode } from '@types';
 import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
-import { ColorMode } from '../../types';
 
-interface Props {
+type Props = {
   colorMode: ColorMode;
   setColorMode: (colorMode: ColorMode) => void;
-}
+};
 
 export const DarkModeToggle: React.FC<Props> = ({
   colorMode,
@@ -44,7 +44,10 @@ const HiddenCheckbox = styled.input.attrs({
   display: none;
 `;
 
-const Toggle = styled.label.attrs({ htmlFor: 'dark-toggle' })<{
+const Toggle = styled.label.attrs({
+  htmlFor: 'dark-toggle',
+  'aria-label': 'Toggle Dark Mode',
+})<{
   darkMode: boolean;
 }>`
   display: inline-block;

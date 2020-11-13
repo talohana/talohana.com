@@ -2,10 +2,18 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "baseUrl": ".",
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@types": ["src/types"],
+      "@config": ["src/config/config.ts"],
+      "@providers/*": ["src/providers/*"],
+      "@hooks/*": ["src/hooks/*"]
+    }
   },
   "exclude": ["./node_modules", "./.cache", "./public"],
   "include": ["./src/**/*"]

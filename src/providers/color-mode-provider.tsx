@@ -1,13 +1,13 @@
+import { ColorMode } from '@types';
 import React from 'react';
 import { COLORS } from '../styles/colors';
-import { ColorMode } from '../types';
 
-type ColorModeContext = {
+export type ColorModeContextValue = {
   colorMode: ColorMode;
   setColorMode(mode: ColorMode): void;
 };
 
-const defaultContext: ColorModeContext = {
+const defaultContext: ColorModeContextValue = {
   colorMode: 'light',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setColorMode: () => {},

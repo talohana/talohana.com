@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
@@ -101,39 +104,24 @@ const onCreateMdxNode = ({ actions, node }) => {
     node,
     value: node.frontmatter.categories || [],
   });
-
-  createNodeField({
-    name: 'keywords',
-    node,
-    value: node.frontmatter.keywords || [],
-  });
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
-    type MdxFields {
-      id: String!
-      title: String!
-      description: String!
-      slug: String!
-      date: Date!
-      banner: File!
-      bannerCredit: String!
-      bannerCreditUrl: String!
-      categories: [String!]!
-      keywords: [String!]!
-    }
-
-    type Mdx {
-      fields: MdxFields!
-    }
-
     type Site {
       siteMetadata: SiteSiteMetadata!
     }
   `;
 
   createTypes(typeDefs);
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()],
+    },
+  });
 };

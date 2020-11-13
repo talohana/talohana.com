@@ -1,10 +1,10 @@
+import { MdxEdge, MdxFields } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
 import { Search } from '../components/blog/search';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
-import { MdxEdge } from '../types';
 
 type PageData = {
   posts: {
@@ -17,13 +17,14 @@ type PageData = {
 type Props = PageProps<PageData>;
 
 export const Blog: React.FC<Props> = ({ data }) => {
-  const { posts, categories } = data;
+  const { posts: postEdges, categories } = data;
+  const posts = postEdges.edges.map(edge => edge.node.fields) as MdxFields[];
 
   return (
     <Layout customSEO>
       <Container>
         <SEO title="Blog" />
-        <Search posts={posts.edges} categories={categories.distinct} />
+        <Search posts={posts} categories={categories.distinct} />
       </Container>
     </Layout>
   );
