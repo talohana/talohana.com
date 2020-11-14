@@ -12,7 +12,8 @@
       "@types": ["src/types"],
       "@config": ["src/config/config.ts"],
       "@providers/*": ["src/providers/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@test-utils/*": ["tests/utils/*"]
     }
   },
   "exclude": ["./node_modules", "./.cache", "./public"],

@@ -1,6 +1,9 @@
 export const config: Config = {
   social: {
     twitter: 'https://twitter.com/talohanax',
+    linkedIn: 'https://www.linkedin.com/in/talohana/',
+    github: 'https://github.com/talohana',
+    email: 'tal.ohana.x@gmail.com',
   },
   header: {
     hideThresholdPx: 100,
@@ -28,6 +31,9 @@ export type Config = {
 
 export type SocialConfig = {
   twitter: string;
+  linkedIn: string;
+  github: string;
+  email: string;
 };
 
 export type ScrollConfig = {

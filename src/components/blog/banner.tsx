@@ -1,5 +1,6 @@
 import { Maybe, MdxFields } from '@types';
 import Image, { FluidObject } from 'gatsby-image';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -26,9 +27,9 @@ export const Banner: React.FC<Props> = ({
       {bannerCredit && (
         <Credit>
           Photo by{' '}
-          <a href={bannerCreditUrl ?? '/'} target="_blank">
+          <OutboundLink href={bannerCreditUrl ?? '/'} target="_blank">
             {bannerCredit}
-          </a>
+          </OutboundLink>
         </Credit>
       )}
     </div>
