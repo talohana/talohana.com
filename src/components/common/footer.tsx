@@ -19,10 +19,8 @@ const Wrapper = styled.footer<{ colorMode: ColorMode }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props =>
-    props.colorMode === 'light' ? props.theme.white : props.theme.black};
-  color: ${props =>
-    props.colorMode === 'light' ? props.theme.black : props.theme.white};
+  color: ${props => props.theme.white};
+  background-color: ${props => props.theme.primary};
   height: 10vh;
 `;
 

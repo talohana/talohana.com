@@ -7,7 +7,7 @@ export const Button = styled.button`
   color: ${props => props.theme.white};
   padding: 0.5rem 1rem;
   border: 0;
-  border-radius: 10px;
+  border-radius: 0.2rem;
   transition: all 0.2s;
 
   display: flex;
