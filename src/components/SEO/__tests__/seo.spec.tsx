@@ -1,7 +1,7 @@
+import { getByName } from '@test-utils/custom-queries';
 import { render, waitFor } from '@testing-library/react';
 import { Site, SiteSiteMetadata } from '@types';
 import React from 'react';
-import { getByName } from '../../../../tests/custom-queries';
 import { PureSEO } from '../seo';
 
 describe('SEO', () => {
