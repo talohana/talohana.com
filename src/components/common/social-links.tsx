@@ -55,8 +55,4 @@ const Item = styled.li`
 
 const StyledOutboundLink = styled(OutboundLink)`
   color: inherit;
-
-  &:hover {
-    color: ${props => props.theme.primary};
-  }
 `;

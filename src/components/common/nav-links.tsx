@@ -6,10 +6,10 @@ import styled from 'styled-components';
 export const NavLinks: React.FC = () => {
   return (
     <Wrapper>
-      <NavLink to="/blog" partiallyActive activeClassName="active">
+      <NavLink to="/blog" activeClassName="active">
         blog
       </NavLink>
-      <NavLink to="/about" partiallyActive activeClassName="active">
+      <NavLink to="/about" activeClassName="active">
         about
       </NavLink>
     </Wrapper>

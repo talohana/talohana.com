@@ -5,7 +5,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
-import { SocialLinks } from '../common/social-links';
 
 export const Hero: React.FC = () => {
   const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
@@ -20,7 +19,6 @@ export const Hero: React.FC = () => {
       <StyledContainer>
         <h1>Hi There!</h1>
         <h2>I'm Tal Ohana, a Software Engineer</h2>
-        <SocialLinks />
       </StyledContainer>
     </Wrapper>
   );
