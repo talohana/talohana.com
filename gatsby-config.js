@@ -81,6 +81,7 @@ module.exports = {
         remarkPlugins: [require('remark-emoji')],
       },
     },
+    `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-analytics`,
