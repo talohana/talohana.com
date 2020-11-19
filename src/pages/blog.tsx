@@ -34,6 +34,7 @@ export const query = graphql`
   fragment PostPreview on Mdx {
     id
     fields {
+      id
       title
       description
       date(formatString: "DD MMM, YYYY")
