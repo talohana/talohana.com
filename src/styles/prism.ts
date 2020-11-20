@@ -249,6 +249,7 @@ export const prism = css`
       background-color: #535c68;
     }
 
+    &-sh::before,
     &-shell::before {
       content: 'shell';
       color: #89e051;
@@ -268,6 +269,12 @@ export const prism = css`
     &-css::before {
       content: 'css';
       background-color: #563d7c;
+    }
+
+    &-yml::before,
+    &-yaml::before {
+      content: 'yml';
+      background-color: #cb171e;
     }
   }
 `;

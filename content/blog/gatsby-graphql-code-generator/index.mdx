@@ -1,0 +1,121 @@
+---
+title: Integrate Gatsby and GraphQL Code Generator
+slug: gatsby-graphql-code-generator
+description: |
+  Learn how to take your Gatsby project to the next level with TypeScript and GraphQL Code Generator
+categories: [gatsby, graphql]
+date: 2020-11-20
+banner: ./images/banner.jpg
+bannerCredit: Derek Thomson
+bannerCreditUrl: https://unsplash.com/@derekthomson
+---
+
+> Find the full source code in [this github repository]()
+
+TypeScript is an integral part of the the JavaScript ecosystem, it provides us with type safety, auto completion and many useful features.  
+Gatsby is a static site generator built on top of React. Gatsby data layer is based on GraphQL.
+
+When building with Gatsby, you access data (including this post!) through GraphQL, many of the plugins you use add
+types and nodes to the GraphQL schema.
+
+This can lead to a potential [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) violation, the types exists both in our
+GraphQL schema and in our TypeScript types.
+
+This is exactly where GraphQL Code Generator closes this gap.
+
+---
+
+## What is GraphQL Code Generator
+
+From [GraphQL Code Generator docs](https://graphql-code-generator.com/docs/getting-started/index):
+
+> GraphQL Code Generator is a CLI tool that can generate TypeScript typings out of a GraphQL schema.
+> When we develop a GraphQL backend, there would be many instances where we would find ourselves
+> writing the same things which are already described by the GraphQL schema, only in a different format.
+
+Put it simply, GraphQL Code Generator is a CLI to generate types, it's input is a `.yml` configuration file and it's output is a TypeScript file
+with all generated types.
+
+---
+
+## Example
+
+Let's start with an example, create a Gatsby project using a gatsby-starter-blog
+
+```shell
+npx gatsby new gatsby-codegen-example https://github.com/gatsbyjs/gatsby-starter-blog
+```
+
+Add GraphQL Code Generator
+
+```shell
+npm i -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-operations
+```
+
+Next, we need to configure GraphQL Code Generator, we do this by adding `codegen.yml` file in the root folder.
+Also add a minimal configuration
+
+```yml
+schema: http://localhost:8000/___graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+generates:
+  ./src/graphqlTypes.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      namingConvention:
+        enumValues: 'keep'
+```
+
+Let's go over this step by step
+
+- `schema` - the endpoint of our graphql server
+- `documents` - an array of globs which points to our graphql documents - for example exported queries
+- `plugins` - specific plugins we use to generate the typings under `./src/graphqlTypes.ts`, in our case typescript and typescript-operations
+
+Finally, add the following scripts to our `package.json` file
+
+```json
+{
+  "codegen": "graphql-codegen --config codegen.yml",
+  "postcodegen": "prettier --write ./src/graphqlTypes.ts"
+}
+```
+
+We add two scripts:
+
+- `codegen` - the script which generates our types
+- `postcodegen` - a script that runs after `codegen` to keep the generated file formatted
+
+> Optionally, you can even generate types every time you start the dev server by adding
+>
+> ```json
+> {
+>   "poststart": "npm run codegen"
+> }
+> ```
+
+Fire up the dev server by running `npm start` and after the server is up and running we can start generating our types with `npm run codegen`,
+you should see the following output
+
+```shell
+$ npm run codegen
+
+> gatsby-starter-default@0.1.0 codegen C:\devl\workspace\my-gatsby-project
+> graphql-codegen --config codegen.yml
+
+  √ Parse configuration
+  √ Generate outputs
+
+> gatsby-starter-default@0.1.0 postcodegen C:\devl\workspace\my-gatsby-project
+> prettier --write ./src/graphqlTypes.ts
+
+src\graphqlTypes.ts 838ms
+```
+
+Open `src/graphqlTypes.ts` and inspect the generated types!
+
+> You can fine tune the GraphQL Code Generator options, for example types immutability, override scalar types and more.
+> Read about the available options [here](https://graphql-code-generator.com/docs/plugins/typescript)
