@@ -62,8 +62,11 @@ const Categories = styled.div`
   flex-wrap: wrap;
   margin-bottom: 2rem;
 
-  ${Chip}:not(:last-child) {
-    margin-right: 0.5rem;
+  ${Chip} {
     margin-bottom: 0.5rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
   }
 `;
