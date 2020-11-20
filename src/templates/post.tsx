@@ -32,6 +32,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     bannerCredit,
     bannerCreditUrl,
     description,
+    slug,
   } = fields;
 
   return (
@@ -40,6 +41,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
         title={title}
         description={description}
         image={banner?.childImageSharp?.fluid?.src}
+        blogSlug={slug}
         article
       />
       <Container>

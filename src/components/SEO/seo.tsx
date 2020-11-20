@@ -1,4 +1,4 @@
-import { Site } from '@types';
+import { Maybe, Site } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -6,9 +6,10 @@ import { OpenGraph } from './open-graph';
 import { Twitter } from './twitter';
 
 type Props = {
-  title?: string | null;
-  image?: string | null;
-  description?: string | null;
+  title?: Maybe<string>;
+  image?: Maybe<string>;
+  description?: Maybe<string>;
+  blogSlug?: Maybe<string>;
   article?: boolean;
 };
 
@@ -20,6 +21,7 @@ export const PureSEO: React.FC<PureProps> = ({
   image,
   article,
   site,
+  blogSlug,
 }) => {
   const {
     defaultTitle,
@@ -33,6 +35,7 @@ export const PureSEO: React.FC<PureProps> = ({
 
   const metaImage = `${siteUrl}${image || defaultImage}`;
   const metaDescription = description || defaultDescription;
+  const url = blogSlug ? `${siteUrl}${blogSlug}` : siteUrl;
 
   return (
     <>
@@ -48,7 +51,7 @@ export const PureSEO: React.FC<PureProps> = ({
         )}
       </Helmet>
       <OpenGraph
-        url={siteUrl}
+        url={url}
         title={title}
         description={metaDescription}
         image={metaImage}
