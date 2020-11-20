@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Blockquote = styled.blockquote`
+export const Blockquote = styled.blockquote<{ quote: boolean }>`
   margin: 0;
   margin: 1rem 0;
   padding: 0.25rem 0.5rem;
