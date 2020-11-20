@@ -31,6 +31,7 @@ Layout.defaultProps = {
 };
 
 const Wrapper = styled.div`
+  padding-top: 3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

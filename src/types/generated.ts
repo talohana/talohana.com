@@ -15,6 +15,16 @@ export type Scalars = {
   JSON: { [key: string]: any };
 };
 
+export type BlurredOptions = {
+  /** Width of the generated low-res preview. Default is 20px */
+  readonly width?: Maybe<Scalars['Int']>;
+  /**
+   * Force the output format for the low-res preview. Default is to use the same
+   * format as the input. You should rarely need to change this
+   */
+  readonly toFormat?: Maybe<ImageFormat>;
+};
+
 export type BooleanQueryOperatorInput = {
   readonly eq?: Maybe<Scalars['Boolean']>;
   readonly ne?: Maybe<Scalars['Boolean']>;
@@ -537,6 +547,7 @@ export enum FileFieldsEnum {
   childImageSharp___sizes___originalName = 'childImageSharp___sizes___originalName',
   childImageSharp___sizes___presentationWidth = 'childImageSharp___sizes___presentationWidth',
   childImageSharp___sizes___presentationHeight = 'childImageSharp___sizes___presentationHeight',
+  childImageSharp___gatsbyImageData = 'childImageSharp___gatsbyImageData',
   childImageSharp___original___width = 'childImageSharp___original___width',
   childImageSharp___original___height = 'childImageSharp___original___height',
   childImageSharp___original___src = 'childImageSharp___original___src',
@@ -914,9 +925,23 @@ export enum ImageFit {
 
 export enum ImageFormat {
   NO_CHANGE = 'NO_CHANGE',
+  AUTO = 'AUTO',
   JPG = 'JPG',
   PNG = 'PNG',
   WEBP = 'WEBP',
+}
+
+export enum ImageLayout {
+  FIXED = 'FIXED',
+  FLUID = 'FLUID',
+  CONSTRAINED = 'CONSTRAINED',
+}
+
+export enum ImagePlaceholder {
+  DOMINANT_COLOR = 'DOMINANT_COLOR',
+  TRACED_SVG = 'TRACED_SVG',
+  BLURRED = 'BLURRED',
+  NONE = 'NONE',
 }
 
 export type ImageSharp = Node & {
@@ -927,6 +952,7 @@ export type ImageSharp = Node & {
   readonly fluid?: Maybe<ImageSharpFluid>;
   /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
   readonly sizes?: Maybe<ImageSharpSizes>;
+  readonly gatsbyImageData: Scalars['JSON'];
   readonly original?: Maybe<ImageSharpOriginal>;
   readonly resize?: Maybe<ImageSharpResize>;
   readonly id: Scalars['ID'];
@@ -1027,6 +1053,26 @@ export type ImageSharpSizesArgs = {
   srcSetBreakpoints?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
 };
 
+export type ImageSharpGatsbyImageDataArgs = {
+  layout?: Maybe<ImageLayout>;
+  maxWidth?: Maybe<Scalars['Int']>;
+  maxHeight?: Maybe<Scalars['Int']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  placeholder?: Maybe<ImagePlaceholder>;
+  blurredOptions?: Maybe<BlurredOptions>;
+  tracedSVGOptions?: Maybe<Potrace>;
+  formats?: Maybe<ReadonlyArray<Maybe<ImageFormat>>>;
+  outputPixelDensities?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  sizes?: Maybe<Scalars['String']>;
+  quality?: Maybe<Scalars['Int']>;
+  jpgOptions?: Maybe<JpgOptions>;
+  pngOptions?: Maybe<PngOptions>;
+  webpOptions?: Maybe<WebPOptions>;
+  transformOptions?: Maybe<TransformOptions>;
+  background?: Maybe<Scalars['String']>;
+};
+
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -1121,6 +1167,7 @@ export enum ImageSharpFieldsEnum {
   sizes___originalName = 'sizes___originalName',
   sizes___presentationWidth = 'sizes___presentationWidth',
   sizes___presentationHeight = 'sizes___presentationHeight',
+  gatsbyImageData = 'gatsbyImageData',
   original___width = 'original___width',
   original___height = 'original___height',
   original___src = 'original___src',
@@ -1223,6 +1270,7 @@ export type ImageSharpFilterInput = {
   readonly resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
   readonly fluid?: Maybe<ImageSharpFluidFilterInput>;
   readonly sizes?: Maybe<ImageSharpSizesFilterInput>;
+  readonly gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   readonly original?: Maybe<ImageSharpOriginalFilterInput>;
   readonly resize?: Maybe<ImageSharpResizeFilterInput>;
   readonly id?: Maybe<StringQueryOperatorInput>;
@@ -1428,6 +1476,11 @@ export type IntQueryOperatorInput = {
   readonly nin?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
 };
 
+export type JpgOptions = {
+  readonly quality?: Maybe<Scalars['Int']>;
+  readonly progressive?: Maybe<Scalars['Boolean']>;
+};
+
 export type JsonQueryOperatorInput = {
   readonly eq?: Maybe<Scalars['JSON']>;
   readonly ne?: Maybe<Scalars['JSON']>;
@@ -1560,6 +1613,7 @@ export enum MdxFieldsEnum {
   frontmatter___banner___blksize = 'frontmatter___banner___blksize',
   frontmatter___banner___blocks = 'frontmatter___banner___blocks',
   frontmatter___banner___publicURL = 'frontmatter___banner___publicURL',
+  frontmatter___banner___childImageSharp___gatsbyImageData = 'frontmatter___banner___childImageSharp___gatsbyImageData',
   frontmatter___banner___childImageSharp___id = 'frontmatter___banner___childImageSharp___id',
   frontmatter___banner___childImageSharp___children = 'frontmatter___banner___childImageSharp___children',
   frontmatter___banner___id = 'frontmatter___banner___id',
@@ -1642,6 +1696,7 @@ export enum MdxFieldsEnum {
   fields___banner___blksize = 'fields___banner___blksize',
   fields___banner___blocks = 'fields___banner___blocks',
   fields___banner___publicURL = 'fields___banner___publicURL',
+  fields___banner___childImageSharp___gatsbyImageData = 'fields___banner___childImageSharp___gatsbyImageData',
   fields___banner___childImageSharp___id = 'fields___banner___childImageSharp___id',
   fields___banner___childImageSharp___children = 'fields___banner___childImageSharp___children',
   fields___banner___id = 'fields___banner___id',
@@ -1896,6 +1951,11 @@ export type PageInfo = {
   readonly totalCount: Scalars['Int'];
 };
 
+export type PngOptions = {
+  readonly quality?: Maybe<Scalars['Int']>;
+  readonly compressionSpeed?: Maybe<Scalars['Int']>;
+};
+
 export type Potrace = {
   readonly turnPolicy?: Maybe<PotraceTurnPolicy>;
   readonly turdSize?: Maybe<Scalars['Float']>;
@@ -2060,15 +2120,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 export type QueryAllSitePageArgs = {
@@ -2083,6 +2143,7 @@ export type QueryImageSharpArgs = {
   resolutions?: Maybe<ImageSharpResolutionsFilterInput>;
   fluid?: Maybe<ImageSharpFluidFilterInput>;
   sizes?: Maybe<ImageSharpSizesFilterInput>;
+  gatsbyImageData?: Maybe<JsonQueryOperatorInput>;
   original?: Maybe<ImageSharpOriginalFilterInput>;
   resize?: Maybe<ImageSharpResizeFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2499,15 +2560,15 @@ export type SitePage = Node & {
   readonly internalComponentName: Scalars['String'];
   readonly componentChunkName: Scalars['String'];
   readonly matchPath?: Maybe<Scalars['String']>;
-  readonly id: Scalars['ID'];
-  readonly parent?: Maybe<Node>;
-  readonly children: ReadonlyArray<Node>;
-  readonly internal: Internal;
   readonly isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   readonly context?: Maybe<SitePageContext>;
   readonly pluginCreator?: Maybe<SitePlugin>;
   readonly pluginCreatorId?: Maybe<Scalars['String']>;
   readonly componentPath?: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly parent?: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -2567,6 +2628,119 @@ export enum SitePageFieldsEnum {
   internalComponentName = 'internalComponentName',
   componentChunkName = 'componentChunkName',
   matchPath = 'matchPath',
+  isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  context___id = 'context___id',
+  context___prevId = 'context___prevId',
+  context___nextId = 'context___nextId',
+  context___frontmatter___title = 'context___frontmatter___title',
+  pluginCreator___id = 'pluginCreator___id',
+  pluginCreator___parent___id = 'pluginCreator___parent___id',
+  pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
+  pluginCreator___parent___parent___children = 'pluginCreator___parent___parent___children',
+  pluginCreator___parent___children = 'pluginCreator___parent___children',
+  pluginCreator___parent___children___id = 'pluginCreator___parent___children___id',
+  pluginCreator___parent___children___children = 'pluginCreator___parent___children___children',
+  pluginCreator___parent___internal___content = 'pluginCreator___parent___internal___content',
+  pluginCreator___parent___internal___contentDigest = 'pluginCreator___parent___internal___contentDigest',
+  pluginCreator___parent___internal___description = 'pluginCreator___parent___internal___description',
+  pluginCreator___parent___internal___fieldOwners = 'pluginCreator___parent___internal___fieldOwners',
+  pluginCreator___parent___internal___ignoreType = 'pluginCreator___parent___internal___ignoreType',
+  pluginCreator___parent___internal___mediaType = 'pluginCreator___parent___internal___mediaType',
+  pluginCreator___parent___internal___owner = 'pluginCreator___parent___internal___owner',
+  pluginCreator___parent___internal___type = 'pluginCreator___parent___internal___type',
+  pluginCreator___children = 'pluginCreator___children',
+  pluginCreator___children___id = 'pluginCreator___children___id',
+  pluginCreator___children___parent___id = 'pluginCreator___children___parent___id',
+  pluginCreator___children___parent___children = 'pluginCreator___children___parent___children',
+  pluginCreator___children___children = 'pluginCreator___children___children',
+  pluginCreator___children___children___id = 'pluginCreator___children___children___id',
+  pluginCreator___children___children___children = 'pluginCreator___children___children___children',
+  pluginCreator___children___internal___content = 'pluginCreator___children___internal___content',
+  pluginCreator___children___internal___contentDigest = 'pluginCreator___children___internal___contentDigest',
+  pluginCreator___children___internal___description = 'pluginCreator___children___internal___description',
+  pluginCreator___children___internal___fieldOwners = 'pluginCreator___children___internal___fieldOwners',
+  pluginCreator___children___internal___ignoreType = 'pluginCreator___children___internal___ignoreType',
+  pluginCreator___children___internal___mediaType = 'pluginCreator___children___internal___mediaType',
+  pluginCreator___children___internal___owner = 'pluginCreator___children___internal___owner',
+  pluginCreator___children___internal___type = 'pluginCreator___children___internal___type',
+  pluginCreator___internal___content = 'pluginCreator___internal___content',
+  pluginCreator___internal___contentDigest = 'pluginCreator___internal___contentDigest',
+  pluginCreator___internal___description = 'pluginCreator___internal___description',
+  pluginCreator___internal___fieldOwners = 'pluginCreator___internal___fieldOwners',
+  pluginCreator___internal___ignoreType = 'pluginCreator___internal___ignoreType',
+  pluginCreator___internal___mediaType = 'pluginCreator___internal___mediaType',
+  pluginCreator___internal___owner = 'pluginCreator___internal___owner',
+  pluginCreator___internal___type = 'pluginCreator___internal___type',
+  pluginCreator___resolve = 'pluginCreator___resolve',
+  pluginCreator___name = 'pluginCreator___name',
+  pluginCreator___version = 'pluginCreator___version',
+  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
+  pluginCreator___pluginOptions___fileName = 'pluginCreator___pluginOptions___fileName',
+  pluginCreator___pluginOptions___minify = 'pluginCreator___pluginOptions___minify',
+  pluginCreator___pluginOptions___transpileTemplateLiterals = 'pluginCreator___pluginOptions___transpileTemplateLiterals',
+  pluginCreator___pluginOptions___pure = 'pluginCreator___pluginOptions___pure',
+  pluginCreator___pluginOptions___pathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
+  pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
+  pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
+  pluginCreator___pluginOptions___base64Width = 'pluginCreator___pluginOptions___base64Width',
+  pluginCreator___pluginOptions___stripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
+  pluginCreator___pluginOptions___defaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
+  pluginCreator___pluginOptions___failOnError = 'pluginCreator___pluginOptions___failOnError',
+  pluginCreator___pluginOptions___maxWidth = 'pluginCreator___pluginOptions___maxWidth',
+  pluginCreator___pluginOptions___linkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
+  pluginCreator___pluginOptions___showCaptions = 'pluginCreator___pluginOptions___showCaptions',
+  pluginCreator___pluginOptions___markdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
+  pluginCreator___pluginOptions___sizeByPixelDensity = 'pluginCreator___pluginOptions___sizeByPixelDensity',
+  pluginCreator___pluginOptions___backgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
+  pluginCreator___pluginOptions___quality = 'pluginCreator___pluginOptions___quality',
+  pluginCreator___pluginOptions___withWebp = 'pluginCreator___pluginOptions___withWebp',
+  pluginCreator___pluginOptions___tracedSVG = 'pluginCreator___pluginOptions___tracedSVG',
+  pluginCreator___pluginOptions___loading = 'pluginCreator___pluginOptions___loading',
+  pluginCreator___pluginOptions___disableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
+  pluginCreator___pluginOptions___disableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
+  pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
+  pluginCreator___pluginOptions___defaultLayouts___default = 'pluginCreator___pluginOptions___defaultLayouts___default',
+  pluginCreator___pluginOptions___mediaTypes = 'pluginCreator___pluginOptions___mediaTypes',
+  pluginCreator___pluginOptions___head = 'pluginCreator___pluginOptions___head',
+  pluginCreator___pluginOptions___anonymize = 'pluginCreator___pluginOptions___anonymize',
+  pluginCreator___pluginOptions___respectDNT = 'pluginCreator___pluginOptions___respectDNT',
+  pluginCreator___pluginOptions___pageTransitionDelay = 'pluginCreator___pluginOptions___pageTransitionDelay',
+  pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
+  pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
+  pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator___pluginOptions___theme_color_in_head',
+  pluginCreator___pluginOptions___display = 'pluginCreator___pluginOptions___display',
+  pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
+  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
+  pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
+  pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  pluginCreator___pluginOptions___output = 'pluginCreator___pluginOptions___output',
+  pluginCreator___pluginOptions___createLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
+  pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
+  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
+  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
+  pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
+  pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
+  pluginCreator___pluginFilepath = 'pluginCreator___pluginFilepath',
+  pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
+  pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
+  pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
+  pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
+  pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
+  pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
+  pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
+  pluginCreator___packageJson___dependencies___version = 'pluginCreator___packageJson___dependencies___version',
+  pluginCreator___packageJson___devDependencies = 'pluginCreator___packageJson___devDependencies',
+  pluginCreator___packageJson___devDependencies___name = 'pluginCreator___packageJson___devDependencies___name',
+  pluginCreator___packageJson___devDependencies___version = 'pluginCreator___packageJson___devDependencies___version',
+  pluginCreator___packageJson___peerDependencies = 'pluginCreator___packageJson___peerDependencies',
+  pluginCreator___packageJson___peerDependencies___name = 'pluginCreator___packageJson___peerDependencies___name',
+  pluginCreator___packageJson___peerDependencies___version = 'pluginCreator___packageJson___peerDependencies___version',
+  pluginCreator___packageJson___keywords = 'pluginCreator___packageJson___keywords',
+  pluginCreatorId = 'pluginCreatorId',
+  componentPath = 'componentPath',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -2653,94 +2827,6 @@ export enum SitePageFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
-  isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
-  context___id = 'context___id',
-  context___prevId = 'context___prevId',
-  context___nextId = 'context___nextId',
-  context___frontmatter___title = 'context___frontmatter___title',
-  pluginCreator___id = 'pluginCreator___id',
-  pluginCreator___parent___id = 'pluginCreator___parent___id',
-  pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
-  pluginCreator___parent___parent___children = 'pluginCreator___parent___parent___children',
-  pluginCreator___parent___children = 'pluginCreator___parent___children',
-  pluginCreator___parent___children___id = 'pluginCreator___parent___children___id',
-  pluginCreator___parent___children___children = 'pluginCreator___parent___children___children',
-  pluginCreator___parent___internal___content = 'pluginCreator___parent___internal___content',
-  pluginCreator___parent___internal___contentDigest = 'pluginCreator___parent___internal___contentDigest',
-  pluginCreator___parent___internal___description = 'pluginCreator___parent___internal___description',
-  pluginCreator___parent___internal___fieldOwners = 'pluginCreator___parent___internal___fieldOwners',
-  pluginCreator___parent___internal___ignoreType = 'pluginCreator___parent___internal___ignoreType',
-  pluginCreator___parent___internal___mediaType = 'pluginCreator___parent___internal___mediaType',
-  pluginCreator___parent___internal___owner = 'pluginCreator___parent___internal___owner',
-  pluginCreator___parent___internal___type = 'pluginCreator___parent___internal___type',
-  pluginCreator___children = 'pluginCreator___children',
-  pluginCreator___children___id = 'pluginCreator___children___id',
-  pluginCreator___children___parent___id = 'pluginCreator___children___parent___id',
-  pluginCreator___children___parent___children = 'pluginCreator___children___parent___children',
-  pluginCreator___children___children = 'pluginCreator___children___children',
-  pluginCreator___children___children___id = 'pluginCreator___children___children___id',
-  pluginCreator___children___children___children = 'pluginCreator___children___children___children',
-  pluginCreator___children___internal___content = 'pluginCreator___children___internal___content',
-  pluginCreator___children___internal___contentDigest = 'pluginCreator___children___internal___contentDigest',
-  pluginCreator___children___internal___description = 'pluginCreator___children___internal___description',
-  pluginCreator___children___internal___fieldOwners = 'pluginCreator___children___internal___fieldOwners',
-  pluginCreator___children___internal___ignoreType = 'pluginCreator___children___internal___ignoreType',
-  pluginCreator___children___internal___mediaType = 'pluginCreator___children___internal___mediaType',
-  pluginCreator___children___internal___owner = 'pluginCreator___children___internal___owner',
-  pluginCreator___children___internal___type = 'pluginCreator___children___internal___type',
-  pluginCreator___internal___content = 'pluginCreator___internal___content',
-  pluginCreator___internal___contentDigest = 'pluginCreator___internal___contentDigest',
-  pluginCreator___internal___description = 'pluginCreator___internal___description',
-  pluginCreator___internal___fieldOwners = 'pluginCreator___internal___fieldOwners',
-  pluginCreator___internal___ignoreType = 'pluginCreator___internal___ignoreType',
-  pluginCreator___internal___mediaType = 'pluginCreator___internal___mediaType',
-  pluginCreator___internal___owner = 'pluginCreator___internal___owner',
-  pluginCreator___internal___type = 'pluginCreator___internal___type',
-  pluginCreator___resolve = 'pluginCreator___resolve',
-  pluginCreator___name = 'pluginCreator___name',
-  pluginCreator___version = 'pluginCreator___version',
-  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
-  pluginCreator___pluginOptions___pathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
-  pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
-  pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
-  pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
-  pluginCreator___pluginOptions___defaultLayouts___default = 'pluginCreator___pluginOptions___defaultLayouts___default',
-  pluginCreator___pluginOptions___head = 'pluginCreator___pluginOptions___head',
-  pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
-  pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
-  pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator___pluginOptions___theme_color_in_head',
-  pluginCreator___pluginOptions___display = 'pluginCreator___pluginOptions___display',
-  pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
-  pluginCreator___pluginOptions___cache_busting_mode = 'pluginCreator___pluginOptions___cache_busting_mode',
-  pluginCreator___pluginOptions___include_favicon = 'pluginCreator___pluginOptions___include_favicon',
-  pluginCreator___pluginOptions___legacy = 'pluginCreator___pluginOptions___legacy',
-  pluginCreator___pluginOptions___cacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
-  pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
-  pluginCreator___pluginOptions___allExtensions = 'pluginCreator___pluginOptions___allExtensions',
-  pluginCreator___pluginOptions___isTSX = 'pluginCreator___pluginOptions___isTSX',
-  pluginCreator___pluginOptions___jsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
-  pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
-  pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
-  pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
-  pluginCreator___pluginFilepath = 'pluginCreator___pluginFilepath',
-  pluginCreator___packageJson___name = 'pluginCreator___packageJson___name',
-  pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
-  pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
-  pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
-  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
-  pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
-  pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
-  pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
-  pluginCreator___packageJson___dependencies___version = 'pluginCreator___packageJson___dependencies___version',
-  pluginCreator___packageJson___devDependencies = 'pluginCreator___packageJson___devDependencies',
-  pluginCreator___packageJson___devDependencies___name = 'pluginCreator___packageJson___devDependencies___name',
-  pluginCreator___packageJson___devDependencies___version = 'pluginCreator___packageJson___devDependencies___version',
-  pluginCreator___packageJson___peerDependencies = 'pluginCreator___packageJson___peerDependencies',
-  pluginCreator___packageJson___peerDependencies___name = 'pluginCreator___packageJson___peerDependencies___name',
-  pluginCreator___packageJson___peerDependencies___version = 'pluginCreator___packageJson___peerDependencies___version',
-  pluginCreator___packageJson___keywords = 'pluginCreator___packageJson___keywords',
-  pluginCreatorId = 'pluginCreatorId',
-  componentPath = 'componentPath',
 }
 
 export type SitePageFilterInput = {
@@ -2749,15 +2835,15 @@ export type SitePageFilterInput = {
   readonly internalComponentName?: Maybe<StringQueryOperatorInput>;
   readonly componentChunkName?: Maybe<StringQueryOperatorInput>;
   readonly matchPath?: Maybe<StringQueryOperatorInput>;
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly parent?: Maybe<NodeFilterInput>;
-  readonly children?: Maybe<NodeFilterListInput>;
-  readonly internal?: Maybe<InternalFilterInput>;
   readonly isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   readonly context?: Maybe<SitePageContextFilterInput>;
   readonly pluginCreator?: Maybe<SitePluginFilterInput>;
   readonly pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   readonly componentPath?: Maybe<StringQueryOperatorInput>;
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly parent?: Maybe<NodeFilterInput>;
+  readonly children?: Maybe<NodeFilterListInput>;
+  readonly internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -2910,12 +2996,36 @@ export enum SitePluginFieldsEnum {
   name = 'name',
   version = 'version',
   pluginOptions___displayName = 'pluginOptions___displayName',
+  pluginOptions___fileName = 'pluginOptions___fileName',
+  pluginOptions___minify = 'pluginOptions___minify',
+  pluginOptions___transpileTemplateLiterals = 'pluginOptions___transpileTemplateLiterals',
+  pluginOptions___pure = 'pluginOptions___pure',
   pluginOptions___pathToConfigModule = 'pluginOptions___pathToConfigModule',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___path = 'pluginOptions___path',
+  pluginOptions___base64Width = 'pluginOptions___base64Width',
+  pluginOptions___stripMetadata = 'pluginOptions___stripMetadata',
+  pluginOptions___defaultQuality = 'pluginOptions___defaultQuality',
+  pluginOptions___failOnError = 'pluginOptions___failOnError',
+  pluginOptions___maxWidth = 'pluginOptions___maxWidth',
+  pluginOptions___linkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
+  pluginOptions___showCaptions = 'pluginOptions___showCaptions',
+  pluginOptions___markdownCaptions = 'pluginOptions___markdownCaptions',
+  pluginOptions___sizeByPixelDensity = 'pluginOptions___sizeByPixelDensity',
+  pluginOptions___backgroundColor = 'pluginOptions___backgroundColor',
+  pluginOptions___quality = 'pluginOptions___quality',
+  pluginOptions___withWebp = 'pluginOptions___withWebp',
+  pluginOptions___tracedSVG = 'pluginOptions___tracedSVG',
+  pluginOptions___loading = 'pluginOptions___loading',
+  pluginOptions___disableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
+  pluginOptions___disableBgImage = 'pluginOptions___disableBgImage',
   pluginOptions___extensions = 'pluginOptions___extensions',
   pluginOptions___defaultLayouts___default = 'pluginOptions___defaultLayouts___default',
+  pluginOptions___mediaTypes = 'pluginOptions___mediaTypes',
   pluginOptions___head = 'pluginOptions___head',
+  pluginOptions___anonymize = 'pluginOptions___anonymize',
+  pluginOptions___respectDNT = 'pluginOptions___respectDNT',
+  pluginOptions___pageTransitionDelay = 'pluginOptions___pageTransitionDelay',
   pluginOptions___short_name = 'pluginOptions___short_name',
   pluginOptions___start_url = 'pluginOptions___start_url',
   pluginOptions___theme_color_in_head = 'pluginOptions___theme_color_in_head',
@@ -2925,6 +3035,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___include_favicon = 'pluginOptions___include_favicon',
   pluginOptions___legacy = 'pluginOptions___legacy',
   pluginOptions___cacheDigest = 'pluginOptions___cacheDigest',
+  pluginOptions___output = 'pluginOptions___output',
+  pluginOptions___createLinkInHead = 'pluginOptions___createLinkInHead',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
   pluginOptions___allExtensions = 'pluginOptions___allExtensions',
   pluginOptions___isTSX = 'pluginOptions___isTSX',
@@ -2937,7 +3049,6 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
-  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -2983,7 +3094,6 @@ export type SitePluginPackageJson = {
   readonly description?: Maybe<Scalars['String']>;
   readonly version?: Maybe<Scalars['String']>;
   readonly main?: Maybe<Scalars['String']>;
-  readonly author?: Maybe<Scalars['String']>;
   readonly license?: Maybe<Scalars['String']>;
   readonly dependencies?: Maybe<
     ReadonlyArray<Maybe<SitePluginPackageJsonDependencies>>
@@ -3032,7 +3142,6 @@ export type SitePluginPackageJsonFilterInput = {
   readonly description?: Maybe<StringQueryOperatorInput>;
   readonly version?: Maybe<StringQueryOperatorInput>;
   readonly main?: Maybe<StringQueryOperatorInput>;
-  readonly author?: Maybe<StringQueryOperatorInput>;
   readonly license?: Maybe<StringQueryOperatorInput>;
   readonly dependencies?: Maybe<
     SitePluginPackageJsonDependenciesFilterListInput
@@ -3064,12 +3173,36 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   readonly __typename?: 'SitePluginPluginOptions';
   readonly displayName?: Maybe<Scalars['Boolean']>;
+  readonly fileName?: Maybe<Scalars['Boolean']>;
+  readonly minify?: Maybe<Scalars['Boolean']>;
+  readonly transpileTemplateLiterals?: Maybe<Scalars['Boolean']>;
+  readonly pure?: Maybe<Scalars['Boolean']>;
   readonly pathToConfigModule?: Maybe<Scalars['String']>;
   readonly name?: Maybe<Scalars['String']>;
   readonly path?: Maybe<Scalars['String']>;
+  readonly base64Width?: Maybe<Scalars['Int']>;
+  readonly stripMetadata?: Maybe<Scalars['Boolean']>;
+  readonly defaultQuality?: Maybe<Scalars['Int']>;
+  readonly failOnError?: Maybe<Scalars['Boolean']>;
+  readonly maxWidth?: Maybe<Scalars['Int']>;
+  readonly linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
+  readonly showCaptions?: Maybe<Scalars['Boolean']>;
+  readonly markdownCaptions?: Maybe<Scalars['Boolean']>;
+  readonly sizeByPixelDensity?: Maybe<Scalars['Boolean']>;
+  readonly backgroundColor?: Maybe<Scalars['String']>;
+  readonly quality?: Maybe<Scalars['Int']>;
+  readonly withWebp?: Maybe<Scalars['Boolean']>;
+  readonly tracedSVG?: Maybe<Scalars['Boolean']>;
+  readonly loading?: Maybe<Scalars['String']>;
+  readonly disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
+  readonly disableBgImage?: Maybe<Scalars['Boolean']>;
   readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
+  readonly mediaTypes?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly head?: Maybe<Scalars['Boolean']>;
+  readonly anonymize?: Maybe<Scalars['Boolean']>;
+  readonly respectDNT?: Maybe<Scalars['Boolean']>;
+  readonly pageTransitionDelay?: Maybe<Scalars['Int']>;
   readonly short_name?: Maybe<Scalars['String']>;
   readonly start_url?: Maybe<Scalars['String']>;
   readonly theme_color_in_head?: Maybe<Scalars['Boolean']>;
@@ -3079,6 +3212,8 @@ export type SitePluginPluginOptions = {
   readonly include_favicon?: Maybe<Scalars['Boolean']>;
   readonly legacy?: Maybe<Scalars['Boolean']>;
   readonly cacheDigest?: Maybe<Scalars['String']>;
+  readonly output?: Maybe<Scalars['String']>;
+  readonly createLinkInHead?: Maybe<Scalars['Boolean']>;
   readonly pathCheck?: Maybe<Scalars['Boolean']>;
   readonly allExtensions?: Maybe<Scalars['Boolean']>;
   readonly isTSX?: Maybe<Scalars['Boolean']>;
@@ -3096,14 +3231,38 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   readonly displayName?: Maybe<BooleanQueryOperatorInput>;
+  readonly fileName?: Maybe<BooleanQueryOperatorInput>;
+  readonly minify?: Maybe<BooleanQueryOperatorInput>;
+  readonly transpileTemplateLiterals?: Maybe<BooleanQueryOperatorInput>;
+  readonly pure?: Maybe<BooleanQueryOperatorInput>;
   readonly pathToConfigModule?: Maybe<StringQueryOperatorInput>;
   readonly name?: Maybe<StringQueryOperatorInput>;
   readonly path?: Maybe<StringQueryOperatorInput>;
+  readonly base64Width?: Maybe<IntQueryOperatorInput>;
+  readonly stripMetadata?: Maybe<BooleanQueryOperatorInput>;
+  readonly defaultQuality?: Maybe<IntQueryOperatorInput>;
+  readonly failOnError?: Maybe<BooleanQueryOperatorInput>;
+  readonly maxWidth?: Maybe<IntQueryOperatorInput>;
+  readonly linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
+  readonly showCaptions?: Maybe<BooleanQueryOperatorInput>;
+  readonly markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
+  readonly sizeByPixelDensity?: Maybe<BooleanQueryOperatorInput>;
+  readonly backgroundColor?: Maybe<StringQueryOperatorInput>;
+  readonly quality?: Maybe<IntQueryOperatorInput>;
+  readonly withWebp?: Maybe<BooleanQueryOperatorInput>;
+  readonly tracedSVG?: Maybe<BooleanQueryOperatorInput>;
+  readonly loading?: Maybe<StringQueryOperatorInput>;
+  readonly disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
+  readonly disableBgImage?: Maybe<BooleanQueryOperatorInput>;
   readonly extensions?: Maybe<StringQueryOperatorInput>;
   readonly defaultLayouts?: Maybe<
     SitePluginPluginOptionsDefaultLayoutsFilterInput
   >;
+  readonly mediaTypes?: Maybe<StringQueryOperatorInput>;
   readonly head?: Maybe<BooleanQueryOperatorInput>;
+  readonly anonymize?: Maybe<BooleanQueryOperatorInput>;
+  readonly respectDNT?: Maybe<BooleanQueryOperatorInput>;
+  readonly pageTransitionDelay?: Maybe<IntQueryOperatorInput>;
   readonly short_name?: Maybe<StringQueryOperatorInput>;
   readonly start_url?: Maybe<StringQueryOperatorInput>;
   readonly theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
@@ -3113,6 +3272,8 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly include_favicon?: Maybe<BooleanQueryOperatorInput>;
   readonly legacy?: Maybe<BooleanQueryOperatorInput>;
   readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
+  readonly output?: Maybe<StringQueryOperatorInput>;
+  readonly createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
   readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
   readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
   readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
@@ -3164,4 +3325,17 @@ export type StringQueryOperatorInput = {
   readonly nin?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly regex?: Maybe<Scalars['String']>;
   readonly glob?: Maybe<Scalars['String']>;
+};
+
+export type TransformOptions = {
+  readonly grayscale?: Maybe<Scalars['Boolean']>;
+  readonly duotone?: Maybe<DuotoneGradient>;
+  readonly rotate?: Maybe<Scalars['Int']>;
+  readonly trim?: Maybe<Scalars['Float']>;
+  readonly cropFocus?: Maybe<ImageCropFocus>;
+  readonly fit?: Maybe<ImageFit>;
+};
+
+export type WebPOptions = {
+  readonly quality?: Maybe<Scalars['Int']>;
 };

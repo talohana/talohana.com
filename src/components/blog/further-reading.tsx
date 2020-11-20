@@ -48,7 +48,6 @@ const Wrapper = styled.div`
 `;
 
 const StyledUppercaseHeading = styled(UppercaseHeading)<{ next?: boolean }>`
-  font-weight: 200;
   text-align: ${props => (props.next ? 'right' : 'left')};
   color: ${props => props.theme.primary};
 `;

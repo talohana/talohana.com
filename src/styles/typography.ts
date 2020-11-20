@@ -30,7 +30,7 @@ const typography = new Typography({
     'Segoe UI Symbol',
   ],
   scaleRatio: 3.157,
-  headerWeight: 700,
+  headerWeight: 400,
   overrideStyles: () => ({
     img: {
       marginBottom: 0,

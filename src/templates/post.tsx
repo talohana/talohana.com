@@ -2,6 +2,7 @@ import { Maybe, Mdx } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
+import { UppercaseHeading } from 'src/components/common/uppercase-heading';
 import styled from 'styled-components';
 import { Banner } from '../components/blog/banner';
 import { FurtherReading } from '../components/blog/further-reading';
@@ -46,8 +47,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       />
       <Container>
         <PostInfo>
-          <PostTitle>{title}</PostTitle>
-          <PublishInfo>{date} - by Tal Ohana</PublishInfo>
+          <h1>{title}</h1>
+          <UppercaseHeading as="h4">{date} - by Tal Ohana</UppercaseHeading>
         </PostInfo>
         <Banner
           banner={banner}
@@ -63,17 +64,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
   );
 };
 
-const PostTitle = styled.h1`
-  font-weight: 300;
-`;
-
 const PostInfo = styled.div`
   text-align: center;
-`;
-
-const PublishInfo = styled.h4`
-  text-transform: uppercase;
-  font-weight: 300;
 `;
 
 export const query = graphql`
