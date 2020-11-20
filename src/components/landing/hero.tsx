@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
   const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
 
   const backgroundImageStack = [
-    'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65))',
+    'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))',
     heroImage.childImageSharp?.fluid as FluidObject,
   ];
 
@@ -34,11 +34,19 @@ const StyledContainer = styled(Container)`
   justify-content: center;
   height: 100%;
   color: ${props => props.theme.white};
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
 `;
 
 const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "hero.jpg" }) {
+    heroImage: file(relativePath: { eq: "hero.webp" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1920) {
           ...GatsbyImageSharpFluid

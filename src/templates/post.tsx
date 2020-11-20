@@ -46,7 +46,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       />
       <Container>
         <PostInfo>
-          <PostTitle>{title}</PostTitle>
+          <h1>{title}</h1>
           <PublishInfo>{date} - by Tal Ohana</PublishInfo>
         </PostInfo>
         <Banner
@@ -63,17 +63,12 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
   );
 };
 
-const PostTitle = styled.h1`
-  font-weight: 300;
-`;
-
 const PostInfo = styled.div`
   text-align: center;
 `;
 
 const PublishInfo = styled.h4`
   text-transform: uppercase;
-  font-weight: 300;
 `;
 
 export const query = graphql`
