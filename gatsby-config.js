@@ -101,6 +101,7 @@ module.exports = {
         icon: `src/images/favicon-512x512.png`,
       },
     },
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
   ],
