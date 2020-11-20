@@ -64,5 +64,6 @@ const Categories = styled.div`
 
   ${Chip}:not(:last-child) {
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 `;
