@@ -43,7 +43,7 @@
     "gatsby-remark-embedder": "^4.1.0",
     "gatsby-remark-images": "^3.6.0",
     "gatsby-remark-prismjs": "^3.8.0",
-    "gatsby-source-filesystem": "^2.6.0",
+    "gatsby-source-filesystem": "^2.6.1",
     "gatsby-transformer-sharp": "^2.7.0",
     "lodash": "^4.17.20",
     "polished": "^4.0.5",
