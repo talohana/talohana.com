@@ -18,7 +18,7 @@ const NotFoundPage: React.FC = () => (
           existed!
         </p>
         <div>
-          Let's go back <HomeLink to="/">home</HomeLink>
+          Let&apos;s go back <HomeLink to="/">home</HomeLink>
         </div>
       </Container>
     </Wrapper>

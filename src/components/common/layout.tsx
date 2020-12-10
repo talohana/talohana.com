@@ -31,7 +31,6 @@ Layout.defaultProps = {
 };
 
 const Wrapper = styled.div`
-  padding-top: 3rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,7 +53,6 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    /* padding-top: 3rem; */
   }
 
   ::selection {
@@ -63,7 +61,6 @@ const GlobalStyles = createGlobalStyle`
   
   a {
     color: ${props => props.theme.primary};
-    transition: all 0.4s ease-in-out;
     text-decoration: none;
     font-weight: 700;
     
@@ -93,10 +90,4 @@ const GlobalStyles = createGlobalStyle`
       font-size: 0.563rem !important;
     }
  `}
-
- .autolink-header svg {
-   width: 1.2rem;
-   height: 1.2rem;
-   fill: ${({ theme }) => theme.primary}
- }
 `;

@@ -7,6 +7,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier', 'jest'],
   rules: {
+    'react/prop-types': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
@@ -21,7 +22,14 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };

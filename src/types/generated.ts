@@ -3143,15 +3143,9 @@ export type SitePluginPackageJsonFilterInput = {
   readonly version?: Maybe<StringQueryOperatorInput>;
   readonly main?: Maybe<StringQueryOperatorInput>;
   readonly license?: Maybe<StringQueryOperatorInput>;
-  readonly dependencies?: Maybe<
-    SitePluginPackageJsonDependenciesFilterListInput
-  >;
-  readonly devDependencies?: Maybe<
-    SitePluginPackageJsonDevDependenciesFilterListInput
-  >;
-  readonly peerDependencies?: Maybe<
-    SitePluginPackageJsonPeerDependenciesFilterListInput
-  >;
+  readonly dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
+  readonly devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
+  readonly peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>;
   readonly keywords?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -3255,9 +3249,7 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
   readonly disableBgImage?: Maybe<BooleanQueryOperatorInput>;
   readonly extensions?: Maybe<StringQueryOperatorInput>;
-  readonly defaultLayouts?: Maybe<
-    SitePluginPluginOptionsDefaultLayoutsFilterInput
-  >;
+  readonly defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>;
   readonly mediaTypes?: Maybe<StringQueryOperatorInput>;
   readonly head?: Maybe<BooleanQueryOperatorInput>;
   readonly anonymize?: Maybe<BooleanQueryOperatorInput>;

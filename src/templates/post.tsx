@@ -56,7 +56,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           bannerCredit={bannerCredit}
           bannerCreditUrl={bannerCreditUrl}
         />
-        <MDXRenderer children={body} />
+        <MDXRenderer>{body}</MDXRenderer>
         <hr />
         <FurtherReading prevPost={prevPost} nextPost={nextPost} />
       </Container>
