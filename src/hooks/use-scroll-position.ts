@@ -41,21 +41,20 @@ export function useScrollPosition(
   deps: React.DependencyList | undefined = []
 ): void {
   const position = useRef(getScrollPosition({ useWindow }));
-
-  let throttleTimeout: ReturnType<typeof setTimeout> | null;
+  const throttleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const callback = () => {
     const currentPosition = getScrollPosition({ element, useWindow });
     effect({ previousPosition: position.current, currentPosition });
     position.current = currentPosition;
-    throttleTimeout = null;
+    throttleTimeout.current = null;
   };
 
   useLayoutEffect(() => {
     const handleScroll = () => {
       if (waitMilliseconds) {
-        if (throttleTimeout === null) {
-          throttleTimeout = setTimeout(callback, waitMilliseconds);
+        if (throttleTimeout.current === null) {
+          throttleTimeout.current = setTimeout(callback, waitMilliseconds);
         }
       } else {
         callback();
@@ -67,8 +66,8 @@ export function useScrollPosition(
     return () => {
       window.removeEventListener('scroll', handleScroll);
 
-      if (throttleTimeout) {
-        clearTimeout(throttleTimeout);
+      if (throttleTimeout.current) {
+        clearTimeout(throttleTimeout.current);
       }
     };
   }, deps);

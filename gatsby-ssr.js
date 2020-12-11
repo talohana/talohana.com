@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-var-requires, react/display-name */
 
 const React = require('react');
 const { ColorModeProvider } = require('./src/providers/color-mode-provider');

@@ -24,7 +24,7 @@ export function useQueryParamState(
     }
 
     window.history.replaceState(window.history.state, '', newUrl.toString());
-  }, [value, setValue]);
+  }, [value, setValue, searchParamName]);
 
   return [value, setValue];
 }

@@ -18,7 +18,7 @@ export const Hero: React.FC = () => {
     <Wrapper fluid={backgroundImageStack}>
       <StyledContainer>
         <h1>Hi There!</h1>
-        <h2>I'm Tal Ohana, a Software Engineer</h2>
+        <h2>I&apos;m Tal Ohana, a Software Engineer</h2>
       </StyledContainer>
     </Wrapper>
   );
