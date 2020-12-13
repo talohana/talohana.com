@@ -47,6 +47,7 @@
     "gatsby-transformer-sharp": "^2.7.0",
     "lodash": "^4.17.20",
     "polished": "^4.0.5",
+    "postcss": "^8.2.1",
     "prismjs": "^1.22.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -56,7 +57,9 @@
     "react-typography": "^0.16.19",
     "remark-emoji": "^2.1.0",
     "styled-components": "^5.2.0",
-    "styled-media-query": "^2.1.2",
+    "styled-normalize": "^8.0.7",
+    "tailwindcss": "^2.0.2",
+    "twin.macro": "^2.0.7",
     "typography": "^0.16.19"
   },
   "devDependencies": {
@@ -102,6 +105,11 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
+    }
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
     }
   }
 }

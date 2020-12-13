@@ -1,10 +1,11 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import notFound from '../assets/illustrations/404.svg';
+import tw from 'twin.macro';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
+import notFound from '../images/404.svg';
 
 const NotFoundPage: React.FC = () => (
   <Layout customSEO>
@@ -18,7 +19,7 @@ const NotFoundPage: React.FC = () => (
           existed!
         </p>
         <div>
-          Let&apos;s go back <HomeLink to="/">home</HomeLink>
+          Let&apos;s go back <Link to="/">home</Link>
         </div>
       </Container>
     </Wrapper>
@@ -26,16 +27,8 @@ const NotFoundPage: React.FC = () => (
 );
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  ${tw`flex flex-col items-center justify-center text-center`}
   height: 90vh;
-`;
-
-const HomeLink = styled(Link)`
-  text-decoration: underline;
 `;
 
 export default NotFoundPage;

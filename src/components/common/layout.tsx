@@ -1,9 +1,8 @@
-import { lighten } from 'polished';
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import media from 'styled-media-query';
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+import tw from 'twin.macro';
 import { prism } from '../../styles/prism';
-import { reset } from '../../styles/reset';
 import { SEO } from '../SEO/seo';
 import { Footer } from './footer';
 import { Header } from './header';
@@ -30,47 +29,32 @@ Layout.defaultProps = {
   customSEO: false,
 };
 
-const Wrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+const Wrapper = tw.div`min-h-screen flex flex-col justify-between`;
 
 const GlobalStyles = createGlobalStyle`
-  ${reset}
+  ${normalize}
   ${prism}
   
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    ${media.lessThan('medium')`
-      font-size: 16px !important;
-    `}
+    ${tw`text-lg leading-normal`}
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-text);
+    ${tw`text-black bg-white dark:text-white dark:bg-black`}
   }
 
   ::selection {
-    background-color: ${({ theme }) => lighten(0.3, theme.primary)};
+    ${tw`text-white bg-primary-400`}
   }
   
   a {
-    color: ${props => props.theme.primary};
-    text-decoration: none;
-    font-weight: 700;
-    
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
+    ${tw`text-primary font-bold no-underline hover:underline`}
   }
 
- ${media.lessThan('small')`
+  @media screen and (max-width: 800px) {
     h1 {
       font-size: 2.369rem !important;
     }
@@ -88,6 +72,6 @@ const GlobalStyles = createGlobalStyle`
     }
     h6 {
       font-size: 0.563rem !important;
-    }
- `}
+    }    
+  }
 `;

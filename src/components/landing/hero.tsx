@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 
@@ -10,7 +11,7 @@ export const Hero: React.FC = () => {
   const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
 
   const backgroundImageStack = [
-    'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))',
+    'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
     heroImage.childImageSharp?.fluid as FluidObject,
   ];
 
@@ -25,30 +26,26 @@ export const Hero: React.FC = () => {
 };
 
 const Wrapper = styled(BackgroundSection)`
-  height: 65vh;
+  height: 70vh;
 `;
 
 const StyledContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  color: ${props => props.theme.white};
+  ${tw`flex flex-col justify-center h-full text-white`}
 
   h1 {
-    font-size: 4rem;
+    ${tw`text-6xl`}
   }
 
   h2 {
-    font-size: 2.5rem;
+    ${tw`text-4xl`}
   }
 `;
 
 const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "hero.webp" }) {
+    heroImage: file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
-        fluid(quality: 90, maxWidth: 1920) {
+        fluid(quality: 100, maxWidth: 1920) {
           ...GatsbyImageSharpFluid
         }
       }

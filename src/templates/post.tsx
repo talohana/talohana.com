@@ -2,8 +2,9 @@ import { Maybe, Mdx } from '@types';
 import { graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
+import { HorizontalRule } from 'src/components/blog/horizontal-rule';
 import { UppercaseHeading } from 'src/components/common/uppercase-heading';
-import styled from 'styled-components';
+import tw from 'twin.macro';
 import { Banner } from '../components/blog/banner';
 import { FurtherReading } from '../components/blog/further-reading';
 import { Container } from '../components/common/container';
@@ -57,16 +58,14 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           bannerCreditUrl={bannerCreditUrl}
         />
         <MDXRenderer>{body}</MDXRenderer>
-        <hr />
+        <HorizontalRule />
         <FurtherReading prevPost={prevPost} nextPost={nextPost} />
       </Container>
     </Layout>
   );
 };
 
-const PostInfo = styled.div`
-  text-align: center;
-`;
+const PostInfo = tw.div`text-center`;
 
 export const query = graphql`
   fragment FurtherReadingPreview on Mdx {

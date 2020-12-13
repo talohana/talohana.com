@@ -1,11 +1,11 @@
 import { config } from '@config';
 import { useScrollPosition } from '@hooks/use-scroll-position';
 import { ColorModeContext } from '@providers/color-mode-provider';
-import { ColorMode } from '@types';
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import brand from '../../assets/illustrations/brand.svg';
+import tw from 'twin.macro';
+import brand from '../../images/brand.svg';
 import { DarkModeToggle } from './dark-mode-toggle';
 import { NavLinks } from './nav-links';
 
@@ -23,9 +23,9 @@ export const Header: React.FC = () => {
   });
 
   return (
-    <Wrapper visible={visible} colorMode={colorMode}>
+    <Wrapper visible={visible}>
       <Brand to="/">
-        <img src={brand} alt="Brand Logo"></img>
+        <img src={brand} alt="Brand Logo" />
       </Brand>
       <NavLinks />
       <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
@@ -33,25 +33,11 @@ export const Header: React.FC = () => {
   );
 };
 
-const Wrapper = styled.header<{ visible: boolean; colorMode: ColorMode }>`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 3rem;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.primary};
-  padding: 0 1rem;
-  position: fixed;
-  top: ${props => (props.visible ? 0 : '-3.5rem')};
-  left: 0;
-  transition: top 0.3s;
-  z-index: 1000;
-`;
+const Wrapper = styled.header<{ visible: boolean }>(({ visible }) => [
+  tw`flex items-center w-full h-12 fixed px-4 bg-primary left-0 transition-all duration-300 z-50`,
+  visible ? tw`top-0` : tw`-top-12`,
+]);
 
 const Brand = styled(Link)`
-  width: 4rem;
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-  cursor: pointer;
+  ${tw`flex items-center mr-auto w-16`}
 `;

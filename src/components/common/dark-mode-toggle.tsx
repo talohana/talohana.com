@@ -3,6 +3,7 @@ import React from 'react';
 import { BsSun } from 'react-icons/bs';
 import { RiMoonClearFill } from 'react-icons/ri';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 type Props = {
   colorMode: ColorMode;
@@ -31,17 +32,13 @@ export const DarkModeToggle: React.FC<Props> = ({
   );
 };
 
-const Wrapper = styled.div`
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-`;
+const Wrapper = tw.div`inline-block w-6 h-6`;
 
 const HiddenCheckbox = styled.input.attrs({
   type: 'checkbox',
   id: 'dark-toggle',
 })`
-  display: none;
+  ${tw`hidden`}
 `;
 
 const Toggle = styled.label.attrs({
@@ -50,20 +47,9 @@ const Toggle = styled.label.attrs({
 })<{
   darkMode: boolean;
 }>`
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  ${tw`inline-block relative cursor-pointer w-full h-full overflow-hidden`}
 
   svg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s;
-    color: ${({ darkMode, theme }) => (darkMode ? theme.white : '#f39c12')};
+    ${tw`w-full h-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 text-yellow-500 dark:text-white`}
   }
 `;

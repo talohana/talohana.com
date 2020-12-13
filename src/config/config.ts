@@ -8,10 +8,6 @@ export const config: Config = {
   header: {
     hideThresholdPx: 100,
   },
-  scroll: {
-    duration: 700,
-    smooth: true,
-  },
   website: {
     defaultTitle: 'Tal Ohana',
     titleTemplate: '%s | Tal Ohana',
@@ -25,7 +21,6 @@ export const config: Config = {
 export type Config = {
   social: SocialConfig;
   header: HeaderConfig;
-  scroll: ScrollConfig;
   website: WebsiteConfig;
 };
 
@@ -34,11 +29,6 @@ export type SocialConfig = {
   linkedIn: string;
   github: string;
   email: string;
-};
-
-export type ScrollConfig = {
-  duration: number;
-  smooth: boolean;
 };
 
 export type HeaderConfig = {

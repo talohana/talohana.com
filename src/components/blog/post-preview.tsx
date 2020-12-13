@@ -1,9 +1,9 @@
 import { MdxFields } from '@types';
 import { Link } from 'gatsby';
-import Image, { FluidObject, GatsbyImageProps } from 'gatsby-image';
+import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import media from 'styled-media-query';
+import tw from 'twin.macro';
 import { UppercaseHeading } from '../common/uppercase-heading';
 
 type Props = {
@@ -32,38 +32,14 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
 };
 
 const Wrapper = styled(Link)`
-  display: flex;
-  color: var(--color-text);
-  transition: all 0.3s;
-  border-radius: 0.2rem;
-  overflow: hidden;
-  font-weight: 400;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.3);
-  }
-
-  ${media.lessThan('large')`
-    flex-direction: column;
-  `}
+  ${tw`flex flex-col md:flex-row transition duration-300 hover:shadow-xl`}
+  ${tw`text-black dark:text-white font-normal hover:no-underline`}
 `;
 
-const PreviewImage = styled(Image)<GatsbyImageProps>`
-  flex: 3;
-
-  ${media.lessThan('large')`
-    flex: 4;
-  `}
-`;
+const PreviewImage = tw(Image)`h-1/2 md:w-1/2`;
 
 const PreviewHeading = styled(UppercaseHeading)`
-  color: ${props => props.theme.primary};
-  margin-bottom: 1rem;
+  ${tw`text-primary my-2`}
 `;
 
-const PreviewInfo = styled.div`
-  flex: 4;
-  padding: 1rem;
-`;
+const PreviewInfo = tw.div`flex-1 p-4`;

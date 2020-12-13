@@ -1,6 +1,5 @@
 import { ColorMode } from '@types';
 import React from 'react';
-import { COLORS } from '../styles/colors';
 
 export type ColorModeContextValue = {
   colorMode: ColorMode;
@@ -21,11 +20,11 @@ export const ColorModeProvider: React.FC = ({ children }) => {
   React.useEffect(() => {
     const root = window.document.documentElement;
 
-    const initialColorValue = root.style.getPropertyValue(
-      '--initial-color-mode'
-    );
+    const initialColorValue: ColorMode = root.classList.contains('dark')
+      ? 'dark'
+      : 'light';
 
-    rawSetColorMode(initialColorValue as ColorMode);
+    rawSetColorMode(initialColorValue);
   }, []);
 
   const setColorMode = (mode: ColorMode): void => {
@@ -33,16 +32,13 @@ export const ColorModeProvider: React.FC = ({ children }) => {
 
     rawSetColorMode(mode);
 
-    root.style.setProperty(
-      '--color-text',
-      mode === 'light' ? COLORS.light.text : COLORS.dark.text
-    );
-    root.style.setProperty(
-      '--color-background',
-      mode === 'light' ? COLORS.light.background : COLORS.dark.background
-    );
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
 
-    window.localStorage.setItem('color-mode', mode);
+    window.localStorage.setItem('theme', mode);
   };
 
   return (

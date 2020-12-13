@@ -3,6 +3,7 @@ import { MdxFields } from '@types';
 import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 import { Chip } from '../common/chip';
 import { PostPreview } from './post-preview';
 
@@ -51,22 +52,12 @@ export const Search: React.FC<Props> = ({ posts, categories }) => {
   );
 };
 
-const Posts = styled.div`
-  & > *:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-`;
+const Posts = tw.div`space-y-4`;
 
 const Categories = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  ${tw`flex flex-wrap my-4`}
 
   ${Chip} {
-    margin-bottom: 0.5rem;
-
-    &:not(:last-child) {
-      margin-right: 0.5rem;
-    }
+    ${tw`my-1 mr-2 last:mr-0`}
   }
 `;

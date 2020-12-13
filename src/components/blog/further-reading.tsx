@@ -1,7 +1,7 @@
 import { Maybe, Mdx } from '@types';
 import React from 'react';
 import styled from 'styled-components';
-import media from 'styled-media-query';
+import tw from 'twin.macro';
 import { UppercaseHeading } from '../common/uppercase-heading';
 import { PostPreview } from './post-preview';
 
@@ -15,7 +15,7 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost?.fields && (
         <div>
-          <StyledUppercaseHeading as="h3" next>
+          <StyledUppercaseHeading as="h3" tw="text-right">
             Next Post
           </StyledUppercaseHeading>
           <PostPreview post={nextPost.fields} />
@@ -32,22 +32,9 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
 };
 
 const Wrapper = styled.div`
-  margin-bottom: 1rem;
-
-  ${media.lessThan('large')`
-      margin-bottom: 0;
-  `}
-
-  & > *:not(:last-child) {
-    margin-bottom: 2rem;
-
-    ${media.lessThan('large')`
-      margin-bottom: 0;
-  `}
-  }
+  ${tw`my-2 space-y-6`}
 `;
 
-const StyledUppercaseHeading = styled(UppercaseHeading)<{ next?: boolean }>`
-  text-align: ${props => (props.next ? 'right' : 'left')};
-  color: ${props => props.theme.primary};
+const StyledUppercaseHeading = styled(UppercaseHeading)`
+  ${tw`text-primary`}
 `;
