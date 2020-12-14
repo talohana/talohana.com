@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import tw from 'twin.macro';
 import { SocialLinks } from './social-links';
 
@@ -14,6 +13,4 @@ export const Footer: React.FC = () => {
   );
 };
 
-const Wrapper = styled.footer`
-  ${tw`flex flex-col justify-center items-center text-white bg-primary py-6`}
-`;
+const Wrapper = tw.footer`flex flex-col justify-center items-center text-white bg-primary py-6`;

@@ -3,7 +3,6 @@ import { graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import { HorizontalRule } from 'src/components/blog/horizontal-rule';
-import { UppercaseHeading } from 'src/components/common/uppercase-heading';
 import tw from 'twin.macro';
 import { Banner } from '../components/blog/banner';
 import { FurtherReading } from '../components/blog/further-reading';
@@ -49,7 +48,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <Container>
         <PostInfo>
           <h1>{title}</h1>
-          <UppercaseHeading as="h4">{date} - by Tal Ohana</UppercaseHeading>
+          <h4 tw="uppercase">{date} - by Tal Ohana</h4>
         </PostInfo>
         <Banner
           banner={banner}

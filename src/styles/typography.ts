@@ -20,7 +20,7 @@ export const typography = css`
 
   a,
   button {
-    ${tw`focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-500 focus-visible:ring-opacity-70`}
+    ${tw`focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-light`}
   }
 
   blockquote > p {

@@ -28,7 +28,6 @@ const NotFoundPage: React.FC = () => (
 
 const Wrapper = styled.div`
   ${tw`flex flex-col items-center justify-center text-center`}
-  height: 90vh;
 `;
 
 export default NotFoundPage;

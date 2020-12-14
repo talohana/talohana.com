@@ -1,8 +1,6 @@
 import { Maybe, Mdx } from '@types';
 import React from 'react';
-import styled from 'styled-components';
 import tw from 'twin.macro';
-import { UppercaseHeading } from '../common/uppercase-heading';
 import { PostPreview } from './post-preview';
 
 type Props = {
@@ -15,15 +13,13 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost?.fields && (
         <div>
-          <StyledUppercaseHeading as="h3" tw="text-right">
-            Next Post
-          </StyledUppercaseHeading>
+          <h3 tw="text-right text-primary uppercase">Next Post</h3>
           <PostPreview post={nextPost.fields} />
         </div>
       )}
       {prevPost?.fields && (
         <div>
-          <StyledUppercaseHeading as="h3">Previous Post</StyledUppercaseHeading>
+          <h3 tw="uppercase text-primary">Previous Post</h3>
           <PostPreview post={prevPost.fields} />
         </div>
       )}
@@ -31,10 +27,4 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
   );
 };
 
-const Wrapper = styled.div`
-  ${tw`my-2 space-y-6`}
-`;
-
-const StyledUppercaseHeading = styled(UppercaseHeading)`
-  ${tw`text-primary`}
-`;
+const Wrapper = tw.div`my-2 space-y-6`;
