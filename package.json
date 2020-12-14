@@ -79,7 +79,7 @@
     "commitizen": "^4.2.2",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-jest": "^24.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "faker": "^5.1.0",
