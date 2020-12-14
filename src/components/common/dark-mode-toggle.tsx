@@ -18,6 +18,7 @@ export const DarkModeToggle: React.FC<Props> = ({
 
   return (
     <Wrapper
+      data-testid="dark-mode-toggle"
       onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
     >
       <RiMoonClearFill style={{ top: darkMode ? '50%' : '-150%' }} />

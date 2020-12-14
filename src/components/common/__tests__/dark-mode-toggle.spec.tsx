@@ -7,12 +7,22 @@ describe('DarkModeToggle', () => {
   it('should toggle on click', () => {
     const toggleMock = jest.fn();
 
-    render(<DarkModeToggle colorMode="dark" setColorMode={toggleMock} />);
+    const { rerender } = render(
+      <DarkModeToggle colorMode="dark" setColorMode={toggleMock} />
+    );
 
-    const toggle = screen.getByLabelText('Toggle Dark Mode');
+    const toggle = screen.getByTestId('dark-mode-toggle');
 
     userEvent.click(toggle);
 
     expect(toggleMock).toHaveBeenCalledTimes(1);
+    expect(toggleMock).toHaveBeenCalledWith('light');
+
+    rerender(<DarkModeToggle colorMode="light" setColorMode={toggleMock} />);
+
+    userEvent.click(toggle);
+
+    expect(toggleMock).toHaveBeenCalledTimes(2);
+    expect(toggleMock).toHaveBeenCalledWith('dark');
   });
 });
