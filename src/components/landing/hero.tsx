@@ -26,18 +26,18 @@ export const Hero: React.FC = () => {
 };
 
 const Wrapper = styled(BackgroundSection)`
-  height: 70vh;
+  height: 60vh;
 `;
 
 const StyledContainer = styled(Container)`
   ${tw`flex flex-col justify-center h-full text-white`}
 
   h1 {
-    ${tw`text-6xl`}
+    ${tw`text-5xl md:text-6xl`}
   }
 
   h2 {
-    ${tw`text-4xl`}
+    ${tw`text-2xl md:text-3xl`}
   }
 `;
 

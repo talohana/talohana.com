@@ -42,4 +42,4 @@ const PreviewHeading = styled(UppercaseHeading)`
   ${tw`text-primary my-2`}
 `;
 
-const PreviewInfo = tw.div`flex-1 p-4`;
+const PreviewInfo = tw.div`flex-1 p-1 md:p-4`;

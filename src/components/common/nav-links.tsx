@@ -16,12 +16,12 @@ export const NavLinks: React.FC = () => {
   );
 };
 
-const Wrapper = tw.nav`mr-4`;
+const Wrapper = tw.nav`space-x-2`;
 
 const NavLink = styled(Link)`
-  ${tw`uppercase font-normal tracking-wide p-2 rounded text-white`}
+  ${tw`uppercase font-normal tracking-wide p-1 rounded text-white`}
 
   &.active {
-    ${tw`bg-primary-dark`}
+    ${tw`bg-primary-500`}
   }
 `;

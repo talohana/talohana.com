@@ -27,17 +27,21 @@ export const Header: React.FC = () => {
       <Brand to="/">
         <img src={brand} alt="Brand Logo" />
       </Brand>
-      <NavLinks />
-      <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
+      <Right>
+        <NavLinks />
+        <DarkModeToggle colorMode={colorMode} setColorMode={setColorMode} />
+      </Right>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.header<{ visible: boolean }>(({ visible }) => [
-  tw`flex items-center w-full h-12 fixed px-4 bg-primary left-0 transition-all duration-300 z-50`,
+  tw`flex justify-between items-center w-full h-12 fixed px-4 bg-primary left-0 transition-all duration-300 z-50`,
   visible ? tw`top-0` : tw`-top-12`,
 ]);
 
 const Brand = styled(Link)`
-  ${tw`flex items-center mr-auto w-16`}
+  ${tw`flex items-center w-16`}
 `;
+
+const Right = tw.div`flex items-center space-x-4`;

@@ -25,20 +25,6 @@ export const prism = css`
     hyphens: none;
   }
 
-  code[class*='language-']::-moz-selection,
-  pre[class*='language-']::-moz-selection,
-  code[class*='language-'] ::-moz-selection,
-  pre[class*='language-'] ::-moz-selection {
-    background: #363636;
-  }
-
-  code[class*='language-']::selection,
-  pre[class*='language-']::selection,
-  code[class*='language-'] ::selection,
-  pre[class*='language-'] ::selection {
-    background: #363636;
-  }
-
   :not(pre) > code[class*='language-'] {
     white-space: normal;
     border-radius: 0.2em;
