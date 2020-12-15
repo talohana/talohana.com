@@ -1,24 +1,5 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/explicit-function-return-type */
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(`
-    query {
-      blog: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  createPosts({ actions, edges: data.blog.edges });
-};
 
 const createPosts = ({ actions, edges }) => {
   const { createPage } = actions;
@@ -38,12 +19,6 @@ const createPosts = ({ actions, edges }) => {
       },
     });
   });
-};
-
-exports.onCreateNode = (...args) => {
-  if (args[0].node.internal.type === 'Mdx') {
-    onCreateMdxNode(...args);
-  }
 };
 
 const onCreateMdxNode = ({ actions, node }) => {
@@ -104,6 +79,31 @@ const onCreateMdxNode = ({ actions, node }) => {
     node,
     value: node.frontmatter.categories || [],
   });
+};
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(`
+    query {
+      blog: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  createPosts({ actions, edges: data.blog.edges });
+};
+
+exports.onCreateNode = (...args) => {
+  if (args[0].node.internal.type === 'Mdx') {
+    onCreateMdxNode(...args);
+  }
 };
 
 exports.createSchemaCustomization = ({ actions }) => {

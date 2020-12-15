@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MdxFields } from '@types';
 import faker from 'faker';
-import { flatMap, uniq } from 'lodash';
+import { flatMap, groupBy, uniq } from 'lodash';
 import React from 'react';
 import { Search } from '../search';
 
@@ -37,13 +37,18 @@ describe('Search', () => {
 
     userEvent.click(filterElement);
 
-    posts.forEach(({ title, categories }) => {
-      if (categories.includes('reactjs')) {
-        expect(screen.getByText(title)).toBeVisible();
-      } else {
-        expect(screen.queryByText(title)).toBeNull();
-      }
-    });
+    const { true: reactPosts, false: nonReactPosts } = groupBy(
+      posts,
+      ({ categories }) => categories.includes('reactjs')
+    );
+
+    reactPosts.forEach(({ title }) =>
+      expect(screen.getByText(title)).toBeVisible()
+    );
+
+    nonReactPosts.forEach(({ title }) =>
+      expect(screen.queryByText(title)).toBeNull()
+    );
   });
 });
 

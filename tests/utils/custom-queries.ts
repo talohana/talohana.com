@@ -9,9 +9,9 @@ import {
 const queryAllByName: GetAllBy<[Matcher, MatcherOptions?]> = (...args) =>
   queryHelpers.queryAllByAttribute('name', ...args);
 
-const getMultipleError = (c: HTMLElement, name: string) =>
+const getMultipleError = (c: HTMLElement, name: string): string =>
   `Found multiple elements with the name attribute of: ${name}`;
-const getMissingError = (c: HTMLElement, name: string) =>
+const getMissingError = (c: HTMLElement, name: string): string =>
   `Unable to find an element with the name attribute of: ${name}`;
 
 const [

@@ -14,6 +14,16 @@ type Props = {
   categories: string[];
 };
 
+const Posts = tw.div`space-y-4`;
+
+const Categories = styled.div`
+  ${tw`flex flex-wrap my-4`}
+
+  ${Chip} {
+    ${tw`my-1 mr-2 last:mr-0`}
+  }
+`;
+
 export const Search: React.FC<Props> = ({ posts, categories }) => {
   const [search, setSearch] = useQueryParamState('category');
 
@@ -51,13 +61,3 @@ export const Search: React.FC<Props> = ({ posts, categories }) => {
     </div>
   );
 };
-
-const Posts = tw.div`space-y-4`;
-
-const Categories = styled.div`
-  ${tw`flex flex-wrap my-4`}
-
-  ${Chip} {
-    ${tw`my-1 mr-2 last:mr-0`}
-  }
-`;

@@ -19,6 +19,7 @@ module.exports = {
         },
         white: '#f6f6f8',
         black: '#18191a',
+        inherit: 'inherit',
       },
     },
     fontFamily: {

@@ -7,8 +7,13 @@ import {
   RiLinkedinFill,
   RiTwitterFill,
 } from 'react-icons/ri';
-import styled from 'styled-components';
 import tw from 'twin.macro';
+
+const Wrapper = tw.ul`inline-block text-4xl m-0 space-x-2`;
+
+const Item = tw.li`inline-block`;
+
+const StyledOutboundLink = tw(OutboundLink)`text-inherit`;
 
 export const SocialLinks: React.FC = () => {
   const { twitter, github, linkedIn, email } = config.social;
@@ -38,11 +43,3 @@ export const SocialLinks: React.FC = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = tw.ul`inline-block text-4xl m-0 space-x-2`;
-
-const Item = tw.li`inline-block`;
-
-const StyledOutboundLink = styled(OutboundLink)`
-  color: inherit;
-`;

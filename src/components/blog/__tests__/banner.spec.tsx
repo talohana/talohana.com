@@ -3,6 +3,19 @@ import { File } from '@types';
 import React from 'react';
 import { Banner } from '../banner';
 
+const getBannerFile = (): File => {
+  return {
+    childImageSharp: {
+      fluid: {
+        src: 'my-awesome-picture.png',
+        aspectRatio: 1,
+        sizes: '1920x1080',
+        srcSet: '',
+      },
+    },
+  } as File;
+};
+
 describe('Banner', () => {
   it('should not render when image is null', () => {
     const { container } = render(<Banner banner={null} />);
@@ -37,16 +50,3 @@ describe('Banner', () => {
     expect(screen.getByAltText(imageAlt)).toBeInTheDocument();
   });
 });
-
-const getBannerFile = (): File => {
-  return {
-    childImageSharp: {
-      fluid: {
-        src: 'my-awesome-picture.png',
-        aspectRatio: 1,
-        sizes: '1920x1080',
-        srcSet: '',
-      },
-    },
-  } as File;
-};

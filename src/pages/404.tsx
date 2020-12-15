@@ -6,6 +6,8 @@ import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
 import notFound from '../images/404.svg';
 
+const Wrapper = tw.div`flex flex-col items-center justify-center text-center`;
+
 const NotFoundPage: React.FC = () => (
   <Layout customSEO>
     <SEO title="404" />
@@ -24,7 +26,5 @@ const NotFoundPage: React.FC = () => (
     </Wrapper>
   </Layout>
 );
-
-const Wrapper = tw.div`flex flex-col items-center justify-center text-center`;
 
 export default NotFoundPage;
