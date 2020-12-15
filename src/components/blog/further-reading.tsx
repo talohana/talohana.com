@@ -1,5 +1,6 @@
 import { Maybe, Mdx } from '@types';
 import React from 'react';
+import styled from 'styled-components';
 import tw from 'twin.macro';
 import { PostPreview } from './post-preview';
 
@@ -13,13 +14,13 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost?.fields && (
         <div>
-          <h3 tw="text-right text-primary uppercase">Next Post</h3>
+          <Title next>Next Post</Title>
           <PostPreview post={nextPost.fields} />
         </div>
       )}
       {prevPost?.fields && (
         <div>
-          <h3 tw="uppercase text-primary">Previous Post</h3>
+          <Title>Previous Post</Title>
           <PostPreview post={prevPost.fields} />
         </div>
       )}
@@ -28,3 +29,8 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
 };
 
 const Wrapper = tw.div`my-2 space-y-6`;
+
+const Title = styled.h3<{ next?: boolean }>(({ next = false }) => [
+  tw`uppercase text-primary`,
+  next && tw`text-right`,
+]);

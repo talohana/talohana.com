@@ -3,7 +3,8 @@ import tw from 'twin.macro';
 
 export const typography = css`
   html {
-    ${tw`antialiased text-base lg:text-lg font-sans`}
+    font-size: 18px;
+    ${tw`text-base md:text-lg leading-normal antialiased font-sans`}
   }
 
   body {
@@ -27,40 +28,37 @@ export const typography = css`
     ${tw`mb-0`}
   }
 
-  pre {
-    ${tw`mb-4`}
-  }
-
+  pre,
   p {
-    ${tw`text-lg mb-4`}
+    ${tw`my-2`}
   }
 
   h1 {
-    ${tw`text-2xl mb-6`}
+    ${tw`text-3xl my-3`}
   }
 
   h2 {
-    ${tw`text-xl mb-6`}
+    ${tw`text-2xl my-3`}
   }
 
   h3 {
-    ${tw`text-lg mb-4`}
+    ${tw`text-xl my-2`}
   }
 
   h4 {
-    ${tw`text-base mb-3`}
+    ${tw`text-lg my-2`}
   }
 
   h5 {
-    ${tw`text-sm mb-2`}
+    ${tw`text-base my-2`}
   }
 
   h6 {
-    ${tw`text-xs`}
+    ${tw`text-sm`}
   }
 
   table {
-    ${tw`mb-4`}
+    ${tw`my-2`}
   }
 
   td,

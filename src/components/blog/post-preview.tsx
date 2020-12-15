@@ -31,10 +31,10 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
 };
 
 const Wrapper = styled(Link)`
-  ${tw`flex flex-col justify-between md:flex-row transition duration-300 hover:shadow-xl`}
+  ${tw`flex flex-col justify-between lg:flex-row transition duration-300 hover:shadow-xl`}
   ${tw`text-black dark:text-white font-normal hover:no-underline`}
 `;
 
-const PreviewImage = tw(Image)`h-1/2 md:w-1/2`;
+const PreviewImage = tw(Image)`h-1/2 lg:w-1/2`;
 
-const PreviewInfo = tw.div`flex-1 p-1 md:p-4`;
+const PreviewInfo = tw.div`flex-1 p-1 lg:p-4`;

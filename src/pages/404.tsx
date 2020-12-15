@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
@@ -12,7 +11,7 @@ const NotFoundPage: React.FC = () => (
     <SEO title="404" />
     <Wrapper>
       <Container>
-        <img src={notFound} alt="404 Illustration" />
+        <img src={notFound} alt="404 Page Not Found" />
         <h1>Oh S#!t!</h1>
         <p>
           The page you are looking for was moved, removed or might never
@@ -26,8 +25,6 @@ const NotFoundPage: React.FC = () => (
   </Layout>
 );
 
-const Wrapper = styled.div`
-  ${tw`flex flex-col items-center justify-center text-center`}
-`;
+const Wrapper = tw.div`flex flex-col items-center justify-center text-center`;
 
 export default NotFoundPage;

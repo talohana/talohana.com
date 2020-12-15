@@ -19,7 +19,7 @@ export const Layout: React.FC<Props> = ({ children, customSEO }) => {
       <TwinGlobalStyles />
       <Wrapper>
         <Header />
-        {children}
+        <main tw="flex-1">{children}</main>
         <Footer />
       </Wrapper>
     </>
@@ -30,7 +30,7 @@ Layout.defaultProps = {
   customSEO: false,
 };
 
-const Wrapper = tw.div`min-h-screen flex flex-col justify-between`;
+const Wrapper = tw.div`min-h-screen flex flex-col`;
 
 const GlobalStyles = createGlobalStyle`
   ${typography}
