@@ -3,5 +3,5 @@ import tw from 'twin.macro';
 
 export const Container = styled.div`
   max-width: 800px;
-  ${tw`px-4 py-4 mt-12 mx-auto w-full`}
+  ${tw`px-4 py-4 mx-auto w-full`}
 `;
