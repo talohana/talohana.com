@@ -13,7 +13,8 @@
       "@config": ["src/config/config.ts"],
       "@providers/*": ["src/providers/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@test-utils/*": ["tests/utils/*"]
+      "@test-utils/*": ["tests/utils/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "exclude": ["./node_modules", "./.cache", "./public"],

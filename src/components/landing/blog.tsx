@@ -1,8 +1,7 @@
 import { MdxEdge, MdxFields } from '@types';
 import { Link } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
-import media from 'styled-media-query';
+import tw from 'twin.macro';
 import { PostPreview } from '../blog/post-preview';
 import { Container } from '../common/container';
 
@@ -26,20 +25,6 @@ export const Blog: React.FC<Props> = ({ posts }) => {
   );
 };
 
-const Posts = styled.div`
-  margin-bottom: 2rem;
+const Posts = tw.div`mb-8 lg:space-y-4`;
 
-  ${media.lessThan('large')`
-    margin-bottom: 0;
-  `}
-
-  & > *:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-`;
-
-const AllPosts = styled.div`
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-`;
+const AllPosts = tw.div`uppercase text-2xl mb-4`;

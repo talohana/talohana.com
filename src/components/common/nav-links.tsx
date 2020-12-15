@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
-import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 export const NavLinks: React.FC = () => {
   return (
@@ -16,19 +16,12 @@ export const NavLinks: React.FC = () => {
   );
 };
 
-const Wrapper = styled.nav`
-  margin-right: 1rem;
-`;
+const Wrapper = tw.nav`space-x-2`;
 
 const NavLink = styled(Link)`
-  color: inherit;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 2px;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
+  ${tw`uppercase font-normal tracking-wide p-1 rounded text-white`}
 
   &.active {
-    background-color: ${props => darken(0.1, props.theme.primary)};
+    ${tw`bg-primary-500`}
   }
 `;

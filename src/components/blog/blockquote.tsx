@@ -1,8 +1,3 @@
-import styled from 'styled-components';
+import tw from 'twin.macro';
 
-export const Blockquote = styled.blockquote<{ quote: boolean }>`
-  margin: 0;
-  margin: 1rem 0;
-  padding: 0.25rem 0.5rem;
-  border-left: 4px solid ${props => props.theme.primary};
-`;
+export const Blockquote = tw.blockquote`border-solid border-0 border-l-4 border-primary my-4 mx-0 p-2`;

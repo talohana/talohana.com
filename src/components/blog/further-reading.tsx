@@ -1,8 +1,7 @@
 import { Maybe, Mdx } from '@types';
 import React from 'react';
 import styled from 'styled-components';
-import media from 'styled-media-query';
-import { UppercaseHeading } from '../common/uppercase-heading';
+import tw from 'twin.macro';
 import { PostPreview } from './post-preview';
 
 type Props = {
@@ -15,15 +14,13 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     <Wrapper>
       {nextPost?.fields && (
         <div>
-          <StyledUppercaseHeading as="h3" next>
-            Next Post
-          </StyledUppercaseHeading>
+          <Title next>Next Post</Title>
           <PostPreview post={nextPost.fields} />
         </div>
       )}
       {prevPost?.fields && (
         <div>
-          <StyledUppercaseHeading as="h3">Previous Post</StyledUppercaseHeading>
+          <Title>Previous Post</Title>
           <PostPreview post={prevPost.fields} />
         </div>
       )}
@@ -31,23 +28,9 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
   );
 };
 
-const Wrapper = styled.div`
-  margin-bottom: 1rem;
+const Wrapper = tw.div`my-2 space-y-6`;
 
-  ${media.lessThan('large')`
-      margin-bottom: 0;
-  `}
-
-  & > *:not(:last-child) {
-    margin-bottom: 2rem;
-
-    ${media.lessThan('large')`
-      margin-bottom: 0;
-  `}
-  }
-`;
-
-const StyledUppercaseHeading = styled(UppercaseHeading)<{ next?: boolean }>`
-  text-align: ${props => (props.next ? 'right' : 'left')};
-  color: ${props => props.theme.primary};
-`;
+const Title = styled.h3<{ next?: boolean }>(({ next = false }) => [
+  tw`uppercase text-primary`,
+  next && tw`text-right`,
+]);

@@ -1,32 +1,16 @@
-import { ColorModeContext } from '@providers/color-mode-provider';
-import { ColorMode } from '@types';
 import React from 'react';
-import styled from 'styled-components';
+import tw from 'twin.macro';
 import { SocialLinks } from './social-links';
 
 export const Footer: React.FC = () => {
-  const { colorMode } = React.useContext(ColorModeContext);
-
   return (
-    <Wrapper colorMode={colorMode}>
+    <Wrapper>
       <SocialLinks />
-      <Copy>
+      <div>
         &copy; All rights reserved {new Date().getFullYear()} | Tal Ohana
-      </Copy>
+      </div>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.footer<{ colorMode: ColorMode }>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.primary};
-  padding: 1rem 0;
-`;
-
-const Copy = styled.div`
-  margin-bottom: 0;
-`;
+const Wrapper = tw.footer`flex flex-col justify-center items-center text-white bg-primary py-6`;

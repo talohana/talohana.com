@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import tw from 'twin.macro';
 
 export const prism = css`
   code[class*='language-'],
@@ -22,20 +23,6 @@ export const prism = css`
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-  }
-
-  code[class*='language-']::-moz-selection,
-  pre[class*='language-']::-moz-selection,
-  code[class*='language-'] ::-moz-selection,
-  pre[class*='language-'] ::-moz-selection {
-    background: #363636;
-  }
-
-  code[class*='language-']::selection,
-  pre[class*='language-']::selection,
-  code[class*='language-'] ::selection,
-  pre[class*='language-'] ::selection {
-    background: #363636;
   }
 
   :not(pre) > code[class*='language-'] {
@@ -209,12 +196,12 @@ export const prism = css`
   pre[class*='language-'] {
     /* General language chip */
     &::before {
+      ${tw`text-white`}
       position: absolute;
       top: 0;
       left: 1.5rem;
       padding: 0.1rem 0.2rem;
       border-radius: 0 0 4px 4px;
-      color: ${props => props.theme.white};
       text-transform: uppercase;
       font-size: 0.8rem;
     }

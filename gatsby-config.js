@@ -31,12 +31,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/styles/typography`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -52,7 +46,6 @@ module.exports = {
         name: 'blog',
       },
     },
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -60,6 +53,16 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/templates/markdown-page.tsx'),
         },
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              linkImagesToOriginal: false,
+            },
+          },
+          `gatsby-remark-images-medium-zoom`,
+        ],
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-embedder`,
@@ -67,14 +70,15 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
+              linkImagesToOriginal: false,
             },
           },
+          `gatsby-remark-images-medium-zoom`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',
               inlineCodeMarker: null,
-              aliases: {},
             },
           },
         ],
