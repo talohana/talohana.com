@@ -22,6 +22,7 @@ describe('SEO', () => {
     await waitFor(() => expect(document.title).toBe(`${title} | Tal Ohana`));
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('should set default description', async () => {
     const site = createSite();
     render(<PureSEO site={site} />);
@@ -29,6 +30,7 @@ describe('SEO', () => {
     await waitForMeta('description', site.siteMetadata.description);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('should set custom description', async () => {
     const site = createSite();
     const description = 'My Custom Description';
@@ -37,6 +39,7 @@ describe('SEO', () => {
     await waitForMeta('description', description);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('should set default image', async () => {
     const site = createSite();
     render(<PureSEO site={site} />);
@@ -47,6 +50,7 @@ describe('SEO', () => {
     );
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('should set custom default image', async () => {
     const site = createSite();
     const image = '/my-custom-image.webp';

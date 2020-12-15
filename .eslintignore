@@ -3,3 +3,4 @@ public/
 .git/
 dist/
 .cache/
+src/types/generated.ts
