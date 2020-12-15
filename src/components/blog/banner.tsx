@@ -8,6 +8,8 @@ type Props = Pick<MdxFields, 'banner' | 'bannerCredit' | 'bannerCreditUrl'> & {
   bannerAlt?: Maybe<string>;
 };
 
+const Credit = tw.span`block text-center my-1`;
+
 export const Banner: React.FC<Props> = ({
   banner,
   bannerAlt,
@@ -35,5 +37,3 @@ export const Banner: React.FC<Props> = ({
     </div>
   );
 };
-
-const Credit = tw.span`block text-center my-1`;

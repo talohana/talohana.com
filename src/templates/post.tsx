@@ -18,6 +18,8 @@ type PageData = {
 
 type Props = PageProps<PageData>;
 
+const PostInfo = tw.div`text-center`;
+
 const PostTemplate: React.FC<Props> = ({ data }) => {
   const { nextPost, prevPost } = data;
   const { body, fields } = data.mdx;
@@ -63,8 +65,6 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     </Layout>
   );
 };
-
-const PostInfo = tw.div`text-center`;
 
 export const query = graphql`
   fragment FurtherReadingPreview on Mdx {

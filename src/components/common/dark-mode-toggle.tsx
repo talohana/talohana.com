@@ -10,6 +10,14 @@ type Props = {
   setColorMode: (colorMode: ColorMode) => void;
 };
 
+const Wrapper = styled.button`
+  ${tw`w-6 h-6 relative overflow-hidden`}
+
+  svg {
+    ${tw`w-full h-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 text-yellow-500 dark:text-white`}
+  }
+`;
+
 export const DarkModeToggle: React.FC<Props> = ({
   colorMode,
   setColorMode,
@@ -26,11 +34,3 @@ export const DarkModeToggle: React.FC<Props> = ({
     </Wrapper>
   );
 };
-
-const Wrapper = styled.button`
-  ${tw`w-6 h-6 relative overflow-hidden`}
-
-  svg {
-    ${tw`w-full h-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 text-yellow-500 dark:text-white`}
-  }
-`;

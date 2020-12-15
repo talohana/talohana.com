@@ -9,6 +9,15 @@ type Props = {
   post: MdxFields;
 };
 
+const Wrapper = styled(Link)`
+  ${tw`flex flex-col justify-between lg:flex-row transition duration-300 hover:shadow-xl`}
+  ${tw`text-black dark:text-white font-normal hover:no-underline`}
+`;
+
+const PreviewImage = tw(Image)`h-1/2 lg:w-1/2`;
+
+const PreviewInfo = tw.div`flex-1 p-1 lg:p-4`;
+
 export const PostPreview: React.FC<Props> = ({ post }) => {
   const { title, description, date, slug, banner } = post;
 
@@ -29,12 +38,3 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled(Link)`
-  ${tw`flex flex-col justify-between lg:flex-row transition duration-300 hover:shadow-xl`}
-  ${tw`text-black dark:text-white font-normal hover:no-underline`}
-`;
-
-const PreviewImage = tw(Image)`h-1/2 lg:w-1/2`;
-
-const PreviewInfo = tw.div`flex-1 p-1 lg:p-4`;

@@ -11,7 +11,14 @@ type Props = {
   customSEO?: boolean;
 };
 
-export const Layout: React.FC<Props> = ({ children, customSEO }) => {
+const Wrapper = tw.div`min-h-screen flex flex-col`;
+
+const GlobalStyles = createGlobalStyle`
+  ${typography}
+  ${prism}
+`;
+
+export const Layout: React.FC<Props> = ({ children, customSEO = false }) => {
   return (
     <>
       {!customSEO && <SEO />}
@@ -25,14 +32,3 @@ export const Layout: React.FC<Props> = ({ children, customSEO }) => {
     </>
   );
 };
-
-Layout.defaultProps = {
-  customSEO: false,
-};
-
-const Wrapper = tw.div`min-h-screen flex flex-col`;
-
-const GlobalStyles = createGlobalStyle`
-  ${typography}
-  ${prism}
-`;

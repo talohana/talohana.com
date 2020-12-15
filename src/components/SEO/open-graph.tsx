@@ -1,11 +1,12 @@
+import { Maybe } from '@types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
 type Props = {
-  url?: string | null;
-  title?: string | null;
-  description?: string | null;
-  image?: string | null;
+  url?: Maybe<string>;
+  title?: Maybe<string>;
+  description?: Maybe<string>;
+  image?: Maybe<string>;
   article?: boolean;
 };
 
@@ -13,7 +14,7 @@ export const OpenGraph: React.FC<Props> = ({
   url,
   title,
   description,
-  article,
+  article = false,
   image,
 }) => {
   return (
@@ -25,8 +26,4 @@ export const OpenGraph: React.FC<Props> = ({
       <meta property="og:type" content={article ? 'article' : 'website'} />
     </Helmet>
   );
-};
-
-OpenGraph.defaultProps = {
-  article: false,
 };

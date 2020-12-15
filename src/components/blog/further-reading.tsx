@@ -9,6 +9,13 @@ type Props = {
   prevPost: Maybe<Mdx>;
 };
 
+const Wrapper = tw.div`my-2 space-y-6`;
+
+const Title = styled.h3<{ next?: boolean }>(({ next = false }) => [
+  tw`uppercase text-primary`,
+  next && tw`text-right`,
+]);
+
 export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
   return (
     <Wrapper>
@@ -27,10 +34,3 @@ export const FurtherReading: React.FC<Props> = ({ prevPost, nextPost }) => {
     </Wrapper>
   );
 };
-
-const Wrapper = tw.div`my-2 space-y-6`;
-
-const Title = styled.h3<{ next?: boolean }>(({ next = false }) => [
-  tw`uppercase text-primary`,
-  next && tw`text-right`,
-]);

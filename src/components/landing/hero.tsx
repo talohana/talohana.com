@@ -7,24 +7,6 @@ import tw from 'twin.macro';
 import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 
-export const Hero: React.FC = () => {
-  const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
-
-  const backgroundImageStack = [
-    'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
-    heroImage.childImageSharp?.fluid as FluidObject,
-  ];
-
-  return (
-    <Wrapper fluid={backgroundImageStack}>
-      <StyledContainer>
-        <h1>Hi There!</h1>
-        <h2>I&apos;m Tal Ohana, a Software Engineer</h2>
-      </StyledContainer>
-    </Wrapper>
-  );
-};
-
 const Wrapper = styled(BackgroundSection)`
   height: 60vh;
 `;
@@ -52,3 +34,21 @@ const query = graphql`
     }
   }
 `;
+
+export const Hero: React.FC = () => {
+  const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
+
+  const backgroundImageStack = [
+    'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
+    heroImage.childImageSharp?.fluid as FluidObject,
+  ];
+
+  return (
+    <Wrapper fluid={backgroundImageStack}>
+      <StyledContainer>
+        <h1>Hi There!</h1>
+        <h2>I&apos;m Tal Ohana, a Software Engineer</h2>
+      </StyledContainer>
+    </Wrapper>
+  );
+};
