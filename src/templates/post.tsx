@@ -75,7 +75,7 @@ export const query = graphql`
       banner {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
@@ -93,7 +93,7 @@ export const query = graphql`
         banner {
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
