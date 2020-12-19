@@ -1,7 +1,6 @@
 import { ColorMode } from '@types';
 import React from 'react';
-import { BsSun } from 'react-icons/bs';
-import { RiMoonClearFill } from 'react-icons/ri';
+import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
@@ -14,7 +13,7 @@ const Wrapper = styled.button`
   ${tw`w-6 h-6 relative overflow-hidden`}
 
   svg {
-    ${tw`w-full h-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 text-yellow-500 dark:text-white`}
+    ${tw`w-full h-full text-white`}
   }
 `;
 
@@ -29,8 +28,7 @@ export const DarkModeToggle: React.FC<Props> = ({
       data-testid="dark-mode-toggle"
       onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
     >
-      <RiMoonClearFill style={{ top: darkMode ? '50%' : '-150%' }} />
-      <BsSun style={{ top: darkMode ? '150%' : '50%' }} />
+      {darkMode ? <IoMdSunny /> : <IoMdMoon />}
     </Wrapper>
   );
 };

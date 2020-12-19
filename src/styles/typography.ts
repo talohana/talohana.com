@@ -8,7 +8,7 @@ export const typography = css`
   }
 
   body {
-    ${tw`text-black bg-white dark:text-white dark:bg-black`}
+    ${tw`text-black bg-white dark:text-white dark:bg-black transition-colors`}
   }
 
   ::selection {
