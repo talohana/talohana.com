@@ -16,12 +16,12 @@ const Wrapper = styled(Link)`
 
 const PreviewImage = tw(Image)`h-1/2 lg:w-1/2`;
 
-const PreviewInfo = tw.div`flex-1 p-1 lg:p-4`;
+const PreviewInfo = tw.article`block flex-1 p-1 lg:p-4`;
 
 export const PostPreview: React.FC<Props> = ({ post }) => {
   const { title, description, date, slug, banner } = post;
 
-  if (!slug) {
+  if (!slug || !title) {
     return null;
   }
 
@@ -30,8 +30,8 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
       {banner?.childImageSharp && (
         <PreviewImage fluid={banner.childImageSharp.fluid as FluidObject} />
       )}
-      <PreviewInfo>
-        {title && <h4 tw="text-primary my-2 uppercase">{title}</h4>}
+      <PreviewInfo aria-label={title}>
+        <h3 tw="text-primary my-2 uppercase">{title}</h3>
         {date && <span>{date}</span>}
         {description && <p>{description}</p>}
       </PreviewInfo>
