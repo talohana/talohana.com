@@ -21,17 +21,17 @@ const PreviewInfo = tw.article`block flex-1 p-1 lg:p-4`;
 export const PostPreview: React.FC<Props> = ({ post }) => {
   const { title, description, date, slug, banner } = post;
 
-  if (!slug || !title) {
+  if (!slug) {
     return null;
   }
 
   return (
-    <Wrapper to={slug}>
+    <Wrapper to={slug} aria-label={title ?? ''}>
       {banner?.childImageSharp && (
         <PreviewImage fluid={banner.childImageSharp.fluid as FluidObject} />
       )}
-      <PreviewInfo aria-label={title}>
-        <h3 tw="text-primary my-2 uppercase">{title}</h3>
+      <PreviewInfo>
+        {title && <h3 tw="text-primary my-2 uppercase">{title}</h3>}
         {date && <span>{date}</span>}
         {description && <p>{description}</p>}
       </PreviewInfo>
