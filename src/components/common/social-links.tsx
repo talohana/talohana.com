@@ -7,13 +7,19 @@ import {
   RiLinkedinFill,
   RiTwitterFill,
 } from 'react-icons/ri';
+import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Wrapper = tw.ul`inline-block text-4xl m-0 space-x-2`;
 
 const Item = tw.li`inline-block`;
 
-const StyledOutboundLink = tw(OutboundLink)`text-inherit`;
+const SocialLink = styled(OutboundLink).attrs({
+  target: '_blank',
+  rel: 'noopener',
+})`
+  ${tw`text-inherit`}
+`;
 
 export const SocialLinks: React.FC = () => {
   const { twitter, github, linkedIn, email } = config.social;
@@ -21,24 +27,24 @@ export const SocialLinks: React.FC = () => {
   return (
     <Wrapper>
       <Item>
-        <StyledOutboundLink href={twitter} target="_blank">
+        <SocialLink href={twitter} aria-label="Tal Ohana twitter profile">
           <RiTwitterFill />
-        </StyledOutboundLink>
+        </SocialLink>
       </Item>
       <Item>
-        <StyledOutboundLink href={github} target="_blank">
+        <SocialLink href={github} aria-label="Tal Ohana github profile">
           <RiGithubFill />
-        </StyledOutboundLink>
+        </SocialLink>
       </Item>
       <Item>
-        <StyledOutboundLink href={linkedIn} target="_blank">
+        <SocialLink href={linkedIn} aria-label="Tal Ohana linkedin profile">
           <RiLinkedinFill />
-        </StyledOutboundLink>
+        </SocialLink>
       </Item>
       <Item>
-        <StyledOutboundLink href={`mailto:${email}`}>
+        <SocialLink href={`mailto:${email}`} aria-label="Mail to Tal Ohana">
           <RiAtFill />
-        </StyledOutboundLink>
+        </SocialLink>
       </Item>
     </Wrapper>
   );

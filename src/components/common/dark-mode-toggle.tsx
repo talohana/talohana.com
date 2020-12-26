@@ -25,6 +25,7 @@ export const DarkModeToggle: React.FC<Props> = ({
 
   return (
     <Wrapper
+      aria-label="Dark Mode Toggle"
       data-testid="dark-mode-toggle"
       onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
     >
