@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Wrapper = styled(Link)`
-  ${tw`flex flex-col justify-between lg:flex-row transition duration-300 hover:shadow-xl`}
+  ${tw`flex flex-col justify-between lg:flex-row transition-colors duration-300 hover:shadow-xl`}
   ${tw`text-black dark:text-white font-normal hover:no-underline`}
 `;
 

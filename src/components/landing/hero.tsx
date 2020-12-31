@@ -8,7 +8,7 @@ import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 
 const Wrapper = styled(BackgroundSection)`
-  height: 60vh;
+  height: 50vh;
 `;
 
 const StyledContainer = styled(Container)`
@@ -27,7 +27,7 @@ const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
-        fluid(quality: 100, maxWidth: 1920) {
+        fluid(maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
