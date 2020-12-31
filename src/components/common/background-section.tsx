@@ -8,6 +8,6 @@ const StyledBackgroundImage = tw(
   BackgroundImage
 )`w-full bg-center bg-repeat-y bg-cover`;
 
-export const BackgroundSection: React.FC<IBackgroundImageProps> = props => {
-  return <StyledBackgroundImage Tag="section" {...props} />;
-};
+export const BackgroundSection: React.FC<IBackgroundImageProps> = props => (
+  <StyledBackgroundImage Tag="section" {...props} />
+);

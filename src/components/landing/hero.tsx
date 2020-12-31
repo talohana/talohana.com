@@ -8,7 +8,7 @@ import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 
 const Wrapper = styled(BackgroundSection)`
-  height: 50vh;
+  height: 60vh;
 `;
 
 const StyledContainer = styled(Container)`

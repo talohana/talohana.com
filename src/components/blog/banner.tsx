@@ -25,6 +25,7 @@ export const Banner: React.FC<Props> = ({
       <Image
         fluid={banner.childImageSharp.fluid as FluidObject}
         alt={bannerAlt ?? ''}
+        loading="eager"
       />
       {bannerCredit && (
         <Credit>
