@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/explicit-function-return-type */
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const createPosts = ({ actions, edges }) => {

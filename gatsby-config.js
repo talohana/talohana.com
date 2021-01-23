@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 require('ts-node').register(); // enable require of ts files
 const { config } = require('./src/config/config');
 
