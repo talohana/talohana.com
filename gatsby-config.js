@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 require('ts-node').register(); // enable require of ts files
 const { config } = require('./src/config/config');
 
@@ -14,6 +13,9 @@ const isNetlifyProduction = NETLIFY_ENV === 'production';
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     defaultTitle: config.website.defaultTitle,
     titleTemplate: config.website.titleTemplate,

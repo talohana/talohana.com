@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires, react/display-name */
 const React = require('react');
 const { ColorModeProvider } = require('./src/providers/color-mode-provider');
 const { MDXProvider } = require('@mdx-js/react');
