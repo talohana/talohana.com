@@ -13,6 +13,9 @@ const isNetlifyProduction = NETLIFY_ENV === 'production';
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
   siteMetadata: {
     defaultTitle: config.website.defaultTitle,
     titleTemplate: config.website.titleTemplate,
