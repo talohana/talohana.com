@@ -1,14 +1,15 @@
 import { File } from '@types';
 import { graphql, useStaticQuery } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
+import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { BackgroundSection } from '../common/background-section';
 import { Container } from '../common/container';
 
-const Wrapper = styled(BackgroundSection)`
+const Wrapper = styled.section`
+  position: relative;
   height: 50vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
 `;
 
 const StyledContainer = styled(Container)`
@@ -22,6 +23,8 @@ const StyledContainer = styled(Container)`
     ${tw`text-2xl lg:text-3xl`}
   }
 `;
+
+const StyledImage = tw(Image)`z--100 w-screen h-full top-0 left-0`;
 
 const query = graphql`
   query {
@@ -38,13 +41,12 @@ const query = graphql`
 export const Hero: React.FC = () => {
   const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
 
-  const backgroundImageStack = [
-    'linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75))',
-    heroImage.childImageSharp?.fluid as FluidObject,
-  ];
-
   return (
-    <Wrapper fluid={backgroundImageStack}>
+    <Wrapper>
+      <StyledImage
+        style={{ position: 'absolute' }}
+        fluid={heroImage.childImageSharp?.fluid as FluidObject}
+      />
       <StyledContainer>
         <h1>Hi There!</h1>
         <h2>I&apos;m Tal Ohana, a Software Engineer</h2>

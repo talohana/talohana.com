@@ -21,6 +21,9 @@ module.exports = {
         black: '#18191a',
         inherit: 'inherit',
       },
+      zIndex: {
+        '-100': '-100',
+      },
     },
     fontFamily: {
       sans: [
