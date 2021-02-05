@@ -1,6 +1,6 @@
+import { MdxFields } from '@models';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MdxFields } from '@types';
 import faker from 'faker';
 import { flatMap, groupBy, uniq } from 'lodash';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { MdxFrontmatter } from '@types';
+import { MdxFrontmatter } from '@models';
 import { PageProps } from 'gatsby';
 import React from 'react';
 import { Container } from '../components/common/container';

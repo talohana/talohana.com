@@ -1,4 +1,4 @@
-import { Maybe, Mdx } from '@types';
+import { Maybe, Mdx } from '@models';
 import { graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';

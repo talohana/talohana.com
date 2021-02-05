@@ -1,4 +1,4 @@
-import { MdxFields } from '@types';
+import { MdxFields } from '@models';
 import { Link } from 'gatsby';
 import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';

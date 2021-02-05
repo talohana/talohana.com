@@ -1,8 +1,8 @@
 /* eslint-disable jest/expect-expect */
 
+import { Maybe, Site, SiteSiteMetadata } from '@models';
 import { getByName } from '@test-utils/custom-queries';
 import { render, waitFor } from '@testing-library/react';
-import { Maybe, Site, SiteSiteMetadata } from '@types';
 import React from 'react';
 import { PureSEO } from '../seo';
 

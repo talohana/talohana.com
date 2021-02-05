@@ -1,5 +1,5 @@
 import { useQueryParamState } from '@hooks/use-query-param-state';
-import { MdxFields } from '@types';
+import { MdxFields } from '@models';
 import { isEmpty } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';

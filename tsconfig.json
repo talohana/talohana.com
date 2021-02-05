@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "paths": {
-      "@types": ["src/types"],
+      "@models": ["src/models"],
       "@config": ["src/config/config.ts"],
       "@providers/*": ["src/providers/*"],
       "@hooks/*": ["src/hooks/*"],

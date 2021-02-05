@@ -1,4 +1,4 @@
-import { Maybe } from '@types';
+import { Maybe } from '@models';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 

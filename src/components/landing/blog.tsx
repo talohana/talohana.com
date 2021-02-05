@@ -1,4 +1,4 @@
-import { MdxEdge, MdxFields } from '@types';
+import { MdxEdge, MdxFields } from '@models';
 import { Link } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';

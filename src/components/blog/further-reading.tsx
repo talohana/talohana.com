@@ -1,4 +1,4 @@
-import { Maybe, Mdx } from '@types';
+import { Maybe, Mdx } from '@models';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
