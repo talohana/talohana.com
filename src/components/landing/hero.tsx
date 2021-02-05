@@ -1,4 +1,4 @@
-import { File } from '@types';
+import { File } from '@models';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';

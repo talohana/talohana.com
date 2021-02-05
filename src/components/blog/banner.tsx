@@ -1,4 +1,4 @@
-import { Maybe, MdxFields } from '@types';
+import { Maybe, MdxFields } from '@models';
 import Image, { FluidObject } from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';

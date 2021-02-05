@@ -1,4 +1,4 @@
-import { MdxEdge, MdxFields } from '@types';
+import { MdxEdge, MdxFields } from '@models';
 import { graphql, PageProps } from 'gatsby';
 import React from 'react';
 import { Search } from '../components/blog/search';

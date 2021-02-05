@@ -1,5 +1,5 @@
+import { MdxFields } from '@models';
 import { render, screen } from '@testing-library/react';
-import { MdxFields } from '@types';
 import React from 'react';
 import { PostPreview } from '../post-preview';
 

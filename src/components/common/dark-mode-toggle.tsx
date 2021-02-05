@@ -1,4 +1,4 @@
-import { ColorMode } from '@types';
+import { ColorMode } from '@models';
 import React from 'react';
 import { IoMdMoon, IoMdSunny } from 'react-icons/io';
 import styled from 'styled-components';

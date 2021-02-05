@@ -1,5 +1,5 @@
+import { File } from '@models';
 import { render, screen } from '@testing-library/react';
-import { File } from '@types';
 import React from 'react';
 import { Banner } from '../banner';
 

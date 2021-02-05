@@ -1,4 +1,4 @@
-import { Maybe, Site } from '@types';
+import { Maybe, Site } from '@models';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
