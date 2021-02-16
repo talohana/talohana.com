@@ -10,13 +10,11 @@ type Props = {
 };
 
 const Wrapper = styled(Link)`
-  ${tw`flex flex-col justify-between lg:flex-row transition-colors duration-300 hover:shadow-xl`}
-  ${tw`text-black dark:text-white font-normal hover:no-underline`}
+  ${tw`grid lg:grid-cols-2 gap-4 items-center`}
+  ${tw`transition duration-300 hover:shadow-xl text-black dark:text-white font-normal hover:no-underline`}
 `;
 
-const PreviewImage = tw(Image)`h-1/2 lg:w-1/2`;
-
-const PreviewInfo = tw.article`block flex-1 p-1 lg:p-4`;
+const PreviewImage = tw(Image)`w-full`;
 
 export const PostPreview: React.FC<Props> = ({ post }) => {
   const { title, description, date, slug, banner } = post;
@@ -30,11 +28,11 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
       {banner?.childImageSharp && (
         <PreviewImage fluid={banner.childImageSharp.fluid as FluidObject} />
       )}
-      <PreviewInfo>
+      <article>
         {title && <h3 tw="text-primary my-2 uppercase">{title}</h3>}
         {date && <span>{date}</span>}
         {description && <p>{description}</p>}
-      </PreviewInfo>
+      </article>
     </Wrapper>
   );
 };
