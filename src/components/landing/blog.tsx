@@ -9,7 +9,7 @@ type Props = {
   posts: MdxEdge[];
 };
 
-const Posts = tw.div`mb-8 lg:space-y-4`;
+const Posts = tw.div`mb-8 grid gap-y-4`;
 
 const AllPosts = tw.div`uppercase text-2xl mb-4`;
 
