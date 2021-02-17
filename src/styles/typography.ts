@@ -17,6 +17,18 @@ export const typography = css`
 
   a {
     ${tw`inline-block text-primary font-bold no-underline hover:underline`}
+
+    &.anchor {
+      ${tw`w-4 h-4`}
+
+      &.before {
+        ${tw`top-1/2 p-0 transform -translate-x-full -translate-y-1/2`}
+      }
+
+      svg {
+        ${tw`w-full h-full`}
+      }
+    }
   }
 
   a,

@@ -14,7 +14,7 @@ type Props = {
   categories: string[];
 };
 
-const Posts = tw.div`space-y-4`;
+const Posts = tw.div`grid gap-4`;
 
 const Categories = styled.div`
   ${tw`flex flex-wrap my-4`}
