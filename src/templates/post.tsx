@@ -90,7 +90,7 @@ export const query = graphql`
         categories
         banner {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(placeholder: BLURRED)
           }
         }
         bannerCredit

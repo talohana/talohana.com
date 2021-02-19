@@ -33,6 +33,7 @@ export const Hero: React.FC = () => {
       <StaticImage
         src="../../images/hero.jpg"
         alt="Hero Image"
+        placeholder="blurred"
         style={{ height: '100%', zIndex: 10 }}
       />
       <Backdrop />
