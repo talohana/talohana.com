@@ -16,10 +16,10 @@ const NavLink = styled(Link)`
 export const NavLinks: React.FC = () => {
   return (
     <Wrapper>
-      <NavLink to="/blog" activeClassName="active">
+      <NavLink to="/blog" partiallyActive={true} activeClassName="active">
         blog
       </NavLink>
-      <NavLink to="/about" activeClassName="active">
+      <NavLink to="/about" partiallyActive={true} activeClassName="active">
         about
       </NavLink>
     </Wrapper>
