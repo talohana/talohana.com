@@ -36,7 +36,7 @@ const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData
       }
     }
   }
