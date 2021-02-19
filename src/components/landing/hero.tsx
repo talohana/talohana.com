@@ -1,18 +1,13 @@
-import { File } from '@models';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Container } from '../common/container';
-
 const Wrapper = styled.section`
   height: 60vh;
 
   ${tw`relative z-0`}
 `;
-
-const BackgroundImage = tw(GatsbyImage)`h-full z-10`;
 
 const Backdrop = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
@@ -32,26 +27,13 @@ const StyledContainer = styled(Container)`
   }
 `;
 
-const query = graphql`
-  query {
-    heroImage: file(relativePath: { eq: "hero.jpg" }) {
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-  }
-`;
-
 export const Hero: React.FC = () => {
-  const { heroImage } = useStaticQuery<{ heroImage: File }>(query);
-
   return (
     <Wrapper>
-      <BackgroundImage
-        // TODO: Remove IGatsbyImageData when API is stable
-        image={heroImage.childImageSharp?.gatsbyImageData as IGatsbyImageData}
-        loading="eager"
+      <StaticImage
+        src="../../images/hero.jpg"
         alt="Hero Image"
+        style={{ height: '100%', zIndex: 10 }}
       />
       <Backdrop />
       <StyledContainer>
