@@ -1,9 +1,9 @@
+import brand from '@images/brand.svg';
 import { ColorModeContext } from '@providers/color-mode-provider';
 import { Link } from 'gatsby';
 import React from 'react';
 import Headroom from 'react-headroom';
 import tw from 'twin.macro';
-import brand from '../../images/brand.svg';
 import { DarkModeToggle } from './dark-mode-toggle';
 import { NavLinks } from './nav-links';
 

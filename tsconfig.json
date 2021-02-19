@@ -14,7 +14,8 @@
       "@providers/*": ["src/providers/*"],
       "@hooks/*": ["src/hooks/*"],
       "@test-utils/*": ["tests/utils/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@images/*": ["src/images/*"]
     }
   },
   "exclude": ["./node_modules", "./.cache", "./public"],

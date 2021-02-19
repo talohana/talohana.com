@@ -1,5 +1,5 @@
 import { Maybe, MdxFields } from '@models';
-import Image, { FluidObject } from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import tw from 'twin.macro';
@@ -22,7 +22,7 @@ export const Banner: React.FC<Props> = ({
 
   return (
     <div>
-      <Image
+      <Img
         fluid={banner.childImageSharp.fluid as FluidObject}
         alt={bannerAlt ?? ''}
       />

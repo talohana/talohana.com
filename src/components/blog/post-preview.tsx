@@ -1,6 +1,6 @@
 import { MdxFields } from '@models';
 import { Link } from 'gatsby';
-import Image, { FluidObject } from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -14,7 +14,7 @@ const Wrapper = styled(Link)`
   ${tw`transition duration-300 hover:shadow-xl text-black dark:text-white font-normal hover:no-underline`}
 `;
 
-const PreviewImage = tw(Image)`w-full`;
+const PreviewImage = tw(Img)`w-full`;
 const PreviewDetails = tw.article`p-2 lg:p-0`;
 
 export const PostPreview: React.FC<Props> = ({ post }) => {
@@ -27,7 +27,10 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
   return (
     <Wrapper to={slug} aria-label={title ?? ''}>
       {banner?.childImageSharp && (
-        <PreviewImage fluid={banner.childImageSharp.fluid as FluidObject} />
+        <PreviewImage
+          fluid={banner.childImageSharp.fluid as FluidObject}
+          alt={title || ''}
+        />
       )}
       <PreviewDetails>
         {title && <h3 tw="text-primary my-2 uppercase">{title}</h3>}

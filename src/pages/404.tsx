@@ -1,10 +1,10 @@
+import notFound from '@images/404.svg';
 import { Link } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';
 import { Container } from '../components/common/container';
 import { Layout } from '../components/common/layout';
 import { SEO } from '../components/SEO/seo';
-import notFound from '../images/404.svg';
 
 const Wrapper = tw.div`flex flex-col items-center justify-center text-center`;
 
