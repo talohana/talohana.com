@@ -1,6 +1,6 @@
 import { File } from '@models';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -12,7 +12,7 @@ const Wrapper = styled.section`
   ${tw`relative z-0`}
 `;
 
-const BackgroundImage = tw(Img)`h-full z-10`;
+const BackgroundImage = tw(GatsbyImage)`h-full z-10`;
 
 const Backdrop = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
@@ -36,9 +36,7 @@ const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 20) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
@@ -50,7 +48,9 @@ export const Hero: React.FC = () => {
   return (
     <Wrapper>
       <BackgroundImage
-        fluid={heroImage.childImageSharp?.fluid as FluidObject}
+        // TODO: Remove IGatsbyImageData when API is stable
+        image={heroImage.childImageSharp?.gatsbyImageData as IGatsbyImageData}
+        loading="eager"
         alt="Hero Image"
       />
       <Backdrop />

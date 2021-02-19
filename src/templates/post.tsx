@@ -74,9 +74,7 @@ export const query = graphql`
       slug
       banner {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(placeholder: BLURRED)
         }
       }
     }
@@ -92,9 +90,7 @@ export const query = graphql`
         categories
         banner {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData
           }
         }
         bannerCredit
