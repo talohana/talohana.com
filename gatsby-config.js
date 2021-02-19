@@ -51,26 +51,28 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-remark-images`,
-      options: {
-        maxWidth: 800,
-        withWebp: true,
-      },
-    },
-    {
-      resolve: `gatsby-remark-autolink-headers`,
-      options: {
-        icon: autoLinkIcon,
-        isIconAfterHeader: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
         defaultLayouts: {
           default: require.resolve('./src/templates/markdown-page.tsx'),
         },
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              withWebp: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              icon: autoLinkIcon,
+              isIconAfterHeader: true,
+            },
+          },
+        ],
         gatsbyRemarkPlugins: [
           `gatsby-remark-copy-linked-files`,
           {

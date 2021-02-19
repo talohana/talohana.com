@@ -36,7 +36,7 @@ const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1920) {
+        fluid(maxWidth: 1920, quality: 20) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -50,7 +50,6 @@ export const Hero: React.FC = () => {
   return (
     <Wrapper>
       <BackgroundImage
-        loading="eager"
         fluid={heroImage.childImageSharp?.fluid as FluidObject}
         alt="Hero Image"
       />
