@@ -43,7 +43,15 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'blurred',
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

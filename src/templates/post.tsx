@@ -74,7 +74,7 @@ export const query = graphql`
       slug
       banner {
         childImageSharp {
-          gatsbyImageData(placeholder: BLURRED)
+          gatsbyImageData
         }
       }
     }
@@ -90,7 +90,7 @@ export const query = graphql`
         categories
         banner {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
+            gatsbyImageData
           }
         }
         bannerCredit
