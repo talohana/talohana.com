@@ -56,7 +56,7 @@
     "react-icons": "^4.1.0",
     "remark-emoji": "^2.1.0",
     "styled-components": "^5.1.1",
-    "tailwindcss": "^2.0.2",
+    "tailwindcss": "^2.0.3",
     "twin.macro": "^2.1.1"
   },
   "devDependencies": {
