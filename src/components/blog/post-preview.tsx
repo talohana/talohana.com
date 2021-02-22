@@ -1,6 +1,6 @@
 import { MdxFields } from '@models';
 import { Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -14,7 +14,7 @@ const Wrapper = styled(Link)`
   ${tw`transition duration-300 hover:shadow-xl text-black dark:text-white font-normal hover:no-underline`}
 `;
 
-const PreviewImage = tw(Img)`w-full`;
+const PreviewImage = tw(GatsbyImage)`w-full relative`;
 const PreviewDetails = tw.article`p-2 lg:p-0`;
 
 export const PostPreview: React.FC<Props> = ({ post }) => {
@@ -28,7 +28,8 @@ export const PostPreview: React.FC<Props> = ({ post }) => {
     <Wrapper to={slug} aria-label={title ?? ''}>
       {banner?.childImageSharp && (
         <PreviewImage
-          fluid={banner.childImageSharp.fluid as FluidObject}
+          // TODO: Remove IGatsbyImageData when API is stable
+          image={banner.childImageSharp.gatsbyImageData as IGatsbyImageData}
           alt={title || ''}
         />
       )}

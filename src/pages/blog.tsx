@@ -42,9 +42,7 @@ export const query = graphql`
       categories
       banner {
         childImageSharp {
-          fluid(quality: 20) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData
         }
       }
     }
