@@ -1,5 +1,7 @@
 import { Maybe, Mdx } from '@models';
 import { graphql, PageProps } from 'gatsby';
+import { getSrc } from 'gatsby-plugin-image';
+import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import { HorizontalRule } from 'src/components/blog/horizontal-rule';
@@ -43,7 +45,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={banner?.childImageSharp?.fluid?.src}
+        image={getSrc((banner as unknown) as FileNode)}
         blogSlug={slug}
         article
       />
