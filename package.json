@@ -20,7 +20,7 @@
     "lint:fix": "npm run lint -- --fix",
     "commit": "git-cz",
     "codegen": "graphql-codegen --config codegen.yml",
-    "postcodegen": "prettier --write ./src/models/generated.ts"
+    "postcodegen": "prettier --write ./src/types/generated.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

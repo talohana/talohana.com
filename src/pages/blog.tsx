@@ -37,7 +37,7 @@ export const query = graphql`
       id
       title
       description
-      date(formatString: "MMM DD, YYYY")
+      date(formatString: "DD MMM, YYYY")
       slug
       categories
       banner {
