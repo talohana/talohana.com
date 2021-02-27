@@ -8,20 +8,21 @@ export const config: Config = {
   header: {
     hideThresholdPx: 100,
   },
-  website: {
+  seo: {
     defaultTitle: 'Tal Ohana',
     titleTemplate: '%s | Tal Ohana',
     description: 'Tal Ohana, a software engineer from Israel.',
     image: '/images/banner.png',
     lang: 'en',
     siteUrl: 'https://talohana.com',
+    author: 'Tal Ohana',
   },
 };
 
 export type Config = {
   social: SocialConfig;
   header: HeaderConfig;
-  website: WebsiteConfig;
+  seo: SEOConfig;
 };
 
 export type SocialConfig = {
@@ -35,11 +36,12 @@ export type HeaderConfig = {
   hideThresholdPx: number;
 };
 
-export type WebsiteConfig = {
+export type SEOConfig = {
   defaultTitle: string;
   titleTemplate: string;
   description: string;
   image: string;
   lang: string;
   siteUrl: string;
+  author: string;
 };
