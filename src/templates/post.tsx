@@ -47,13 +47,12 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
         description={description}
         image={getSrc((banner as unknown) as FileNode)}
         blogSlug={slug}
-        isBlogPost
-        datePublished={date}
+        article
       />
       <Container>
         <PostInfo>
           <h1>{title}</h1>
-          <h4 tw="uppercase">{date}</h4>
+          <h4 tw="uppercase">{date} - by Tal Ohana</h4>
         </PostInfo>
         <Banner
           banner={banner}
@@ -87,7 +86,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       fields {
         slug
-        date(formatString: "MMM DD, YYYY")
+        date(formatString: "DD MMM, YYYY")
         title
         description
         categories

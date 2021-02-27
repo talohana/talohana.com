@@ -1,12 +1,11 @@
-import { Maybe } from '@models';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
 type Props = {
-  twitter?: Maybe<string>;
-  title?: Maybe<string>;
-  description?: Maybe<string>;
-  image?: Maybe<string>;
+  twitter?: string | null;
+  title?: string | null;
+  description?: string | null;
+  image?: string | null;
 };
 
 export const Twitter: React.FC<Props> = ({

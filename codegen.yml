@@ -3,7 +3,7 @@ documents:
   - ./src/**/*.{ts,tsx}
   - ./node_modules/gatsby-transformer-sharp/!(node_modules)/**/*.js
 generates:
-  ./src/models/generated.ts:
+  ./src/types/generated.ts:
     config:
       immutableTypes: true
       scalars:
