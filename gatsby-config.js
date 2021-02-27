@@ -3,7 +3,7 @@ const { config } = require('./src/config/config');
 
 const {
   NODE_ENV,
-  URL: NETLIFY_SITE_URL = config.website.siteUrl,
+  URL: NETLIFY_SITE_URL = config.seo.siteUrl,
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
   GA_TRACKING_ID,
@@ -19,13 +19,19 @@ module.exports = {
     DEV_SSR: false,
   },
   siteMetadata: {
-    defaultTitle: config.website.defaultTitle,
-    titleTemplate: config.website.titleTemplate,
-    description: config.website.description,
-    image: config.website.image,
-    lang: config.website.lang,
+    defaultTitle: config.seo.defaultTitle,
+    titleTemplate: config.seo.titleTemplate,
+    description: config.seo.description,
+    image: config.seo.image,
+    lang: config.seo.lang,
     siteUrl,
     twitter: config.social.twitter,
+    author: config.seo.author,
+    organization: {
+      name: config.seo.author,
+      logo: config.seo.image,
+      url: siteUrl,
+    },
   },
   plugins: [
     {
