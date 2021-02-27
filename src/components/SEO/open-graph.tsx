@@ -7,14 +7,14 @@ type Props = {
   title?: Maybe<string>;
   description?: Maybe<string>;
   image?: Maybe<string>;
-  article?: boolean;
+  isBlogPost?: boolean;
 };
 
 export const OpenGraph: React.FC<Props> = ({
   url,
   title,
   description,
-  article = false,
+  isBlogPost,
   image,
 }) => {
   return (
@@ -23,7 +23,7 @@ export const OpenGraph: React.FC<Props> = ({
       {title && <meta property="og:title" content={title} />}
       {description && <meta property="og:description" content={description} />}
       {image && <meta property="og:image" content={image} />}
-      <meta property="og:type" content={article ? 'article' : 'website'} />
+      <meta property="og:type" content={isBlogPost ? 'article' : 'website'} />
     </Helmet>
   );
 };
