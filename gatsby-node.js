@@ -1,4 +1,5 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { resolve } = require('path');
+const { compilerOptions } = require('./tsconfig.json');
 
 const createPosts = ({ actions, edges }) => {
   const { createPage } = actions;
@@ -117,10 +118,28 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
+const resolveTsconfigPathsToAlias = () => {
+  const { paths } = compilerOptions;
+
+  const aliases = {};
+
+  Object.keys(paths).forEach(item => {
+    const key = item.replace('/*', '');
+    const value = resolve(
+      __dirname,
+      paths[item][0].replace('/*', '').replace('*', '')
+    );
+
+    aliases[key] = value;
+  });
+
+  return aliases;
+};
+
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      plugins: [new TsconfigPathsPlugin()],
+      alias: resolveTsconfigPathsToAlias(),
     },
   });
 };
