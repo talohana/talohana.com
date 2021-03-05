@@ -13,3 +13,7 @@ generates:
         enumValues: 'keep'
     plugins:
       - typescript
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
+    - prettier --write
