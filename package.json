@@ -19,8 +19,7 @@
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "commit": "git-cz",
-    "codegen": "graphql-codegen --config codegen.yml",
-    "postcodegen": "prettier --write ./src/models/generated.ts"
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
