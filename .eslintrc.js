@@ -8,8 +8,6 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'plugin:jest/recommended',
   ],
   overrides: [
@@ -30,15 +28,11 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': [
       'error',
-      { functions: false, classes: true, variables: true },
+      { functions: false, classes: true, variables: true, typedefs: true },
     ],
     '@typescript-eslint/explicit-function-return-type': [
       'error',
       { allowExpressions: true, allowTypedFunctionExpressions: true },
-    ],
-    '@typescript-eslint/no-use-before-define': [
-      'error',
-      { functions: false, classes: true, variables: true, typedefs: true },
     ],
   },
   env: {
