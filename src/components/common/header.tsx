@@ -1,6 +1,6 @@
-import brand from '@images/brand.svg';
 import { ColorModeContext } from '@providers/color-mode-provider';
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Headroom from 'react-headroom';
 import tw from 'twin.macro';
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
     <StyledHeadroom>
       <Wrapper>
         <Brand to="/">
-          <img src={brand} alt="Brand Logo" />
+          <StaticImage src="../../images/brand.svg" alt="Brand Logo" />
         </Brand>
         <Right>
           <NavLinks />
