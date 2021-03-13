@@ -13,7 +13,7 @@ const StyledHeadroom = tw(Headroom)`h-12 bg-primary`;
 
 const Brand = tw(Link)`flex items-center w-16`;
 
-const Right = tw.div`flex items-center space-x-4`;
+const Right = tw.div`flex items-center space-x-2`;
 
 export const Header: React.FC = () => {
   const { colorMode, setColorMode } = React.useContext(ColorModeContext);
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
     <StyledHeadroom>
       <Wrapper>
         <Brand to="/">
-          <img src={brand} alt="Brand Logo" />
+          <img width="193px" height="92px" src={brand} alt="Brand Logo" />
         </Brand>
         <Right>
           <NavLinks />

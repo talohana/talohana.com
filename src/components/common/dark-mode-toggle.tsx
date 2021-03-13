@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Wrapper = styled.button`
-  ${tw`w-6 h-6 relative overflow-hidden`}
+  ${tw`w-6 h-6`}
 
   svg {
     ${tw`w-full h-full text-white`}
