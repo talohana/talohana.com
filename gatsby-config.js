@@ -44,12 +44,7 @@ module.exports = {
   },
   plugins: [
     ...dynamicPlugins,
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        displayName: process.env.NODE_ENV !== 'production',
-      },
-    },
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
