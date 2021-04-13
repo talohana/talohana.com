@@ -42,6 +42,19 @@ export const typography = css`
     button {
       ${tw`focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-light`}
     }
+
+    blockquote > p {
+      ${tw`mb-0`}
+    }
+
+    pre,
+    p {
+      ${tw`my-2`}
+    }
+
+    table {
+      ${tw`my-2`}
+    }
   }
 
   body {
@@ -52,21 +65,8 @@ export const typography = css`
     ${tw`text-white bg-primary-400`}
   }
 
-  blockquote > p {
-    ${tw`mb-0`}
-  }
-
-  pre,
-  p {
-    ${tw`my-2`}
-  }
-
-  table {
-    ${tw`my-2`}
-  }
-
   td,
   th {
-    ${tw`text-left border-solid border-b border-black dark:border-white px-4 py-3 border-opacity-20`}
+    ${tw`text-left border-solid border-b border-black dark:(border-white border-opacity-20) px-4 py-3 border-opacity-20`}
   }
 `;
