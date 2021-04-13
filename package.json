@@ -56,7 +56,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
-    "@graphql-codegen/cli": "^1.21.1",
+    "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.21.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
