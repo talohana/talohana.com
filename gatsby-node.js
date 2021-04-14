@@ -136,9 +136,7 @@ const resolveTsconfigPathsToAlias = () => {
   return aliases;
 };
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
-  const config = getConfig();
-
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: resolveTsconfigPathsToAlias(),

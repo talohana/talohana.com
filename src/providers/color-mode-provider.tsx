@@ -8,7 +8,7 @@ export type ColorModeContextValue = {
 
 const defaultContext: ColorModeContextValue = {
   colorMode: 'light',
-  // eslint-disable-next-line @modelscript-eslint/no-empty-function
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setColorMode: () => {},
 };
 
