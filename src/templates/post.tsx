@@ -45,6 +45,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <SEO
         title={title}
         description={description}
+        // prettier-ignore
         image={getSrc((banner as unknown) as FileNode)}
         blogSlug={slug}
         isBlogPost

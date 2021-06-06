@@ -14,6 +14,7 @@ const getMultipleError = (c: HTMLElement, name: string): string =>
 const getMissingError = (c: HTMLElement, name: string): string =>
   `Unable to find an element with the name attribute of: ${name}`;
 
+// prettier-ignore
 const [
   queryByName,
   getAllByName,
