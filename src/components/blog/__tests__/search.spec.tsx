@@ -54,7 +54,7 @@ describe('Search', () => {
 
 function createMockPost(overrides?: Partial<MdxFields>): StrongMdxFields {
   return {
-    id: faker.random.uuid(),
+    id: faker.datatype.uuid(),
     title: faker.lorem.sentence(),
     description: faker.lorem.paragraph(),
     slug: faker.lorem.slug(),
