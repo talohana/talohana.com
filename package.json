@@ -60,7 +60,7 @@
     "@graphql-codegen/typescript": "^1.21.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^13.1.5",
+    "@testing-library/user-event": "^13.1.9",
     "@types/faker": "^5.5.2",
     "@types/jest": "^26.0.22",
     "@types/mdx-js__react": "^1.5.3",
