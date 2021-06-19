@@ -1,16 +1,18 @@
 import { config } from '@config';
+import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import {
   RiAtFill,
   RiGithubFill,
   RiLinkedinFill,
+  RiRssFill,
   RiTwitterFill,
 } from 'react-icons/ri';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-const Wrapper = tw.ul`inline-block text-4xl m-0 space-x-2`;
+const Wrapper = tw.ul`inline-block text-4xl m-0 space-x-4`;
 
 const Item = tw.li`inline-block`;
 
@@ -44,6 +46,11 @@ export const SocialLinks: React.FC = () => {
       <Item>
         <SocialLink href={`mailto:${email}`} aria-label="Mail to Tal Ohana">
           <RiAtFill />
+        </SocialLink>
+      </Item>
+      <Item>
+        <SocialLink as={Link} to="/rss.xml" aria-label="Tal Ohana RSS">
+          <RiRssFill />
         </SocialLink>
       </Item>
     </Wrapper>
