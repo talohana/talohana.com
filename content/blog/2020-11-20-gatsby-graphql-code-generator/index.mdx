@@ -67,29 +67,33 @@ generates:
     config:
       namingConvention:
         enumValues: 'keep'
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 ```
 
 Let's go over this step by step
 
-- `schema` - the endpoint of our graphql server
-- `documents` - an array of globs which points to our graphql documents - for example exported queries
-- `plugins` - specific plugins we use to generate the typings under `./src/graphqlTypes.ts`, in our case typescript and typescript-operations
+- `schema` - the endpoint of our graphql server.
+- `documents` - an array of globs which points to our graphql documents - for example exported queries.
+- `plugins` - specific plugins we use to generate the typings under `./src/graphqlTypes.ts`, in our case typescript and typescript-operations.
+- `hooks` - graphql-codegen lets us hook into some steps of the code generation, here we are telling it to prettify the output.
 
 Finally, add the following scripts to our `package.json` file
 
 ```json
 {
-  "codegen": "graphql-codegen --config codegen.yml",
-  "postcodegen": "prettier --write ./src/graphqlTypes.ts"
+  "codegen": "graphql-codegen",
+  "codegen:watch": "graphql-codegen --watch"
 }
 ```
 
 We add two scripts:
 
-- `codegen` - the script which generates our types
-- `postcodegen` - a script that runs after `codegen` to keep the generated file formatted
+- `codegen` - the script which generates our types.
+- `codegen:watch` - the same script, but in watch mode so it can re-generate types as we code.
 
-> Optionally, you can even generate types every time you start the dev server by adding
+> Optionally, you can generate types every time you start the dev server by adding
 >
 > ```json
 > {
