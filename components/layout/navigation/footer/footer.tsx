@@ -4,7 +4,9 @@ const FooterLinks: React.VFC = () => (
   <ul>
     <li className="text-primary">Links</li>
     <li>
-      <a href="#">LinkedIn</a>
+      <a href="#">
+        <span>LinkedIn</span>
+      </a>
     </li>
     <li>
       <a href="#">Twitter</a>

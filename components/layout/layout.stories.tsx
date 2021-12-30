@@ -6,12 +6,10 @@ export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
-const Template: ComponentStory<typeof Layout> = (args) => <Layout {...args} />;
+const Template: ComponentStory<typeof Layout> = (args) => (
+  <div className="min-h-screen flex flex-col">
+    <Layout {...args} />
+  </div>
+);
 
 export const Default: ComponentStory<typeof Layout> = () => <Template />;
-
-export const WithContent: ComponentStory<typeof Layout> = () => (
-  <Template>
-    <div>Content</div>
-  </Template>
-);
