@@ -27,7 +27,7 @@ export const Footer: React.VFC = () => {
   return (
     <footer className="w-full py-12 bg-dark text-white">
       <div className="container flex justify-between">
-        <div>
+        <div className="flex items-center">
           <Copy />
         </div>
         <FooterLinks />
