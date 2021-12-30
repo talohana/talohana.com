@@ -1,10 +1,11 @@
-import { Footer } from "@/components/layout/navigation/footer/footer";
-import React from "react";
+import { Footer, NavBar } from '@components/layout';
+import React from 'react';
 
 export const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <main>{children}</main>
+      <NavBar />
+      <main className="flex-1">{children}</main>
       <Footer />
     </>
   );
