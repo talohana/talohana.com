@@ -1,6 +1,6 @@
 import { Layout } from '@components/layout';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Home from '../pages/index';
+import Home from './index';
 
 export default {
   title: 'Pages/Home',
