@@ -1,3 +1,5 @@
+// other code omitted for brevity
+import * as NextImage from 'next/image';
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
 
@@ -10,3 +12,10 @@ export const parameters = {
     },
   },
 };
+
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, 'default', {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});

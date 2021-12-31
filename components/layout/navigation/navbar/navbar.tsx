@@ -6,7 +6,7 @@ import React from 'react';
 const Brand: React.VFC = () => (
   <Link href="/">
     <a>
-      <Image alt="Tal Ohana in handwriting" src={brand} />
+      <Image alt="Tal Ohana Brand Logo" width={87} height={22} src={brand} />
     </a>
   </Link>
 );
