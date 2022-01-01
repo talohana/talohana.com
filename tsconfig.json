@@ -17,7 +17,9 @@
     "incremental": true,
     "paths": {
       "@components/*": ["components/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@models/*": ["models/*"],
+      "@lib/*": ["lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
