@@ -47,7 +47,7 @@ const NavLinks: React.VFC = () => {
 
 export const NavBar: React.VFC = () => {
   return (
-    <nav className="px-8 py-4 lg:px-20 lg:py-10 border-b border-b-gray-400 border-opacity-50">
+    <nav className="px-8 py-4 lg:px-20 lg:py-10 border-b border-b-gray-400 border-opacity-30">
       <div className="container flex justify-between">
         <Brand />
         <NavLinks />

@@ -11,7 +11,11 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className="text-2xl">
+    <button
+      onClick={toggleTheme}
+      className="text-2xl"
+      aria-label="Toggle Theme"
+    >
       {activeTheme === 'dark' ? <BsMoon /> : <BsSun />}
     </button>
   );

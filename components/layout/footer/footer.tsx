@@ -6,22 +6,41 @@ import {
 } from 'react-icons/ai';
 
 type LinkMeta = {
-  label: React.ReactElement;
+  element: React.ReactElement;
   href: string;
+  // aria labels are used when the element is an icon
+  ariaLabel?: string;
 };
 
 const links: LinkMeta[] = [
-  { label: <AiOutlineGithub />, href: 'https://github.com' },
-  { label: <AiOutlineLinkedin />, href: 'https://linkedin.com' },
-  { label: <AiOutlineTwitter />, href: 'https://twitter.com' },
+  {
+    element: <AiOutlineGithub />,
+    href: 'https://github.com',
+    ariaLabel: 'Tal Ohana Github',
+  },
+  {
+    element: <AiOutlineLinkedin />,
+    href: 'https://linkedin.com',
+    ariaLabel: 'Tal Ohana LinkedIn',
+  },
+  {
+    element: <AiOutlineTwitter />,
+    href: 'https://twitter.com',
+    ariaLabel: 'Tal Ohana Twitter',
+  },
 ];
 
 const FooterLinks: React.VFC = () => (
   <ul className="flex space-x-2 text-2xl">
-    {links.map(({ label, href }) => (
+    {links.map(({ element, href, ariaLabel }) => (
       <li key={href}>
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {label}
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={ariaLabel}
+        >
+          {element}
         </a>
       </li>
     ))}
@@ -34,7 +53,7 @@ const Copy: React.VFC = () => (
 
 export const Footer: React.VFC = () => {
   return (
-    <footer className="py-10 px-4 border-t border-t-gray-400 border-opacity-50">
+    <footer className="py-10 px-4 border-t border-t-gray-400 border-opacity-30">
       <div className="container flex flex-col justify-center items-center space-y-4">
         <FooterLinks />
         <Copy />
