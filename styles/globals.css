@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  @apply bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-gray-200;
+  @apply transition-colors bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-gray-200;
 }
 
 #__next {
