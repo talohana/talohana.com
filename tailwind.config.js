@@ -1,7 +1,10 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'media',
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: 'class',
   theme: {
     container: {
       center: true,
@@ -25,7 +28,17 @@ module.exports = {
           200: '#ade8f4',
           DEFAULT: '#0096c7',
         },
-        dark: '#161e26',
+        gray: {
+          900: '#212529',
+          800: '#343A40',
+          700: '#495057',
+          600: '#6C757D',
+          500: '#ADB5BD',
+          400: '#CED4DA',
+          300: '#DEE2E6',
+          200: '#E9ECEF',
+          100: '#F8F9FA',
+        },
       },
     },
   },

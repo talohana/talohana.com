@@ -1,4 +1,4 @@
-// other code omitted for brevity
+import { ThemeProvider } from 'next-themes';
 import * as NextImage from 'next/image';
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
@@ -12,6 +12,14 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <ThemeProvider attribute="class">
+      <Story />
+    </ThemeProvider>
+  ),
+];
 
 const OriginalNextImage = NextImage.default;
 

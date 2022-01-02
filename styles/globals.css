@@ -4,8 +4,12 @@ body {
   margin: 0;
 }
 
+body {
+  @apply bg-gray-200 text-gray-900 dark:bg-gray-900 dark:text-gray-200;
+}
+
 #__next {
-  @apply w-screen min-h-screen flex flex-col;
+  @apply min-h-screen flex flex-col;
 }
 
 a {

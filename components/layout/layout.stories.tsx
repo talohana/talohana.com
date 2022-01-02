@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Layout } from './layout';
 
 export default {
-  title: 'Navigation/Layout',
+  title: 'Layout/Layout',
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
