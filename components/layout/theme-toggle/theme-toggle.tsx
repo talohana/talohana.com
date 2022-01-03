@@ -16,7 +16,11 @@ export const ThemeToggle = () => {
       className="text-2xl"
       aria-label="Toggle Theme"
     >
-      {activeTheme === 'dark' ? <BsMoon /> : <BsSun />}
+      {activeTheme === 'dark' ? (
+        <BsMoon name="Dark Theme" />
+      ) : (
+        <BsSun name="Light Theme" />
+      )}
     </button>
   );
 };
