@@ -10,6 +10,7 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    'storybook-addon-next-router',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -25,7 +26,8 @@ module.exports = {
       },
     },
   ],
-  webpackFinal: (config) => {
+  staticDirs: ['../public'],
+  webpackFinal: config => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({

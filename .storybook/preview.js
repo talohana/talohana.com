@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'next-themes';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
@@ -11,10 +12,14 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  layout: 'fullscreen',
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
 };
 
 export const decorators = [
-  (Story) => (
+  Story => (
     <ThemeProvider attribute="class">
       <Story />
     </ThemeProvider>
@@ -25,5 +30,5 @@ const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
+  value: props => <OriginalNextImage {...props} unoptimized />,
 });

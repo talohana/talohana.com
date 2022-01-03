@@ -48,7 +48,7 @@ const FooterLinks: React.VFC = () => (
 );
 
 const Copy: React.VFC = () => (
-  <span role="contentinfo">
+  <span role="contentinfo" className="text-center">
     &copy; 2020-present Tal Ohana. All Rights Reserved.
   </span>
 );

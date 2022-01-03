@@ -1,10 +1,12 @@
+import { Disclosure, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { ThemeToggle } from '../theme-toggle/theme-toggle';
 
-const links = [
+const navigation = [
   { label: 'home', path: '/' },
   { label: 'blog', path: '/blog' },
   { label: 'about', path: '/about' },
@@ -12,7 +14,7 @@ const links = [
 
 const Brand: React.VFC = () => (
   <Link href="/">
-    <a className="text-xl">Tal Ohana</a>
+    <a className="text-lg">Tal Ohana</a>
   </Link>
 );
 
@@ -21,7 +23,7 @@ const NavLink: React.FC<{ path: string; label: string }> = ({
   label,
 }) => {
   const router = useRouter();
-  const classes = clsx({
+  const classes = clsx('block py-2 px-4', {
     'underline underline-offset-2 decoration-primary-600':
       router.pathname === path,
   });
@@ -35,8 +37,8 @@ const NavLink: React.FC<{ path: string; label: string }> = ({
 
 const NavLinks: React.VFC = () => {
   return (
-    <ul className="uppercase flex text-lg space-x-4">
-      {links.map(({ label, path }) => (
+    <ul className="uppercase text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+      {navigation.map(({ label, path }) => (
         <li key={label}>
           <NavLink path={path} label={label} />
         </li>
@@ -47,12 +49,35 @@ const NavLinks: React.VFC = () => {
 
 export const NavBar: React.VFC = () => {
   return (
-    <nav className="px-8 py-4 lg:px-20 lg:py-10 border-b border-b-gray-400 border-opacity-30">
-      <div className="container flex justify-between">
-        <Brand />
-        <NavLinks />
-        <ThemeToggle />
-      </div>
-    </nav>
+    <Disclosure as="nav">
+      {({ open }) => (
+        <>
+          <div className="flex justify-between md:items-center p-4 border-b border-b-gray-400 border-opacity-30">
+            <Disclosure.Button className="text-2xl md:hidden">
+              <span className="sr-only">Open navigation menu</span>
+              {open ? <AiOutlineClose /> : <AiOutlineMenu />}
+            </Disclosure.Button>
+            <Brand />
+            <div className="hidden md:block">
+              <NavLinks />
+            </div>
+            <ThemeToggle />
+          </div>
+          <Disclosure.Panel>
+            <Transition
+              show={open}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <NavLinks />
+            </Transition>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
 };

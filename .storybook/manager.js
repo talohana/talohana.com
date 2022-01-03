@@ -1,5 +1,5 @@
-const { addons } = require('@storybook/addons');
-const { themes } = require('@storybook/theming');
+import { addons } from '@storybook/addons';
+import { themes } from '@storybook/theming';
 
 addons.setConfig({
   theme: themes.dark,
