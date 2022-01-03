@@ -17,6 +17,7 @@
     "incremental": true,
     "paths": {
       "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
       "@public/*": ["public/*"],
       "@models/*": ["models/*"],
       "@lib/*": ["lib/*"],
