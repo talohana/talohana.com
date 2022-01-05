@@ -1,12 +1,11 @@
 overwrite: true
 schema: '${NEXT_PUBLIC_STRAPI_API_URL:http://localhost:1337}/graphql'
-documents: 'graphql/**/*.{graphql,js,ts,jsx,tsx}'
+documents: 'graphql/documents/**/*.{graphql,js,ts,jsx,tsx}'
 generates:
   models/generated.ts:
     plugins:
       - 'typescript'
       - 'typescript-operations'
-      - 'typescript-graphql-request'
 hooks:
   afterAllFileWrite:
     - prettier --write
