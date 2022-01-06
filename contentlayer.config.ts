@@ -25,7 +25,8 @@ const Post = defineDocumentType(() => ({
     publishedAt: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     image: { type: 'string', required: true },
-    caption: { type: 'string', require: true },
+    imageAlt: { type: 'string' },
+    imageCaption: { type: 'string' },
   },
   computedFields,
 }));

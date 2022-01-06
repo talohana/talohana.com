@@ -22,10 +22,10 @@ const NavLink: React.FC<{ path: string; label: string }> = ({
   path,
   label,
 }) => {
-  const router = useRouter();
+  const { pathname } = useRouter();
   const classes = clsx('block py-2 px-4', {
     'underline underline-offset-2 decoration-primary-600':
-      router.pathname === path,
+      path === '/' ? pathname === path : pathname.includes(path),
   });
 
   return (

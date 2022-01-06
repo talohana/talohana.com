@@ -1,7 +1,10 @@
 import { allPosts } from '.contentlayer/data';
 import type { Post as PostType } from '.contentlayer/types';
+import { components } from '@components/blog';
+import { H1 } from '@components/common';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import Image from 'next/image';
 import React from 'react';
 
 interface Props {
@@ -13,7 +16,19 @@ const Post: React.VFC<Props> = ({ post }) => {
 
   return (
     <article className="prose dark:prose-invert mx-auto md:prose-xl">
-      <Tag />
+      <H1>{post.title}</H1>
+      <p>{post.summary}</p>
+
+      <div className="relative block w-full aspect-[4/3]">
+        <Image
+          src={post.image}
+          title={post.imageCaption}
+          alt={post.imageAlt}
+          layout="fill"
+        />
+      </div>
+
+      <Tag components={components} />
     </article>
   );
 };

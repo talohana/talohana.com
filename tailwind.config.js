@@ -9,8 +9,6 @@ module.exports = {
     container: {
       center: true,
       screens: {
-        sm: '1100px',
-        md: '1100px',
         lg: '1100px',
         xl: '1100px',
       },
@@ -46,8 +44,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 };
