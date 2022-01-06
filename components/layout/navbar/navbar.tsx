@@ -14,7 +14,7 @@ const navigation = [
 
 const Brand: React.VFC = () => (
   <Link href="/">
-    <a className="text-lg">Tal Ohana</a>
+    <a className="uppercase font-medium text-lg text-primary">Tal Ohana</a>
   </Link>
 );
 
