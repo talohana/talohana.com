@@ -1068,11 +1068,11 @@ export type WriterInput = {
   posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-export type PreviewPostsQueryVariables = Exact<{
+export type RecentPostsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
 }>;
 
-export type PreviewPostsQuery = {
+export type RecentPostsQuery = {
   __typename?: 'Query';
   posts?:
     | {

@@ -1,10 +1,10 @@
-import { Post, PreviewPostsQuery } from '@models/generated';
+import { Post, RecentPostsQuery } from '@models/generated';
 import { client } from './client';
-import { QUERY_PREVIEW_POSTS } from './documents/post';
+import { QUERY_RECENT_POSTS } from './documents/post';
 
-export const getPreviewPosts = async (): Promise<Post[]> => {
+export const getRecentPosts = async (): Promise<Post[]> => {
   const { data } = await client
-    .query<PreviewPostsQuery>(QUERY_PREVIEW_POSTS)
+    .query<RecentPostsQuery>(QUERY_RECENT_POSTS)
     .toPromise();
 
   return (
