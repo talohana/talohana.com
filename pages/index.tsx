@@ -1,28 +1,9 @@
-import { RecentArticles } from '@components/sections';
-import { getAllArticles } from '@graphql/article';
-import { Article } from '@models/generated';
-import type { GetStaticProps, NextPage } from 'next';
+import React from 'react';
 
-type Props = {
-  articles: Article[];
-};
+interface Props {}
 
-const Home: NextPage<Props> = ({ articles }) => {
-  return (
-    <>
-      <RecentArticles articles={articles} />
-    </>
-  );
+const Home: React.VFC<Props> = () => {
+  return <div></div>;
 };
 
 export default Home;
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const articles = await getAllArticles();
-
-  return {
-    props: {
-      articles: articles.slice(0, 3),
-    },
-  };
-};

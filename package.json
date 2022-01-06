@@ -13,30 +13,23 @@
     "lint": "next lint",
     "commit": "git-cz",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "codegen": "cross-env DOTENV_CONFIG_PATH=./.env.local graphql-codegen -r dotenv/config --config codegen.yml"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "clsx": "^1.1.1",
     "date-fns": "^2.28.0",
-    "graphql": "^16.2.0",
-    "isomorphic-unfetch": "^3.1.0",
     "next": "12.0.4",
     "next-seo": "^4.28.1",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
-    "urql": "^2.0.6"
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
-    "@graphql-codegen/cli": "2.3.1",
-    "@graphql-codegen/typescript": "2.4.2",
-    "@graphql-codegen/typescript-operations": "2.2.2",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
