@@ -1,1 +1,1 @@
-export * from './recent-posts/recent-posts';
+export * from './recent-articles/recent-articles';

@@ -1,1 +1,1 @@
-export * from './post-preview/post-preview';
+export * from './article-card/article-card';

@@ -1,17 +1,17 @@
 import { H3 } from '@components/common';
 import { getStrapiMedia } from '@lib/api';
-import { Post } from '@models/generated';
+import { Article } from '@models/generated';
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 interface Props {
-  post: Post;
+  article: Article;
   className?: string;
 }
 
-const PostPreviewImage: React.VFC<Pick<Post, 'image'>> = ({ image }) => {
+const PostPreviewImage: React.VFC<Pick<Article, 'image'>> = ({ image }) => {
   if (!image?.data?.attributes) {
     return null;
   }
@@ -32,20 +32,20 @@ const PostPreviewImage: React.VFC<Pick<Post, 'image'>> = ({ image }) => {
   );
 };
 
-const PostPreviewCreatedAt: React.VFC<Pick<Post, 'createdAt'>> = ({
-  createdAt,
+const PostPreviewPublishedAt: React.VFC<Pick<Article, 'publishedAt'>> = ({
+  publishedAt,
 }) => {
-  if (!createdAt) {
+  if (!publishedAt) {
     return null;
   }
 
-  const formatted = format(parseISO(createdAt), 'PP');
+  const formatted = format(parseISO(publishedAt), 'PP');
 
   return <span>{formatted}</span>;
 };
 
-export const PostPreview: React.VFC<Props> = ({ post }) => {
-  const { slug, title, description, createdAt, image } = post;
+export const ArticleCard: React.VFC<Props> = ({ article }) => {
+  const { slug, title, description, publishedAt, image } = article;
 
   return (
     <Link href={`/blog/${slug}`}>
@@ -53,9 +53,11 @@ export const PostPreview: React.VFC<Props> = ({ post }) => {
         <article className="flex flex-col space-y-2">
           <PostPreviewImage image={image} />
           <div>
-            <PostPreviewCreatedAt createdAt={createdAt} />
-            <H3>{title}</H3>
-            <p>{description}</p>
+            <PostPreviewPublishedAt publishedAt={publishedAt} />
+            <H3 className="underline decoration-primary-700 ">{title}</H3>
+            <p className="text-xl text-gray-700 dark:text-gray-400">
+              {description}
+            </p>
           </div>
         </article>
       </a>

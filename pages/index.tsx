@@ -1,16 +1,16 @@
-import { RecentPosts } from '@components/sections';
-import { getRecentPosts } from '@graphql/post';
-import { Post } from '@models/generated';
+import { RecentArticles } from '@components/sections';
+import { getAllArticles } from '@graphql/article';
+import { Article } from '@models/generated';
 import type { GetStaticProps, NextPage } from 'next';
 
 type Props = {
-  recentPosts: Post[];
+  articles: Article[];
 };
 
-const Home: NextPage<Props> = ({ recentPosts }) => {
+const Home: NextPage<Props> = ({ articles }) => {
   return (
     <>
-      <RecentPosts posts={recentPosts} />
+      <RecentArticles articles={articles} />
     </>
   );
 };
@@ -18,9 +18,11 @@ const Home: NextPage<Props> = ({ recentPosts }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const recentPosts = await getRecentPosts();
+  const articles = await getAllArticles();
 
   return {
-    props: { recentPosts },
+    props: {
+      articles: articles.slice(0, 3),
+    },
   };
 };

@@ -1,21 +1,24 @@
 import { gql } from 'urql';
 
-export const QUERY_RECENT_POSTS = gql`
-  query RecentPosts($limit: Int = 5) {
-    posts(sort: "createdAt:desc", pagination: { limit: $limit }) {
+export const QUERY_ALL_ARTICLES = gql`
+  query AllArticles {
+    articles(sort: "publishedAt:desc") {
       data {
         attributes {
           slug
           title
           description
-          createdAt
+          publishedAt
           image {
             data {
               attributes {
                 url
+                alternativeText
+                caption
               }
             }
           }
+          content
         }
       }
     }

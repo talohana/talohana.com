@@ -24,6 +24,69 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Article = {
+  __typename?: 'Article';
+  author?: Maybe<WriterEntityResponse>;
+  category?: Maybe<CategoryEntityResponse>;
+  content: Scalars['String'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  image?: Maybe<UploadFileEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  slug: Scalars['String'];
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type ArticleEntity = {
+  __typename?: 'ArticleEntity';
+  attributes?: Maybe<Article>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ArticleEntityResponse = {
+  __typename?: 'ArticleEntityResponse';
+  data?: Maybe<ArticleEntity>;
+};
+
+export type ArticleEntityResponseCollection = {
+  __typename?: 'ArticleEntityResponseCollection';
+  data: Array<ArticleEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ArticleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
+  author?: InputMaybe<WriterFiltersInput>;
+  category?: InputMaybe<CategoryFiltersInput>;
+  content?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ArticleFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ArticleInput = {
+  author?: InputMaybe<Scalars['ID']>;
+  category?: InputMaybe<Scalars['ID']>;
+  content?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  slug?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ArticleRelationResponseCollection = {
+  __typename?: 'ArticleRelationResponseCollection';
+  data: Array<ArticleEntity>;
+};
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -49,15 +112,15 @@ export type BooleanFilterInput = {
 
 export type Category = {
   __typename?: 'Category';
+  articles?: Maybe<ArticleRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
-  posts?: Maybe<PostRelationResponseCollection>;
   slug: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type CategoryPostsArgs = {
-  filters?: InputMaybe<PostFiltersInput>;
+export type CategoryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -82,19 +145,19 @@ export type CategoryEntityResponseCollection = {
 
 export type CategoryFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
+  articles?: InputMaybe<ArticleFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
-  posts?: InputMaybe<PostFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type CategoryInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   name?: InputMaybe<Scalars['String']>;
-  posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   slug?: InputMaybe<Scalars['String']>;
 };
 
@@ -177,13 +240,13 @@ export type FloatFilterInput = {
 };
 
 export type GenericMorph =
+  | Article
   | Category
   | ComponentSectionsHero
   | ComponentSharedSeo
   | Global
   | Homepage
   | I18NLocale
-  | Post
   | UploadFile
   | UsersPermissionsPermission
   | UsersPermissionsRole
@@ -347,18 +410,18 @@ export type JsonFilterInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createArticle?: Maybe<ArticleEntityResponse>;
   createCategory?: Maybe<CategoryEntityResponse>;
-  createPost?: Maybe<PostEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   createWriter?: Maybe<WriterEntityResponse>;
+  deleteArticle?: Maybe<ArticleEntityResponse>;
   deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteGlobal?: Maybe<GlobalEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
-  deletePost?: Maybe<PostEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -376,11 +439,11 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateArticle?: Maybe<ArticleEntityResponse>;
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateGlobal?: Maybe<GlobalEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
-  updatePost?: Maybe<PostEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -390,12 +453,12 @@ export type Mutation = {
   upload: UploadFileEntityResponse;
 };
 
-export type MutationCreateCategoryArgs = {
-  data: CategoryInput;
+export type MutationCreateArticleArgs = {
+  data: ArticleInput;
 };
 
-export type MutationCreatePostArgs = {
-  data: PostInput;
+export type MutationCreateCategoryArgs = {
+  data: CategoryInput;
 };
 
 export type MutationCreateUploadFileArgs = {
@@ -414,11 +477,11 @@ export type MutationCreateWriterArgs = {
   data: WriterInput;
 };
 
-export type MutationDeleteCategoryArgs = {
+export type MutationDeleteArticleArgs = {
   id: Scalars['ID'];
 };
 
-export type MutationDeletePostArgs = {
+export type MutationDeleteCategoryArgs = {
   id: Scalars['ID'];
 };
 
@@ -471,6 +534,11 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String'];
 };
 
+export type MutationUpdateArticleArgs = {
+  data: ArticleInput;
+  id: Scalars['ID'];
+};
+
 export type MutationUpdateCategoryArgs = {
   data: CategoryInput;
   id: Scalars['ID'];
@@ -487,11 +555,6 @@ export type MutationUpdateGlobalArgs = {
 
 export type MutationUpdateHomepageArgs = {
   data: HomepageInput;
-};
-
-export type MutationUpdatePostArgs = {
-  data: PostInput;
-  id: Scalars['ID'];
 };
 
 export type MutationUpdateUploadFileArgs = {
@@ -537,69 +600,6 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>;
 };
 
-export type Post = {
-  __typename?: 'Post';
-  author?: Maybe<WriterEntityResponse>;
-  category?: Maybe<CategoryEntityResponse>;
-  content: Scalars['String'];
-  createdAt?: Maybe<Scalars['DateTime']>;
-  description: Scalars['String'];
-  image?: Maybe<UploadFileEntityResponse>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  slug: Scalars['String'];
-  title: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type PostEntity = {
-  __typename?: 'PostEntity';
-  attributes?: Maybe<Post>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type PostEntityResponse = {
-  __typename?: 'PostEntityResponse';
-  data?: Maybe<PostEntity>;
-};
-
-export type PostEntityResponseCollection = {
-  __typename?: 'PostEntityResponseCollection';
-  data: Array<PostEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type PostFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>;
-  author?: InputMaybe<WriterFiltersInput>;
-  category?: InputMaybe<CategoryFiltersInput>;
-  content?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  description?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<PostFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<PostFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type PostInput = {
-  author?: InputMaybe<Scalars['ID']>;
-  category?: InputMaybe<Scalars['ID']>;
-  content?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
-  image?: InputMaybe<Scalars['ID']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  slug?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-};
-
-export type PostRelationResponseCollection = {
-  __typename?: 'PostRelationResponseCollection';
-  data: Array<PostEntity>;
-};
-
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW',
@@ -607,6 +607,8 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  article?: Maybe<ArticleEntityResponse>;
+  articles?: Maybe<ArticleEntityResponseCollection>;
   categories?: Maybe<CategoryEntityResponseCollection>;
   category?: Maybe<CategoryEntityResponse>;
   global?: Maybe<GlobalEntityResponse>;
@@ -614,8 +616,6 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
-  post?: Maybe<PostEntityResponse>;
-  posts?: Maybe<PostEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   usersPermissionsRole?: Maybe<UsersPermissionsRoleEntityResponse>;
@@ -624,6 +624,17 @@ export type Query = {
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
   writer?: Maybe<WriterEntityResponse>;
   writers?: Maybe<WriterEntityResponseCollection>;
+};
+
+export type QueryArticleArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+export type QueryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type QueryCategoriesArgs = {
@@ -643,17 +654,6 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type QueryPostArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-export type QueryPostsArgs = {
-  filters?: InputMaybe<PostFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1017,16 +1017,16 @@ export type UsersPermissionsUserRelationResponseCollection = {
 
 export type Writer = {
   __typename?: 'Writer';
+  articles?: Maybe<ArticleRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<UploadFileEntityResponse>;
-  posts?: Maybe<PostRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type WriterPostsArgs = {
-  filters?: InputMaybe<PostFiltersInput>;
+export type WriterArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1051,41 +1051,40 @@ export type WriterEntityResponseCollection = {
 
 export type WriterFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<WriterFiltersInput>>>;
+  articles?: InputMaybe<ArticleFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   email?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<WriterFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<WriterFiltersInput>>>;
-  posts?: InputMaybe<PostFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type WriterInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   email?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['ID']>;
-  posts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-export type RecentPostsQueryVariables = Exact<{
-  limit?: InputMaybe<Scalars['Int']>;
-}>;
+export type AllArticlesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type RecentPostsQuery = {
+export type AllArticlesQuery = {
   __typename?: 'Query';
-  posts?:
+  articles?:
     | {
-        __typename?: 'PostEntityResponseCollection';
+        __typename?: 'ArticleEntityResponseCollection';
         data: Array<{
-          __typename?: 'PostEntity';
+          __typename?: 'ArticleEntity';
           attributes?:
             | {
-                __typename?: 'Post';
+                __typename?: 'Article';
                 slug: string;
                 title: string;
                 description: string;
-                createdAt?: any | null | undefined;
+                publishedAt?: any | null | undefined;
+                content: string;
                 image?:
                   | {
                       __typename?: 'UploadFileEntityResponse';
@@ -1093,7 +1092,12 @@ export type RecentPostsQuery = {
                         | {
                             __typename?: 'UploadFileEntity';
                             attributes?:
-                              | { __typename?: 'UploadFile'; url: string }
+                              | {
+                                  __typename?: 'UploadFile';
+                                  url: string;
+                                  alternativeText?: string | null | undefined;
+                                  caption?: string | null | undefined;
+                                }
                               | null
                               | undefined;
                           }
