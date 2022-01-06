@@ -1,7 +1,9 @@
+const withPlugins = require('next-compose-plugins');
+const { withContentlayer } = require('next-contentlayer');
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfiguration = {
   reactStrictMode: true,
-  images: {
-    domains: ['localhost', 'res.cloudinary.com'],
-  },
 };
+
+module.exports = withPlugins([withContentlayer()], nextConfiguration);
