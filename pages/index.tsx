@@ -24,7 +24,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = () => {
-  const posts = allPosts.slice(0, 3);
+  const posts = allPosts.slice(0, 5);
   posts.sort((a, b) =>
     compareDesc(parseISO(a.publishedAt), parseISO(b.publishedAt))
   );

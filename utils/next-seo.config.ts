@@ -1,3 +1,4 @@
+import { siteUrl } from '@lib/constants';
 import { DefaultSeoProps } from 'next-seo';
 
 export const SEO: DefaultSeoProps = {
@@ -5,7 +6,7 @@ export const SEO: DefaultSeoProps = {
   description: 'Tal Ohana - Software Engineer',
   openGraph: {
     site_name: 'Tal Ohana',
-    images: [{ url: 'https://talohana.com/assets/banner.png' }],
+    images: [{ url: `${siteUrl}/assets/banner.png` }],
   },
   twitter: {
     cardType: 'summary_large_image',
