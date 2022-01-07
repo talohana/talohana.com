@@ -39,10 +39,16 @@ module.exports = {
           100: '#F8F9FA',
         },
       },
+      typography: theme => ({
+        DEFAULT: {
+          css: {
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+          },
+        },
+      }),
     },
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [require('@tailwindcss/typography')],
 };

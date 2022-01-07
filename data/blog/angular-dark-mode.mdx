@@ -13,11 +13,11 @@ Ten minutes later, I already had dark mode integrated into my portfolio!
 
 As an Angular developer, I thought it would be nice to have such a library in our ecosystem as well, so I created angular-dark-mode!
 
-> Note: Final code and demo available in [this stackblitz](https://stackblitz.com/edit/angular-dark-mode-blog-example?file=src%2Fapp%2Fapp.component.ts).
+> Final code and demo available in [this stackblitz](https://stackblitz.com/edit/angular-dark-mode-blog-example?file=src%2Fapp%2Fapp.component.ts).
 
 ## Setup
 
-First, let’s quickly create an angular project we can play with by running:
+First, let's quickly create an angular project we can play with by running:
 
 ```shell
 npx @angular/cli new dark-mode-playground --minimal
@@ -57,7 +57,7 @@ angular-dark-mode ships with some configurable options:
 | storageKey      |            localStorage key to persist dark mode             |            `'dark-mode'` |
 | element         |         target HTMLElement to set given css classes          |          `document.body` |
 
-Given the default options, let’s add some styling to reflect our dark and light modes:
+Given the default options, let's add some styling to reflect our dark and light modes:
 
 ```css
 body {
@@ -85,7 +85,7 @@ Also, we want a nice transition between the modes but want to skip the initial t
 
 Moving on to `app.component.ts`, inject `DarkModeService` and add some text as well as a toggle button:
 
-```ts
+```ts:app.component.ts
 import { Component } from '@angular/core';
 import { DarkModeService } from 'angular-dark-mode';
 import { Observable } from 'rxjs';
