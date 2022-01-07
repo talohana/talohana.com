@@ -2,6 +2,7 @@ import { allPosts } from '.contentlayer/data';
 import type { Post as PostType } from '.contentlayer/types';
 import { components } from '@components/blog';
 import { H1 } from '@components/common';
+import { format, parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
@@ -13,12 +14,12 @@ interface Props {
 
 const Post: React.VFC<Props> = ({ post }) => {
   const Tag = useMDXComponent(post.body.code);
-
+  const publishedAtFormatted = format(parseISO(post.publishedAt), 'PP');
   return (
     <article className="prose dark:prose-invert mx-auto md:prose-xl">
       <H1>{post.title}</H1>
+      <span>{publishedAtFormatted}</span>
       <p>{post.summary}</p>
-
       <div className="relative block w-full aspect-[4/3]">
         <Image
           src={post.image}
