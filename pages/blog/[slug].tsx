@@ -15,22 +15,25 @@ interface Props {
 const Post: React.VFC<Props> = ({ post }) => {
   const Tag = useMDXComponent(post.body.code);
   const publishedAtFormatted = format(parseISO(post.publishedAt), 'PP');
-  return (
-    <article className="prose dark:prose-invert mx-auto md:prose-xl">
-      <H1>{post.title}</H1>
-      <span>{publishedAtFormatted}</span>
-      <p>{post.summary}</p>
-      <div className="relative block w-full aspect-[4/3]">
-        <Image
-          src={post.image}
-          title={post.imageCaption}
-          alt={post.imageAlt}
-          layout="fill"
-        />
-      </div>
 
-      <Tag components={components} />
-    </article>
+  return (
+    <>
+      <article className="prose dark:prose-invert mx-auto md:prose-xl">
+        <H1>{post.title}</H1>
+        <span>{publishedAtFormatted}</span>
+        <p>{post.summary}</p>
+        <div className="relative block w-full aspect-[4/3]">
+          <Image
+            src={post.image}
+            title={post.imageCaption}
+            alt={post.imageAlt}
+            layout="fill"
+          />
+        </div>
+
+        <Tag components={components} />
+      </article>
+    </>
   );
 };
 

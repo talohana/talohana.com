@@ -14,13 +14,12 @@ const Blog: React.VFC<Props> = ({ posts }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">{cards}</div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{cards}</div>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps<Props> = () => {
-  // TODO: pick only required properties
   const posts = [...allPosts];
   posts.sort((a, b) =>
     compareDesc(parseISO(a.publishedAt), parseISO(b.publishedAt))

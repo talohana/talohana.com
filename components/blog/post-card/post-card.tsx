@@ -20,6 +20,7 @@ export const PostCard: React.VFC<Props> = ({ post }) => {
             <Image
               src={post.image}
               alt={post.imageAlt}
+              quality={50}
               title={post.imageCaption}
               layout="fill"
             />
