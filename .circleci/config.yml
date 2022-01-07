@@ -1,8 +1,13 @@
-version: 2.1
+version: '2.1'
 orbs:
-  node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      - node/test:
-          run-command: test:ci
+  node: circleci/node@4.7.0
+jobs:
+  test:
+    executor:
+      name: node/default
+      tag: '14.17.6'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: yarn test:ci
