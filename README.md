@@ -1,1 +1,0 @@
-# Tal Ohana Personal Site
