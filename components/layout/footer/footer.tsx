@@ -1,3 +1,4 @@
+import { links } from '@lib/constants';
 import React from 'react';
 import {
   AiOutlineGithub,
@@ -12,27 +13,27 @@ type LinkMeta = {
   ariaLabel?: string;
 };
 
-const links: LinkMeta[] = [
+const linksMeta: LinkMeta[] = [
   {
     element: <AiOutlineGithub />,
-    href: 'https://github.com',
+    href: links.github,
     ariaLabel: 'Tal Ohana Github',
   },
   {
     element: <AiOutlineLinkedin />,
-    href: 'https://linkedin.com',
+    href: links.linkedin,
     ariaLabel: 'Tal Ohana LinkedIn',
   },
   {
     element: <AiOutlineTwitter />,
-    href: 'https://twitter.com',
+    href: links.twitter,
     ariaLabel: 'Tal Ohana Twitter',
   },
 ];
 
 const FooterLinks: React.VFC = () => (
   <ul className="flex space-x-2 text-2xl">
-    {links.map(({ element, href, ariaLabel }) => (
+    {linksMeta.map(({ element, href, ariaLabel }) => (
       <li key={href}>
         <a
           href={href}
