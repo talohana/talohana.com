@@ -3,17 +3,37 @@ import type { Post } from '.contentlayer/types';
 import { PostCard } from '@components/blog/post-card/post-card';
 import { compareDesc, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface Props {
   posts: Post[];
 }
 
 const Blog: React.VFC<Props> = ({ posts }) => {
-  const cards = posts.map(post => <PostCard key={post._id} post={post} />);
+  const [searchValue, setSearchValue] = useState('');
+
+  const cards = posts
+    .filter(({ title, tags }) => {
+      const titleIncludes = title
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
+      const tagsIncludes = tags.some(tag =>
+        tag.toLowerCase().includes(searchValue.toLowerCase())
+      );
+
+      return titleIncludes || tagsIncludes;
+    })
+    .map(post => <PostCard key={post._id} post={post} />);
 
   return (
     <div>
+      <input
+        type="text"
+        aria-label="Search posts"
+        onChange={e => setSearchValue(e.target.value)}
+        placeholder="Search posts"
+        className="block w-full px-4 py-2 mb-4 text-gray-800 bg-gray-100 dark:text-gray-100 dark:bg-gray-800 rounded-lg "
+      />
       <div className="grid grid-cols-1 gap-8">{cards}</div>
     </div>
   );

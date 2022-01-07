@@ -5,7 +5,7 @@ export const Layout: React.FC = ({ children }) => {
   return (
     <>
       <NavBar />
-      <main className="flex-1 py-4 px-2 container">{children}</main>
+      <main className="flex-1 p-4 container">{children}</main>
       <Footer />
     </>
   );

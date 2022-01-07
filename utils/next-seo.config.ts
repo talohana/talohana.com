@@ -6,7 +6,7 @@ export const SEO: DefaultSeoProps = {
   description: 'Tal Ohana - Software Engineer',
   openGraph: {
     site_name: 'Tal Ohana',
-    images: [{ url: `${siteUrl}/assets/banner.png` }],
+    images: [{ url: `${siteUrl}/assets/banner.jpg` }],
   },
   twitter: {
     cardType: 'summary_large_image',

@@ -1,1 +1,1 @@
-export * from './typography/typography';
+export * from './badge';

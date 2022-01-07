@@ -9,8 +9,8 @@ module.exports = {
     container: {
       center: true,
       screens: {
-        lg: '1100px',
-        xl: '1100px',
+        lg: '700px',
+        xl: '700px',
       },
     },
     extend: {
@@ -44,6 +44,9 @@ module.exports = {
           css: {
             'h1,h2,h3,h4,h5,h6': {
               position: 'relative',
+            },
+            h1: {
+              fontSize: theme('fontSize.2xl'),
             },
             blockquote: {
               borderLeftColor: theme('colors.primary.400'),
