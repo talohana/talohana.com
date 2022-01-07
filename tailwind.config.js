@@ -42,6 +42,12 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
+            'h1,h2,h3,h4,h5,h6': {
+              position: 'relative',
+            },
+            blockquote: {
+              borderLeftColor: theme('colors.primary.400'),
+            },
             'blockquote p:first-of-type::before': false,
             'blockquote p:last-of-type::after': false,
           },

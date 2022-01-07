@@ -20,6 +20,20 @@ button {
   @apply border border-opacity-20 border-gray-300;
 }
 
-.prose :where(code):not(:where([class~='not-prose'] *)) {
-  @apply before:content-[''] after:content-[''] font-normal border rounded-lg border-gray-900 border-opacity-20 dark:border-opacity-20 dark:border-gray-300 px-1 py-0.5;
+.prose code {
+  @apply before:content-[''] after:content-[''];
+  @apply rounded-lg border border-gray-900 dark:border-gray-200 border-opacity-20 dark:border-opacity-20;
+}
+
+.prose pre code {
+  @apply border-none rounded-none p-0;
+}
+
+.prose .anchor {
+  @apply absolute -ml-6 w-full cursor-pointer text-primary after:content-['#'] no-underline opacity-0 transition-all duration-75;
+  @apply hover:visible hover:opacity-100;
+}
+
+.prose a {
+  @apply font-normal decoration-primary-400;
 }

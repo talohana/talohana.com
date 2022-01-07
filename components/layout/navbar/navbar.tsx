@@ -9,7 +9,6 @@ import { ThemeToggle } from '../theme-toggle/theme-toggle';
 const navigation = [
   { label: 'home', path: '/' },
   { label: 'blog', path: '/blog' },
-  { label: 'about', path: '/about' },
 ];
 
 const Brand: React.VFC = () => (

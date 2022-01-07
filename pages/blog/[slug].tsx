@@ -28,6 +28,7 @@ const Post: React.VFC<Props> = ({ post }) => {
             title={post.imageCaption}
             alt={post.imageAlt}
             layout="fill"
+            className="rounded-lg"
           />
         </div>
 

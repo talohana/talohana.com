@@ -17,7 +17,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
     <div className="py-4">
       <div>
         <H2>Recent Posts</H2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{cards}</div>
+        <div className="grid grid-cols-1 gap-8">{cards}</div>
       </div>
     </div>
   );

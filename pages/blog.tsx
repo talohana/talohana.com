@@ -14,7 +14,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{cards}</div>
+      <div className="grid grid-cols-1 gap-8">{cards}</div>
     </div>
   );
 };
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<Props> = () => {
 
   return {
     props: {
-      posts: posts,
+      posts,
     },
   };
 };
