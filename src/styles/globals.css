@@ -44,7 +44,7 @@ body {
 
 .prose code {
   @apply before:content-[''] after:content-[''];
-  @apply rounded-lg border border-gray-900 dark:border-gray-200 border-opacity-20 dark:border-opacity-20;
+  @apply rounded-lg border border-gray-900 dark:border-gray-200 border-opacity-20 dark:border-opacity-20 py-0.5 px-1;
 }
 
 .prose pre code {
