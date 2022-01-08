@@ -1,3 +1,6 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -8,56 +11,31 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      screens: {
-        lg: '700px',
-        xl: '700px',
-      },
     },
     extend: {
       colors: {
         primary: {
-          900: '#6247aa',
-          800: '#7251b5',
-          700: '#815ac0',
-          600: '#9163cb',
-          500: '#a06cd5',
-          400: '#b185db',
-          300: '#c19ee0',
-          200: '#d2b7e5',
-          100: '#dac3e8',
-          DEFAULT: '#9163cb',
+          ...colors.violet,
+          DEFAULT: colors.violet['500'],
         },
         gray: {
-          900: '#212529',
-          800: '#343A40',
-          700: '#495057',
-          600: '#6C757D',
-          500: '#ADB5BD',
-          400: '#CED4DA',
-          300: '#DEE2E6',
-          200: '#E9ECEF',
-          100: '#F8F9FA',
+          50: '#ffffff',
+          100: '#e6e6e6',
+          200: '#cccccc',
+          300: '#b3b3b3',
+          400: '#999999',
+          500: '#808080',
+          600: '#666666',
+          700: '#4c4c4c',
+          800: '#333333',
+          900: '#191919',
         },
       },
-      typography: theme => ({
-        DEFAULT: {
-          css: {
-            'h1,h2,h3,h4,h5,h6': {
-              position: 'relative',
-            },
-            h1: {
-              fontSize: theme('fontSize.2xl'),
-            },
-            blockquote: {
-              borderLeftColor: theme('colors.primary.400'),
-            },
-            'blockquote p:first-of-type::before': false,
-            'blockquote p:last-of-type::after': false,
-          },
-        },
-      }),
+      fontFamily: {
+        sans: ['Poppins', ...fontFamily.sans],
+      },
     },
   },
   variants: {},
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

@@ -26,17 +26,13 @@ const Home: React.VFC<Props> = ({ posts }) => {
           />
         </div>
         <div>
-          <h1 className="text-3xl">Tal Ohana</h1>
-          <h3 className="text-lg text-gray-800 dark:text-gray-400">
-            Software Engineer at X
-          </h3>
-          <h3 className="text-lg text-gray-800 dark:text-gray-400">
-            JavaScript, TypeScript and GraphQL enthusiast
-          </h3>
+          <h1>Tal Ohana</h1>
+          <h4>Software Engineer at X</h4>
+          <h4>JavaScript, TypeScript and GraphQL enthusiast</h4>
         </div>
       </div>
       <div className="space-y-4">
-        <h2 className="text-2xl underline decoration-primary-400">
+        <h2 className="underline decoration-primary-800 underline-offset-2">
           Recent Posts
         </h2>
         <div className="grid grid-cols-1 gap-8">{cards}</div>

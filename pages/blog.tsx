@@ -32,7 +32,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
         aria-label="Search posts"
         onChange={e => setSearchValue(e.target.value)}
         placeholder="Search posts"
-        className="block w-full px-4 py-2 mb-4 text-gray-800 bg-gray-100 dark:text-gray-100 dark:bg-gray-800 rounded-lg "
+        className="my-4"
       />
       <div className="grid grid-cols-1 gap-8">{cards}</div>
     </div>
