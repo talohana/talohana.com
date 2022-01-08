@@ -20,9 +20,11 @@ const Home: React.VFC<Props> = ({ posts }) => {
         <div className="relative w-32 aspect-square">
           <Image
             src={profile}
+            quality={50}
             alt="Tal Ohana profile picture"
             layout="fill"
             className="rounded-full"
+            placeholder="blur"
           />
         </div>
         <div>
