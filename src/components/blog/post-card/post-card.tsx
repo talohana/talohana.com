@@ -1,5 +1,5 @@
 import { Post } from '.contentlayer/types';
-import { Badge } from '@components/common/badge';
+import { Badge } from '@/components/common/badge';
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 import React from 'react';

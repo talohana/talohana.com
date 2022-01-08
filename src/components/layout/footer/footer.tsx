@@ -1,4 +1,4 @@
-import { links } from '@lib/constants';
+import { links } from '@/lib/constants';
 import React from 'react';
 import {
   AiOutlineGithub,

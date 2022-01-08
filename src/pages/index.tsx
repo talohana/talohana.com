@@ -1,7 +1,7 @@
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
-import { PostCard } from '@components/blog/post-card/post-card';
-import profile from '@public/assets/profile.jpg';
+import { PostCard } from '@/components/blog/post-card/post-card';
+import profile from '@/public/assets/profile.jpg';
 import { compareDesc, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';

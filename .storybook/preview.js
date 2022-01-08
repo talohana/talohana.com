@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'next-themes';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
-import '../styles/globals.css';
+import '../src/styles/globals.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

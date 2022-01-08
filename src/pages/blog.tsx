@@ -1,6 +1,6 @@
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
-import { PostCard } from '@components/blog/post-card/post-card';
+import { PostCard } from '@/components/blog/post-card/post-card';
 import { compareDesc, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';

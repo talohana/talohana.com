@@ -1,4 +1,4 @@
-import { siteUrl } from '@lib/constants';
+import { siteUrl } from '@/lib/constants';
 import { DefaultSeoProps } from 'next-seo';
 
 export const SEO: DefaultSeoProps = {

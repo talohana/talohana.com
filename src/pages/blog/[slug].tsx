@@ -1,6 +1,6 @@
 import { allPosts } from '.contentlayer/data';
 import type { Post as PostType } from '.contentlayer/types';
-import { components } from '@components/blog';
+import { components } from '@/components/blog';
 import { format, parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';

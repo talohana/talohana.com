@@ -9,12 +9,12 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '^@components/(.*)$': '<rootDir>/components/$1',
-    '^@pages/(.*)$': '<rootDir>/pages/$1',
-    '^@public/(.*)$': '<rootDir>/public/$1',
-    '^@models/(.*)$': '<rootDir>/models/$1',
-    '^@lib/(.*)$': '<rootDir>/lib/$1',
-    '^@utils/(.*)$': '<rootDir>/utils/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@/public/(.*)$': '<rootDir>/public/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 };
