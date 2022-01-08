@@ -31,9 +31,14 @@ const Home: React.VFC<Props> = ({ posts }) => {
             />
           </div>
           <div>
-            <h1>Tal Ohana</h1>
-            <h4>Software Engineer at X</h4>
-            <h4>JavaScript, TypeScript and GraphQL enthusiast</h4>
+            <h1 className="mb-4">Tal Ohana</h1>
+            <div className="text-">
+              <h4>
+                Software Engineer at{' '}
+                <span className="text-primary font-bold">Lorem Ipsum</span>
+              </h4>
+              <h4>JavaScript, TypeScript and GraphQL enthusiast</h4>
+            </div>
           </div>
         </div>
         <div className="space-y-4">
