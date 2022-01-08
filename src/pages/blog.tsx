@@ -1,8 +1,8 @@
 import { PostCard } from '@/components/blog/post-card';
-import { Seo } from '@/components/seo';
 import { getPostsFrontmatter } from '@/lib/mdx';
 import { Frontmatter } from '@/types/frontmatter';
 import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 
 interface Props {
@@ -27,7 +27,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
 
   return (
     <>
-      <Seo title="Blog" />
+      <NextSeo title="Blog" />
       <div>
         <input
           type="text"

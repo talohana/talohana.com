@@ -1,9 +1,9 @@
 import { PostCard } from '@/components/blog/post-card';
-import { Seo } from '@/components/seo';
 import { getPostsFrontmatter } from '@/lib/mdx';
 import me from '@/public/assets/me.jpg';
 import { Frontmatter } from '@/types/frontmatter';
 import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import React from 'react';
 
@@ -16,7 +16,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
 
   return (
     <>
-      <Seo title="Home" />
+      <NextSeo title="Home" />
       <div className="py-4 container space-y-12">
         <div className="flex flex-col space-y-4 md:flex-row-reverse justify-between">
           <div className="relative w-32 aspect-square">
