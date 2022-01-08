@@ -1,10 +1,10 @@
+import { ThemeToggle } from '@/components/common/theme-toggle';
 import { Disclosure, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { ThemeToggle } from '../theme-toggle/theme-toggle';
 
 const navigation = [
   { label: 'home', path: '/' },

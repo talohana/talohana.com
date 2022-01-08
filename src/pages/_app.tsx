@@ -1,4 +1,4 @@
-import { Layout } from '@/components/layout';
+import { Layout } from '@/components/layout/layout';
 import '@/styles/globals.css';
 import { SEO } from '@/utils/next-seo.config';
 import { DefaultSeo } from 'next-seo';

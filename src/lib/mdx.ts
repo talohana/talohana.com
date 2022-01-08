@@ -1,4 +1,5 @@
-import { Frontmatter, Post } from '@/types';
+import { Frontmatter } from '@/types/frontmatter';
+import { Post } from '@/types/post';
 import { readdirSync, readFileSync } from 'fs';
 import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';

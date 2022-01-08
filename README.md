@@ -1,8 +1,8 @@
 # Tal Ohana Personal Site
 
-## Tech
+## Tech Stack
 
 - Framework: [Next.js](https://nextjs.org/)
 - Styling: [TailwindCSS](https://tailwindcss.com/)
 - Deployment: [Netlify](https://www.netlify.com/)
-- Content: [Contentlayer](https://github.com/contentlayerdev/contentlayer) and [MDX](https://mdxjs.com/)
+- Content: [MDXBundler](https://github.com/kentcdodds/mdx-bundler)

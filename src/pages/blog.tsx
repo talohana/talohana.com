@@ -1,6 +1,6 @@
-import { PostCard } from '@/components/blog/post-card/post-card';
+import { PostCard } from '@/components/blog/post-card';
 import { getPostsFrontmatter } from '@/lib/mdx';
-import { Frontmatter } from '@/types';
+import { Frontmatter } from '@/types/frontmatter';
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
 

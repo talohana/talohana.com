@@ -1,7 +1,6 @@
-import { components } from '@/components/blog';
+import { PublishedAt } from '@/components/blog/published-at';
 import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
-import type { Post as PostType } from '@/types';
-import { format, parseISO } from 'date-fns';
+import type { Post as PostType } from '@/types/post';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -12,23 +11,22 @@ interface Props {
 }
 
 const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
-  const Component = React.useMemo(
-    () => getMDXComponent(code, { components }),
-    [code]
-  );
-  const publishedAtFormatted = format(parseISO(frontmatter.publishedAt), 'PP');
+  const Component = React.useMemo(() => getMDXComponent(code), [code]);
+
+  const { title, publishedAt, image, imageCaption, imageAlt, summary } =
+    frontmatter;
 
   return (
     <>
       <article className="prose dark:prose-invert mx-auto md:prose-lg">
-        <h1 className="text-3xl">{frontmatter.title}</h1>
-        <span>{publishedAtFormatted}</span>
-        <p>{frontmatter.summary}</p>
+        <h1 className="text-3xl">{title}</h1>
+        <PublishedAt publishedAt={publishedAt} />
+        <p>{summary}</p>
         <div className="relative block w-full aspect-[4/3]">
           <Image
-            src={frontmatter.image}
-            title={frontmatter.imageCaption}
-            alt={frontmatter.imageAlt}
+            src={image}
+            title={imageCaption}
+            alt={imageAlt}
             layout="fill"
             className="rounded-lg"
           />

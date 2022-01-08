@@ -1,6 +1,6 @@
-import { PostCard } from '@/components/blog/post-card/post-card';
+import { PostCard } from '@/components/blog/post-card';
 import { getPostsFrontmatter } from '@/lib/mdx';
-import profile from '@/public/assets/me.jpg';
+import me from '@/public/assets/me.jpg';
 import { Frontmatter } from '@/types/frontmatter';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
       <div className="flex flex-col space-y-4 md:flex-row-reverse justify-between">
         <div className="relative w-32 aspect-square">
           <Image
-            src={profile}
+            src={me}
             quality={50}
             alt="Tal Ohana profile picture"
             layout="fill"
