@@ -12,7 +12,9 @@ interface Props {
 }
 
 const Home: React.VFC<Props> = ({ posts }) => {
-  const cards = posts.map(post => <PostCard key={post.slug} post={post} />);
+  const cards = posts.map(post => (
+    <PostCard key={post.slug} frontmatter={post} />
+  ));
 
   return (
     <>

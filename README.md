@@ -1,6 +1,8 @@
 # Tal Ohana Personal Site
 
-![talohana.com Banner](public/assets/banner.jpg)
+<p>
+    <img width="600px" src="public/assets/banner.jpg" />
+</p>
 
 ## Tech Stack
 

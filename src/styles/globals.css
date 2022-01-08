@@ -57,7 +57,7 @@ body {
 }
 
 .prose a {
-  @apply font-normal decoration-primary-400;
+  @apply font-normal text-primary-400 decoration-primary-400 underline-offset-1;
 }
 
 input[type='text'] {

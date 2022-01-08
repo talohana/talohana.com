@@ -1,5 +1,4 @@
 import { Frontmatter } from '@/types/frontmatter';
-import { Post } from '@/types/post';
 import { readdirSync, readFileSync } from 'fs';
 import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
@@ -10,20 +9,22 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
+interface Post {
+  frontmatter: Frontmatter;
+  code: string;
+}
+
 export async function getFiles(): Promise<string[]> {
   return readdirSync(join(process.cwd(), 'src', 'content', 'blog'));
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-  const source = readFileSync(
-    join(process.cwd(), 'src', 'content', 'blog', `${slug}.mdx`),
-    'utf-8'
-  );
+  const file = join(process.cwd(), 'src', 'content', 'blog', `${slug}.mdx`);
 
-  return (await bundleMDX({
-    source,
+  const { code, frontmatter } = await bundleMDX<Frontmatter>({
+    file,
     xdmOptions(options) {
-      options.remarkPlugins = [remarkGfm];
+      options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
         rehypeSlug,
         rehypeCodeTitles,
@@ -40,7 +41,9 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
       return options;
     },
-  })) as Post;
+  });
+
+  return { code, frontmatter };
 }
 
 export async function getPostsFrontmatter(): Promise<Frontmatter[]> {

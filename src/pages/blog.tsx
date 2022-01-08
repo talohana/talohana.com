@@ -23,7 +23,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
 
       return titleIncludes || tagsIncludes;
     })
-    .map(post => <PostCard key={post.slug} post={post} />);
+    .map(post => <PostCard key={post.slug} frontmatter={post} />);
 
   return (
     <>

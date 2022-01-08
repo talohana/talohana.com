@@ -1,7 +1,7 @@
 import { PublishedAt } from '@/components/blog/published-at';
 import { siteUrl } from '@/lib/constants';
 import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
-import type { Post as PostType } from '@/types/post';
+import { Frontmatter } from '@/types/frontmatter';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
@@ -10,10 +10,11 @@ import Image from 'next/image';
 import React from 'react';
 
 interface Props {
-  post: PostType;
+  frontmatter: Frontmatter;
+  code: string;
 }
 
-const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
+const Post: React.VFC<Props> = ({ frontmatter, code }) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const router = useRouter();
   const { title, publishedAt, image, imageCaption, imageAlt, summary, tags } =
@@ -44,9 +45,11 @@ const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
         }}
       />
       <article className="prose dark:prose-invert mx-auto md:prose-lg">
-        <h1 className="text-3xl">{title}</h1>
-        <PublishedAt publishedAt={publishedAt} />
-        <p>{summary}</p>
+        <header>
+          <h1 className="text-3xl">{title}</h1>
+          <PublishedAt publishedAt={publishedAt} />
+          <p>{summary}</p>
+        </header>
         <div className="relative block w-full aspect-[4/3]">
           <Image
             src={image}
@@ -76,12 +79,10 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
   params,
 }) => {
-  const post = await getPostBySlug(params?.slug ?? '');
+  const { frontmatter, code } = await getPostBySlug(params?.slug ?? '');
 
   return {
-    props: {
-      post,
-    },
+    props: { frontmatter, code },
   };
 };
 
