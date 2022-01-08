@@ -1,0 +1,10 @@
+{
+  "name": "Tal Ohana",
+  "short_name": "Tal Ohana",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "icons": []
+}
