@@ -22,21 +22,23 @@ const NavLink: React.FC<{ path: string; label: string }> = ({
   label,
 }) => {
   const { pathname } = useRouter();
-  const classes = clsx('block py-2 px-4', {
+  const classes = clsx('block py-2 px-4 uppercase', {
     'underline underline-offset-2 decoration-primary-600':
       path === '/' ? pathname === path : pathname.includes(path),
   });
 
   return (
     <Link href={path}>
-      <a className={classes}>{label}</a>
+      <a>
+        <Disclosure.Button className={classes}>{label}</Disclosure.Button>
+      </a>
     </Link>
   );
 };
 
 const NavLinks: React.VFC = () => {
   return (
-    <ul className="uppercase text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+    <ul className="text-lg flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
       {navigation.map(({ label, path }) => (
         <li key={label}>
           <NavLink path={path} label={label} />
@@ -62,7 +64,7 @@ export const NavBar: React.VFC = () => {
             </div>
             <ThemeToggle />
           </div>
-          <Disclosure.Panel>
+          <Disclosure.Panel className="md:hidden">
             <Transition
               show={open}
               enter="transition ease-out duration-100"
