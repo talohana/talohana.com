@@ -1,4 +1,5 @@
 import { PublishedAt } from '@/components/blog/published-at';
+import { Seo } from '@/components/seo';
 import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
 import type { Post as PostType } from '@/types/post';
 import { getMDXComponent } from 'mdx-bundler/client';
@@ -13,11 +14,17 @@ interface Props {
 const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
-  const { title, publishedAt, image, imageCaption, imageAlt, summary } =
+  const { title, publishedAt, image, imageCaption, imageAlt, summary, tags } =
     frontmatter;
 
   return (
     <>
+      <Seo
+        title={title}
+        description={summary}
+        image={image}
+        article={{ tags, publishedTime: publishedAt }}
+      />
       <article className="prose dark:prose-invert mx-auto md:prose-lg">
         <h1 className="text-3xl">{title}</h1>
         <PublishedAt publishedAt={publishedAt} />
@@ -31,7 +38,6 @@ const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
             className="rounded-lg"
           />
         </div>
-
         <Component />
       </article>
     </>

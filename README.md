@@ -1,5 +1,7 @@
 # Tal Ohana Personal Site
 
+![talohana.com Banner](public/assets/banner.jpg)
+
 ## Tech Stack
 
 - Framework: [Next.js](https://nextjs.org/)
