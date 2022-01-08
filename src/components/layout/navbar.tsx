@@ -53,7 +53,7 @@ export const NavBar: React.VFC = () => {
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="flex justify-between md:items-center p-4 border-b border-b-gray-400 border-opacity-30">
+          <div className="flex justify-between items-center p-4 border-b border-b-gray-400 border-opacity-30">
             <Disclosure.Button className="text-2xl md:hidden">
               <span className="sr-only">Open navigation menu</span>
               {open ? <AiOutlineClose /> : <AiOutlineMenu />}
