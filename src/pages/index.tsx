@@ -24,7 +24,6 @@ const Home: React.VFC<Props> = ({ posts }) => {
             alt="Tal Ohana profile picture"
             layout="fill"
             className="rounded-full"
-            placeholder="blur"
           />
         </div>
         <div>

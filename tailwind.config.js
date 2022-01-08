@@ -28,6 +28,17 @@ module.exports = {
           900: '#191919',
         },
       },
+      typography: theme => ({
+        DEFAULT: {
+          css: {
+            blockquote: {
+              borderLeftColor: theme('colors.primary.400'),
+            },
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+          },
+        },
+      }),
     },
   },
   variants: {},
