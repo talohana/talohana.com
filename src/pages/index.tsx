@@ -1,7 +1,7 @@
 import { allPosts } from '.contentlayer/data';
 import type { Post } from '.contentlayer/types';
 import { PostCard } from '@/components/blog/post-card/post-card';
-import profile from '@/public/assets/profile.jpg';
+import profile from '@/public/assets/me.jpg';
 import { compareDesc, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -33,7 +33,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
         </div>
       </div>
       <div className="space-y-4">
-        <h2 className="underline decoration-primary-800 underline-offset-2">
+        <h2 className="mb-4 underline decoration-primary-800 underline-offset-2">
           Recent Posts
         </h2>
         <div className="grid grid-cols-1 gap-8">{cards}</div>
