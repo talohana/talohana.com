@@ -1,9 +1,9 @@
-import { allPosts } from '.contentlayer/data';
-import type { Post as PostType } from '.contentlayer/types';
 import { components } from '@/components/blog';
+import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
+import type { Post as PostType } from '@/types';
 import { format, parseISO } from 'date-fns';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
 import React from 'react';
 
@@ -11,34 +11,39 @@ interface Props {
   post: PostType;
 }
 
-const Post: React.VFC<Props> = ({ post }) => {
-  const Tag = useMDXComponent(post.body.code);
-  const publishedAtFormatted = format(parseISO(post.publishedAt), 'PP');
+const Post: React.VFC<Props> = ({ post: { frontmatter, code } }) => {
+  const Component = React.useMemo(
+    () => getMDXComponent(code, { components }),
+    [code]
+  );
+  const publishedAtFormatted = format(parseISO(frontmatter.publishedAt), 'PP');
 
   return (
     <>
       <article className="prose dark:prose-invert mx-auto md:prose-lg">
-        <h1 className="text-3xl">{post.title}</h1>
+        <h1 className="text-3xl">{frontmatter.title}</h1>
         <span>{publishedAtFormatted}</span>
-        <p>{post.summary}</p>
+        <p>{frontmatter.summary}</p>
         <div className="relative block w-full aspect-[4/3]">
           <Image
-            src={post.image}
-            title={post.imageCaption}
-            alt={post.imageAlt}
+            src={frontmatter.image}
+            title={frontmatter.imageCaption}
+            alt={frontmatter.imageAlt}
             layout="fill"
             className="rounded-lg"
           />
         </div>
 
-        <Tag components={components} />
+        <Component />
       </article>
     </>
   );
 };
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
-  const paths = allPosts.map(({ slug }) => ({ params: { slug } }));
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+  // TODO: pick only slug from frontmatter
+  const posts = await getPostsFrontmatter();
+  const paths = posts.map(({ slug }) => ({ params: { slug } }));
 
   return {
     paths,
@@ -46,10 +51,10 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = ({
+export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
   params,
 }) => {
-  const post = allPosts.find(({ slug }) => slug === params?.slug) as PostType;
+  const post = await getPostBySlug(params?.slug ?? '');
 
   return {
     props: {

@@ -21,6 +21,8 @@
       "@/styles/*": ["src/styles/*"],
       "@/lib/*": ["src/lib/*"],
       "@/utils/*": ["src/utils/*"],
+      "@/types": ["src/types"],
+      "@/types/*": ["src/types/*"],
       "@/public/*": ["./public/*"]
     }
   },

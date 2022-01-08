@@ -1,12 +1,11 @@
-import { allPosts } from '.contentlayer/data';
-import type { Post } from '.contentlayer/types';
 import { PostCard } from '@/components/blog/post-card/post-card';
-import { compareDesc, parseISO } from 'date-fns';
+import { getPostsFrontmatter } from '@/lib/mdx';
+import { Frontmatter } from '@/types';
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
 
 interface Props {
-  posts: Post[];
+  posts: Frontmatter[];
 }
 
 const Blog: React.VFC<Props> = ({ posts }) => {
@@ -23,7 +22,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
 
       return titleIncludes || tagsIncludes;
     })
-    .map(post => <PostCard key={post._id} post={post} />);
+    .map(post => <PostCard key={post.slug} post={post} />);
 
   return (
     <div>
@@ -39,16 +38,11 @@ const Blog: React.VFC<Props> = ({ posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const posts = [...allPosts];
-  posts.sort((a, b) =>
-    compareDesc(parseISO(a.publishedAt), parseISO(b.publishedAt))
-  );
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const posts = await getPostsFrontmatter();
 
   return {
-    props: {
-      posts,
-    },
+    props: { posts },
   };
 };
 

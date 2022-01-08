@@ -1,10 +1,10 @@
-import { Post } from '.contentlayer/types';
 import { Badge } from '@/components/common/badge';
+import { Frontmatter } from '@/types/frontmatter';
 import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
 import React from 'react';
 interface Props {
-  post: Post;
+  post: Frontmatter;
 }
 
 export const PostCard: React.VFC<Props> = ({ post }) => {
