@@ -34,7 +34,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
           <div>
             <div className="mb-4">
               <h1 className="mb-2 font-bold text-primary">Tal Ohana</h1>
-              <h3>
+              <h2>
                 Software Engineer at{' '}
                 <a
                   href="#"
@@ -44,21 +44,22 @@ const Home: React.VFC<Props> = ({ posts }) => {
                 >
                   Lorem
                 </a>
-              </h3>
+              </h2>
             </div>
-            <h4 className="text-gray-700 dark:text-gray-300">
+            <h3 className="text-lg font-light">
               I am a JavaScript, TypeScript and Software Engineering enthusiast!
-            </h4>
+            </h3>
           </div>
         </div>
         <div className="space-y-8">
-          <h2 className="underline decoration-primary underline-offset-2">
+          <h3 className="underline decoration-primary underline-offset-2">
             Recent Posts
-          </h2>
+          </h3>
           <div className="grid grid-cols-1 gap-8">{cards}</div>
           <Link href="/blog">
-            <a className="block text-xl text-primary underline">
-              Read All Posts <AiOutlineArrowRight className="inline-block" />
+            <a className="inline-block text-xl text-primary underline group">
+              Read All Posts
+              <AiOutlineArrowRight className="inline-block transition-transform transform translate-x-0 group-hover:translate-x-1" />
             </a>
           </Link>
         </div>

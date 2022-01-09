@@ -15,10 +15,7 @@ export const PostCard: React.VFC<Props> = ({ frontmatter }) => {
       <a>
         <article className="flex flex-col space-y-2">
           <h4>{title}</h4>
-          <div className="text-gray-900 dark:text-gray-300">
-            {/* <PublishedAt publishedAt={publishedAt} /> */}
-            <p>{summary}</p>
-          </div>
+          <p>{summary}</p>
           <div className="flex space-x-2 flex-wrap">{badges}</div>
         </article>
       </a>

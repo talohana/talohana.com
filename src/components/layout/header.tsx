@@ -48,7 +48,7 @@ export const Header: React.VFC = () => {
         {({ open }) => (
           <>
             <div className="flex justify-between items-center py-4">
-              <Disclosure.Button className="text-2xl md:hidden">
+              <Disclosure.Button id="bla" className="text-2xl md:hidden">
                 <span className="sr-only">Open navigation menu</span>
                 {open ? (
                   <AiOutlineClose aria-hidden="true" />
