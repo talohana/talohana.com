@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url(./prism.css);
+@import url(./font.css);
 
 @layer base {
   body {

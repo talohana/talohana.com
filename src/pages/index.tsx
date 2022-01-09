@@ -21,7 +21,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
     <>
       <NextSeo title="Home" />
       <div className="py-4 container space-y-12">
-        <div className="flex flex-col space-y-4 md:flex-row-reverse md:items-center">
+        <div className="flex flex-col space-y-4 md:justify-between md:flex-row-reverse md:items-center">
           <div className="relative w-32 aspect-square">
             <Image
               src={me}
@@ -32,9 +32,9 @@ const Home: React.VFC<Props> = ({ posts }) => {
             />
           </div>
           <div>
-            <div className="mb-8">
+            <div className="mb-4">
               <h1 className="mb-2 font-bold text-primary">Tal Ohana</h1>
-              <h2>
+              <h3>
                 Software Engineer at{' '}
                 <a
                   href="#"
@@ -44,14 +44,13 @@ const Home: React.VFC<Props> = ({ posts }) => {
                 >
                   Lorem
                 </a>
-              </h2>
+              </h3>
             </div>
             <h4 className="text-gray-700 dark:text-gray-300">
               I am a JavaScript, TypeScript and Software Engineering enthusiast!
             </h4>
           </div>
         </div>
-        <hr />
         <div className="space-y-8">
           <h2 className="underline decoration-primary underline-offset-2">
             Recent Posts
