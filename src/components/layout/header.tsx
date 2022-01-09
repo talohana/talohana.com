@@ -50,7 +50,11 @@ export const Header: React.VFC = () => {
             <div className="flex justify-between items-center py-4">
               <Disclosure.Button className="text-2xl md:hidden">
                 <span className="sr-only">Open navigation menu</span>
-                {open ? <AiOutlineClose /> : <AiOutlineMenu />}
+                {open ? (
+                  <AiOutlineClose aria-hidden="true" />
+                ) : (
+                  <AiOutlineMenu aria-hidden="true" />
+                )}
               </Disclosure.Button>
               <div className="hidden md:block">
                 <NavLinks />
