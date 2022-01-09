@@ -1,3 +1,4 @@
+import { PostTags } from '@/components/blog/post-tags';
 import { PublishedAt } from '@/components/blog/published-at';
 import { siteUrl } from '@/lib/constants';
 import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
@@ -44,11 +45,12 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
           },
         }}
       />
-      <article className="prose dark:prose-invert mx-auto md:prose-lg">
-        <header>
+      <article className="prose dark:prose-invert mx-auto md:prose-lg space-y-4">
+        <header className="space-y-2">
           <h1 className="text-3xl">{title}</h1>
           <PublishedAt publishedAt={publishedAt} />
-          <p>{summary}</p>
+          <div>{summary}</div>
+          <PostTags tags={tags} />
         </header>
         <div className="relative block w-full aspect-[4/3]">
           <Image
@@ -59,7 +61,9 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
             className="rounded-lg"
           />
         </div>
-        <Component />
+        <div>
+          <Component />
+        </div>
       </article>
     </>
   );

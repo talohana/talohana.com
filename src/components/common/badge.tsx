@@ -1,9 +1,15 @@
+import clsx from 'clsx';
 import React from 'react';
 
-export const Badge: React.FC = ({ children }) => {
-  return (
-    <div className="uppercase px-2 py-1 bg-primary-700 text-white inline-block rounded-lg">
-      {children}
-    </div>
+interface Props {
+  className?: string;
+}
+
+export const Badge: React.FC<Props> = ({ children, className }) => {
+  const classes = clsx(
+    'uppercase px-2 py-1 bg-primary-700 text-white inline-block rounded-lg flex justify-center items-center',
+    className
   );
+
+  return <div className={classes}>{children}</div>;
 };

@@ -26,7 +26,6 @@ const Home: React.VFC<Props> = ({ posts }) => {
             <Image
               src={me}
               alt="Tal Ohana profile picture"
-              layout="fill"
               quality={50}
               width={150}
               height={150}
