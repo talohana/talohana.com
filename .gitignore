@@ -35,10 +35,3 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-
-# next-pwa
-
-**/public/workbox-*.js
-**/public/sw.js
-**/public/workbox-*.js.map
-**/public/sw.js.map
