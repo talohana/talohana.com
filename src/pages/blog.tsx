@@ -4,6 +4,7 @@ import { Frontmatter } from '@/types/frontmatter';
 import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 interface Props {
   posts: Frontmatter[];
@@ -29,13 +30,16 @@ const Blog: React.VFC<Props> = ({ posts }) => {
     <>
       <NextSeo title="Blog" />
       <div className="space-y-8">
-        <input
-          type="text"
-          aria-label="Search posts"
-          onChange={e => setSearchValue(e.target.value)}
-          placeholder="Search posts"
-          className="my-4"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            aria-label="Search posts"
+            onChange={e => setSearchValue(e.target.value)}
+            placeholder="Search posts"
+            className="my-4 pr-9"
+          />
+          <AiOutlineSearch className="text-2xl absolute top-1/2 right-2 transform -translate-y-1/2" />
+        </div>
         <div>
           <h1 className="mb-4 underline decoration-primary decoration-offset-2">
             All Posts
