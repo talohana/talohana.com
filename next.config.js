@@ -8,6 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfiguration = {
   reactStrictMode: true,
   swcMinify: true,
+  pwa: {
+    dest: 'public',
+  },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
