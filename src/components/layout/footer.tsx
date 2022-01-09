@@ -56,8 +56,8 @@ const Copy: React.VFC = () => (
 
 export const Footer: React.VFC = () => {
   return (
-    <footer className="py-10 px-4 border-t border-t-gray-400 border-opacity-30">
-      <div className="container flex flex-col justify-center items-center space-y-4">
+    <footer className="py-8 border-t border-t-gray-400 border-opacity-20">
+      <div className="flex flex-col justify-center items-center space-y-4">
         <FooterLinks />
         <Copy />
       </div>

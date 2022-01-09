@@ -39,11 +39,15 @@
 }
 
 body {
-  @apply text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 transition-colors;
+  @apply text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-gray-100 transition-colors p-4;
 }
 
 #__next {
-  @apply min-h-screen flex flex-col;
+  @apply min-h-screen flex flex-col space-y-8;
+}
+
+#__next > * {
+  @apply container max-w-[700px];
 }
 
 .prose code {

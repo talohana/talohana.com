@@ -1,12 +1,12 @@
 import React from 'react';
 import { Footer } from './footer';
-import { NavBar } from './navbar';
+import { Header } from './header';
 
 export const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <NavBar />
-      <main className="flex-1 p-4 container max-w-[700px]">{children}</main>
+      <Header />
+      <main className="flex-1">{children}</main>
       <Footer />
     </>
   );

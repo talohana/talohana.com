@@ -28,6 +28,9 @@ module.exports = {
           900: '#191919',
         },
       },
+      fontFamily: {
+        sans: ['Poppins', ...fontFamily.sans],
+      },
       typography: theme => ({
         DEFAULT: {
           css: {
