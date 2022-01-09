@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          ...colors.violet,
-          DEFAULT: colors.violet['500'],
+          ...colors.blue,
+          DEFAULT: colors.blue['500'],
         },
         gray: {
           50: '#ffffff',

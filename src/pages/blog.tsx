@@ -28,7 +28,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
   return (
     <>
       <NextSeo title="Blog" />
-      <div>
+      <div className="space-y-8">
         <input
           type="text"
           aria-label="Search posts"
@@ -36,7 +36,12 @@ const Blog: React.VFC<Props> = ({ posts }) => {
           placeholder="Search posts"
           className="my-4"
         />
-        <div className="grid grid-cols-1 gap-8">{cards}</div>
+        <div>
+          <h1 className="mb-4 underline decoration-primary decoration-offset-2">
+            All Posts
+          </h1>
+          <div className="grid grid-cols-1 gap-8">{cards}</div>
+        </div>
       </div>
     </>
   );
