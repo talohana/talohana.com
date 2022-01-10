@@ -13,7 +13,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="text-xl p-1 rounded-lg border border-current"
+      className="text-xl p-1.5 rounded-lg border border-primary border-opacity-60"
       aria-label="Toggle Theme"
     >
       {activeTheme === 'dark' ? (
