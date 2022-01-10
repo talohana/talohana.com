@@ -3,6 +3,7 @@ import { DefaultSeoProps } from 'next-seo';
 
 export const defaultSEO: DefaultSeoProps = {
   titleTemplate: 'Tal Ohana | %s',
+  defaultTitle: 'Tal Ohana',
   description: 'Tal Ohana - Software Engineer',
   canonical: siteUrl,
   openGraph: {
