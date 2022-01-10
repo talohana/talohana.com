@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/generate-sitemap.mjs",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true yarn build",
     "serve": "serve .next/analyze",
@@ -55,6 +56,7 @@
     "eslint-config-next": "12.0.4",
     "eslint-plugin-storybook": "^0.5.5",
     "eslint-plugin-testing-library": "^5.0.1",
+    "globby": "^12.0.2",
     "gray-matter": "^4.0.3",
     "husky": "^7.0.4",
     "jest": "^27.4.5",
