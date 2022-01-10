@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url(./prism.css);
-@import url(./font.css);
-
 @layer base {
   body {
     @apply text-sm md:text-base;
