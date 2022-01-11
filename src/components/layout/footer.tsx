@@ -1,4 +1,5 @@
 import { links } from '@/lib/constants';
+import { getYear } from 'date-fns';
 import React from 'react';
 import {
   AiOutlineGithub,
@@ -32,9 +33,9 @@ const linksMeta: LinkMeta[] = [
 ];
 
 const FooterLinks: React.VFC = () => (
-  <ul className="flex space-x-2 text-3xl">
+  <ul className="flex space-x-2 text-2xl">
     {linksMeta.map(({ element, href, ariaLabel }) => (
-      <li key={href}>
+      <li className="p-2 bg-primary text-gray-50 rounded-full" key={href}>
         <a
           href={href}
           target="_blank"
@@ -50,14 +51,15 @@ const FooterLinks: React.VFC = () => (
 
 const Copy: React.VFC = () => (
   <span role="contentinfo" className="text-center">
-    &copy; 2020-present Tal Ohana. All Rights Reserved.
+    <span>&copy; {getYear(Date.now())} Tal Ohana. </span>{' '}
+    <span className="font-light">All Rights Reserved.</span>
   </span>
 );
 
 export const Footer: React.VFC = () => {
   return (
     <footer className="py-8 border-t border-t-gray-400 border-opacity-20">
-      <div className="flex flex-col justify-center items-center space-y-4">
+      <div className="flex flex-col justify-center items-center space-y-6">
         <FooterLinks />
         <Copy />
       </div>
