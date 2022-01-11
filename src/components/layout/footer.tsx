@@ -33,7 +33,7 @@ const linksMeta: LinkMeta[] = [
 ];
 
 const FooterLinks: React.VFC = () => (
-  <ul className="flex space-x-2 text-2xl">
+  <ul className="flex space-x-4 text-2xl">
     {linksMeta.map(({ element, href, ariaLabel }) => (
       <li className="p-2 bg-primary text-gray-50 rounded-full" key={href}>
         <a
