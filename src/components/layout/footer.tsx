@@ -2,8 +2,8 @@ import { links } from '@/lib/constants';
 import { getYear } from 'date-fns';
 import React from 'react';
 import {
+  AiFillLinkedin,
   AiOutlineGithub,
-  AiOutlineLinkedin,
   AiOutlineTwitter,
 } from 'react-icons/ai';
 
@@ -21,7 +21,7 @@ const linksMeta: LinkMeta[] = [
     ariaLabel: 'Tal Ohana Github',
   },
   {
-    element: <AiOutlineLinkedin />,
+    element: <AiFillLinkedin />,
     href: links.linkedin,
     ariaLabel: 'Tal Ohana LinkedIn',
   },
