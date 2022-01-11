@@ -53,9 +53,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
           </div>
         </div>
         <div className="space-y-8">
-          <h3 className="underline decoration-primary underline-offset-2">
-            Recent Posts
-          </h3>
+          <h3 className="underline decoration-primary">Recent Posts</h3>
           <div className="grid grid-cols-1 gap-8">{cards}</div>
           <Link href="/blog">
             <a className="inline-block text-xl text-primary underline group">
