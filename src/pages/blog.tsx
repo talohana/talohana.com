@@ -41,9 +41,7 @@ const Blog: React.VFC<Props> = ({ posts }) => {
           <AiOutlineSearch className="text-2xl absolute top-1/2 right-2 transform -translate-y-1/2" />
         </div>
         <div>
-          <h1 className="mb-4 underline decoration-primary decoration-offset-2">
-            All Posts
-          </h1>
+          <h1 className="mb-4 underline decoration-primary">All Posts</h1>
           <div className="grid grid-cols-1 gap-8">{cards}</div>
         </div>
       </div>
