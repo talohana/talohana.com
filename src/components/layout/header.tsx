@@ -26,9 +26,13 @@ const NavLink: React.VFC<NavLinkProps> = ({ meta, onClick, className }) => {
   const { name, href } = meta;
   const { pathname } = useRouter();
   const active = href === '/' ? pathname === '/' : pathname.includes(href);
-  const classes = clsx('capitalize block text-xl py-2 font-medium', className, {
-    'text-primary-600': active,
-  });
+  const classes = clsx(
+    'capitalize block text-xl py-1 font-medium border-b-primary',
+    className,
+    {
+      'border-b-2': active,
+    }
+  );
 
   return (
     <Link href={href}>
