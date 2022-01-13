@@ -18,8 +18,16 @@ interface Props {
 const Post: React.VFC<Props> = ({ frontmatter, code }) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const router = useRouter();
-  const { title, publishedAt, image, imageCaption, imageAlt, summary, tags } =
-    frontmatter;
+  const {
+    title,
+    publishedAt,
+    image,
+    imageCaption,
+    imageAlt,
+    summary,
+    tags,
+    readTime,
+  } = frontmatter;
 
   return (
     <>
@@ -48,7 +56,11 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
       <article className="prose dark:prose-invert mx-auto md:prose-lg space-y-4">
         <header className="space-y-2">
           <h1 className="text-3xl">{title}</h1>
-          <PublishedAt publishedAt={publishedAt} />
+          <div className="flex gap-1 font-light">
+            <PublishedAt publishedAt={publishedAt} className="inline-block" />
+            <span>/</span>
+            <span className="inline-block">{readTime.text}</span>
+          </div>
           <div>{summary}</div>
           <PostTags tags={tags} />
         </header>
