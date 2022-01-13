@@ -11,7 +11,7 @@ export const defaultSEO: DefaultSeoProps = {
     locale: 'en_US',
     url: siteUrl,
     title: 'Tal Ohana',
-    images: [{ url: `${siteUrl}/assets/banner.jps` }],
+    images: [{ url: `${siteUrl}/assets/banner.jpg` }],
     site_name: 'talohana.com',
     defaultImageWidth: 1200,
     defaultImageHeight: 628,
