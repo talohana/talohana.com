@@ -4,4 +4,4 @@ export const links = {
   twitter: 'https://twitter.com/talohanax',
 };
 
-export const siteUrl = 'https://talohana.io';
+export const siteUrl = 'https://talohana.com';
