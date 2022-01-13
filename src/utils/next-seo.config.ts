@@ -12,7 +12,7 @@ export const defaultSEO: DefaultSeoProps = {
     url: siteUrl,
     title: 'Tal Ohana',
     images: [{ url: `${siteUrl}/assets/banner.jpg` }],
-    site_name: 'talohana.com',
+    site_name: siteUrl,
     defaultImageWidth: 1200,
     defaultImageHeight: 628,
   },
