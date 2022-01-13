@@ -1,3 +1,5 @@
+import { ReadTimeResults } from 'reading-time';
+
 export interface Frontmatter {
   slug: string;
   title: string;
@@ -7,4 +9,5 @@ export interface Frontmatter {
   imageAlt: string;
   imageCaption: string;
   tags: string[];
+  readTime: ReadTimeResults;
 }

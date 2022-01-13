@@ -3,10 +3,11 @@ import React from 'react';
 
 interface Props {
   publishedAt: string;
+  className?: string;
 }
 
-export const PublishedAt: React.VFC<Props> = ({ publishedAt }) => {
+export const PublishedAt: React.VFC<Props> = ({ publishedAt, className }) => {
   const formatted = format(parseISO(publishedAt), 'PP');
 
-  return <span>{formatted}</span>;
+  return <span className={className}>{formatted}</span>;
 };

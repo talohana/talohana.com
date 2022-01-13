@@ -3,6 +3,7 @@ import { readdirSync, readFileSync } from 'fs';
 import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import { join } from 'path';
+import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
@@ -43,7 +44,13 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     },
   });
 
-  return { code, frontmatter };
+  return {
+    code,
+    frontmatter: {
+      ...frontmatter,
+      readTime: readingTime(code),
+    },
+  };
 }
 
 export async function getPostsFrontmatter(): Promise<Frontmatter[]> {
@@ -51,13 +58,16 @@ export async function getPostsFrontmatter(): Promise<Frontmatter[]> {
 
   return files.reduce((posts: Frontmatter[], file) => {
     const source = readFileSync(
-      join(process.cwd(), 'src', 'content', 'blog', file)
+      join(process.cwd(), 'src', 'content', 'blog', file),
+      'utf-8'
     );
+
     const { data } = matter(source);
 
     posts.push({
-      ...(data as Omit<Frontmatter, 'slug'>),
+      ...(data as Omit<Frontmatter, 'slug' | 'readTime'>),
       slug: file.replace(/\.mdx$/, ''),
+      readTime: readingTime(source),
     });
 
     return posts;
