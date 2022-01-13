@@ -1,30 +1,34 @@
-import notFound from '@images/404.svg';
-import { Link } from 'gatsby';
+import notFound from '@/public/assets/404.svg';
+import { NextSeo } from 'next-seo';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import tw from 'twin.macro';
-import { Container } from '../components/common/container';
-import { Layout } from '../components/common/layout';
-import { SEO } from '../components/SEO/seo';
 
-const Wrapper = tw.div`flex flex-col items-center justify-center text-center`;
-
-const NotFoundPage: React.FC = () => (
-  <Layout customSEO>
-    <SEO title="404" />
-    <Wrapper>
-      <Container>
-        <img src={notFound} alt="404 Page Not Found" />
-        <h1>Oh S#!t!</h1>
-        <p>
-          The page you are looking for was moved, removed or might never
-          existed!
-        </p>
-        <div>
-          Let&apos;s go back <Link to="/">home</Link>
+const Custom404: React.VFC = () => {
+  return (
+    <>
+      <NextSeo title="404" />
+      <div className="h-full flex flex-col justify-center items-center space-y-10">
+        <div className="relative w-2/3 aspect-[4/3]">
+          <Image src={notFound} layout="fill" alt="Page not found" />
         </div>
-      </Container>
-    </Wrapper>
-  </Layout>
-);
+        <div className="text-center space-y-8">
+          <div className="text-3xl uppercase">Oh S#!t!</div>
+          <div className="text-lg space-y-2">
+            <div>
+              The page you are looking for was moved, removed or might never
+              existed!
+            </div>
+            <Link href="/">
+              <a className="block text-primary underline">
+                Let&apos;s go back home{' '}
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default NotFoundPage;
+export default Custom404;

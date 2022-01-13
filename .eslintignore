@@ -1,6 +1,0 @@
-node_modules/
-public/
-.git/
-dist/
-.cache/
-src/types/generated.ts

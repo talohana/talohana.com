@@ -1,22 +1,31 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "allowJs": true,
     "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
     "paths": {
-      "@models": ["./src/models"],
-      "@config": ["./src/config/config.ts"],
-      "@providers/*": ["./src/providers/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@test-utils/*": ["./tests/utils/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@images/*": ["./src/images/*"]
+      "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/lib/*": ["src/lib/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/types": ["src/types"],
+      "@/types/*": ["src/types/*"],
+      "@/public/*": ["./public/*"]
     }
   },
-  "exclude": ["./node_modules", "./.cache", "./public"],
-  "include": ["./src/**/*"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

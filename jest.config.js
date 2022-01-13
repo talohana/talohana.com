@@ -1,28 +1,23 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+const nextJest = require('next/jest');
 
-const { compilerOptions } = require('./tsconfig.json');
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const paths = pathsToModuleNameMapper(compilerOptions.paths, {
-  prefix: '<rootDir>/',
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
 });
 
-module.exports = {
-  transform: {
-    '^.+\\.[jt]sx?$': '<rootDir>/tests/jest-preprocess.js',
-  },
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/tests/file-mock.js`,
-    ...paths,
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@/public/(.*)$': '<rootDir>/public/$1',
   },
-  testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/public`],
-  watchPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/public`],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-  globals: {
-    __PATH_PREFIX__: ``,
-  },
-  testEnvironment: 'jsdom',
-  testURL: `http://localhost`,
-  setupFilesAfterEnv: [`<rootDir>/tests/jest.setup.js`],
-  setupFiles: [`<rootDir>/tests/loadershim.js`],
+  testEnvironment: 'jest-environment-jsdom',
 };
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig);

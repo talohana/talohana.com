@@ -1,45 +1,49 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  purge: [],
+  mode: 'jit',
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         primary: {
-          900: '#10002b',
-          800: '#240046',
-          700: '#3c096c',
-          600: '#5a189a',
-          500: '#7b2cbf',
-          400: '#9d4edd',
-          300: '#c77dff',
-          200: '#e0aaff',
-          DEFAULT: '#9d4edd',
-          dark: '#5a189a',
-          light: '#c77dff',
+          ...colors.blue,
+          DEFAULT: colors.blue['500'],
         },
-        white: '#f6f6f8',
-        black: '#18191a',
-        inherit: 'inherit',
+        gray: {
+          50: '#ffffff',
+          100: '#e6e6e6',
+          200: '#cccccc',
+          300: '#b3b3b3',
+          400: '#999999',
+          500: '#808080',
+          600: '#666666',
+          700: '#4c4c4c',
+          800: '#333333',
+          900: '#191919',
+        },
       },
-    },
-    fontFamily: {
-      sans: [
-        'Lora',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        'Segoe UI',
-        'Roboto',
-        'Helvetica',
-        'Arial',
-        'sans-serif',
-        'Apple Color Emoji',
-        'Segoe\\ UI\\ Emoji',
-        'Segoe\\ UI\\ Symbol',
-      ],
+      fontFamily: {
+        sans: ['Poppins', ...fontFamily.sans],
+      },
+      typography: theme => ({
+        DEFAULT: {
+          css: {
+            blockquote: {
+              borderLeftColor: theme('colors.primary.400'),
+            },
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+          },
+        },
+      }),
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  variants: {},
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };
