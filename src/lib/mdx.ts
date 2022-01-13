@@ -20,10 +20,13 @@ export async function getFiles(): Promise<string[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-  const file = join(process.cwd(), 'src', 'content', 'blog', `${slug}.mdx`);
+  const source = readFileSync(
+    join(process.cwd(), 'src', 'content', 'blog', `${slug}.mdx`),
+    'utf-8'
+  );
 
   const { code, frontmatter } = await bundleMDX<Frontmatter>({
-    file,
+    source,
     xdmOptions(options) {
       options.remarkPlugins = [...(options?.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
@@ -48,7 +51,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     code,
     frontmatter: {
       ...frontmatter,
-      readTime: readingTime(code),
+      readTime: readingTime(source),
     },
   };
 }
