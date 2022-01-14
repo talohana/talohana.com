@@ -8,6 +8,8 @@ const createJestConfig = nextJest({
 // Add any custom config to be passed to Jest
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  collectCoverage: true,
+  coverageDirectory: './coverage/',
   moduleNameMapper: {
     '@/components/(.*)$': '<rootDir>/src/components/$1',
     '@/pages/(.*)$': '<rootDir>/src/pages/$1',
