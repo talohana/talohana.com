@@ -1,0 +1,11 @@
+language: node_js
+
+cache:
+  yarn: true
+
+before_install:
+  - yarn global add codecov
+
+script:
+  - yarn test:ci
+  - codecov
