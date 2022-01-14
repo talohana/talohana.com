@@ -1,7 +1,9 @@
 import { ThemeProvider } from 'next-themes';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
+import '../src/styles/font.css';
 import '../src/styles/globals.css';
+import '../src/styles/prism.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -11,7 +13,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  layout: 'fullscreen',
+  layout: 'centered',
   nextRouter: {
     Provider: RouterContext.Provider,
   },
