@@ -27,7 +27,7 @@ const NavLink: React.VFC<NavLinkProps> = ({ meta, onClick, className }) => {
   const { pathname } = useRouter();
   const active = href === '/' ? pathname === '/' : pathname.includes(href);
   const classes = clsx(
-    'capitalize block text-xl py-1 font-medium border-b-primary',
+    'capitalize block text-xl py-0.5 font-medium border-b-primary',
     className,
     {
       'border-b-2': active,
@@ -61,7 +61,7 @@ export const Header: React.VFC = () => {
               )}
             </Disclosure.Button>
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-4">
+            <div className="hidden md:flex gap-4">
               {navigation.map(meta => (
                 <NavLink meta={meta} key={meta.name} />
               ))}
@@ -72,7 +72,7 @@ export const Header: React.VFC = () => {
           <Transition
             show={open}
             as={Disclosure.Panel}
-            className="md:hidden flex flex-col"
+            className="md:hidden flex flex-col items-start gap-2"
             enter="transition ease-out duration-100"
             enterFrom="transform opacity-0 scale-95"
             enterTo="transform opacity-100 scale-100"
