@@ -25,7 +25,6 @@ const Home: React.VFC<Props> = ({ posts }) => {
           <div className="relative w-32 aspect-square rounded-full overflow-hidden">
             <Image
               src={me}
-              placeholder="blur"
               alt="Tal Ohana profile picture"
               quality={50}
               width={150}
