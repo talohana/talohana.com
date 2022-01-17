@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Poppins', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
       },
       typography: theme => ({
         DEFAULT: {
