@@ -189,6 +189,9 @@ const nextConfiguration = {
       },
     ];
   },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
 };
 
 module.exports = withPlugins(
