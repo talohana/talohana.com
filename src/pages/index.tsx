@@ -52,7 +52,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
             </h3>
           </div>
         </div>
-        <div className="space-y-8">
+        <div className="space-y-4">
           <h3 className="underline decoration-primary">Recent Posts</h3>
           <div className="grid grid-cols-1 gap-8">{cards}</div>
           <Link href="/blog">
