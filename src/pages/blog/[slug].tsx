@@ -74,6 +74,7 @@ const Post: React.VFC<Props> = ({ frontmatter, code, imagePlaceholder }) => {
             layout="fill"
             placeholder="blur"
             blurDataURL={imagePlaceholder}
+            priority
           />
         </div>
         <div>

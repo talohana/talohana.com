@@ -30,6 +30,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
               quality={50}
               width={150}
               height={150}
+              priority
             />
           </div>
           <div>
