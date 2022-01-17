@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Montserrat', ...fontFamily.sans],
+        sans: ['Poppins', ...fontFamily.sans],
       },
       typography: theme => ({
         DEFAULT: {

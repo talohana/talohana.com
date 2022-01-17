@@ -1,4 +1,5 @@
 import { Layout } from '@/components/layout/layout';
+import '@/styles/font.css';
 import '@/styles/globals.css';
 import '@/styles/prism.css';
 import { defaultSEO } from '@/utils/next-seo.config';
