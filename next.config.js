@@ -3,6 +3,7 @@ const withPWA = require('next-pwa');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const { withPlaiceholder } = require('@plaiceholder/next');
 
 /** @type {import('next').NextConfig} */
 const nextConfiguration = {
@@ -192,6 +193,6 @@ const nextConfiguration = {
 };
 
 module.exports = withPlugins(
-  [withPWA(), withBundleAnalyzer],
+  [withPWA(), withBundleAnalyzer, withPlaiceholder],
   nextConfiguration
 );
