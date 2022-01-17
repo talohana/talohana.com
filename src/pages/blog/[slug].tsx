@@ -8,14 +8,16 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
+import { getPlaiceholder } from 'plaiceholder';
 import React from 'react';
 
 interface Props {
   frontmatter: Frontmatter;
   code: string;
+  blurDataURL: string;
 }
 
-const Post: React.VFC<Props> = ({ frontmatter, code }) => {
+const Post: React.VFC<Props> = ({ frontmatter, code, blurDataURL }) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const router = useRouter();
   const {
@@ -69,6 +71,8 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
             src={image}
             title={imageCaption}
             alt={imageAlt}
+            placeholder="blur"
+            blurDataURL={blurDataURL}
             layout="fill"
             priority
           />
@@ -96,9 +100,10 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
   params,
 }) => {
   const { frontmatter, code } = await getPostBySlug(params?.slug ?? '');
+  const { base64 } = await getPlaiceholder(frontmatter.image);
 
   return {
-    props: { frontmatter, code },
+    props: { frontmatter, code, blurDataURL: base64 },
   };
 };
 
