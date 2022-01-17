@@ -1,8 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 /** @type {import('next').NextConfig} */
 const nextConfiguration = {
@@ -20,7 +18,6 @@ const nextConfiguration = {
         'react-dom': 'preact/compat',
       });
     }
-
     return config;
   },
   async headers() {
@@ -51,6 +48,11 @@ const nextConfiguration = {
 };
 
 module.exports = withPlugins(
-  [withPWA(), withBundleAnalyzer],
+  [
+    withPWA,
+    withBundleAnalyzer({
+      enabled: process.env.ANALYZE === 'true',
+    }),
+  ],
   nextConfiguration
 );
