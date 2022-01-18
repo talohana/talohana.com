@@ -8,6 +8,8 @@ export interface Frontmatter {
   image: string;
   imageAlt: string;
   imageCaption: string;
+  imageWidth: number;
+  imageHeight: number;
   tags: string[];
   readTime: ReadTimeResults;
 }

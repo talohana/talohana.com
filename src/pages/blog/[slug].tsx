@@ -26,6 +26,8 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
     image,
     imageCaption,
     imageAlt,
+    imageWidth,
+    imageHeight,
     summary,
     tags,
     readTime,
@@ -66,13 +68,16 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
           <div>{summary}</div>
           <PostTags tags={tags} />
         </header>
-        <div className="relative block w-full aspect-[4/3] rounded-lg overflow-hidden">
+        <div>
           <Image
             src={image}
             title={imageCaption}
             alt={imageAlt}
-            layout="fill"
+            width={imageWidth}
+            height={imageHeight}
+            quality={50}
             priority
+            className="rounded-lg"
           />
         </div>
         <div>
