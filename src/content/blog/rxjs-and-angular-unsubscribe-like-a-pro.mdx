@@ -79,7 +79,12 @@ export class RegularComponent implements OnInit, OnDestroy {
 
 To see everything’s working we’ll remove the component from the DOM after 3 seconds to see that it is unsubscribes
 
-![Method 1](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-1.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-1.jpg"
+  alt="Method 1"
+  width={700}
+  height={122}
+/>
 
 As the name suggests, this is the most basic way of unsubscribing,
 it is good when you have a single Subscription, but when you have multiple subscriptions,
@@ -130,7 +135,12 @@ export class AddComponent implements OnInit, OnDestroy {
 
 Opening our console we should see two subscriptions:
 
-![Method 2](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-2.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-2.jpg"
+  alt="Method 2"
+  width={700}
+  height={250}
+/>
 
 With this, we can easily use the built-in power of RxJS and subscribe / unsubscribe to multiple Observables without introducing extra class properties.
 
@@ -156,7 +166,12 @@ export class AsyncComponent implements OnInit {
 }
 ```
 
-![Method 3](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-3.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-3.jpg"
+  alt="Method 3"
+  width={700}
+  height={122}
+/>
 
 ## #4 takeUntil Operator
 
@@ -191,7 +206,12 @@ export class UntilComponent implements OnInit, OnDestroy {
 }
 ```
 
-![Method 4](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-4.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-4.jpg"
+  alt="Method 4"
+  width={700}
+  height={123}
+/>
 
 ## #5 SubSink Library
 
@@ -247,7 +267,12 @@ export class SinkComponent implements OnInit, OnDestroy {
 }
 ```
 
-![Method 5](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-5.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-5.jpg"
+  alt="Method 5"
+  width={700}
+  height={249}
+/>
 
 ## #6 until-destroy Library
 
@@ -279,7 +304,12 @@ export class DestroyedComponent implements OnInit {
 }
 ```
 
-![Method 6](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-6.jpg)
+<Image
+  src="/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/method-6.jpg"
+  alt="Method 6"
+  width={700}
+  height={127}
+/>
 
 To conclude, until-destroy is very powerful library that allows you to automatically subscribe / unsubscribe from Observables.
 In addition, until-destroy **has many features that are not described in this article**, so don’t be shy and head to their [github repo](https://github.com/ngneat/until-destroy)!
@@ -290,5 +320,3 @@ We’ve seen a a lot of ways and patterns to subscribe and unsubscribe from our 
 each has it’s own pros and cons and brings a different coding style to the table.
 
 The most important thing is, whichever pattern you choose be consistent.
-
-![Summary Meme](/assets/blog/rxjs-and-angular-unsubscribe-like-a-pro/summary-meme.jpg)
