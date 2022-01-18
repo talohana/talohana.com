@@ -75,8 +75,8 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
             alt={imageAlt}
             width={imageWidth}
             height={imageHeight}
-            quality={50}
             priority
+            placeholder="blur"
             className="rounded-lg"
           />
         </div>

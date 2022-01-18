@@ -29,6 +29,7 @@ const Home: React.VFC<Props> = ({ posts }) => {
               width={150}
               height={150}
               className="rounded-full"
+              placeholder="blur"
               priority
             />
           </div>
