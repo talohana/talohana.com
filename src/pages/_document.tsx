@@ -43,15 +43,19 @@ class MyDocument extends Document {
             href="/icons/apple-touch-icon.png"
           />
           {/* Fonts */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
+            rel="preload"
+            href="/fonts/inter-var.woff2"
+            as="font"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=optional"
-            rel="stylesheet"
+            rel="preload"
+            href="/fonts/inter-italic-var.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
         </Head>
         <body>
