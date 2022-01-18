@@ -1,9 +1,11 @@
+import { components } from '@/components/blog/mdx-components';
 import { PostTags } from '@/components/blog/post-tags';
 import { PublishedAt } from '@/components/blog/published-at';
 import { siteUrl } from '@/lib/constants';
 import { getPostBySlug, getPostsFrontmatter } from '@/lib/mdx';
 import { Frontmatter } from '@/types/frontmatter';
 import { getMDXComponent } from 'mdx-bundler/client';
+import type { MDXComponents } from 'mdx/types';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/dist/client/router';
@@ -74,7 +76,7 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
           />
         </div>
         <div>
-          <Component />
+          <Component components={components as MDXComponents} />
         </div>
       </article>
     </>
@@ -82,7 +84,6 @@ const Post: React.VFC<Props> = ({ frontmatter, code }) => {
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-  // TODO: pick only slug from frontmatter
   const posts = await getPostsFrontmatter();
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
 
