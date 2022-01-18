@@ -56,9 +56,9 @@ const Home: React.VFC<Props> = ({ posts }) => {
           <h3 className="underline decoration-primary">Recent Posts</h3>
           <div className="grid grid-cols-1 gap-8">{cards}</div>
           <Link href="/blog">
-            <a className="inline-block text-xl text-primary underline group">
+            <a className="inline-flex items-center text-xl group">
               Read All Posts
-              <AiOutlineArrowRight className="inline-block transition-transform transform translate-x-0 group-hover:translate-x-1" />
+              <AiOutlineArrowRight className="transition-transform transform group-hover:translate-x-1" />
             </a>
           </Link>
         </div>
