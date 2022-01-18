@@ -22,13 +22,13 @@ const Home: React.VFC<Props> = ({ posts }) => {
       <NextSeo title="Home" />
       <div className="py-4 container space-y-12">
         <div className="flex flex-col space-y-4 md:justify-between md:flex-row-reverse md:items-center">
-          <div className="relative w-32 aspect-square rounded-full overflow-hidden">
+          <div>
             <Image
               src={me}
               alt="Tal Ohana profile picture"
-              quality={50}
               width={150}
               height={150}
+              className="rounded-full"
               priority
             />
           </div>
