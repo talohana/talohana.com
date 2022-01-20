@@ -2,10 +2,15 @@ language: node_js
 
 cache:
   yarn: true
+  directories:
+    - $HOME/.cache/yarn
+    - node_modules
+    - .next/cache
 
 before_install:
-  - yarn global add codecov
+  - yarn global add codecov @lhci/cli@0.8.x
 
 script:
   - yarn test:ci
   - codecov
+  - lhci autorun
