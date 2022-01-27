@@ -1,4 +1,5 @@
 import { PostCard } from '@/components/blog/post-card';
+import { links } from '@/lib/constants';
 import { getPostsFrontmatter } from '@/lib/mdx';
 import me from '@/public/assets/me.jpg';
 import { Frontmatter } from '@/types/frontmatter';
@@ -8,9 +9,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+
 interface Props {
   posts: Frontmatter[];
 }
+
+const Company: React.VFC = () => (
+  <span>
+    <span className="underline text-[#4285F4]">G</span>
+    <span className="underline text-[#DB4437]">o</span>
+    <span className="underline text-[#F4B400]">o</span>
+    <span className="underline text-[#4285F4]">g</span>
+    <span className="underline text-[#0F9D58]">l</span>
+    <span className="underline text-[#DB4437]">e</span>
+  </span>
+);
 
 const Home: React.VFC<Props> = ({ posts }) => {
   const cards = posts.map(post => (
@@ -38,12 +51,12 @@ const Home: React.VFC<Props> = ({ posts }) => {
               <h2>
                 Software Engineer at{' '}
                 <a
-                  href="#"
+                  href={links.company}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-primary underline"
+                  className="font-bold"
                 >
-                  Lorem
+                  <Company />
                 </a>
               </h2>
             </div>
