@@ -33,7 +33,7 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/core": "^7.17.0",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@storybook/addon-actions": "^6.4.9",
