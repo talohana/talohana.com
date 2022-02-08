@@ -33,11 +33,11 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/core": "^7.17.0",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@storybook/addon-actions": "^6.4.9",
-    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
     "@storybook/addon-links": "^6.4.18",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.13",
@@ -52,7 +52,7 @@
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.14.14",
+    "esbuild": "^0.14.19",
     "eslint": "8",
     "eslint-config-next": "12.0.8",
     "eslint-plugin-storybook": "^0.5.6",
