@@ -5,4 +5,4 @@ export const links = {
   company: 'https://about.google.com',
 };
 
-export const siteUrl = 'https://talohana.io';
+export const siteUrl = 'https://talohana.com';
