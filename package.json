@@ -64,7 +64,7 @@
     "lint-staged": "^12.3.2",
     "mdx-bundler": "^8.0.1",
     "postcss": "^8.4.6",
-    "prettier": "^2.5.1",
+    "prettier": "^2.6.2",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.0.3",
