@@ -22,7 +22,7 @@ const navigation: NavigationMeta[] = [
   { name: 'blog', href: '/blog' },
 ];
 
-const NavLink: React.VFC<NavLinkProps> = ({ meta, onClick, className }) => {
+const NavLink: React.FC<NavLinkProps> = ({ meta, onClick, className }) => {
   const { name, href } = meta;
   const { pathname } = useRouter();
   const active = href === '/' ? pathname === '/' : pathname.includes(href);
@@ -43,7 +43,7 @@ const NavLink: React.VFC<NavLinkProps> = ({ meta, onClick, className }) => {
   );
 };
 
-export const Header: React.VFC = () => {
+export const Header: React.FC = () => {
   return (
     <Disclosure
       as="nav"

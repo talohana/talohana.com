@@ -1,16 +1,14 @@
+import { useMounted } from '@/hooks/useMounted';
 import { useTheme } from 'next-themes';
-import React from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
 
 export const ThemeToggle = () => {
+  const mounted = useMounted();
   const { theme, systemTheme, setTheme } = useTheme();
   const activeTheme = theme === 'system' ? systemTheme : theme;
+  const toggleTheme = () => setTheme(activeTheme === 'dark' ? 'light' : 'dark');
 
-  const toggleTheme = () => {
-    setTheme(activeTheme === 'dark' ? 'light' : 'dark');
-  };
-
-  return (
+  return mounted ? (
     <button
       onClick={toggleTheme}
       className="text-xl p-1.5 rounded-lg border border-primary border-opacity-60"
@@ -22,5 +20,5 @@ export const ThemeToggle = () => {
         <BsSun name="Light Theme" />
       )}
     </button>
-  );
+  ) : null;
 };

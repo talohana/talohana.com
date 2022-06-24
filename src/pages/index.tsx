@@ -14,7 +14,7 @@ interface Props {
   posts: Frontmatter[];
 }
 
-const Company: React.VFC = () => (
+const Company: React.FC = () => (
   <span>
     <span className="underline text-[#4285F4]">G</span>
     <span className="underline text-[#DB4437]">o</span>
@@ -25,7 +25,7 @@ const Company: React.VFC = () => (
   </span>
 );
 
-const Home: React.VFC<Props> = ({ posts }) => {
+const Home: React.FC<Props> = ({ posts }) => {
   const cards = posts.map(post => (
     <PostCard key={post.slug} frontmatter={post} />
   ));

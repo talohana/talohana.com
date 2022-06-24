@@ -7,7 +7,7 @@ interface Props {
   frontmatter: Frontmatter;
 }
 
-export const PostCard: React.VFC<Props> = ({ frontmatter }) => {
+export const PostCard: React.FC<Props> = ({ frontmatter }) => {
   const { slug, title, summary, tags, publishedAt, readTime } = frontmatter;
 
   return (

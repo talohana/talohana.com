@@ -5,7 +5,7 @@ interface Props {
   tags: string[];
 }
 
-export const PostTags: React.VFC<Props> = ({ tags }) => {
+export const PostTags: React.FC<Props> = ({ tags }) => {
   const badges = tags.map(tag => <Badge key={tag}>{tag}</Badge>);
 
   return <div className="flex flex-wrap gap-2">{badges}</div>;
