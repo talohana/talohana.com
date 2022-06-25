@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Custom404: React.VFC = () => {
+const Custom404: React.FC = () => {
   return (
     <>
       <NextSeo title="404" />

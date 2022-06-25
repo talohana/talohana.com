@@ -10,7 +10,7 @@ interface Props {
   posts: Frontmatter[];
 }
 
-const Blog: React.VFC<Props> = ({ posts }) => {
+const Blog: React.FC<Props> = ({ posts }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const cards = posts

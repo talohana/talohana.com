@@ -32,7 +32,7 @@ const linksMeta: LinkMeta[] = [
   },
 ];
 
-const FooterLinks: React.VFC = () => (
+const FooterLinks: React.FC = () => (
   <ul className="flex space-x-4 text-2xl">
     {linksMeta.map(({ element, href, ariaLabel }) => (
       <li className="p-2 bg-primary text-gray-50 rounded-full" key={href}>
@@ -49,14 +49,14 @@ const FooterLinks: React.VFC = () => (
   </ul>
 );
 
-const Copy: React.VFC = () => (
+const Copy: React.FC = () => (
   <span role="contentinfo" className="text-center">
     <span>&copy; {getYear(Date.now())} Tal Ohana. </span>{' '}
     <span className="font-light">All Rights Reserved.</span>
   </span>
 );
 
-export const Footer: React.VFC = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className="py-8 border-t border-t-gray-400 border-opacity-20">
       <div className="flex flex-col justify-center items-center space-y-6">

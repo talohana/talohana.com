@@ -17,7 +17,7 @@ interface Props {
   code: string;
 }
 
-const Post: React.VFC<Props> = ({ frontmatter, code }) => {
+const Post: React.FC<Props> = ({ frontmatter, code }) => {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const router = useRouter();
   const {

@@ -6,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-export const PublishedAt: React.VFC<Props> = ({ publishedAt, className }) => {
+export const PublishedAt: React.FC<Props> = ({ publishedAt, className }) => {
   const formatted = format(parseISO(publishedAt), 'PP');
 
   return <span className={className}>{formatted}</span>;
