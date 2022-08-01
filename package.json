@@ -50,7 +50,7 @@
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.14.42",
+    "esbuild": "^0.14.51",
     "eslint": "8",
     "eslint-config-next": "12.1.5",
     "eslint-plugin-storybook": "^0.5.12",
