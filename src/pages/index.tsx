@@ -39,8 +39,8 @@ const Home: React.FC<Props> = ({ posts }) => {
             <Image
               src={me}
               alt="Tal Ohana profile picture"
-              width={150}
-              height={150}
+              width={170}
+              height={170}
               className="rounded-full"
               priority
             />
@@ -61,7 +61,7 @@ const Home: React.FC<Props> = ({ posts }) => {
               </h2>
             </div>
             <h3 className="text-lg font-light">
-              I am a JavaScript, TypeScript and Software Engineering enthusiast!
+              I am a coding and software engineering enthusiast!
             </h3>
           </div>
         </div>
