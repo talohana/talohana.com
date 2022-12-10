@@ -38,7 +38,7 @@ const Blog: React.FC<Props> = ({ posts }) => {
             placeholder="Search posts"
             className="my-4 pr-9"
           />
-          <AiOutlineSearch className="text-2xl absolute top-1/2 right-2 transform -translate-y-1/2" />
+          <AiOutlineSearch className="text-gray-700 text-2xl absolute top-1/2 right-2 transform -translate-y-1/2" />
         </div>
         <div>
           <h1 className="mb-4 underline decoration-primary">All Posts</h1>
