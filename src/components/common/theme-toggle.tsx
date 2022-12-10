@@ -11,7 +11,7 @@ export const ThemeToggle = () => {
   return mounted ? (
     <button
       onClick={toggleTheme}
-      className="text-xl p-1.5 rounded-lg border border-primary border-opacity-60"
+      className="text-xl p-1.5 rounded-lg border border-primary-300 border-opacity-60"
       aria-label="Toggle Theme"
     >
       {activeTheme === 'dark' ? (
