@@ -5,12 +5,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer');
 /** @type {import('next').NextConfig} */
 const nextConfiguration = {
   reactStrictMode: true,
-  swcMinify: true,
   pwa: {
     dest: 'public',
-  },
-  images: {
-    formats: ['image/avif', 'image/webp'],
   },
 };
 
