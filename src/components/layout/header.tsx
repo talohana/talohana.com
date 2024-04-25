@@ -35,11 +35,11 @@ const NavLink: React.FC<NavLinkProps> = ({ meta, onClick, className }) => {
   );
 
   return (
-    <Link href={href}>
-      <a className={classes} onClick={() => onClick?.()}>
-        {name}
-      </a>
-    </Link>
+    (<Link href={href} className={classes} onClick={() => onClick?.()}>
+
+      {name}
+
+    </Link>)
   );
 };
 

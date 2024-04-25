@@ -25,12 +25,12 @@ const Post: React.FC<Props> = ({ frontmatter, code }) => {
     publishedAt,
     image,
     imageCaption,
-    imageAlt,
+    imageAlt: frontmatterImageAlt,
     summary,
     tags,
     readTime,
   } = frontmatter;
-
+  const imageAlt = frontmatterImageAlt ?? `${title} thumbnail`;
   return (
     <>
       <NextSeo
@@ -71,7 +71,7 @@ const Post: React.FC<Props> = ({ frontmatter, code }) => {
             src={image}
             title={imageCaption}
             alt={imageAlt}
-            layout="fill"
+            fill
             priority
           />
         </div>
