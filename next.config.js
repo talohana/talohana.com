@@ -8,9 +8,6 @@ const nextConfiguration = {
   pwa: {
     dest: 'public',
   },
-  images: {
-    formats: ['image/avif', 'image/webp'],
-  },
 };
 
 module.exports = withPlugins(

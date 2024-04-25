@@ -42,6 +42,7 @@ const Home: React.FC<Props> = ({ posts }) => {
             height={170}
             className="rounded-full"
             priority
+            quality={50}
           />
         </div>
         <div>
