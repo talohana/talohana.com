@@ -59,7 +59,7 @@
     "globby": "^13.1.1",
     "gray-matter": "^4.0.3",
     "husky": "^7.0.4",
-    "jest": "^27.4.7",
+    "jest": "^29.7.0",
     "lint-staged": "^12.3.2",
     "mdx-bundler": "^9.0.1",
     "postcss": "^8.4.6",
